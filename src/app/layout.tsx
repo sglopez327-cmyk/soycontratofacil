@@ -19,6 +19,13 @@ export const metadata: Metadata = {
   title: "SoyContratoFacil.es — Contratos inmobiliarios legales en minutos",
   description:
     "Genera contratos de alquiler y compraventa verificados, seguros y listos para firmar. Documentos legales inmobiliarios automatizados.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/icon.png", type: "image/png", sizes: "48x48" },
+    ],
+    apple: "/apple-icon.png",
+  },
 };
 
 export default function RootLayout({
