@@ -356,7 +356,7 @@ const rescisionTemplate: ContractLegalTemplate = {
     {
       title: "PRIMERA. — RESCISIÓN",
       content:
-        "Las partes acuerdan la rescisión del contrato de arrendamiento con entrega de llaves el {{fecha_entrega_llaves}}.",
+        "Las partes acuerdan la rescisión del contrato de arrendamiento con entrega de llaves el {{fecha_entrega_llaves}}. {{clausula_motivo_rescision}}",
     },
     {
       title: "SEGUNDA. — ESTADO Y FIANZA",

@@ -13,6 +13,7 @@ import {
   getCamposCondicionesLegalesArrendamiento,
   validateIban,
 } from "@/lib/lease-conditions-fields";
+import { MOTIVO_RESCISION_OPTIONS } from "@/lib/rescision-fields";
 
 export type ContractFieldType =
   | "text"
@@ -764,6 +765,15 @@ export const contractConfigs: Record<string, ContractConfig> = {
             label: "Fecha de entrega de llaves",
             type: "date",
             required: true,
+          }),
+          field({
+            id: "motivo_rescision",
+            label: "Motivo de la rescisión",
+            type: "select",
+            required: false,
+            options: MOTIVO_RESCISION_OPTIONS,
+            helpText:
+              "Opcional. Si no lo indicas o eliges «Otro», el documento incluirá una redacción legal genérica.",
           }),
           field({
             id: "estado_inmueble",

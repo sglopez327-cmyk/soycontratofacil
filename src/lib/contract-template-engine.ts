@@ -6,6 +6,7 @@ import {
 } from "@/lib/party-fields";
 import { enrichPropertyTemplateVariables } from "@/lib/property-fields";
 import { enrichLeaseTemplateVariables } from "@/lib/lease-conditions-fields";
+import { enrichRescisionTemplateVariables } from "@/lib/rescision-fields";
 import type { ContractLegalTemplate } from "@/lib/contract-templates";
 import { getContractTemplate } from "@/lib/contract-templates";
 import { formatFieldForTemplate } from "@/lib/format-template-value";
@@ -67,6 +68,8 @@ export function buildTemplateVariables(
   enrichPropertyTemplateVariables(config, values, variables);
 
   enrichLeaseTemplateVariables(values, variables);
+
+  enrichRescisionTemplateVariables(config, values, variables);
 
   return variables;
 }
