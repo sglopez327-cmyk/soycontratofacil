@@ -5,20 +5,27 @@ import {
   FileSignature,
   FileText,
   Home,
-  KeyRound,
   Landmark,
-  Package,
   PlugZap,
   Trees,
   Warehouse,
   type LucideIcon,
 } from "lucide-react";
 
+export const GENERAR_ROUTE_PREFIX = "/generar";
+
+export function getContractHref(slug: string): string {
+  return `${GENERAR_ROUTE_PREFIX}/${slug}`;
+}
+
 export type ContractType = {
   id: string;
+  slug: string;
+  href: string;
   title: string;
   description: string;
-  href: string;
+  categoryId: string;
+  categoryTitle: string;
   icon: LucideIcon;
 };
 
@@ -29,47 +36,63 @@ export type ContractCategory = {
   contracts: ContractType[];
 };
 
+function contract(
+  data: Omit<ContractType, "href">
+): ContractType {
+  return { ...data, href: getContractHref(data.slug) };
+}
+
 export const contractCategories: ContractCategory[] = [
   {
     id: "arrendamientos",
     title: "Arrendamientos",
     description: "Contratos de alquiler para todo tipo de inmuebles",
     contracts: [
-      {
-        id: "vivienda",
+      contract({
+        id: "arrendamiento-vivienda",
+        slug: "vivienda",
         title: "Vivienda",
         description: "Alquiler de vivienda habitual con todas las garantías legales",
-        href: "/contratos/arrendamiento/vivienda",
+        categoryId: "arrendamientos",
+        categoryTitle: "Arrendamientos",
         icon: Home,
-      },
-      {
+      }),
+      contract({
         id: "temporada",
+        slug: "temporada",
         title: "Temporada",
         description: "Arrendamiento de temporada o uso distinto del de vivienda",
-        href: "/contratos/arrendamiento/temporada",
+        categoryId: "arrendamientos",
+        categoryTitle: "Arrendamientos",
         icon: CalendarRange,
-      },
-      {
+      }),
+      contract({
         id: "habitacion",
+        slug: "habitacion",
         title: "Habitación",
         description: "Alquiler de habitación en vivienda compartida",
-        href: "/contratos/arrendamiento/habitacion",
+        categoryId: "arrendamientos",
+        categoryTitle: "Arrendamientos",
         icon: DoorOpen,
-      },
-      {
+      }),
+      contract({
         id: "local",
+        slug: "local",
         title: "Local",
         description: "Arrendamiento de local comercial o de negocio",
-        href: "/contratos/arrendamiento/local",
+        categoryId: "arrendamientos",
+        categoryTitle: "Arrendamientos",
         icon: Building2,
-      },
-      {
+      }),
+      contract({
         id: "finca-rustica",
+        slug: "finca-rustica",
         title: "Finca Rústica",
         description: "Alquiler de finca rústica, terreno o explotación agrícola",
-        href: "/contratos/arrendamiento/finca-rustica",
+        categoryId: "arrendamientos",
+        categoryTitle: "Arrendamientos",
         icon: Trees,
-      },
+      }),
     ],
   },
   {
@@ -77,27 +100,33 @@ export const contractCategories: ContractCategory[] = [
     title: "Compraventa",
     description: "Documentos para la transmisión de propiedad",
     contracts: [
-      {
-        id: "vivienda",
+      contract({
+        id: "compraventa-vivienda",
+        slug: "compraventa-vivienda",
         title: "Vivienda",
         description: "Contrato de compraventa de vivienda entre particulares",
-        href: "/contratos/compraventa/vivienda",
+        categoryId: "compraventa",
+        categoryTitle: "Compraventa",
         icon: Landmark,
-      },
-      {
+      }),
+      contract({
         id: "arras",
+        slug: "arras",
         title: "Arras",
         description: "Contrato de arras penitenciales o confirmatorias",
-        href: "/contratos/compraventa/arras",
+        categoryId: "compraventa",
+        categoryTitle: "Compraventa",
         icon: FileSignature,
-      },
-      {
+      }),
+      contract({
         id: "garaje-trastero",
+        slug: "garaje-trastero",
         title: "Garaje / Trastero",
         description: "Compraventa de plaza de garaje o trastero",
-        href: "/contratos/compraventa/garaje-trastero",
+        categoryId: "compraventa",
+        categoryTitle: "Compraventa",
         icon: Warehouse,
-      },
+      }),
     ],
   },
   {
@@ -105,26 +134,50 @@ export const contractCategories: ContractCategory[] = [
     title: "Gestión",
     description: "Trámites y documentos complementarios",
     contracts: [
-      {
-        id: "rescisión",
+      contract({
+        id: "rescision",
+        slug: "rescision",
         title: "Rescisión de contrato",
         description: "Documento para la finalización anticipada del arrendamiento",
-        href: "/contratos/gestion/rescision",
+        categoryId: "gestion",
+        categoryTitle: "Gestión",
         icon: FileText,
-      },
-      {
-        id: "suministros",
+      }),
+      contract({
+        id: "cambio-suministros",
+        slug: "cambio-suministros",
         title: "Cambio de suministros",
         description: "Comunicación de cambio de titularidad de suministros",
-        href: "/contratos/gestion/cambio-suministros",
+        categoryId: "gestion",
+        categoryTitle: "Gestión",
         icon: PlugZap,
-      },
+      }),
     ],
   },
 ];
 
-export const navLinks = [
-  { href: "/mis-contratos", label: "Mis Contratos", icon: Package },
-  { href: "/precios", label: "Precios", icon: KeyRound },
-  { href: "/ayuda", label: "Ayuda", icon: FileText },
-] as const;
+/** Rutas legacy /contratos/... → /generar/[slug] */
+export const legacyContractPaths: Record<string, string> = {
+  "/contratos/arrendamiento/vivienda": getContractHref("vivienda"),
+  "/contratos/arrendamiento/temporada": getContractHref("temporada"),
+  "/contratos/arrendamiento/habitacion": getContractHref("habitacion"),
+  "/contratos/arrendamiento/local": getContractHref("local"),
+  "/contratos/arrendamiento/finca-rustica": getContractHref("finca-rustica"),
+  "/contratos/compraventa/vivienda": getContractHref("compraventa-vivienda"),
+  "/contratos/compraventa/arras": getContractHref("arras"),
+  "/contratos/compraventa/garaje-trastero": getContractHref("garaje-trastero"),
+  "/contratos/gestion/rescision": getContractHref("rescision"),
+  "/contratos/gestion/cambio-suministros": getContractHref("cambio-suministros"),
+};
+
+export const allContracts: ContractType[] = contractCategories.flatMap(
+  (category) => category.contracts
+);
+
+export function getContractBySlug(slug: string): ContractType | undefined {
+  return allContracts.find((contract) => contract.slug === slug);
+}
+
+export function getAllContractSlugs(): string[] {
+  return allContracts.map((contract) => contract.slug);
+}

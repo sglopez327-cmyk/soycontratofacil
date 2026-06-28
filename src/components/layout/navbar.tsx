@@ -1,75 +1,62 @@
-import Link from "next/link";
-import { FileText, Menu } from "lucide-react";
+"use client";
 
-import { buttonVariants } from "@/components/ui/button";
-import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { BookOpen, FileText } from "lucide-react";
+
 import { cn } from "@/lib/utils";
-import { navLinks } from "@/lib/contracts";
+
+const GUIDE_HREF = "/#guia-de-uso";
 
 export function Navbar() {
   return (
-    <header className="sticky top-0 z-50 border-b border-zinc-800/80 bg-zinc-950/95 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+    <motion.header
+      className="sticky top-0 z-50 h-16 border-b border-slate-700/80 bg-[#0f172a]/90 backdrop-blur-md"
+      initial={{ opacity: 0, y: -12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] as const }}
+    >
+      <div className="mx-auto grid h-16 max-w-6xl grid-cols-[1fr_auto] items-center gap-4 px-6 lg:grid-cols-[1fr_auto_1fr] lg:px-8">
         <Link
           href="/"
-          className="group flex items-center gap-2.5 transition-opacity hover:opacity-90"
+          className="group flex items-center gap-2.5 justify-self-start transition-opacity duration-300 hover:opacity-80"
         >
-          <span className="flex size-9 items-center justify-center rounded-lg bg-zinc-800 ring-1 ring-zinc-700 transition-colors group-hover:bg-zinc-700">
-            <FileText className="size-4 text-zinc-100" aria-hidden />
+          <span className="flex size-8 items-center justify-center rounded-lg border border-slate-700 bg-slate-800/40 text-brand-blue transition-all duration-300 group-hover:border-brand-blue/40 group-hover:bg-brand-blue/10">
+            <FileText className="size-3.5" aria-hidden />
           </span>
-          <span className="text-lg font-semibold tracking-tight text-zinc-50">
-            ContratoFacil<span className="text-zinc-400">.es</span>
+          <span className="text-[0.95rem] font-semibold tracking-tight text-white">
+            SoyContratoFacil
+            <span className="text-slate-500">.es</span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex" aria-label="Principal">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="rounded-lg px-4 py-2 text-sm font-medium text-zinc-300 transition-colors hover:bg-zinc-800 hover:text-zinc-50"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+        <p className="hidden justify-self-center lg:block">
+          <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs font-medium tracking-wide text-slate-200 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
+            <span className="text-white/95">Contratos legales</span>
+            <span className="mx-2 text-brand-blue/50" aria-hidden>
+              ·
+            </span>
+            <span>Sin registro</span>
+            <span className="mx-2 text-brand-blue/50" aria-hidden>
+              ·
+            </span>
+            <span className="font-bold text-brand-emerald">Gratis</span>
+          </span>
+        </p>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-self-end">
           <Link
-            href="/mis-contratos"
+            href={GUIDE_HREF}
             className={cn(
-              buttonVariants({ size: "sm" }),
-              "hidden bg-zinc-100 text-zinc-900 hover:bg-white sm:inline-flex"
+              "inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-800/40 px-4 py-2 text-sm font-medium text-slate-200 transition-all duration-300",
+              "hover:border-brand-blue/40 hover:bg-brand-blue/10 hover:text-brand-blue"
             )}
           >
-            Acceder
+            <BookOpen className="size-4 shrink-0" aria-hidden />
+            Guía de uso
           </Link>
-
-          <Button
-            variant="ghost"
-            size="icon"
-            className="text-zinc-300 hover:bg-zinc-800 hover:text-zinc-50 md:hidden"
-            aria-label="Abrir menú"
-          >
-            <Menu className="size-5" />
-          </Button>
         </div>
       </div>
-
-      <nav
-        className="flex gap-1 overflow-x-auto border-t border-zinc-800/60 px-4 py-2 md:hidden"
-        aria-label="Principal móvil"
-      >
-        {navLinks.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            className="shrink-0 rounded-lg px-3 py-1.5 text-sm font-medium text-zinc-400 transition-colors hover:bg-zinc-800 hover:text-zinc-50"
-          >
-            {link.label}
-          </Link>
-        ))}
-      </nav>
-    </header>
+    </motion.header>
   );
 }

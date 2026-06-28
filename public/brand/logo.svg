@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="56" viewBox="0 0 280 56" fill="none" role="img" aria-label="SoyContratoFacil.es">
+  <rect x="0" y="8" width="40" height="40" rx="10" fill="#3B82F6"/>
+  <rect x="12" y="18" width="16" height="20" rx="2" fill="#FFFFFF"/>
+  <rect x="15" y="22" width="10" height="1.8" rx="0.9" fill="#3B82F6"/>
+  <rect x="15" y="26" width="10" height="1.8" rx="0.9" fill="#3B82F6"/>
+  <rect x="15" y="30" width="7" height="1.8" rx="0.9" fill="#3B82F6"/>
+  <text x="52" y="36" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">
+    <tspan fill="#0F172A">SoyContrato</tspan><tspan fill="#3B82F6">Facil.es</tspan>
+  </text>
+</svg>
