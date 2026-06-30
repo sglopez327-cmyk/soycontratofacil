@@ -39,3 +39,25 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# IDE
+.vscode/
+
+# Expo / React Native (app-mobile)
+app-mobile/node_modules/
+app-mobile/.expo/
+app-mobile/dist/
+app-mobile/web-build/
+app-mobile/.expo-shared/
+app-mobile/ios/
+app-mobile/android/
+app-mobile/*.jks
+app-mobile/*.p8
+app-mobile/*.p12
+app-mobile/*.key
+app-mobile/*.mobileprovision
+app-mobile/*.orig.*
+app-mobile/.metro-health-check*
+app-mobile/npm-debug.*
+app-mobile/yarn-debug.*
+app-mobile/yarn-error.*
