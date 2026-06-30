@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Expo (app-mobile)
+app-mobile/node_modules/
+app-mobile/.expo/
+app-mobile/dist/
