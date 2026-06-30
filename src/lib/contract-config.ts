@@ -209,6 +209,9 @@ const campoSuperficiePlaza = field({
   helpText: "Superficie útil de la plaza de garaje o trastero, si se conoce.",
 });
 
+/** Plazo de pago mensual compartido por los 5 contratos de arrendamiento. */
+const camposPlazoPago = getCamposPlazoPago(field);
+
 const condicionesEconomicasArrendamiento: ContractFieldDefinition[] = [
   field({
     id: "renta_mensual",
@@ -272,7 +275,7 @@ export const contractConfigs: Record<string, ContractConfig> = {
         description: "Renta, fianza y plazo del arrendamiento.",
         fields: [
           ...condicionesEconomicasArrendamiento,
-          ...getCamposPlazoPago(field),
+          ...camposPlazoPago,
           ...camposGastosVivienda,
           ...camposCondicionesLegalesVivienda,
           field({
@@ -330,7 +333,7 @@ export const contractConfigs: Record<string, ContractConfig> = {
             required: true,
             placeholder: "900",
           }),
-          ...getCamposPlazoPago(field),
+          ...camposPlazoPago,
           ...camposCondicionesLegalesBase,
           field({
             id: "fecha_inicio",
@@ -397,7 +400,7 @@ export const contractConfigs: Record<string, ContractConfig> = {
             type: "currency",
             required: true,
           }),
-          ...getCamposPlazoPago(field),
+          ...camposPlazoPago,
           getCampoSuministrosHabitacion(field),
           ...camposCondicionesLegalesBase,
           field({
@@ -486,7 +489,7 @@ export const contractConfigs: Record<string, ContractConfig> = {
               { value: "otro", label: "Otra duración" },
             ],
           }),
-          ...getCamposPlazoPago(field),
+          ...camposPlazoPago,
           field({
             id: "gastos_comunidad",
             label: "Gastos de comunidad",
@@ -571,7 +574,7 @@ export const contractConfigs: Record<string, ContractConfig> = {
               { value: "otro", label: "Otra duración" },
             ],
           }),
-          ...getCamposPlazoPago(field),
+          ...camposPlazoPago,
           ...camposCondicionesLegalesBase,
         ],
       }),

@@ -16,9 +16,12 @@ export type GenerateContractPdfOptions = {
   values: Record<string, string>;
 };
 
-/** Márgenes uniformes A4 (mm). */
+/** Margen superior uniforme en todas las páginas de todos los documentos (2 cm exactos). */
+const PAGE_MARGIN_TOP_MM = 20;
+
+/** Márgenes A4 (mm). */
 const PAGE_MARGINS = {
-  top: 20,
+  top: PAGE_MARGIN_TOP_MM,
   bottom: 20,
   left: 20,
   right: 20,
