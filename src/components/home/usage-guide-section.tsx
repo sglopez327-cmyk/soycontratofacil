@@ -9,6 +9,8 @@ const steps = [
     title: "Elige tu contrato",
     description:
       "Selecciona el tipo de documento que necesitas: alquiler, compraventa, arras o trámites complementarios.",
+    mobileDescription:
+      "Alquiler, compraventa, arras o trámites complementarios.",
     icon: MousePointerClick,
   },
   {
@@ -16,6 +18,7 @@ const steps = [
     title: "Completa el formulario",
     description:
       "Rellena los datos paso a paso. Solo te pedimos la información legal necesaria para tu contrato.",
+    mobileDescription: "Solo los datos legales necesarios, paso a paso.",
     icon: FileText,
   },
   {
@@ -23,6 +26,7 @@ const steps = [
     title: "Descarga tu PDF",
     description:
       "Genera y descarga el documento al instante. Sin registro, sin cuenta y totalmente gratis.",
+    mobileDescription: "Al instante, sin registro ni cuenta y",
     icon: Download,
   },
 ] as const;
@@ -40,11 +44,56 @@ const cardVariants = {
   }),
 };
 
+function StepDescription({
+  step,
+  compact = false,
+}: {
+  step: (typeof steps)[number];
+  compact?: boolean;
+}) {
+  if (step.number === "03") {
+    return (
+      <p
+        className={
+          compact
+            ? "text-card-body mt-0.5 text-xs leading-snug text-slate-400"
+            : "text-card-body mt-2 text-sm text-slate-400"
+        }
+      >
+        {compact ? (
+          <>
+            {step.mobileDescription}{" "}
+            <span className="font-bold text-brand-emerald">gratis</span>.
+          </>
+        ) : (
+          <>
+            Genera y descarga el documento al instante. Sin registro, sin
+            cuenta y totalmente{" "}
+            <span className="font-bold text-brand-emerald">gratis</span>.
+          </>
+        )}
+      </p>
+    );
+  }
+
+  return (
+    <p
+      className={
+        compact
+          ? "text-card-body mt-0.5 text-xs leading-snug text-slate-400"
+          : "text-card-body mt-2 text-sm text-slate-400"
+      }
+    >
+      {compact ? step.mobileDescription : step.description}
+    </p>
+  );
+}
+
 export function UsageGuideSection() {
   return (
     <section
       id="guia-de-uso"
-      className="scroll-anchor border-t border-slate-800/80 bg-[#0f172a] px-6 py-16 lg:px-8 lg:py-20"
+      className="scroll-anchor border-t border-slate-800/80 bg-[#0f172a] px-6 py-12 sm:py-16 lg:px-8 lg:py-20"
       aria-labelledby="guia-de-uso-heading"
     >
       <div className="mx-auto max-w-6xl">
@@ -100,7 +149,40 @@ export function UsageGuideSection() {
           </motion.p>
         </div>
 
-        <ol className="mt-12 grid gap-5 sm:grid-cols-3">
+        {/* Móvil: panel compacto con los 3 pasos en filas */}
+        <motion.ol
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-8 divide-y divide-slate-700/80 overflow-hidden rounded-2xl border border-slate-700 bg-slate-800/40 backdrop-blur-md sm:hidden"
+        >
+          {steps.map((step) => {
+            const Icon = step.icon;
+
+            return (
+              <li key={step.number} className="flex items-start gap-3 p-3.5">
+                <div className="flex shrink-0 flex-col items-center gap-1.5">
+                  <span className="text-[0.6rem] font-semibold tracking-widest text-brand-blue">
+                    {step.number}
+                  </span>
+                  <span className="flex size-9 items-center justify-center rounded-lg bg-brand-blue/15 text-brand-blue ring-1 ring-brand-blue/25">
+                    <Icon className="size-4" aria-hidden />
+                  </span>
+                </div>
+                <div className="min-w-0 flex-1 pt-0.5">
+                  <h3 className="text-sm font-bold leading-snug text-white">
+                    {step.title}
+                  </h3>
+                  <StepDescription step={step} compact />
+                </div>
+              </li>
+            );
+          })}
+        </motion.ol>
+
+        {/* Escritorio: tarjetas en 3 columnas */}
+        <ol className="mt-12 hidden gap-5 sm:grid sm:grid-cols-3">
           {steps.map((step, index) => {
             const Icon = step.icon;
 
@@ -121,17 +203,7 @@ export function UsageGuideSection() {
                   <Icon className="size-5" aria-hidden />
                 </span>
                 <h3 className="mt-4 text-base font-bold text-white">{step.title}</h3>
-                <p className="text-card-body mt-2 text-sm text-slate-400">
-                  {step.number === "03" ? (
-                    <>
-                      Genera y descarga el documento al instante. Sin registro, sin
-                      cuenta y totalmente{" "}
-                      <span className="font-bold text-brand-emerald">gratis</span>.
-                    </>
-                  ) : (
-                    step.description
-                  )}
-                </p>
+                <StepDescription step={step} />
               </motion.li>
             );
           })}
