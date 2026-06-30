@@ -48,20 +48,56 @@ export function UsageGuideSection() {
       aria-labelledby="guia-de-uso-heading"
     >
       <div className="mx-auto max-w-6xl">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-blue">
-            Cómo funciona
-          </p>
-          <h2
-            id="guia-de-uso-heading"
-            className="mt-3 text-2xl font-bold tracking-tight text-white sm:text-3xl"
+        <div className="relative mx-auto max-w-2xl text-center">
+          <div
+            className="pointer-events-none absolute left-1/2 top-0 h-24 w-48 -translate-x-1/2 rounded-full bg-brand-blue/10 blur-3xl"
+            aria-hidden
+          />
+
+          <motion.p
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            className="relative inline-flex items-center rounded-full border border-brand-blue/30 bg-gradient-to-b from-brand-blue/15 to-brand-blue/5 px-5 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-brand-blue shadow-[inset_0_1px_0_0_rgba(59,130,246,0.2)] sm:text-xs"
           >
-            Guía de uso
-          </h2>
-          <p className="text-card-body mt-3 text-sm text-slate-400 sm:text-base">
-            Genera contratos legales en tres pasos. No necesitas crear una cuenta ni
-            iniciar sesión.
-          </p>
+            ¿Cómo funciona?
+          </motion.p>
+
+          <motion.h2
+            id="guia-de-uso-heading"
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.5, delay: 0.06, ease: [0.22, 1, 0.36, 1] }}
+            className="relative mt-6 text-3xl font-bold tracking-tight text-white sm:mt-7 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.12]"
+          >
+            Guía de{" "}
+            <span className="bg-gradient-to-r from-white via-slate-100 to-brand-blue bg-clip-text text-transparent">
+              uso
+            </span>
+          </motion.h2>
+
+          <motion.div
+            initial={{ opacity: 0, scaleX: 0.6 }}
+            whileInView={{ opacity: 1, scaleX: 1 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.45, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+            className="mx-auto mt-5 h-px w-16 bg-gradient-to-r from-transparent via-brand-blue/60 to-transparent"
+            aria-hidden
+          />
+
+          <motion.p
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.5, delay: 0.14, ease: [0.22, 1, 0.36, 1] }}
+            className="text-card-body relative mx-auto mt-5 max-w-xl text-base leading-relaxed text-slate-400 sm:mt-6 sm:text-lg"
+          >
+            Genera contratos legales en{" "}
+            <span className="font-semibold text-slate-200">tres pasos</span>. No
+            necesitas crear una cuenta ni iniciar sesión.
+          </motion.p>
         </div>
 
         <ol className="mt-12 grid gap-5 sm:grid-cols-3">
