@@ -50,7 +50,7 @@ const viviendaTemplate: ContractLegalTemplate = {
     },
     {
       title: "QUINTA. — SUMINISTROS",
-      content: "{{clausula_suministros}}",
+      content: "{{#clausula_suministros}}{{clausula_suministros}}{{/clausula_suministros}}",
     },
     {
       title: "SEXTA. — OBLIGACIONES DE LAS PARTES",
@@ -97,16 +97,12 @@ const fincaRusticaTemplate: ContractLegalTemplate = {
         "La renta se fija en {{renta_mensual}}, pagadera {{dia_pago}} mediante transferencia al IBAN {{iban_pago}}. EL ARRENDATARIO entrega en este acto la cantidad de {{fianza}} en concepto de fianza o garantía, a devolver al término del arrendamiento, salvo compensación por daños o cantidades pendientes debidamente justificadas.",
     },
     {
-      title: "CUARTA. — SUMINISTROS",
-      content: "{{clausula_suministros}}",
-    },
-    {
-      title: "QUINTA. — OBLIGACIONES",
+      title: "CUARTA. — OBLIGACIONES",
       content:
         "EL ARRENDATARIO explotará la finca con la diligencia de un buen empresario agrario, abonará puntualmente la renta y cumplirá la normativa medioambiental y de uso del suelo. EL ARRENDADOR garantizará el pacífico disfrute de la finca y el cumplimiento de las obligaciones legalmente asignadas al arrendador.",
     },
     {
-      title: "SEXTA. — FUERO",
+      title: "QUINTA. — FUERO",
       content:
         "Para la interpretación y cumplimiento del presente contrato será de aplicación la legislación sobre arrendamientos rústicos y, en su defecto, el Código Civil. Las partes se someten a los Juzgados y Tribunales del lugar de ubicación de la finca.",
     },
@@ -189,11 +185,7 @@ const temporadaTemplate: ContractLegalTemplate = {
         "La renta mensual asciende a {{renta_mensual}}, pagadera {{dia_pago}} mediante transferencia bancaria al IBAN {{iban_pago}}. La fianza asciende a {{fianza}} y se devolverá al finalizar el arrendamiento conforme a la ley.",
     },
     {
-      title: "CUARTA. — SUMINISTROS",
-      content: "{{clausula_suministros}}",
-    },
-    {
-      title: "QUINTA. — FUERO",
+      title: "CUARTA. — FUERO",
       content:
         "Las partes se someten a la LAU en lo aplicable y, para conflictos, a los Juzgados del lugar del inmueble.",
     },
@@ -263,11 +255,7 @@ const localTemplate: ContractLegalTemplate = {
         "Plazo: {{duracion_contrato}}. Renta mensual: {{renta_mensual}}, pagadera {{dia_pago}} mediante transferencia al IBAN {{iban_pago}}. Fianza: {{fianza}}{{#gastos_comunidad}}. Gastos de comunidad {{gastos_comunidad}}{{/gastos_comunidad}}. La rescisión anticipada requerirá preaviso fehaciente de {{preaviso_rescision}} días.",
     },
     {
-      title: "TERCERA. — SUMINISTROS",
-      content: "{{clausula_suministros}}",
-    },
-    {
-      title: "CUARTA. — FUERO",
+      title: "TERCERA. — FUERO",
       content:
         "Régimen de arrendamientos de locales de negocio conforme a la LAU. Jurisdicción: lugar del inmueble.",
     },

@@ -8,21 +8,44 @@ export const PLAZO_CAMBIO_SUMINISTROS_OPTIONS = [
   { value: "60", label: "60 días" },
 ] as const;
 
+export const SUMINISTROS_HABITACION_OPTIONS = [
+  { value: "incluidos", label: "Incluidos en la renta" },
+  { value: "aparte", label: "A pagar aparte por el arrendatario" },
+] as const;
+
+export type CamposCondicionesLegalesOptions = {
+  includeCambioTitularidad?: boolean;
+  cambioTitularidadRequired?: boolean;
+};
+
 export function getCamposCondicionesLegalesArrendamiento(
   field: (
     definition: ContractFieldDefinition
-  ) => ContractFieldDefinition
+  ) => ContractFieldDefinition,
+  options: CamposCondicionesLegalesOptions = {}
 ): ContractFieldDefinition[] {
-  return [
-    field({
-      id: "plazo_cambio_suministros",
-      label: "Cambio de titularidad de suministros",
-      type: "select",
-      required: true,
-      options: [...PLAZO_CAMBIO_SUMINISTROS_OPTIONS],
-      helpText:
-        "El arrendatario se obliga a cambiar agua, luz y gas a su nombre en el plazo indicado.",
-    }),
+  const {
+    includeCambioTitularidad = false,
+    cambioTitularidadRequired = false,
+  } = options;
+
+  const fields: ContractFieldDefinition[] = [];
+
+  if (includeCambioTitularidad) {
+    fields.push(
+      field({
+        id: "plazo_cambio_suministros",
+        label: "Cambio de titularidad de suministros",
+        type: "select",
+        required: cambioTitularidadRequired,
+        options: [...PLAZO_CAMBIO_SUMINISTROS_OPTIONS],
+        helpText:
+          "Opcional. Si lo indicas, el arrendatario se obligará a cambiar agua, luz y gas a su nombre en el plazo señalado.",
+      })
+    );
+  }
+
+  fields.push(
     field({
       id: "preaviso_rescision",
       label: "Preaviso de rescisión (días)",
@@ -39,8 +62,26 @@ export function getCamposCondicionesLegalesArrendamiento(
       required: true,
       placeholder: "ES12 3456 7890 1234 5678 9012",
       helpText: "IBAN donde se realizarán los pagos mensuales de la renta.",
-    }),
-  ];
+    })
+  );
+
+  return fields;
+}
+
+export function getCampoSuministrosHabitacion(
+  field: (
+    definition: ContractFieldDefinition
+  ) => ContractFieldDefinition
+): ContractFieldDefinition {
+  return field({
+    id: "suministros_habitacion",
+    label: "Suministros (agua, luz, gas)",
+    type: "select",
+    required: true,
+    options: [...SUMINISTROS_HABITACION_OPTIONS],
+    helpText:
+      "Indica si los suministros están incluidos en la renta o deben abonarse aparte.",
+  });
 }
 
 export function normalizeIban(value: string): string {
@@ -80,6 +121,20 @@ export function buildClausulaSuministros(plazoDias: string): string {
   );
 }
 
+export function buildClausulaSuministrosHabitacion(tipo: string): string {
+  if (tipo === "incluidos") {
+    return (
+      "Los suministros de agua, luz y gas quedan incluidos en la renta mensual " +
+      "pactada, sin coste adicional para el arrendatario."
+    );
+  }
+
+  return (
+    "Los suministros de agua, luz y gas correrán por cuenta del arrendatario, " +
+    "quien deberá abonarlos aparte de la renta mensual."
+  );
+}
+
 export function enrichLeaseTemplateVariables(
   values: Record<string, string>,
   variables: Record<string, string>
@@ -87,6 +142,12 @@ export function enrichLeaseTemplateVariables(
   const plazo = values.plazo_cambio_suministros?.trim();
   if (plazo) {
     variables.clausula_suministros = buildClausulaSuministros(plazo);
+  }
+
+  const suministrosHabitacion = values.suministros_habitacion?.trim();
+  if (suministrosHabitacion) {
+    variables.clausula_suministros =
+      buildClausulaSuministrosHabitacion(suministrosHabitacion);
   }
 
   const iban = values.iban_pago?.trim();

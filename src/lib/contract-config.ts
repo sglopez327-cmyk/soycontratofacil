@@ -10,6 +10,7 @@ import {
   validateReferenciaCatastral,
 } from "@/lib/property-fields";
 import {
+  getCampoSuministrosHabitacion,
   getCamposCondicionesLegalesArrendamiento,
   validateIban,
 } from "@/lib/lease-conditions-fields";
@@ -252,8 +253,14 @@ const condicionesEconomicasArrendamiento: ContractFieldDefinition[] = [
   }),
 ];
 
-const camposCondicionesLegalesArrendamiento =
+const camposCondicionesLegalesBase =
   getCamposCondicionesLegalesArrendamiento(field);
+
+const camposCondicionesLegalesVivienda =
+  getCamposCondicionesLegalesArrendamiento(field, {
+    includeCambioTitularidad: true,
+    cambioTitularidadRequired: false,
+  });
 
 export const contractConfigs: Record<string, ContractConfig> = {
   vivienda: config({
@@ -279,7 +286,7 @@ export const contractConfigs: Record<string, ContractConfig> = {
           ...condicionesEconomicasArrendamiento,
           campoDiaPago,
           ...camposGastosVivienda,
-          ...camposCondicionesLegalesArrendamiento,
+          ...camposCondicionesLegalesVivienda,
           field({
             id: "fecha_inicio",
             label: "Fecha de inicio",
@@ -336,7 +343,7 @@ export const contractConfigs: Record<string, ContractConfig> = {
             placeholder: "900",
           }),
           campoDiaPago,
-          ...camposCondicionesLegalesArrendamiento,
+          ...camposCondicionesLegalesBase,
           field({
             id: "fecha_inicio",
             label: "Fecha de inicio",
@@ -403,7 +410,8 @@ export const contractConfigs: Record<string, ContractConfig> = {
             required: true,
           }),
           campoDiaPago,
-          ...camposCondicionesLegalesArrendamiento,
+          getCampoSuministrosHabitacion(field),
+          ...camposCondicionesLegalesBase,
           field({
             id: "duracion_contrato",
             label: "Duración del contrato",
@@ -498,7 +506,7 @@ export const contractConfigs: Record<string, ContractConfig> = {
             required: false,
             options: responsabilidadGastosOptions,
           }),
-          ...camposCondicionesLegalesArrendamiento,
+          ...camposCondicionesLegalesBase,
         ],
       }),
     ],
@@ -576,7 +584,7 @@ export const contractConfigs: Record<string, ContractConfig> = {
             ],
           }),
           campoDiaPago,
-          ...camposCondicionesLegalesArrendamiento,
+          ...camposCondicionesLegalesBase,
         ],
       }),
     ],

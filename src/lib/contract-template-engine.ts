@@ -215,10 +215,12 @@ export function renderContractDocument(
     title: replacePlaceholders(template.title, variables),
     subtitle: replacePlaceholders(template.subtitle, variables),
     comparecencia: replacePlaceholders(template.comparecencia, variables),
-    sections: template.sections.map((section) => ({
-      title: replacePlaceholders(section.title, variables),
-      content: replacePlaceholders(section.content, variables),
-    })),
+    sections: template.sections
+      .map((section) => ({
+        title: replacePlaceholders(section.title, variables),
+        content: replacePlaceholders(section.content, variables),
+      }))
+      .filter((section) => section.content.trim().length > 0),
     signatures: {
       left: {
         role: leftParty.role,
