@@ -93,7 +93,7 @@ export function UsageGuideSection() {
   return (
     <section
       id="guia-de-uso"
-      className="scroll-anchor border-t border-slate-800/80 bg-[#0f172a] px-6 py-12 sm:py-16 lg:px-8 lg:py-20"
+      className="scroll-anchor border-t border-slate-800/80 bg-[#0f172a] px-6 pt-8 pb-12 sm:pt-10 sm:pb-16 lg:px-8 lg:pt-12 lg:pb-20"
       aria-labelledby="guia-de-uso-heading"
     >
       <div className="mx-auto max-w-6xl">

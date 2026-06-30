@@ -23,7 +23,7 @@ export function HeroLottie() {
 
   return (
     <motion.div
-      className="pointer-events-none relative hidden lg:flex lg:items-center lg:justify-end"
+      className="pointer-events-none relative hidden lg:flex lg:items-start lg:justify-end lg:pt-2"
       initial={{ opacity: 0, x: 24 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] as const }}

@@ -42,7 +42,7 @@ export function HeroSection() {
         aria-hidden
       />
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-6 px-4 pb-14 pt-16 sm:px-6 sm:pb-16 sm:pt-20 lg:grid-cols-[1fr_auto] lg:gap-8 lg:pb-20 lg:pt-24">
+      <div className="relative mx-auto grid max-w-7xl items-start gap-6 px-4 pb-8 pt-16 sm:px-6 sm:pb-10 sm:pt-20 lg:grid-cols-[1fr_auto] lg:gap-8 lg:pb-10 lg:pt-24">
         <div className="text-center lg:text-left">
           <motion.h1
             className="text-5xl font-bold leading-[1.05] tracking-tighter text-white sm:text-6xl lg:text-7xl"
