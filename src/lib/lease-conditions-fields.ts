@@ -13,6 +13,9 @@ export const SUMINISTROS_HABITACION_OPTIONS = [
   { value: "aparte", label: "A pagar aparte por el arrendatario" },
 ] as const;
 
+export const PLAZO_PAGO_HELP_TEXT =
+  "Recomendamos un plazo de 5 días para cubrir posibles retrasos bancarios (ej. Del 1 al 5).";
+
 export type CamposCondicionesLegalesOptions = {
   includeCambioTitularidad?: boolean;
   cambioTitularidadRequired?: boolean;
@@ -84,6 +87,66 @@ export function getCampoSuministrosHabitacion(
   });
 }
 
+export function getCamposPlazoPago(
+  field: (
+    definition: ContractFieldDefinition
+  ) => ContractFieldDefinition
+): ContractFieldDefinition[] {
+  return [
+    field({
+      id: "dia_pago_inicio",
+      label: "Día de inicio del plazo",
+      type: "number",
+      required: true,
+      placeholder: "1",
+    }),
+    field({
+      id: "dia_pago_fin",
+      label: "Día de fin del plazo",
+      type: "number",
+      required: true,
+      placeholder: "5",
+      helpText: PLAZO_PAGO_HELP_TEXT,
+    }),
+  ];
+}
+
+export function buildTextoPlazoPago(inicio: string, fin: string): string {
+  const diaInicio = Number(inicio);
+  const diaFin = Number(fin);
+
+  if (diaInicio === diaFin) {
+    return `el día ${diaInicio} de cada mes`;
+  }
+
+  return `del día ${diaInicio} al ${diaFin} de cada mes`;
+}
+
+export function validateDiaPagoMes(
+  fieldId: "dia_pago_inicio" | "dia_pago_fin",
+  value: string,
+  allValues: Record<string, string>
+): string | null {
+  const trimmed = value.trim();
+  if (!trimmed) {
+    return null;
+  }
+
+  const day = Number(trimmed);
+  if (!Number.isInteger(day) || day < 1 || day > 31) {
+    return "Introduce un día válido del 1 al 31";
+  }
+
+  if (fieldId === "dia_pago_fin") {
+    const inicio = Number(allValues.dia_pago_inicio?.trim());
+    if (!Number.isNaN(inicio) && day < inicio) {
+      return "El día de fin no puede ser anterior al día de inicio";
+    }
+  }
+
+  return null;
+}
+
 export function normalizeIban(value: string): string {
   return value.replace(/\s/g, "").toUpperCase();
 }
@@ -153,5 +216,11 @@ export function enrichLeaseTemplateVariables(
   const iban = values.iban_pago?.trim();
   if (iban) {
     variables.iban_pago = formatIban(iban);
+  }
+
+  const diaPagoInicio = values.dia_pago_inicio?.trim();
+  const diaPagoFin = values.dia_pago_fin?.trim();
+  if (diaPagoInicio && diaPagoFin) {
+    variables.dia_pago = buildTextoPlazoPago(diaPagoInicio, diaPagoFin);
   }
 }

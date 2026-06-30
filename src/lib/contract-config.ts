@@ -12,6 +12,8 @@ import {
 import {
   getCampoSuministrosHabitacion,
   getCamposCondicionesLegalesArrendamiento,
+  getCamposPlazoPago,
+  validateDiaPagoMes,
   validateIban,
 } from "@/lib/lease-conditions-fields";
 import { MOTIVO_RESCISION_OPTIONS } from "@/lib/rescision-fields";
@@ -284,7 +286,7 @@ export const contractConfigs: Record<string, ContractConfig> = {
         description: "Renta, fianza y plazo del arrendamiento.",
         fields: [
           ...condicionesEconomicasArrendamiento,
-          campoDiaPago,
+          ...getCamposPlazoPago(field),
           ...camposGastosVivienda,
           ...camposCondicionesLegalesVivienda,
           field({
@@ -342,7 +344,7 @@ export const contractConfigs: Record<string, ContractConfig> = {
             required: true,
             placeholder: "900",
           }),
-          campoDiaPago,
+          ...getCamposPlazoPago(field),
           ...camposCondicionesLegalesBase,
           field({
             id: "fecha_inicio",
@@ -409,7 +411,7 @@ export const contractConfigs: Record<string, ContractConfig> = {
             type: "currency",
             required: true,
           }),
-          campoDiaPago,
+          ...getCamposPlazoPago(field),
           getCampoSuministrosHabitacion(field),
           ...camposCondicionesLegalesBase,
           field({
@@ -583,7 +585,7 @@ export const contractConfigs: Record<string, ContractConfig> = {
               { value: "otro", label: "Otra duración" },
             ],
           }),
-          campoDiaPago,
+          ...getCamposPlazoPago(field),
           ...camposCondicionesLegalesBase,
         ],
       }),
@@ -985,6 +987,13 @@ export function validateField(
     return null;
   }
 
+  if (
+    fieldDefinition.id === "dia_pago_inicio" ||
+    fieldDefinition.id === "dia_pago_fin"
+  ) {
+    return validateDiaPagoMes(fieldDefinition.id, value, allValues);
+  }
+
   if (fieldDefinition.id === "iban_pago") {
     if (!trimmed) {
       return null;
@@ -996,8 +1005,8 @@ export function validateField(
   }
 
   if (
-    config?.category === "arrendamiento" &&
     fieldDefinition.id === "dia_pago" &&
+    config?.category === "arrendamiento" &&
     !trimmed
   ) {
     return "El día de pago es obligatorio en contratos de alquiler";
@@ -1008,6 +1017,14 @@ export function validateField(
   }
 
   if (fieldDefinition.type === "number" || fieldDefinition.type === "currency") {
+    if (
+      fieldDefinition.id === "dia_pago_inicio" ||
+      fieldDefinition.id === "dia_pago_fin" ||
+      fieldDefinition.id === "preaviso_rescision"
+    ) {
+      return null;
+    }
+
     const normalized = trimmed.replace(/\./g, "").replace(",", ".");
     if (Number.isNaN(Number(normalized)) || Number(normalized) < 0) {
       return `${fieldDefinition.label} debe ser un importe válido`;
