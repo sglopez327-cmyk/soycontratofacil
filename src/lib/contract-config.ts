@@ -1,4 +1,3 @@
-import { getAllContractSlugs } from "@/lib/contracts";
 import {
   createEmptyPartyValues,
   getPartyFieldDefinitions,
@@ -1097,7 +1096,7 @@ export function hasSchemaForSlug(slug: string): boolean {
 }
 
 export function getAllConfigSlugs(): string[] {
-  return getAllContractSlugs().filter((slug) => hasConfigForSlug(slug));
+  return Object.keys(contractConfigs);
 }
 
 /** @deprecated Usar getAllConfigSlugs */

@@ -1,18 +1,20 @@
 {
   "expo": {
-    "name": "app-mobile-tmp",
-    "slug": "app-mobile-tmp",
+    "name": "SoyContratoFacil",
+    "slug": "soycontratofacil",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "appmobiletmp",
+    "scheme": "soycontratofacil",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "es.soycontratofacil.app"
     },
     "android": {
+      "package": "es.soycontratofacil.app",
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#0f172a",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
@@ -31,7 +33,7 @@
         {
           "image": "./assets/images/splash-icon.png",
           "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "backgroundColor": "#0f172a"
         }
       ]
     ],

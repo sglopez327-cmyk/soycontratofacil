@@ -44,6 +44,7 @@ next-env.d.ts
 .vscode/
 
 # Expo / React Native (app-mobile)
+app-mobile-tmp/
 app-mobile/node_modules/
 app-mobile/.expo/
 app-mobile/dist/
