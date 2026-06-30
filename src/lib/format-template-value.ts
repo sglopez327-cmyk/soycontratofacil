@@ -28,8 +28,6 @@ export function formatFieldForTemplate(
   }
 
   switch (field.id) {
-    case "dia_pago":
-      return `el día ${trimmed} de cada mes`;
     case "ibi":
     case "gastos_comunidad":
       return formatResponsabilidadGastos(trimmed);

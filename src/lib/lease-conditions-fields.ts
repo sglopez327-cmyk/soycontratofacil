@@ -95,14 +95,14 @@ export function getCamposPlazoPago(
   return [
     field({
       id: "dia_pago_inicio",
-      label: "Día de inicio del plazo",
+      label: "Día de inicio del plazo de pago",
       type: "number",
       required: true,
       placeholder: "1",
     }),
     field({
       id: "dia_pago_fin",
-      label: "Día de fin del plazo",
+      label: "Día de fin del plazo de pago",
       type: "number",
       required: true,
       placeholder: "5",
@@ -135,6 +135,13 @@ export function validateDiaPagoMes(
   const day = Number(trimmed);
   if (!Number.isInteger(day) || day < 1 || day > 31) {
     return "Introduce un día válido del 1 al 31";
+  }
+
+  if (fieldId === "dia_pago_inicio") {
+    const fin = Number(allValues.dia_pago_fin?.trim());
+    if (allValues.dia_pago_fin?.trim() && !Number.isNaN(fin) && day > fin) {
+      return "El día de inicio no puede ser posterior al día de fin";
+    }
   }
 
   if (fieldId === "dia_pago_fin") {

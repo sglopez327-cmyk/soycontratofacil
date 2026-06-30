@@ -90,20 +90,6 @@ const responsabilidadGastosOptions: ContractFieldOption[] = [
   { value: "compartidos", label: "Compartidos" },
 ];
 
-const diaPagoOptions: ContractFieldOption[] = Array.from({ length: 28 }, (_, index) => {
-  const day = String(index + 1);
-  return { value: day, label: `Día ${day} de cada mes` };
-});
-
-const campoDiaPago = field({
-  id: "dia_pago",
-  label: "Día de pago de la renta",
-  type: "select",
-  required: true,
-  options: diaPagoOptions,
-  helpText: "Obligatorio en contratos de arrendamiento.",
-});
-
 const camposGastosVivienda: ContractFieldDefinition[] = [
   field({
     id: "ibi",
@@ -500,7 +486,7 @@ export const contractConfigs: Record<string, ContractConfig> = {
               { value: "otro", label: "Otra duración" },
             ],
           }),
-          campoDiaPago,
+          ...getCamposPlazoPago(field),
           field({
             id: "gastos_comunidad",
             label: "Gastos de comunidad",
@@ -1002,14 +988,6 @@ export function validateField(
       return "Introduce un IBAN español válido (ES + 22 dígitos)";
     }
     return null;
-  }
-
-  if (
-    fieldDefinition.id === "dia_pago" &&
-    config?.category === "arrendamiento" &&
-    !trimmed
-  ) {
-    return "El día de pago es obligatorio en contratos de alquiler";
   }
 
   if (!trimmed) {
