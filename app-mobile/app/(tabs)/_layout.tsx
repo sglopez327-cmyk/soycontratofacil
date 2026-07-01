@@ -15,13 +15,8 @@ export default function TabLayout() {
       screenOptions={{
         tabBarActiveTintColor: colors.tint,
         tabBarInactiveTintColor: colors.tabIconDefault,
-        tabBarStyle: {
-          backgroundColor: colors.card,
-          borderTopColor: colors.border,
-        },
-        headerStyle: {
-          backgroundColor: colors.background,
-        },
+        tabBarStyle: { display: "none" },
+        headerStyle: { backgroundColor: colors.background },
         headerTintColor: colors.text,
         headerShown: useClientOnlyValue(false, true),
       }}
@@ -32,11 +27,7 @@ export default function TabLayout() {
           title: "Inicio",
           tabBarIcon: ({ color }) => (
             <SymbolView
-              name={{
-                ios: "house.fill",
-                android: "home",
-                web: "home",
-              }}
+              name={{ ios: "house.fill", android: "home", web: "home" }}
               tintColor={color}
               size={26}
             />
@@ -57,23 +48,7 @@ export default function TabLayout() {
           ),
         }}
       />
-      <Tabs.Screen
-        name="contratos"
-        options={{
-          title: "Contratos",
-          tabBarIcon: ({ color }) => (
-            <SymbolView
-              name={{
-                ios: "doc.text.fill",
-                android: "description",
-                web: "description",
-              }}
-              tintColor={color}
-              size={26}
-            />
-          ),
-        }}
-      />
+      <Tabs.Screen name="contratos" options={{ href: null }} />
     </Tabs>
   );
 }
