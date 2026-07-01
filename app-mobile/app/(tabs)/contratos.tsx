@@ -1,9 +1,8 @@
-import * as WebBrowser from "expo-web-browser";
 import { ScrollView, StyleSheet, Text, View, Pressable } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import Colors from "@/constants/Colors";
-import { getContractWebUrl } from "@/constants/config";
+import { openContract } from "@/constants/contract-navigation";
 import { contractCategories } from "@/constants/contracts";
 import { useColorScheme } from "@/components/useColorScheme";
 
@@ -45,9 +44,7 @@ export default function ContratosScreen() {
                     opacity: pressed ? 0.85 : 1,
                   },
                 ]}
-                onPress={() =>
-                  WebBrowser.openBrowserAsync(getContractWebUrl(contract.slug))
-                }
+                onPress={() => openContract(contract.slug)}
               >
                 <Text style={[styles.cardTitle, { color: colors.text }]}>
                   {contract.title}
