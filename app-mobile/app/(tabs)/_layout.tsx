@@ -15,7 +15,7 @@ export default function TabLayout() {
       screenOptions={{
         tabBarActiveTintColor: colors.tint,
         tabBarInactiveTintColor: colors.tabIconDefault,
-        tabBarStyle: { backgroundColor: colors.card, borderTopColor: colors.border },
+        tabBarStyle: { display: "none" },
         headerStyle: { backgroundColor: colors.background },
         headerTintColor: colors.text,
         headerShown: useClientOnlyValue(false, true),
@@ -25,21 +25,27 @@ export default function TabLayout() {
         name="index"
         options={{
           title: "Inicio",
-          tabBarIcon: ({ color }) => <SymbolView name={{ ios: "house.fill", android: "home", web: "home" }} tintColor={color} size={26} />,
+          tabBarIcon: ({ color }) => (
+            <SymbolView
+              name={{ ios: "house.fill", android: "home", web: "home" }}
+              tintColor={color}
+              size={26}
+            />
+          ),
           headerRight: () => (
             <Link href="/modal" asChild>
               <Pressable style={{ marginRight: 15 }}>
-                {({ pressed }) => <SymbolView name={{ ios: "info.circle", android: "info", web: "info" }} size={24} tintColor={colors.text} style={{ opacity: pressed ? 0.5 : 1 }} />}
+                {({ pressed }) => (
+                  <SymbolView
+                    name={{ ios: "info.circle", android: "info", web: "info" }}
+                    size={24}
+                    tintColor={colors.text}
+                    style={{ opacity: pressed ? 0.5 : 1 }}
+                  />
+                )}
               </Pressable>
             </Link>
           ),
-        }}
-      />
-      <Tabs.Screen
-        name="contratos"
-        options={{
-          title: "Contratos",
-          tabBarIcon: ({ color }) => <SymbolView name={{ ios: "doc.text.fill", android: "description", web: "description" }} tintColor={color} size={26} />,
         }}
       />
     </Tabs>

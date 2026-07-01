@@ -17,7 +17,7 @@ export default function ModalScreen() {
         <Text style={[styles.subtitle, { color: colors.textMuted }]}>App móvil de SoyContratoFacil.es</Text>
         <Text style={[styles.heading, { color: colors.text }]}>Guía de uso</Text>
         <Text style={[styles.body, { color: colors.textMuted }]}>
-          1. Ve a Contratos y elige el documento.{"\n\n"}
+          1. Elige un contrato en la pantalla de inicio.{"\n\n"}
           2. Completa el formulario nativo (mismas validaciones que la web).{"\n\n"}
           3. Revisa el resumen y genera el PDF (por ahora en la web).
         </Text>

@@ -37,7 +37,7 @@ export default function GenerarContratoScreen() {
 
   return (
     <>
-      <Stack.Screen options={{ title: meta.title, headerBackTitle: "Contratos" }} />
+      <Stack.Screen options={{ title: meta.title, headerBackTitle: "Inicio" }} />
       <SafeAreaView style={[styles.safe, { backgroundColor: colors.background }]} edges={["bottom", "left", "right"]}>
         <ScrollView contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled" showsVerticalScrollIndicator={false}>
           <Text style={[styles.category, { color: Colors.brand.blue }]}>{meta.categoryTitle}</Text>
