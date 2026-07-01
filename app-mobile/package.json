@@ -26,6 +26,10 @@
     "typescript": "~6.0.3"
   },
   "scripts": {
+    "sync:lib": "node ./scripts/sync-shared-lib.cjs",
+    "generate:icons": "python ./scripts/generate-brand-icons.py",
+    "prestart": "node ./scripts/sync-shared-lib.cjs",
+    "eas-build-pre-install": "node ./scripts/sync-shared-lib.cjs",
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
