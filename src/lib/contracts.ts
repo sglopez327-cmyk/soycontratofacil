@@ -93,6 +93,15 @@ export const contractCategories: ContractCategory[] = [
         categoryTitle: "Arrendamientos",
         icon: Trees,
       }),
+      contract({
+        id: "arrendamiento-garaje",
+        slug: "arrendamiento-garaje",
+        title: "Garaje / Trastero",
+        description: "Arrendamiento de plaza de garaje o trastero",
+        categoryId: "arrendamientos",
+        categoryTitle: "Arrendamientos",
+        icon: Warehouse,
+      }),
     ],
   },
   {
@@ -163,6 +172,7 @@ export const legacyContractPaths: Record<string, string> = {
   "/contratos/arrendamiento/habitacion": getContractHref("habitacion"),
   "/contratos/arrendamiento/local": getContractHref("local"),
   "/contratos/arrendamiento/finca-rustica": getContractHref("finca-rustica"),
+  "/contratos/arrendamiento/garaje": getContractHref("arrendamiento-garaje"),
   "/contratos/compraventa/vivienda": getContractHref("compraventa-vivienda"),
   "/contratos/compraventa/arras": getContractHref("arras"),
   "/contratos/compraventa/garaje-trastero": getContractHref("garaje-trastero"),

@@ -581,6 +581,67 @@ export const contractConfigs: Record<string, ContractConfig> = {
     ],
   }),
 
+  "arrendamiento-garaje": config({
+    slug: "arrendamiento-garaje",
+    category: "arrendamiento",
+    steps: [
+      pasoPartesArrendamiento,
+      step({
+        id: "inmueble",
+        title: "Plaza o trastero",
+        description: "Ubicación e identificación de la plaza de garaje o trastero arrendado.",
+        fields: [
+          field({
+            id: "direccion_inmueble",
+            label: "Dirección del edificio o garaje",
+            type: "text",
+            required: true,
+            placeholder: "Calle, número y planta del parking",
+          }),
+          field({
+            id: "ciudad",
+            label: "Ciudad",
+            type: "text",
+            required: false,
+            placeholder: "Madrid",
+          }),
+          field({
+            id: "codigo_postal",
+            label: "Código postal",
+            type: "text",
+            required: false,
+            placeholder: "28001",
+          }),
+          field({
+            id: "numero_plaza",
+            label: "Número de plaza o trastero",
+            type: "text",
+            required: true,
+            placeholder: "Plaza 42, trastero 12…",
+          }),
+          campoReferenciaCatastral,
+          campoSuperficiePlaza,
+        ],
+      }),
+      step({
+        id: "condiciones",
+        title: "Condiciones",
+        description: "Renta, fianza y plazo del arrendamiento.",
+        fields: [
+          ...condicionesEconomicasArrendamiento,
+          ...camposPlazoPago,
+          ...camposCondicionesLegalesBase,
+          field({
+            id: "fecha_inicio",
+            label: "Fecha de inicio",
+            type: "date",
+            required: false,
+          }),
+        ],
+      }),
+    ],
+  }),
+
   "compraventa-vivienda": config({
     slug: "compraventa-vivienda",
     category: "compraventa",

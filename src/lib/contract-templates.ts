@@ -267,6 +267,44 @@ const localTemplate: ContractLegalTemplate = {
   closing: "Firmado por duplicado en el lugar y fecha indicados.",
 };
 
+const arrendamientoGarajeTemplate: ContractLegalTemplate = {
+  slug: "arrendamiento-garaje",
+  title: "CONTRATO DE ARRENDAMIENTO DE PLAZA DE GARAJE O TRASTERO",
+  subtitle: "Arrendamiento de plaza de garaje o trastero",
+  comparecencia:
+    "En {{lugar_firma}}, a {{fecha_documento}}, comparecen:\n\n" +
+    "De una parte, {{arrendador_comparecencia}}, en adelante «EL ARRENDADOR».\n\n" +
+    "Y de otra parte, {{arrendatario_comparecencia}}, en adelante «EL ARRENDATARIO».\n\n" +
+    "Con capacidad legal para contratar, acuerdan lo siguiente:",
+  sections: [
+    {
+      title: "PRIMERA. — DESCRIPCIÓN DEL INMUEBLE Y OBJETO",
+      content:
+        "EL ARRENDADOR cede en arrendamiento a EL ARRENDATARIO, que acepta, {{descripcion_inmueble}}, destinada al uso convenido entre las partes (aparcamiento o almacenamiento).",
+    },
+    {
+      title: "SEGUNDA. — DURACIÓN",
+      content:
+        "El contrato se concierta por un plazo de {{duracion_contrato}}{{#fecha_inicio}}, con fecha de inicio el {{fecha_inicio}}{{/fecha_inicio}}. Cualquier rescisión anticipada deberá notificarse fehacientemente con una antelación mínima de {{preaviso_rescision}} días.",
+    },
+    {
+      title: "TERCERA. — RENTA Y FORMA DE PAGO",
+      content:
+        "La renta mensual se fija en {{renta_mensual}}, pagadera {{dia_pago}} mediante transferencia bancaria al IBAN {{iban_pago}}. EL ARRENDATARIO abonará asimismo la fianza en la cuantía de {{fianza}}.",
+    },
+    {
+      title: "CUARTA. — FUERO",
+      content:
+        "En lo no previsto, las partes se someten a la LAU y al Código Civil. Jurisdicción: lugar del inmueble.",
+    },
+  ],
+  signatures: [
+    { role: "EL ARRENDADOR", nameField: "arrendador_nombre" },
+    { role: "EL ARRENDATARIO", nameField: "arrendatario_nombre" },
+  ],
+  closing: "Firmado por duplicado en el lugar y fecha indicados.",
+};
+
 const compraventaViviendaTemplate: ContractLegalTemplate = {
   slug: "compraventa-vivienda",
   title: "CONTRATO DE COMPRAVENTA DE VIVIENDA",
@@ -400,6 +438,7 @@ export const contractTemplates: Record<string, ContractLegalTemplate> = {
   temporada: temporadaTemplate,
   habitacion: habitacionTemplate,
   local: localTemplate,
+  "arrendamiento-garaje": arrendamientoGarajeTemplate,
   "compraventa-vivienda": compraventaViviendaTemplate,
   "garaje-trastero": garajeTrasteroTemplate,
   rescision: rescisionTemplate,
