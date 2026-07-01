@@ -1,6 +1,9 @@
 # Dependencies
 node_modules/
 
+# Copia local de src/lib (generada por scripts/sync-shared-lib.mjs)
+lib/
+
 # Expo
 .expo/
 dist/

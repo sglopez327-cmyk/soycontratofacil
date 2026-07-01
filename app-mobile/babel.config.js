@@ -1,7 +1,3 @@
-const path = require("path");
-
-const monorepoRoot = path.resolve(__dirname, "..");
-
 module.exports = function (api) {
   api.cache(true);
   return {
@@ -12,12 +8,12 @@ module.exports = function (api) {
         {
           root: [__dirname],
           alias: {
-            "@/lib": path.join(monorepoRoot, "src/lib"),
             "@": __dirname,
           },
           extensions: [".tsx", ".ts", ".js", ".json"],
         },
       ],
+      "react-native-reanimated/plugin",
     ],
   };
 };
