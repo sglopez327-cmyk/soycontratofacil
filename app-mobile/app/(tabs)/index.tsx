@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { BrandTitle } from "@/components/BrandTitle";
 import Colors from "@/constants/Colors";
-import { contractCategories } from "@/constants/contracts";
+import { contractCatalog } from "@/lib/contract-catalog";
 import { useColorScheme } from "@/components/useColorScheme";
 
 const STEPS = [
@@ -73,7 +73,7 @@ export default function HomeScreen() {
             validaciones que la web.
           </Text>
 
-          {contractCategories.map((category) => (
+          {contractCatalog.map((category) => (
             <View key={category.id} style={styles.category}>
               <Text style={[styles.categoryTitle, { color: colors.text }]}>
                 {category.title}

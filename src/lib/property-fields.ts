@@ -53,8 +53,10 @@ const INMUEBLE_SUBJECT: Record<string, string> = {
   habitacion: "la habitación arrendada",
   local: "el local comercial",
   "finca-rustica": "la finca rústica",
+  "arrendamiento-garaje": "la plaza de garaje",
   "compraventa-vivienda": "la vivienda",
   arras: "el inmueble",
+  "compraventa-garaje": "la plaza de garaje",
   "garaje-trastero": "la plaza de garaje o trastero",
 };
 
@@ -106,7 +108,7 @@ export function buildDescripcionInmueble(
     }
   }
 
-  if (config.slug === "garaje-trastero") {
+  if (config.slug === "garaje-trastero" || config.slug === "compraventa-garaje" || config.slug === "arrendamiento-garaje") {
     const plaza = values.numero_plaza?.trim();
     if (plaza) {
       segments.push(`identificada como ${plaza}`);

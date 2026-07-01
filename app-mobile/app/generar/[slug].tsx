@@ -4,16 +4,18 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { ContractWizard } from "@/components/forms/ContractWizard";
 import Colors from "@/constants/Colors";
-import { contractCategories } from "@/constants/contracts";
+import { findCatalogContract } from "@/lib/contract-catalog";
 import { useColorScheme } from "@/components/useColorScheme";
 import { getContractConfig } from "@/lib/contract-config";
 
 function getContractMeta(slug: string) {
-  for (const category of contractCategories) {
-    const contract = category.contracts.find((item) => item.slug === slug);
-    if (contract) return { title: contract.title, description: contract.description, categoryTitle: category.title };
-  }
-  return null;
+  const found = findCatalogContract(slug);
+  if (!found) return null;
+  return {
+    title: found.contract.title,
+    description: found.contract.description,
+    categoryTitle: found.category.title,
+  };
 }
 
 export default function GenerarContratoScreen() {

@@ -208,7 +208,7 @@ const campoSuperficiePlaza = field({
   helpText: "Superficie útil de la plaza de garaje o trastero, si se conoce.",
 });
 
-/** Plazo de pago mensual compartido por los 5 contratos de arrendamiento. */
+/** Plazo de pago mensual compartido por los contratos de arrendamiento con renta periódica. */
 const camposPlazoPago = getCamposPlazoPago(field);
 
 const condicionesEconomicasArrendamiento: ContractFieldDefinition[] = [
@@ -580,6 +580,67 @@ export const contractConfigs: Record<string, ContractConfig> = {
     ],
   }),
 
+  "arrendamiento-garaje": config({
+    slug: "arrendamiento-garaje",
+    category: "arrendamiento",
+    steps: [
+      pasoPartesArrendamiento,
+      step({
+        id: "inmueble",
+        title: "Plaza de garaje",
+        description: "Ubicación e identificación de la plaza de garaje arrendada.",
+        fields: [
+          field({
+            id: "direccion_inmueble",
+            label: "Dirección del edificio o garaje",
+            type: "text",
+            required: true,
+            placeholder: "Calle, número y planta del parking",
+          }),
+          field({
+            id: "ciudad",
+            label: "Ciudad",
+            type: "text",
+            required: false,
+            placeholder: "Madrid",
+          }),
+          field({
+            id: "codigo_postal",
+            label: "Código postal",
+            type: "text",
+            required: false,
+            placeholder: "28001",
+          }),
+          field({
+            id: "numero_plaza",
+            label: "Número de plaza de garaje",
+            type: "text",
+            required: true,
+            placeholder: "Plaza 42, módulo B…",
+          }),
+          campoReferenciaCatastral,
+          campoSuperficiePlaza,
+        ],
+      }),
+      step({
+        id: "condiciones",
+        title: "Condiciones",
+        description: "Renta, fianza y plazo del arrendamiento.",
+        fields: [
+          ...condicionesEconomicasArrendamiento,
+          ...camposPlazoPago,
+          ...camposCondicionesLegalesBase,
+          field({
+            id: "fecha_inicio",
+            label: "Fecha de inicio",
+            type: "date",
+            required: false,
+          }),
+        ],
+      }),
+    ],
+  }),
+
   "compraventa-vivienda": config({
     slug: "compraventa-vivienda",
     category: "compraventa",
@@ -667,6 +728,68 @@ export const contractConfigs: Record<string, ContractConfig> = {
             label: "Plazo para formalizar la compraventa",
             type: "date",
             required: true,
+          }),
+        ],
+      }),
+    ],
+  }),
+
+  "compraventa-garaje": config({
+    slug: "compraventa-garaje",
+    category: "compraventa",
+    steps: [
+      pasoPartesCompraventa,
+      step({
+        id: "inmueble",
+        title: "Plaza de garaje",
+        description: "Ubicación e identificación de la plaza de garaje en venta.",
+        fields: [
+          field({
+            id: "direccion_inmueble",
+            label: "Dirección del edificio o garaje",
+            type: "text",
+            required: true,
+          }),
+          field({
+            id: "ciudad",
+            label: "Ciudad",
+            type: "text",
+            required: false,
+            placeholder: "Madrid",
+          }),
+          field({
+            id: "codigo_postal",
+            label: "Código postal",
+            type: "text",
+            required: false,
+            placeholder: "28001",
+          }),
+          field({
+            id: "numero_plaza",
+            label: "Número de plaza de garaje",
+            type: "text",
+            required: true,
+            placeholder: "Plaza 42, módulo B…",
+          }),
+          ...camposIdentificacionInmueble,
+          campoSuperficiePlaza,
+        ],
+      }),
+      step({
+        id: "condiciones",
+        title: "Condiciones de venta",
+        fields: [
+          field({
+            id: "precio_venta",
+            label: "Precio de venta (€)",
+            type: "currency",
+            required: true,
+          }),
+          field({
+            id: "fecha_escritura",
+            label: "Fecha prevista de escritura",
+            type: "date",
+            required: false,
           }),
         ],
       }),
