@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, Alert, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import { FormField } from "@/components/forms/FormField";
 import { PartesForm } from "@/components/forms/PartesForm";
@@ -8,6 +8,7 @@ import { useColorScheme } from "@/components/useColorScheme";
 import type { ContractConfig } from "@/lib/contract-config";
 import { createEmptyFormValues, getConfigFields, validateStep } from "@/lib/contract-config";
 import { formatContractFieldValue } from "@/lib/format-contract-value";
+import { generateContractPdf } from "@/lib/generate-contract-pdf";
 
 type ContractWizardProps = {
   config: ContractConfig;
@@ -21,6 +22,7 @@ export function ContractWizard({ config, contractTitle }: ContractWizardProps) {
   const [values, setValues] = useState(() => createEmptyFormValues(config));
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isComplete, setIsComplete] = useState(false);
+  const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
 
   const steps = config.steps;
   const currentStep = steps[currentStepIndex];
@@ -57,6 +59,17 @@ export function ContractWizard({ config, contractTitle }: ContractWizardProps) {
       return;
     }
     setCurrentStepIndex((i) => i + 1);
+  }
+
+  async function handleGeneratePdf() {
+    setIsGeneratingPdf(true);
+    try {
+      await generateContractPdf({ config, contractTitle, values });
+    } catch {
+      Alert.alert("Error", "No se pudo generar el PDF. Inténtalo de nuevo.");
+    } finally {
+      setIsGeneratingPdf(false);
+    }
   }
 
   return (
@@ -96,8 +109,8 @@ export function ContractWizard({ config, contractTitle }: ContractWizardProps) {
           <View style={styles.content}>
             <Text style={[styles.heading, { color: colors.text }]}>Datos listos para generar</Text>
             <Text style={[styles.description, { color: colors.textMuted }]}>
-              Revisa el resumen de tu contrato de {contractTitle}. La descarga de PDF en el
-              dispositivo llegará en una próxima versión.
+              Revisa el resumen de tu contrato de {contractTitle}. Pulsa «Generar PDF» para
+              guardarlo o compartirlo desde tu dispositivo.
             </Text>
             <View style={[styles.summaryList, { borderColor: colors.border }]}>
               {allFields
@@ -114,12 +127,21 @@ export function ContractWizard({ config, contractTitle }: ContractWizardProps) {
             <View style={styles.actions}>
               <Pressable
                 style={[styles.secondaryButton, { borderColor: colors.border }]}
+                disabled={isGeneratingPdf}
                 onPress={() => setIsComplete(false)}
               >
                 <Text style={[styles.secondaryButtonText, { color: colors.text }]}>Editar datos</Text>
               </Pressable>
-              <Pressable style={styles.primaryButton} onPress={() => setCurrentStepIndex(0)}>
-                <Text style={styles.primaryButtonText}>Volver al inicio del formulario</Text>
+              <Pressable
+                style={[styles.primaryButton, isGeneratingPdf && styles.primaryButtonDisabled]}
+                disabled={isGeneratingPdf}
+                onPress={handleGeneratePdf}
+              >
+                {isGeneratingPdf ? (
+                  <ActivityIndicator color="#fff" />
+                ) : (
+                  <Text style={styles.primaryButtonText}>Generar PDF</Text>
+                )}
               </Pressable>
             </View>
           </View>
@@ -197,6 +219,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   primaryButtonText: { color: "#fff", fontSize: 15, fontWeight: "600", textAlign: "center" },
+  primaryButtonDisabled: { opacity: 0.7 },
   secondaryButton: {
     flex: 1,
     borderWidth: 1,

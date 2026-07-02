@@ -16,4 +16,11 @@ if (!fs.existsSync(source)) {
 
 fs.rmSync(target, { recursive: true, force: true });
 fs.cpSync(source, target, { recursive: true });
+
+const mobilePdf = path.resolve(appRoot, "native-lib", "generate-contract-pdf.ts");
+if (fs.existsSync(mobilePdf)) {
+  fs.copyFileSync(mobilePdf, path.join(target, "generate-contract-pdf.ts"));
+  console.log("Sobrescrito generate-contract-pdf.ts con versión nativa (expo-print)");
+}
+
 console.log(`Código compartido sincronizado: ${source} → ${target}`);
