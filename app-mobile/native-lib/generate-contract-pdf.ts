@@ -154,13 +154,15 @@ export async function generateContractPdf(
 
   const filename = `contrato-${config.slug}-${formatFilenameDate(new Date())}.pdf`;
 
-  if (await Sharing.isAvailableAsync()) {
-    await Sharing.shareAsync(uri, {
-      mimeType: "application/pdf",
-      UTI: "com.adobe.pdf",
-      dialogTitle: filename,
-    });
+  if (!(await Sharing.isAvailableAsync())) {
+    throw new Error("Compartir no está disponible en este dispositivo");
   }
+
+  await Sharing.shareAsync(uri, {
+    mimeType: "application/pdf",
+    UTI: "com.adobe.pdf",
+    dialogTitle: filename,
+  });
 
   return uri;
 }

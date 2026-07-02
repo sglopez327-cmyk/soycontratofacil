@@ -18,9 +18,23 @@ fs.rmSync(target, { recursive: true, force: true });
 fs.cpSync(source, target, { recursive: true });
 
 const mobilePdf = path.resolve(appRoot, "native-lib", "generate-contract-pdf.ts");
-if (fs.existsSync(mobilePdf)) {
-  fs.copyFileSync(mobilePdf, path.join(target, "generate-contract-pdf.ts"));
-  console.log("Sobrescrito generate-contract-pdf.ts con versión nativa (expo-print)");
+const syncedPdf = path.join(target, "generate-contract-pdf.ts");
+
+if (!fs.existsSync(mobilePdf)) {
+  console.error(`No se encontró generate-contract-pdf nativo en: ${mobilePdf}`);
+  process.exit(1);
 }
+
+fs.copyFileSync(mobilePdf, syncedPdf);
+
+const syncedContent = fs.readFileSync(syncedPdf, "utf8");
+if (!syncedContent.includes("expo-print") || syncedContent.includes("jspdf")) {
+  console.error(
+    "generate-contract-pdf.ts en lib/ no es la versión nativa (debe usar expo-print, sin jspdf)"
+  );
+  process.exit(1);
+}
+
+console.log("Sobrescrito generate-contract-pdf.ts con versión nativa (expo-print)");
 
 console.log(`Código compartido sincronizado: ${source} → ${target}`);
