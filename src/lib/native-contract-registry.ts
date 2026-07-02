@@ -1,17 +1,24 @@
+import { contractCatalog, getAllCatalogSlugs } from "@/lib/contract-catalog";
+import { hasConfigForSlug } from "@/lib/contract-config";
+
 /**
- * Contratos con formulario nativo en app-mobile.
- * Para migrar otro contrato: añade su slug aquí (debe existir en contract-config.ts).
+ * Slugs del catálogo con formulario nativo disponible.
+ * Se deriva automáticamente del catálogo maestro + contract-config (sin lista duplicada).
  */
-export const NATIVE_CONTRACT_SLUGS = [
-  "arrendamiento-garaje",
-] as const;
+export function getNativeContractSlugs(): string[] {
+  return getAllCatalogSlugs().filter((slug) => hasConfigForSlug(slug));
+}
+
+export const NATIVE_CONTRACT_SLUGS = getNativeContractSlugs();
 
 export type NativeContractSlug = (typeof NATIVE_CONTRACT_SLUGS)[number];
 
-export function isNativeContract(slug: string): slug is NativeContractSlug {
-  return (NATIVE_CONTRACT_SLUGS as readonly string[]).includes(slug);
+export function isNativeContract(slug: string): boolean {
+  return getNativeContractSlugs().includes(slug);
 }
 
-export function getNativeContractSlugs(): string[] {
-  return [...NATIVE_CONTRACT_SLUGS];
+export function isCatalogContract(slug: string): boolean {
+  return contractCatalog.some((category) =>
+    category.contracts.some((contract) => contract.slug === slug)
+  );
 }

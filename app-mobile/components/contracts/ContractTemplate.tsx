@@ -7,31 +7,28 @@ import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { findCatalogContract } from "@/lib/contract-catalog";
 import { getContractConfig } from "@/lib/contract-config";
-import { isNativeContract } from "@/lib/native-contract-registry";
 
 type ContractTemplateProps = {
   slug: string;
 };
 
 /**
- * Pantalla reutilizable para cualquier contrato nativo.
- * No crear un archivo por contrato: añade el slug a native-contract-registry.ts
- * y define sus pasos en contract-config.ts (compartido con la web).
+ * Pantalla reutilizable para cualquier contrato del catálogo.
+ * Los pasos y validaciones viven en contract-config.ts (compartido con la web).
  */
 export function ContractTemplate({ slug }: ContractTemplateProps) {
   const colorScheme = useColorScheme() ?? "light";
   const colors = Colors[colorScheme];
   const catalogEntry = findCatalogContract(slug);
   const config = getContractConfig(slug);
-  const isReady = Boolean(catalogEntry && config && isNativeContract(slug));
 
-  if (!isReady || !catalogEntry || !config) {
+  if (!catalogEntry || !config) {
     return (
       <SafeAreaView style={[styles.safe, { backgroundColor: colors.background }]} edges={["bottom", "left", "right"]}>
         <View style={styles.notFound}>
-          <Text style={[styles.notFoundTitle, { color: colors.text }]}>Contrato no disponible</Text>
+          <Text style={[styles.notFoundTitle, { color: colors.text }]}>Contrato no encontrado</Text>
           <Text style={[styles.notFoundText, { color: colors.textMuted }]}>
-            Este documento aún no tiene formulario nativo en la app.
+            El tipo de documento solicitado no está disponible.
           </Text>
         </View>
       </SafeAreaView>

@@ -8,7 +8,6 @@ import { useColorScheme } from "@/components/useColorScheme";
 import type { ContractConfig } from "@/lib/contract-config";
 import { createEmptyFormValues, getConfigFields, validateStep } from "@/lib/contract-config";
 import { formatContractFieldValue } from "@/lib/format-contract-value";
-import { isNativeContract } from "@/lib/native-contract-registry";
 
 type ContractWizardProps = {
   config: ContractConfig;
@@ -28,7 +27,6 @@ export function ContractWizard({ config, contractTitle }: ContractWizardProps) {
   const isFirstStep = currentStepIndex === 0;
   const isLastStep = currentStepIndex === steps.length - 1;
   const allFields = useMemo(() => getConfigFields(config), [config]);
-  const nativeFlow = isNativeContract(config.slug);
 
   function updateValue(fieldId: string, value: string) {
     setValues((prev) => ({ ...prev, [fieldId]: value }));
@@ -98,10 +96,8 @@ export function ContractWizard({ config, contractTitle }: ContractWizardProps) {
           <View style={styles.content}>
             <Text style={[styles.heading, { color: colors.text }]}>Datos listos para generar</Text>
             <Text style={[styles.description, { color: colors.textMuted }]}>
-              Revisa el resumen de tu contrato de {contractTitle}.
-              {nativeFlow
-                ? " La descarga de PDF en el dispositivo llegará en la siguiente iteración."
-                : ""}
+              Revisa el resumen de tu contrato de {contractTitle}. La descarga de PDF en el
+              dispositivo llegará en una próxima versión.
             </Text>
             <View style={[styles.summaryList, { borderColor: colors.border }]}>
               {allFields

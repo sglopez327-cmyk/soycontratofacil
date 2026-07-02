@@ -20,8 +20,7 @@ export default function ContratosScreen() {
         showsVerticalScrollIndicator={false}
       >
         <Text style={[styles.intro, { color: colors.textMuted }]}>
-          Toca un contrato para generarlo en la web. Próximamente podrás
-          completar el formulario directamente desde la app.
+          Toca un contrato para completarlo paso a paso en la app.
         </Text>
 
         {contractCategories.map((category) => (

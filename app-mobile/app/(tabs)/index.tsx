@@ -69,8 +69,8 @@ export default function HomeScreen() {
             Contratos disponibles
           </Text>
           <Text style={[styles.sectionIntro, { color: colors.textMuted }]}>
-            Elige un documento y complétalo paso a paso con las mismas
-            validaciones que la web.
+            Elige un documento y complétalo paso a paso con validaciones legales
+            integradas.
           </Text>
 
           {contractCategories.map((category) => (

@@ -26,12 +26,13 @@ export default function ModalScreen() {
             Guía de uso
           </Text>
           <Text style={[styles.body, { color: colors.textMuted }]}>
-            1. Ve a la pestaña Contratos y elige el documento que necesitas.
+            1. En Inicio, elige el documento que necesitas en Contratos disponibles.
             {"\n\n"}
-            2. Completa el formulario en la web con los datos de las partes y
-            del inmueble.
+            2. Completa el formulario paso a paso con los datos de las partes y del
+            inmueble.
             {"\n\n"}
-            3. Descarga el PDF generado y compártelo o imprímelo.
+            3. Revisa el resumen y, en próximas versiones, descarga el PDF desde la
+            app.
             {"\n\n"}
             Los contratos son gratuitos y no requieren registro.
           </Text>
@@ -39,12 +40,12 @@ export default function ModalScreen() {
 
         <View style={styles.section}>
           <Text style={[styles.heading, { color: colors.text }]}>
-            Versión inicial
+            Formularios nativos
           </Text>
           <Text style={[styles.body, { color: colors.textMuted }]}>
-            Esta app está en fase inicial. Por ahora abre los formularios en la
-            web; en próximas versiones el asistente y la descarga de PDF estarán
-            integrados en la app.
+            Todos los contratos del catálogo se completan dentro de la app, con las
+            mismas validaciones que soycontratofacil.es. La generación de PDF en el
+            dispositivo se integrará en una actualización posterior.
           </Text>
         </View>
       </ScrollView>
