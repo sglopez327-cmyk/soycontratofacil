@@ -5,7 +5,7 @@ import { Resvg } from "@resvg/resvg-js";
 import pngToIco from "png-to-ico";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
-const svgPath = join(root, "public/brand/logo-favicon.svg");
+const svgPath = join(root, "public/brand/logo-mark-clean.svg");
 const appDir = join(root, "src/app");
 
 mkdirSync(appDir, { recursive: true });
