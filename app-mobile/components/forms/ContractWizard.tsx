@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ActivityIndicator, Alert, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import { FormField } from "@/components/forms/FormField";
@@ -13,9 +13,10 @@ import { generateContractPdf } from "@/lib/generate-contract-pdf";
 type ContractWizardProps = {
   config: ContractConfig;
   contractTitle: string;
+  scrollRef?: React.RefObject<ScrollView | null>;
 };
 
-export function ContractWizard({ config, contractTitle }: ContractWizardProps) {
+export function ContractWizard({ config, contractTitle, scrollRef }: ContractWizardProps) {
   const colorScheme = useColorScheme() ?? "light";
   const colors = Colors[colorScheme];
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
@@ -29,6 +30,10 @@ export function ContractWizard({ config, contractTitle }: ContractWizardProps) {
   const isFirstStep = currentStepIndex === 0;
   const isLastStep = currentStepIndex === steps.length - 1;
   const allFields = useMemo(() => getConfigFields(config), [config]);
+
+  useEffect(() => {
+    scrollRef?.current?.scrollTo({ y: 0, animated: true });
+  }, [currentStepIndex, isComplete, scrollRef]);
 
   function updateValue(fieldId: string, value: string) {
     setValues((prev) => ({ ...prev, [fieldId]: value }));

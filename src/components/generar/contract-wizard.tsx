@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Check, ChevronLeft, ChevronRight, FileCheck2, Loader2 } from "lucide-react";
 
@@ -46,6 +46,10 @@ export function ContractWizard({ config, contractTitle }: ContractWizardProps) {
   const isFirstStep = currentStepIndex === 0;
   const isLastStep = currentStepIndex === steps.length - 1;
   const allFields = useMemo(() => getConfigFields(config), [config]);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [currentStepIndex, isComplete]);
 
   function updateValue(fieldId: string, value: string) {
     setValues((previous) => ({ ...previous, [fieldId]: value }));

@@ -41,7 +41,7 @@ const viviendaTemplate: ContractLegalTemplate = {
     {
       title: "TERCERA. — RENTA Y FORMA DE PAGO",
       content:
-        "La renta mensual se fija en {{renta_mensual}}, pagadera {{dia_pago}} mediante transferencia bancaria al IBAN {{iban_pago}}. EL ARRENDATARIO abonará asimismo la fianza legal en la cuantía de {{fianza}}, que será depositada conforme a la normativa vigente.",
+        "La renta mensual se fija en {{renta_mensual}}, con periodicidad de pago {{periodicidad_pago}}, pagadera {{dia_pago}} mediante transferencia bancaria al IBAN {{iban_pago}}{{#fecha_primer_pago}}. El primer pago se realizará el {{fecha_primer_pago}}{{/fecha_primer_pago}}. EL ARRENDATARIO abonará asimismo la fianza legal en la cuantía de {{fianza}}, que será depositada conforme a la normativa vigente.",
     },
     {
       title: "CUARTA. — GASTOS E IMPUESTOS",
@@ -94,7 +94,7 @@ const fincaRusticaTemplate: ContractLegalTemplate = {
     {
       title: "TERCERA. — RENTA Y FIANZA",
       content:
-        "La renta se fija en {{renta_mensual}}, pagadera {{dia_pago}} mediante transferencia al IBAN {{iban_pago}}. EL ARRENDATARIO entrega en este acto la cantidad de {{fianza}} en concepto de fianza o garantía, a devolver al término del arrendamiento, salvo compensación por daños o cantidades pendientes debidamente justificadas.",
+        "La renta se fija en {{renta_mensual}}, con periodicidad de pago {{periodicidad_pago}}, pagadera {{dia_pago}} mediante transferencia al IBAN {{iban_pago}}{{#fecha_primer_pago}}. El primer pago se realizará el {{fecha_primer_pago}}{{/fecha_primer_pago}}. EL ARRENDATARIO entrega en este acto la cantidad de {{fianza}} en concepto de fianza o garantía, a devolver al término del arrendamiento, salvo compensación por daños o cantidades pendientes debidamente justificadas.",
     },
     {
       title: "CUARTA. — OBLIGACIONES",
@@ -182,7 +182,7 @@ const temporadaTemplate: ContractLegalTemplate = {
     {
       title: "TERCERA. — RENTA Y FIANZA",
       content:
-        "La renta mensual asciende a {{renta_mensual}}, pagadera {{dia_pago}} mediante transferencia bancaria al IBAN {{iban_pago}}. La fianza asciende a {{fianza}} y se devolverá al finalizar el arrendamiento conforme a la ley.",
+        "La renta mensual asciende a {{renta_mensual}}, con periodicidad de pago {{periodicidad_pago}}, pagadera {{dia_pago}} mediante transferencia bancaria al IBAN {{iban_pago}}{{#fecha_primer_pago}}. El primer pago se realizará el {{fecha_primer_pago}}{{/fecha_primer_pago}}. La fianza asciende a {{fianza}} y se devolverá al finalizar el arrendamiento conforme a la ley.",
     },
     {
       title: "CUARTA. — FUERO",
@@ -215,7 +215,7 @@ const habitacionTemplate: ContractLegalTemplate = {
     {
       title: "SEGUNDA. — DURACIÓN Y RENTA",
       content:
-        "Duración: {{duracion_contrato}}. Renta mensual: {{renta_mensual}}, pagadera {{dia_pago}} mediante transferencia al IBAN {{iban_pago}}. Fianza: {{fianza}}. Cualquier rescisión anticipada requerirá preaviso fehaciente de {{preaviso_rescision}} días.",
+        "Duración: {{duracion_contrato}}. Renta mensual: {{renta_mensual}}, con periodicidad de pago {{periodicidad_pago}}, pagadera {{dia_pago}} mediante transferencia al IBAN {{iban_pago}}{{#fecha_primer_pago}}. El primer pago se realizará el {{fecha_primer_pago}}{{/fecha_primer_pago}}. Fianza: {{fianza}}. Cualquier rescisión anticipada requerirá preaviso fehaciente de {{preaviso_rescision}} días.",
     },
     {
       title: "TERCERA. — SUMINISTROS",
@@ -252,7 +252,7 @@ const localTemplate: ContractLegalTemplate = {
     {
       title: "SEGUNDA. — DURACIÓN Y RENTA",
       content:
-        "Plazo: {{duracion_contrato}}. Renta mensual: {{renta_mensual}}, pagadera {{dia_pago}} mediante transferencia al IBAN {{iban_pago}}. Fianza: {{fianza}}{{#gastos_comunidad}}. Gastos de comunidad {{gastos_comunidad}}{{/gastos_comunidad}}. La rescisión anticipada requerirá preaviso fehaciente de {{preaviso_rescision}} días.",
+        "Plazo: {{duracion_contrato}}. Renta mensual: {{renta_mensual}}, con periodicidad de pago {{periodicidad_pago}}, pagadera {{dia_pago}} mediante transferencia al IBAN {{iban_pago}}{{#fecha_primer_pago}}. El primer pago se realizará el {{fecha_primer_pago}}{{/fecha_primer_pago}}. Fianza: {{fianza}}{{#gastos_comunidad}}. Gastos de comunidad {{gastos_comunidad}}{{/gastos_comunidad}}. La rescisión anticipada requerirá preaviso fehaciente de {{preaviso_rescision}} días.",
     },
     {
       title: "TERCERA. — FUERO",
@@ -290,7 +290,7 @@ const arrendamientoGarajeTemplate: ContractLegalTemplate = {
     {
       title: "TERCERA. — RENTA Y FORMA DE PAGO",
       content:
-        "La renta mensual se fija en {{renta_mensual}}, pagadera {{dia_pago}} mediante transferencia bancaria al IBAN {{iban_pago}}. EL ARRENDATARIO abonará asimismo la fianza en la cuantía de {{fianza}}.",
+        "La renta mensual se fija en {{renta_mensual}}, con periodicidad de pago {{periodicidad_pago}}, pagadera {{dia_pago}} mediante transferencia bancaria al IBAN {{iban_pago}}{{#fecha_primer_pago}}. El primer pago se realizará el {{fecha_primer_pago}}{{/fecha_primer_pago}}. EL ARRENDATARIO abonará asimismo la fianza en la cuantía de {{fianza}}.",
     },
     {
       title: "CUARTA. — FUERO",

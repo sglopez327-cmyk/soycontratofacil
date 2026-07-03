@@ -1,4 +1,5 @@
 import { Stack } from "expo-router";
+import { useRef } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -19,6 +20,7 @@ type ContractTemplateProps = {
 export function ContractTemplate({ slug }: ContractTemplateProps) {
   const colorScheme = useColorScheme() ?? "light";
   const colors = Colors[colorScheme];
+  const scrollRef = useRef<ScrollView>(null);
   const catalogEntry = findCatalogContract(slug);
   const config = getContractConfig(slug);
 
@@ -42,6 +44,7 @@ export function ContractTemplate({ slug }: ContractTemplateProps) {
       <Stack.Screen options={{ title: contract.title, headerBackTitle: "Inicio" }} />
       <SafeAreaView style={[styles.safe, { backgroundColor: colors.background }]} edges={["bottom", "left", "right"]}>
         <ScrollView
+          ref={scrollRef}
           contentContainerStyle={styles.scroll}
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}
@@ -49,7 +52,11 @@ export function ContractTemplate({ slug }: ContractTemplateProps) {
           <Text style={[styles.category, { color: Colors.brand.blue }]}>{category.title}</Text>
           <Text style={[styles.title, { color: colors.text }]}>{contract.title}</Text>
           <Text style={[styles.description, { color: colors.textMuted }]}>{contract.description}</Text>
-          <ContractWizard config={config} contractTitle={contract.title} />
+          <ContractWizard
+            config={config}
+            contractTitle={contract.title}
+            scrollRef={scrollRef}
+          />
         </ScrollView>
       </SafeAreaView>
     </>

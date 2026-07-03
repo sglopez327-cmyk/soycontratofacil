@@ -1,5 +1,6 @@
 import * as Print from "expo-print";
 import * as Sharing from "expo-sharing";
+import { Alert } from "react-native";
 
 import type { ContractConfig } from "@/lib/contract-config";
 import {
@@ -56,7 +57,13 @@ function buildContractHtml(
       line-height: 1.45;
       color: #141414;
     }
-    .brand { color: #3b82f6; font-weight: 700; font-size: 11pt; margin-bottom: 8px; }
+    .brand-footer {
+      color: #3b82f6;
+      font-weight: 700;
+      font-size: 12.65pt;
+      text-align: center;
+      margin-top: 24px;
+    }
     h1 { font-size: 18pt; margin: 0 0 6px; color: #0f172a; }
     .subtitle { font-size: 10pt; color: #64748b; margin-bottom: 20px; }
     h2 { font-size: 12pt; margin: 16px 0 8px; color: #0f172a; }
@@ -86,7 +93,6 @@ function buildContractHtml(
   </style>
 </head>
 <body>
-  <div class="brand">SoyContratoFacil.es</div>
   <h1>${escapeHtml(document.title)}</h1>
   <div class="subtitle">${escapeHtml(document.subtitle)}</div>
   <h2>COMPARECEN</h2>
@@ -109,6 +115,7 @@ function buildContractHtml(
     Documento generado con SoyContratoFacil.es. No sustituye el asesoramiento legal
     profesional. Revise el contenido antes de firmar.
   </div>
+  <div class="brand-footer">SoyContratoFacil.es</div>
 </body>
 </html>`;
 }
@@ -157,6 +164,12 @@ export async function generateContractPdf(
   if (!(await Sharing.isAvailableAsync())) {
     throw new Error("Compartir no está disponible en este dispositivo");
   }
+
+  await new Promise<void>((resolve) => {
+    Alert.alert("Éxito", "El contrato se ha generado correctamente", [
+      { text: "OK", onPress: () => resolve() },
+    ]);
+  });
 
   await Sharing.shareAsync(uri, {
     mimeType: "application/pdf",

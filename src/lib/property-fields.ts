@@ -40,6 +40,10 @@ function formatUbicacionInmueble(values: Record<string, string>): string {
     ubicacion += `, ${values.ciudad.trim()}`;
   }
 
+  if (values.provincia?.trim()) {
+    ubicacion += ` (${values.provincia.trim()})`;
+  }
+
   if (values.codigo_postal?.trim()) {
     ubicacion += ` (C.P. ${values.codigo_postal.trim()})`;
   }

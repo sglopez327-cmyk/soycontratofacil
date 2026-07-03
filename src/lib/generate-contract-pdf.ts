@@ -47,8 +47,7 @@ function getLineHeightMm(fontSizePt: number, multiplier = 1.45): number {
 
 const HEADER_SPACING = {
   iconWidthMm: 14,
-  iconToBrandName: pt(12),
-  brandToTitle: pt(28),
+  iconToTitle: pt(20),
   titleMarginBottom: pt(12),
   subtitleMarginBottom: pt(10),
   beforeComparecen: pt(16),
@@ -61,7 +60,7 @@ const BODY_SPACING = {
   sectionAfter: pt(8),
 } as const;
 
-const BRAND_NAME_FONT_SIZE = 11;
+const BRAND_NAME_FONT_SIZE = 12.65;
 const FOOTER_FONT_SIZE = 8;
 const FOOTER_TOP_GAP_MM = 10;
 const FOOTER_TEXT_COLOR = { r: 115, g: 115, b: 115 } as const;
@@ -283,31 +282,6 @@ function advanceY(ctx: PdfWriterContext, amountMm: number): void {
   ctx.y += amountMm;
 }
 
-function writeCenteredBrandName(ctx: PdfWriterContext): void {
-  const centerX = ctx.pageWidth / 2;
-  const baselineY = ctx.y;
-  const lineHeight = getLineHeightMm(BRAND_NAME_FONT_SIZE);
-
-  ensureSpace(ctx, lineHeight);
-
-  ctx.doc.setFont("helvetica", "bold");
-  ctx.doc.setFontSize(BRAND_NAME_FONT_SIZE);
-
-  const partOne = "SoyContrato";
-  const partTwo = "Facil.es";
-  const partOneWidth = ctx.doc.getTextWidth(partOne);
-  const startX = centerX - (partOneWidth + ctx.doc.getTextWidth(partTwo)) / 2;
-
-  setTextColor(ctx.doc, BRAND_NAVY);
-  ctx.doc.text(partOne, startX, baselineY);
-
-  setTextColor(ctx.doc, BRAND_BLUE);
-  ctx.doc.text(partTwo, startX + partOneWidth, baselineY);
-
-  setTextColor(ctx.doc, BODY_TEXT_COLOR);
-  ctx.y = baselineY + lineHeight;
-}
-
 async function writeDocumentHeader(
   ctx: PdfWriterContext,
   document: {
@@ -325,10 +299,7 @@ async function writeDocumentHeader(
 
   ensureSpace(ctx, iconHeight);
   ctx.doc.addImage(logoMark.dataUrl, "PNG", iconX, ctx.y, iconWidth, iconHeight);
-  advanceY(ctx, iconHeight + HEADER_SPACING.iconToBrandName);
-
-  writeCenteredBrandName(ctx);
-  advanceY(ctx, HEADER_SPACING.brandToTitle);
+  advanceY(ctx, iconHeight + HEADER_SPACING.iconToTitle);
 
   writeParagraph(ctx, document.title, {
     bold: true,
@@ -426,6 +397,32 @@ function writeSignatureBlock(
   setTextColor(ctx.doc, BODY_TEXT_COLOR);
 }
 
+function writeFooterBrand(ctx: PdfWriterContext): void {
+  const centerX = ctx.pageWidth / 2;
+  const lineHeight = getLineHeightMm(BRAND_NAME_FONT_SIZE);
+
+  ensureSpace(ctx, lineHeight + 4);
+  advanceY(ctx, 4);
+
+  ctx.doc.setFont("helvetica", "bold");
+  ctx.doc.setFontSize(BRAND_NAME_FONT_SIZE);
+
+  const partOne = "SoyContrato";
+  const partTwo = "Facil.es";
+  const partOneWidth = ctx.doc.getTextWidth(partOne);
+  const startX = centerX - (partOneWidth + ctx.doc.getTextWidth(partTwo)) / 2;
+  const baselineY = ctx.y;
+
+  setTextColor(ctx.doc, BRAND_NAVY);
+  ctx.doc.text(partOne, startX, baselineY);
+
+  setTextColor(ctx.doc, BRAND_BLUE);
+  ctx.doc.text(partTwo, startX + partOneWidth, baselineY);
+
+  ctx.y = baselineY + lineHeight;
+  setTextColor(ctx.doc, BODY_TEXT_COLOR);
+}
+
 function writeDisclaimer(ctx: PdfWriterContext): void {
   const disclaimerText =
     "AVISO LEGAL: Documento generado automaticamente por SoyContratoFacil.es a partir de los datos facilitados por el usuario. No constituye asesoramiento juridico ni sustituye la revision de un profesional cualificado. Verifique su contenido antes de la firma.";
@@ -465,6 +462,8 @@ function writeDisclaimer(ctx: PdfWriterContext): void {
     color: FOOTER_TEXT_COLOR,
     lineHeight,
   });
+
+  writeFooterBrand(ctx);
 }
 
 export function buildContractDocumentData(

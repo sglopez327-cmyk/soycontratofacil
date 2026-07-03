@@ -9,8 +9,10 @@ import {
   validateReferenciaCatastral,
 } from "@/lib/property-fields";
 import {
+  getCampoPeriodicidadPago,
   getCampoSuministrosHabitacion,
   getCamposCondicionesLegalesArrendamiento,
+  getCamposFechasContrato,
   getCamposPlazoPago,
   validateDiaPagoMes,
   validateIban,
@@ -175,6 +177,13 @@ const camposUbicacionInmueble: ContractFieldDefinition[] = [
     placeholder: "Madrid",
   }),
   field({
+    id: "provincia",
+    label: "Provincia",
+    type: "text",
+    required: false,
+    placeholder: "Madrid",
+  }),
+  field({
     id: "codigo_postal",
     label: "Código postal",
     type: "text",
@@ -210,6 +219,11 @@ const campoSuperficiePlaza = field({
 
 /** Plazo de pago mensual compartido por los 5 contratos de arrendamiento. */
 const camposPlazoPago = getCamposPlazoPago(field);
+const campoPeriodicidadPago = getCampoPeriodicidadPago(field);
+const camposFechasContrato = getCamposFechasContrato(field);
+const camposFechasContratoInicioOpcional = getCamposFechasContrato(field, {
+  fechaInicioRequired: false,
+});
 
 const condicionesEconomicasArrendamiento: ContractFieldDefinition[] = [
   field({
@@ -274,15 +288,11 @@ export const contractConfigs: Record<string, ContractConfig> = {
         description: "Renta, fianza y plazo del arrendamiento.",
         fields: [
           ...condicionesEconomicasArrendamiento,
+          campoPeriodicidadPago,
           ...camposPlazoPago,
           ...camposGastosVivienda,
           ...camposCondicionesLegalesVivienda,
-          field({
-            id: "fecha_inicio",
-            label: "Fecha de inicio",
-            type: "date",
-            required: false,
-          }),
+          ...camposFechasContratoInicioOpcional,
         ],
       }),
     ],
@@ -332,14 +342,10 @@ export const contractConfigs: Record<string, ContractConfig> = {
             required: true,
             placeholder: "900",
           }),
+          campoPeriodicidadPago,
           ...camposPlazoPago,
           ...camposCondicionesLegalesBase,
-          field({
-            id: "fecha_inicio",
-            label: "Fecha de inicio",
-            type: "date",
-            required: true,
-          }),
+          ...camposFechasContrato,
           field({
             id: "fecha_fin",
             label: "Fecha de finalización",
@@ -399,6 +405,7 @@ export const contractConfigs: Record<string, ContractConfig> = {
             type: "currency",
             required: true,
           }),
+          campoPeriodicidadPago,
           ...camposPlazoPago,
           getCampoSuministrosHabitacion(field),
           ...camposCondicionesLegalesBase,
@@ -413,6 +420,7 @@ export const contractConfigs: Record<string, ContractConfig> = {
               { value: "indefinida", label: "Indefinida" },
             ],
           }),
+          ...camposFechasContrato,
         ],
       }),
     ],
@@ -438,6 +446,13 @@ export const contractConfigs: Record<string, ContractConfig> = {
           field({
             id: "ciudad",
             label: "Ciudad",
+            type: "text",
+            required: false,
+            placeholder: "Madrid",
+          }),
+          field({
+            id: "provincia",
+            label: "Provincia",
             type: "text",
             required: false,
             placeholder: "Madrid",
@@ -488,6 +503,7 @@ export const contractConfigs: Record<string, ContractConfig> = {
               { value: "otro", label: "Otra duración" },
             ],
           }),
+          campoPeriodicidadPago,
           ...camposPlazoPago,
           field({
             id: "gastos_comunidad",
@@ -497,6 +513,7 @@ export const contractConfigs: Record<string, ContractConfig> = {
             options: responsabilidadGastosOptions,
           }),
           ...camposCondicionesLegalesBase,
+          ...camposFechasContrato,
         ],
       }),
     ],
@@ -517,6 +534,13 @@ export const contractConfigs: Record<string, ContractConfig> = {
             type: "text",
             required: true,
             placeholder: "Paraje, municipio y provincia",
+          }),
+          field({
+            id: "provincia",
+            label: "Provincia",
+            type: "text",
+            required: false,
+            placeholder: "Toledo",
           }),
           field({
             id: "referencia_catastral",
@@ -573,8 +597,10 @@ export const contractConfigs: Record<string, ContractConfig> = {
               { value: "otro", label: "Otra duración" },
             ],
           }),
+          campoPeriodicidadPago,
           ...camposPlazoPago,
           ...camposCondicionesLegalesBase,
+          ...camposFechasContrato,
         ],
       }),
     ],
@@ -605,6 +631,13 @@ export const contractConfigs: Record<string, ContractConfig> = {
             placeholder: "Madrid",
           }),
           field({
+            id: "provincia",
+            label: "Provincia",
+            type: "text",
+            required: false,
+            placeholder: "Madrid",
+          }),
+          field({
             id: "codigo_postal",
             label: "Código postal",
             type: "text",
@@ -628,14 +661,10 @@ export const contractConfigs: Record<string, ContractConfig> = {
         description: "Renta, fianza y plazo del arrendamiento.",
         fields: [
           ...condicionesEconomicasArrendamiento,
+          campoPeriodicidadPago,
           ...camposPlazoPago,
           ...camposCondicionesLegalesBase,
-          field({
-            id: "fecha_inicio",
-            label: "Fecha de inicio",
-            type: "date",
-            required: false,
-          }),
+          ...camposFechasContratoInicioOpcional,
         ],
       }),
     ],
@@ -753,6 +782,13 @@ export const contractConfigs: Record<string, ContractConfig> = {
           field({
             id: "ciudad",
             label: "Ciudad",
+            type: "text",
+            required: false,
+            placeholder: "Madrid",
+          }),
+          field({
+            id: "provincia",
+            label: "Provincia",
             type: "text",
             required: false,
             placeholder: "Madrid",

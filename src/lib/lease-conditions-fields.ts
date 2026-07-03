@@ -6,6 +6,17 @@ export const PLAZO_CAMBIO_SUMINISTROS_OPTIONS = [
   { value: "30", label: "30 días" },
   { value: "45", label: "45 días" },
   { value: "60", label: "60 días" },
+  {
+    value: "no_cambio",
+    label:
+      "No realizar cambio de titularidad (mantener servicios a nombre del arrendador)",
+  },
+] as const;
+
+export const PERIODICIDAD_PAGO_OPTIONS = [
+  { value: "mensual", label: "Mensual" },
+  { value: "trimestral", label: "Trimestral" },
+  { value: "semanal", label: "Semanal" },
 ] as const;
 
 export const SUMINISTROS_HABITACION_OPTIONS = [
@@ -64,11 +75,47 @@ export function getCamposCondicionesLegalesArrendamiento(
       type: "text",
       required: true,
       placeholder: "ES12 3456 7890 1234 5678 9012",
-      helpText: "IBAN donde se realizarán los pagos mensuales de la renta.",
+      helpText: "IBAN donde se recibirán los pagos de la renta.",
     })
   );
 
   return fields;
+}
+
+export function getCampoPeriodicidadPago(
+  field: (
+    definition: ContractFieldDefinition
+  ) => ContractFieldDefinition
+): ContractFieldDefinition {
+  return field({
+    id: "periodicidad_pago",
+    label: "Periodicidad de pago",
+    type: "select",
+    required: true,
+    options: [...PERIODICIDAD_PAGO_OPTIONS],
+  });
+}
+
+export function getCamposFechasContrato(
+  field: (
+    definition: ContractFieldDefinition
+  ) => ContractFieldDefinition,
+  options: { fechaInicioRequired?: boolean } = {}
+): ContractFieldDefinition[] {
+  return [
+    field({
+      id: "fecha_inicio",
+      label: "Fecha de inicio del contrato",
+      type: "date",
+      required: options.fechaInicioRequired ?? true,
+    }),
+    field({
+      id: "fecha_primer_pago",
+      label: "Fecha de primer pago",
+      type: "date",
+      required: true,
+    }),
+  ];
 }
 
 export function getCampoSuministrosHabitacion(
@@ -184,6 +231,13 @@ export function validateIban(value: string): boolean {
 }
 
 export function buildClausulaSuministros(plazoDias: string): string {
+  if (plazoDias === "no_cambio") {
+    return (
+      "Los suministros de agua, luz y gas permanecerán a nombre del arrendador, " +
+      "sin obligación de cambio de titularidad por parte del arrendatario."
+    );
+  }
+
   return (
     "EL ARRENDATARIO se obliga a realizar el cambio de titularidad de los " +
     "suministros de agua, luz y gas en el plazo de " +
@@ -212,6 +266,23 @@ export function enrichLeaseTemplateVariables(
   const plazo = values.plazo_cambio_suministros?.trim();
   if (plazo) {
     variables.clausula_suministros = buildClausulaSuministros(plazo);
+  }
+
+  const periodicidad = values.periodicidad_pago?.trim();
+  if (periodicidad) {
+    variables.periodicidad_pago =
+      PERIODICIDAD_PAGO_OPTIONS.find((option) => option.value === periodicidad)
+        ?.label ?? periodicidad;
+  }
+
+  const fechaPrimerPago = values.fecha_primer_pago?.trim();
+  if (fechaPrimerPago) {
+    const date = new Date(fechaPrimerPago);
+    if (!Number.isNaN(date.getTime())) {
+      variables.fecha_primer_pago = new Intl.DateTimeFormat("es-ES", {
+        dateStyle: "long",
+      }).format(date);
+    }
   }
 
   const suministrosHabitacion = values.suministros_habitacion?.trim();
