@@ -65,11 +65,21 @@ export function ContractTemplate({ slug }: ContractTemplateProps) {
 
 const styles = StyleSheet.create({
   safe: { flex: 1 },
-  scroll: { padding: 20, paddingBottom: 32, gap: 8 },
-  category: { fontSize: 12, fontWeight: "700", textTransform: "uppercase", letterSpacing: 0.8 },
-  title: { fontSize: 26, fontWeight: "700", letterSpacing: -0.3 },
-  description: { fontSize: 15, lineHeight: 22, marginBottom: 8 },
-  notFound: { flex: 1, alignItems: "center", justifyContent: "center", padding: 24, gap: 8 },
-  notFoundTitle: { fontSize: 20, fontWeight: "700" },
-  notFoundText: { fontSize: 15, textAlign: "center" },
+  scroll: { padding: 20, paddingBottom: 40, gap: 12 },
+  category: {
+    fontSize: 12,
+    fontWeight: "700",
+    textTransform: "uppercase",
+    letterSpacing: 0.9,
+  },
+  title: { fontSize: 26, fontWeight: "700", letterSpacing: -0.4 },
+  description: {
+    fontSize: 15,
+    lineHeight: 24,
+    marginBottom: 12,
+    letterSpacing: 0.1,
+  },
+  notFound: { flex: 1, alignItems: "center", justifyContent: "center", padding: 24, gap: 10 },
+  notFoundTitle: { fontSize: 20, fontWeight: "700", letterSpacing: -0.2 },
+  notFoundText: { fontSize: 15, textAlign: "center", lineHeight: 22 },
 });

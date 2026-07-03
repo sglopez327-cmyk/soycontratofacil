@@ -18,6 +18,8 @@ export default function TabLayout() {
         tabBarStyle: { display: "none" },
         headerStyle: { backgroundColor: colors.background },
         headerTintColor: colors.text,
+        headerTitleStyle: { fontWeight: "600", letterSpacing: -0.2 },
+        headerShadowVisible: false,
         headerShown: useClientOnlyValue(false, true),
       }}
     >
@@ -39,7 +41,7 @@ export default function TabLayout() {
                   <SymbolView
                     name={{ ios: "info.circle", android: "info", web: "info" }}
                     size={24}
-                    tintColor={colors.text}
+                    tintColor={Colors.brand.blue}
                     style={{ opacity: pressed ? 0.5 : 1 }}
                   />
                 )}

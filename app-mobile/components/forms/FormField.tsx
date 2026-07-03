@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 
 import type { ContractFieldDefinition } from "@/lib/contract-config";
 import Colors from "@/constants/Colors";
+import { cardShadow } from "@/constants/theme";
 import { useColorScheme } from "@/components/useColorScheme";
 
 type FormFieldProps = {
@@ -148,29 +149,32 @@ export function FormField({ field, value, error, onChange, disabled = false }: F
 
 const styles = StyleSheet.create({
   wrapper: { gap: 8 },
-  label: { fontSize: 14, fontWeight: "600" },
+  label: { fontSize: 14, fontWeight: "600", letterSpacing: 0.1 },
   required: { color: Colors.brand.blue },
   input: {
     borderWidth: 1,
     borderRadius: 12,
-    paddingHorizontal: 14,
-    paddingVertical: Platform.OS === "ios" ? 14 : 10,
+    paddingHorizontal: 16,
+    paddingVertical: Platform.OS === "ios" ? 14 : 12,
     fontSize: 15,
+    letterSpacing: 0.1,
   },
   inputDisabled: { opacity: 0.7 },
-  textarea: { minHeight: 110, paddingTop: 12 },
+  textarea: { minHeight: 120, paddingTop: 14 },
   pickerWrapper: { borderWidth: 1, borderRadius: 12, overflow: "hidden" },
   picker: { height: Platform.OS === "ios" ? 150 : 52 },
   checkboxRow: {
     flexDirection: "row",
     alignItems: "center",
     gap: 12,
-    padding: 14,
+    paddingVertical: 16,
+    paddingHorizontal: 16,
     borderRadius: 12,
     borderWidth: 1,
+    ...cardShadow,
   },
-  checkboxLabel: { flex: 1, fontSize: 15, fontWeight: "600" },
-  help: { fontSize: 12, lineHeight: 17 },
+  checkboxLabel: { flex: 1, fontSize: 15, fontWeight: "600", letterSpacing: 0.1 },
+  help: { fontSize: 12, lineHeight: 18, letterSpacing: 0.1 },
   error: { fontSize: 12, color: "#f87171" },
   dateDone: { marginTop: 8, fontSize: 15, fontWeight: "600", textAlign: "right" },
 });

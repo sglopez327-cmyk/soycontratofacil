@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 
 import { FormField } from "@/components/forms/FormField";
 import Colors from "@/constants/Colors";
+import { cardShadow } from "@/constants/theme";
 import { useColorScheme } from "@/components/useColorScheme";
 import {
   PARTY_VARIANTS,
@@ -46,9 +47,9 @@ function PartySection({
   }
 
   return (
-    <View style={[styles.section, { backgroundColor: colors.card, borderColor: colors.border }]}>
+    <View style={[styles.section, cardShadow, { backgroundColor: colors.card, borderColor: colors.border }]}>
       <Text style={[styles.sectionTitle, { color: colors.text }]}>{title}</Text>
-      <Text style={[styles.sectionSubtitle, { color: colors.textMuted }]}>
+      <Text style={[styles.sectionSubtitle, { color: colors.textSubtle }]}>
         Datos identificativos y de contacto a efectos contractuales.
       </Text>
 
@@ -200,8 +201,14 @@ export function PartesForm({ variant, values, errors, onChange }: PartesFormProp
 }
 
 const styles = StyleSheet.create({
-  container: { gap: 20 },
-  section: { gap: 16, padding: 16, borderRadius: 16, borderWidth: 1 },
-  sectionTitle: { fontSize: 17, fontWeight: "700" },
-  sectionSubtitle: { fontSize: 12, lineHeight: 17, marginBottom: 4 },
+  container: { gap: 24 },
+  section: {
+    gap: 16,
+    paddingVertical: 20,
+    paddingHorizontal: 18,
+    borderRadius: 16,
+    borderWidth: 1,
+  },
+  sectionTitle: { fontSize: 17, fontWeight: "700", letterSpacing: -0.2 },
+  sectionSubtitle: { fontSize: 13, lineHeight: 20, marginBottom: 4, letterSpacing: 0.1 },
 });

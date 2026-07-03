@@ -12,8 +12,8 @@ type BrandTitleProps = {
 export function BrandTitle({ size = "md", onDark = false }: BrandTitleProps) {
   const colorScheme = useColorScheme() ?? "light";
   const colors = Colors[colorScheme];
-  const textColor = onDark ? "#f8fafc" : colors.text;
-  const domainColor = onDark ? "#94a3b8" : colors.textMuted;
+  const textColor = onDark ? "#f1f5f9" : colors.text;
+  const domainColor = onDark ? Colors.brand.blue : colors.textMuted;
 
   return (
     <View style={styles.row}>
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 22,
     fontWeight: "700",
-    letterSpacing: -0.3,
+    letterSpacing: -0.4,
   },
   nameSm: {
     fontSize: 18,

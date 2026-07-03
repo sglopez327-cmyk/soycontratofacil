@@ -4,6 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { BrandTitle } from "@/components/BrandTitle";
 import Colors from "@/constants/Colors";
+import { cardShadow } from "@/constants/theme";
 import { useColorScheme } from "@/components/useColorScheme";
 
 export default function ModalScreen() {
@@ -21,7 +22,13 @@ export default function ModalScreen() {
           App móvil de SoyContratoFacil.es
         </Text>
 
-        <View style={styles.section}>
+        <View
+          style={[
+            styles.section,
+            cardShadow,
+            { backgroundColor: colors.card, borderColor: colors.border },
+          ]}
+        >
           <Text style={[styles.heading, { color: colors.text }]}>
             Guía de uso
           </Text>
@@ -38,7 +45,13 @@ export default function ModalScreen() {
           </Text>
         </View>
 
-        <View style={styles.section}>
+        <View
+          style={[
+            styles.section,
+            cardShadow,
+            { backgroundColor: colors.card, borderColor: colors.border },
+          ]}
+        >
           <Text style={[styles.heading, { color: colors.text }]}>
             Formularios nativos
           </Text>
@@ -61,23 +74,31 @@ const styles = StyleSheet.create({
   },
   scroll: {
     padding: 24,
-    gap: 8,
+    gap: 16,
+    paddingBottom: 40,
   },
   subtitle: {
     fontSize: 15,
     marginTop: 4,
-    marginBottom: 16,
+    marginBottom: 8,
+    lineHeight: 22,
+    letterSpacing: 0.1,
   },
   section: {
-    marginTop: 20,
-    gap: 8,
+    marginTop: 8,
+    gap: 12,
+    padding: 20,
+    borderRadius: 16,
+    borderWidth: 1,
   },
   heading: {
     fontSize: 17,
     fontWeight: "700",
+    letterSpacing: -0.2,
   },
   body: {
     fontSize: 15,
-    lineHeight: 22,
+    lineHeight: 24,
+    letterSpacing: 0.1,
   },
 });

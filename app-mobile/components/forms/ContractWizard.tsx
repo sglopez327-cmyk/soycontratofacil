@@ -4,6 +4,7 @@ import { ActivityIndicator, Alert, Pressable, ScrollView, StyleSheet, Text, View
 import { FormField } from "@/components/forms/FormField";
 import { PartesForm } from "@/components/forms/PartesForm";
 import Colors from "@/constants/Colors";
+import { cardShadow } from "@/constants/theme";
 import { useColorScheme } from "@/components/useColorScheme";
 import type { ContractConfig } from "@/lib/contract-config";
 import { createEmptyFormValues, getConfigFields, validateStep } from "@/lib/contract-config";
@@ -109,7 +110,7 @@ export function ContractWizard({ config, contractTitle, scrollRef }: ContractWiz
         })}
       </ScrollView>
 
-      <View style={[styles.panel, { backgroundColor: colors.card, borderColor: colors.border }]}>
+      <View style={[styles.panel, cardShadow, { backgroundColor: colors.card, borderColor: colors.border }]}>
         {isComplete ? (
           <View style={styles.content}>
             <Text style={[styles.heading, { color: colors.text }]}>Datos listos para generar</Text>
@@ -117,7 +118,7 @@ export function ContractWizard({ config, contractTitle, scrollRef }: ContractWiz
               Revisa el resumen de tu contrato de {contractTitle}. Pulsa «Generar PDF» para
               guardarlo o compartirlo desde tu dispositivo.
             </Text>
-            <View style={[styles.summaryList, { borderColor: colors.border }]}>
+            <View style={[styles.summaryList, cardShadow, { borderColor: colors.border, backgroundColor: colors.card }]}>
               {allFields
                 .filter((field) => values[field.id]?.trim())
                 .map((field) => (
@@ -199,21 +200,41 @@ export function ContractWizard({ config, contractTitle, scrollRef }: ContractWiz
 }
 
 const styles = StyleSheet.create({
-  wrapper: { gap: 16 },
-  stepsRow: { gap: 8, paddingVertical: 4 },
-  stepChip: { borderWidth: 1, borderRadius: 999, paddingHorizontal: 14, paddingVertical: 8 },
-  stepChipText: { fontSize: 13, fontWeight: "600" },
-  panel: { borderWidth: 1, borderRadius: 16, padding: 16 },
-  content: { gap: 14 },
-  stepLabel: { fontSize: 12, fontWeight: "700", textTransform: "uppercase", letterSpacing: 0.8 },
-  heading: { fontSize: 20, fontWeight: "700" },
-  description: { fontSize: 14, lineHeight: 21 },
-  fields: { gap: 16, marginTop: 4 },
-  summaryList: { borderWidth: 1, borderRadius: 12, overflow: "hidden" },
-  summaryRow: { gap: 4, paddingHorizontal: 14, paddingVertical: 12, borderBottomWidth: 1 },
-  summaryLabel: { fontSize: 13 },
-  summaryValue: { fontSize: 15, fontWeight: "600" },
-  actions: { flexDirection: "row", gap: 10, marginTop: 8 },
+  wrapper: { gap: 20 },
+  stepsRow: { gap: 10, paddingVertical: 6 },
+  stepChip: {
+    borderWidth: 1,
+    borderRadius: 999,
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+  },
+  stepChipText: { fontSize: 13, fontWeight: "600", letterSpacing: 0.1 },
+  panel: {
+    borderWidth: 1,
+    borderRadius: 16,
+    paddingVertical: 20,
+    paddingHorizontal: 18,
+  },
+  content: { gap: 16 },
+  stepLabel: {
+    fontSize: 12,
+    fontWeight: "700",
+    textTransform: "uppercase",
+    letterSpacing: 0.9,
+  },
+  heading: { fontSize: 20, fontWeight: "700", letterSpacing: -0.3 },
+  description: { fontSize: 14, lineHeight: 22, letterSpacing: 0.1 },
+  fields: { gap: 18, marginTop: 6 },
+  summaryList: { borderWidth: 1, borderRadius: 14, overflow: "hidden" },
+  summaryRow: {
+    gap: 6,
+    paddingHorizontal: 16,
+    paddingVertical: 14,
+    borderBottomWidth: 1,
+  },
+  summaryLabel: { fontSize: 13, letterSpacing: 0.1 },
+  summaryValue: { fontSize: 15, fontWeight: "600", letterSpacing: -0.1 },
+  actions: { flexDirection: "row", gap: 12, marginTop: 12 },
   primaryButton: {
     flex: 1,
     backgroundColor: Colors.brand.blue,
@@ -222,6 +243,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     minHeight: 48,
     justifyContent: "center",
+    ...cardShadow,
   },
   primaryButtonText: { color: "#fff", fontSize: 15, fontWeight: "600", textAlign: "center" },
   primaryButtonDisabled: { opacity: 0.7 },

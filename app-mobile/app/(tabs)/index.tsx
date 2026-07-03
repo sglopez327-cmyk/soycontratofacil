@@ -3,6 +3,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { BrandTitle } from "@/components/BrandTitle";
 import Colors from "@/constants/Colors";
+import { cardShadow } from "@/constants/theme";
 import { openContract } from "@/constants/contract-navigation";
 import { contractCategories } from "@/constants/contracts";
 import { useColorScheme } from "@/components/useColorScheme";
@@ -27,7 +28,7 @@ export default function HomeScreen() {
         showsVerticalScrollIndicator={false}
       >
         <View style={[styles.hero, { backgroundColor: Colors.brand.navy }]}>
-          <View style={styles.iconBadge}>
+          <View style={[styles.iconBadge, { borderColor: colors.accentRing, backgroundColor: colors.accentSurface }]}>
             <Text style={styles.iconGlyph}>📄</Text>
           </View>
           <BrandTitle size="lg" onDark />
@@ -49,6 +50,7 @@ export default function HomeScreen() {
               key={step}
               style={[
                 styles.stepCard,
+                cardShadow,
                 { backgroundColor: colors.card, borderColor: colors.border },
               ]}
             >
@@ -78,7 +80,7 @@ export default function HomeScreen() {
               <Text style={[styles.categoryTitle, { color: colors.text }]}>
                 {category.title}
               </Text>
-              <Text style={[styles.categoryDescription, { color: colors.textMuted }]}>
+              <Text style={[styles.categoryDescription, { color: colors.textSubtle }]}>
                 {category.description}
               </Text>
 
@@ -87,10 +89,12 @@ export default function HomeScreen() {
                   key={contract.slug}
                   style={({ pressed }) => [
                     styles.card,
+                    cardShadow,
                     {
                       backgroundColor: colors.card,
                       borderColor: colors.border,
-                      opacity: pressed ? 0.85 : 1,
+                      opacity: pressed ? 0.92 : 1,
+                      transform: [{ scale: pressed ? 0.98 : 1 }],
                     },
                   ]}
                   onPress={() => openContract(contract.slug)}
@@ -113,75 +117,97 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   safe: { flex: 1 },
-  scroll: { paddingBottom: 32 },
+  scroll: { paddingBottom: 40 },
   hero: {
     paddingHorizontal: 24,
-    paddingTop: 28,
-    paddingBottom: 32,
-    gap: 12,
+    paddingTop: 32,
+    paddingBottom: 36,
+    gap: 14,
   },
   iconBadge: {
     width: 48,
     height: 48,
-    borderRadius: 12,
+    borderRadius: 14,
     borderWidth: 1,
-    borderColor: "rgba(148, 163, 184, 0.4)",
-    backgroundColor: "rgba(30, 41, 59, 0.6)",
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 4,
+    marginBottom: 6,
   },
   iconGlyph: { fontSize: 22 },
   heroTagline: {
     color: "#cbd5e1",
     fontSize: 13,
-    fontWeight: "500",
+    fontWeight: "600",
+    letterSpacing: 0.3,
     marginTop: 4,
   },
   heroDescription: {
     color: "#94a3b8",
     fontSize: 15,
-    lineHeight: 22,
-    marginTop: 8,
+    lineHeight: 24,
+    marginTop: 4,
+    letterSpacing: 0.1,
   },
   section: {
     paddingHorizontal: 20,
-    paddingTop: 24,
-    gap: 12,
+    paddingTop: 32,
+    gap: 14,
+    marginBottom: 8,
   },
   contractsSection: {
     paddingHorizontal: 20,
-    paddingTop: 32,
-    gap: 8,
+    paddingTop: 36,
+    gap: 12,
   },
-  sectionTitle: { fontSize: 18, fontWeight: "700" },
-  sectionIntro: { fontSize: 14, lineHeight: 20, marginBottom: 8 },
+  sectionTitle: {
+    fontSize: 20,
+    fontWeight: "700",
+    letterSpacing: -0.3,
+    marginBottom: 4,
+  },
+  sectionIntro: {
+    fontSize: 14,
+    lineHeight: 22,
+    marginBottom: 12,
+    letterSpacing: 0.1,
+  },
   stepCard: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 14,
-    padding: 16,
-    borderRadius: 14,
+    gap: 16,
+    paddingVertical: 18,
+    paddingHorizontal: 18,
+    borderRadius: 16,
     borderWidth: 1,
   },
   stepNumber: {
-    width: 28,
-    height: 28,
-    borderRadius: 14,
+    width: 32,
+    height: 32,
+    borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
   },
   stepNumberText: { color: "#fff", fontWeight: "700", fontSize: 14 },
-  stepText: { flex: 1, fontSize: 15, lineHeight: 21 },
-  category: { marginTop: 16, gap: 10 },
-  categoryTitle: { fontSize: 17, fontWeight: "700" },
-  categoryDescription: { fontSize: 13, marginBottom: 4 },
-  card: {
-    padding: 16,
-    borderRadius: 14,
-    borderWidth: 1,
-    gap: 6,
+  stepText: { flex: 1, fontSize: 15, lineHeight: 23, fontWeight: "500" },
+  category: { marginTop: 28, gap: 12, marginBottom: 4 },
+  categoryTitle: {
+    fontSize: 17,
+    fontWeight: "700",
+    letterSpacing: -0.2,
   },
-  cardTitle: { fontSize: 16, fontWeight: "600" },
-  cardDescription: { fontSize: 13, lineHeight: 18 },
+  categoryDescription: { fontSize: 13, lineHeight: 20, marginBottom: 6 },
+  card: {
+    paddingVertical: 18,
+    paddingHorizontal: 18,
+    borderRadius: 16,
+    borderWidth: 1,
+    gap: 8,
+    marginBottom: 10,
+  },
+  cardTitle: {
+    fontSize: 16,
+    fontWeight: "600",
+    letterSpacing: -0.15,
+  },
+  cardDescription: { fontSize: 13, lineHeight: 21, letterSpacing: 0.1 },
 });
