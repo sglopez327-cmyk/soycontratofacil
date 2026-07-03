@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
+
+import { MicrosoftClarity } from "@/components/analytics/microsoft-clarity";
 import "./globals.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -43,6 +45,7 @@ export default function RootLayout({
     >
       <body className="flex min-h-full flex-col font-sans">
         {children}
+        <MicrosoftClarity />
         <Analytics />
       </body>
     </html>
