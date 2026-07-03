@@ -1,6 +1,7 @@
 import { ScrollView, StyleSheet, Text, View, Pressable } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import { BrandMark } from "@/components/BrandMark";
 import { BrandTitle } from "@/components/BrandTitle";
 import Colors from "@/constants/Colors";
 import { cardShadow } from "@/constants/theme";
@@ -28,9 +29,7 @@ export default function HomeScreen() {
         showsVerticalScrollIndicator={false}
       >
         <View style={[styles.hero, { backgroundColor: Colors.brand.navy }]}>
-          <View style={[styles.iconBadge, { borderColor: colors.accentRing, backgroundColor: colors.accentSurface }]}>
-            <Text style={styles.iconGlyph}>📄</Text>
-          </View>
+          <BrandMark size={48} style={styles.heroLogo} />
           <BrandTitle size="lg" onDark />
           <Text style={styles.heroTagline}>
             Contratos legales · Sin registro · Gratis
@@ -124,16 +123,9 @@ const styles = StyleSheet.create({
     paddingBottom: 36,
     gap: 14,
   },
-  iconBadge: {
-    width: 48,
-    height: 48,
-    borderRadius: 14,
-    borderWidth: 1,
-    alignItems: "center",
-    justifyContent: "center",
+  heroLogo: {
     marginBottom: 6,
   },
-  iconGlyph: { fontSize: 22 },
   heroTagline: {
     color: "#cbd5e1",
     fontSize: 13,

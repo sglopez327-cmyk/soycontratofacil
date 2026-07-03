@@ -1,8 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { BookOpen, FileText } from "lucide-react";
+import { BookOpen } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
@@ -21,8 +22,15 @@ export function Navbar() {
           href="/"
           className="group flex items-center gap-2.5 justify-self-start transition-opacity duration-300 hover:opacity-80"
         >
-          <span className="flex size-8 items-center justify-center rounded-lg border border-slate-700 bg-slate-800/40 text-brand-blue transition-all duration-300 group-hover:border-brand-blue/40 group-hover:bg-brand-blue/10">
-            <FileText className="size-3.5" aria-hidden />
+          <span className="flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-lg">
+            <Image
+              src="/brand/logo-mark-clean.svg"
+              alt=""
+              width={32}
+              height={32}
+              className="size-8 rounded-lg"
+              priority
+            />
           </span>
           <span className="text-[0.95rem] font-semibold tracking-tight text-white">
             SoyContratoFacil
@@ -44,11 +52,11 @@ export function Navbar() {
           </span>
         </p>
 
-        <div className="flex items-center justify-self-end">
+        <div className="flex h-full items-center justify-self-end">
           <Link
             href={GUIDE_HREF}
             className={cn(
-              "inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-800/40 px-4 py-2 text-sm font-medium text-slate-200 transition-all duration-300",
+              "inline-flex h-9 shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full border border-slate-700 bg-slate-800/40 px-4 text-sm font-medium leading-none text-slate-200 transition-all duration-300",
               "hover:border-brand-blue/40 hover:bg-brand-blue/10 hover:text-brand-blue"
             )}
           >

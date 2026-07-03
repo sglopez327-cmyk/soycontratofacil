@@ -1,6 +1,6 @@
 import type { ContractConfig } from "@/lib/contract-config";
 import { renderContractDocument } from "@/lib/contract-template-engine";
-import { loadPdfLogoMark } from "@/lib/pdf-brand";
+import { loadPdfLogoMark, type PdfLogoAsset } from "@/lib/pdf-brand";
 
 export type ContractDocumentData = {
   slug: string;
@@ -46,8 +46,6 @@ function getLineHeightMm(fontSizePt: number, multiplier = 1.45): number {
 }
 
 const HEADER_SPACING = {
-  iconWidthMm: 14,
-  iconToTitle: pt(20),
   titleMarginBottom: pt(12),
   subtitleMarginBottom: pt(10),
   beforeComparecen: pt(16),
@@ -292,15 +290,6 @@ async function writeDocumentHeader(
 ): Promise<void> {
   ctx.y = PAGE_MARGINS.top;
 
-  const logoMark = await loadPdfLogoMark();
-  const iconWidth = HEADER_SPACING.iconWidthMm;
-  const iconHeight = (logoMark.height / logoMark.width) * iconWidth;
-  const iconX = (ctx.pageWidth - iconWidth) / 2;
-
-  ensureSpace(ctx, iconHeight);
-  ctx.doc.addImage(logoMark.dataUrl, "PNG", iconX, ctx.y, iconWidth, iconHeight);
-  advanceY(ctx, iconHeight + HEADER_SPACING.iconToTitle);
-
   writeParagraph(ctx, document.title, {
     bold: true,
     fontSize: TITLE_FONT_SIZE,
@@ -397,12 +386,19 @@ function writeSignatureBlock(
   setTextColor(ctx.doc, BODY_TEXT_COLOR);
 }
 
-function writeFooterBrand(ctx: PdfWriterContext): void {
+function writeFooterBrand(ctx: PdfWriterContext, logoMark: PdfLogoAsset): void {
   const centerX = ctx.pageWidth / 2;
+  const iconWidthMm = 10;
+  const iconHeightMm = (logoMark.height / logoMark.width) * iconWidthMm;
   const lineHeight = getLineHeightMm(BRAND_NAME_FONT_SIZE);
+  const blockHeight = iconHeightMm + 3 + lineHeight + 4;
 
-  ensureSpace(ctx, lineHeight + 4);
+  ensureSpace(ctx, blockHeight);
   advanceY(ctx, 4);
+
+  const iconX = centerX - iconWidthMm / 2;
+  ctx.doc.addImage(logoMark.dataUrl, "PNG", iconX, ctx.y, iconWidthMm, iconHeightMm);
+  ctx.y += iconHeightMm + 3;
 
   ctx.doc.setFont("helvetica", "bold");
   ctx.doc.setFontSize(BRAND_NAME_FONT_SIZE);
@@ -423,7 +419,7 @@ function writeFooterBrand(ctx: PdfWriterContext): void {
   setTextColor(ctx.doc, BODY_TEXT_COLOR);
 }
 
-function writeDisclaimer(ctx: PdfWriterContext): void {
+async function writeDisclaimer(ctx: PdfWriterContext): Promise<void> {
   const disclaimerText =
     "AVISO LEGAL: Documento generado automaticamente por SoyContratoFacil.es a partir de los datos facilitados por el usuario. No constituye asesoramiento juridico ni sustituye la revision de un profesional cualificado. Verifique su contenido antes de la firma.";
 
@@ -463,7 +459,8 @@ function writeDisclaimer(ctx: PdfWriterContext): void {
     lineHeight,
   });
 
-  writeFooterBrand(ctx);
+  const logoMark = await loadPdfLogoMark();
+  writeFooterBrand(ctx, logoMark);
 }
 
 export function buildContractDocumentData(
@@ -523,7 +520,7 @@ export async function generateContractPdf(
     "________________";
 
   writeSignatureBlock(ctx, document.signatures, lugarFirma);
-  writeDisclaimer(ctx);
+  await writeDisclaimer(ctx);
 
   const filename = `contrato-${config.slug}-${formatFilenameDate(new Date())}.pdf`;
   doc.save(filename);

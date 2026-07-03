@@ -1,4 +1,4 @@
-const LOGO_MARK_SRC = "/brand/logo-mark.svg";
+const LOGO_MARK_SRC = "/brand/logo-mark-clean.svg";
 const LOGO_MARK_RENDER_SIZE = 256;
 
 export type PdfLogoAsset = {

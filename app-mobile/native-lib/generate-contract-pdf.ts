@@ -34,6 +34,18 @@ function paragraphHtml(text: string): string {
   return `<p>${escapeHtml(text).replace(/\n/g, "<br/>")}</p>`;
 }
 
+const BRAND_LOGO_DATA_URI =
+  "data:image/svg+xml;charset=utf-8," +
+  encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">' +
+      '<rect width="48" height="48" rx="12" fill="#3B82F6"/>' +
+      '<rect x="14" y="12" width="20" height="26" rx="2.5" fill="#FFFFFF"/>' +
+      '<rect x="18" y="18" width="12" height="2" rx="1" fill="#3B82F6"/>' +
+      '<rect x="18" y="23" width="12" height="2" rx="1" fill="#3B82F6"/>' +
+      '<rect x="18" y="28" width="8" height="2" rx="1" fill="#3B82F6"/>' +
+      "</svg>"
+  );
+
 function buildContractHtml(
   document: RenderedContractDocument,
   lugarFirma: string
@@ -58,11 +70,23 @@ function buildContractHtml(
       color: #141414;
     }
     .brand-footer {
-      color: #3b82f6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      margin-top: 24px;
+    }
+    .footer-logo {
+      width: 28px;
+      height: 28px;
+    }
+    .footer-brand-text {
       font-weight: 700;
       font-size: 12.65pt;
-      text-align: center;
-      margin-top: 24px;
+      color: #0f172a;
+    }
+    .footer-brand-text .domain {
+      color: #3b82f6;
     }
     h1 { font-size: 18pt; margin: 0 0 6px; color: #0f172a; }
     .subtitle { font-size: 10pt; color: #64748b; margin-bottom: 20px; }
@@ -115,7 +139,10 @@ function buildContractHtml(
     Documento generado con SoyContratoFacil.es. No sustituye el asesoramiento legal
     profesional. Revise el contenido antes de firmar.
   </div>
-  <div class="brand-footer">SoyContratoFacil.es</div>
+  <div class="brand-footer">
+    <img src="${BRAND_LOGO_DATA_URI}" alt="" class="footer-logo" />
+    <div class="footer-brand-text">SoyContrato<span class="domain">Facil.es</span></div>
+  </div>
 </body>
 </html>`;
 }
