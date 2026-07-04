@@ -62,7 +62,9 @@ const BRAND_NAME_FONT_SIZE = 12.65;
 const FOOTER_FONT_SIZE = 8;
 const FOOTER_TOP_GAP_MM = 10;
 /** Espacio entre el aviso legal y el bloque de marca en el pie. */
-const FOOTER_BRAND_TOP_GAP_MM = 16;
+const FOOTER_BRAND_TOP_GAP_MM = 8;
+/** Separación visual entre el icono y el texto de marca (~6px). */
+const FOOTER_LOGO_TEXT_GAP_MM = 2;
 const FOOTER_TEXT_COLOR = { r: 115, g: 115, b: 115 } as const;
 const BODY_TEXT_COLOR = { r: 20, g: 20, b: 20 } as const;
 const BRAND_NAVY = { r: 15, g: 23, b: 42 } as const;
@@ -393,13 +395,13 @@ function writeFooterBrand(ctx: PdfWriterContext, logoMark: PdfLogoAsset): void {
   const iconWidthMm = 10;
   const iconHeightMm = (logoMark.height / logoMark.width) * iconWidthMm;
   const lineHeight = getLineHeightMm(BRAND_NAME_FONT_SIZE);
-  const blockHeight = iconHeightMm + 3 + lineHeight;
+  const blockHeight = iconHeightMm + FOOTER_LOGO_TEXT_GAP_MM + lineHeight;
 
   ensureSpace(ctx, blockHeight);
 
   const iconX = centerX - iconWidthMm / 2;
   ctx.doc.addImage(logoMark.dataUrl, "PNG", iconX, ctx.y, iconWidthMm, iconHeightMm);
-  ctx.y += iconHeightMm + 3;
+  ctx.y += iconHeightMm + FOOTER_LOGO_TEXT_GAP_MM;
 
   ctx.doc.setFont("helvetica", "bold");
   ctx.doc.setFontSize(BRAND_NAME_FONT_SIZE);
@@ -431,7 +433,8 @@ async function writeDisclaimer(ctx: PdfWriterContext): Promise<void> {
     ctx.contentWidth
   ) as string[];
   const lineHeight = getLineHeightMm(FOOTER_FONT_SIZE, 1.35);
-  const logoBlockHeight = 10 + 3 + getLineHeightMm(BRAND_NAME_FONT_SIZE);
+  const logoBlockHeight =
+    10 + FOOTER_LOGO_TEXT_GAP_MM + getLineHeightMm(BRAND_NAME_FONT_SIZE);
   const blockHeight =
     FOOTER_TOP_GAP_MM +
     6 +

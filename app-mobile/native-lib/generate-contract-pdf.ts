@@ -73,18 +73,22 @@ function buildContractHtml(
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px;
-      margin-top: 48px;
-      padding-top: 8px;
+      justify-content: center;
+      margin-top: 20px;
+      text-align: center;
     }
     .footer-logo {
+      display: block;
       width: 28px;
       height: 28px;
+      margin: 0 auto 6px;
     }
     .footer-brand-text {
+      margin: 0;
       font-weight: 700;
       font-size: 12.65pt;
       color: #0f172a;
+      text-align: center;
     }
     .footer-brand-text .domain {
       color: #3b82f6;
@@ -108,10 +112,8 @@ function buildContractHtml(
     .signature-role { font-size: 9pt; color: #737373; text-transform: uppercase; }
     .signature-name { font-size: 11pt; font-weight: 600; margin-top: 4px; }
     .disclaimer {
-      margin-top: 32px;
-      margin-bottom: 8px;
-      padding-top: 14px;
-      padding-bottom: 8px;
+      margin-top: 28px;
+      padding-top: 12px;
       border-top: 1px solid #e5e5e5;
       font-size: 8pt;
       color: #737373;
