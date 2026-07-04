@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "c340f928-0b3b-4205-bf32-07410ba1f970"
+      }
+    },
+    "android": {
+      "package": "com.soycontratofacil.contratosweb"
+    }
+  }
+}
