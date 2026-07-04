@@ -3,6 +3,8 @@
 import { cn } from "@/lib/utils";
 import type { ContractFieldDefinition } from "@/lib/contract-config";
 
+import { ContractDateField } from "./contract-date-field";
+
 export const contractInputClassName =
   "w-full rounded-lg border border-slate-600 bg-slate-900/60 px-3 py-2.5 text-sm font-normal leading-relaxed tracking-[0.008em] text-white placeholder:text-slate-500 outline-none transition-colors focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/25 aria-invalid:border-red-400/80 aria-invalid:ring-red-400/20";
 
@@ -89,6 +91,17 @@ export function ContractField({
             </option>
           ))}
         </select>
+      ) : field.type === "date" ? (
+        <ContractDateField
+          id={fieldId}
+          value={value}
+          placeholder={field.placeholder ?? "Selecciona una fecha"}
+          hasError={hasError}
+          describedBy={
+            error ? `${fieldId}-error` : field.helpText ? `${fieldId}-help` : undefined
+          }
+          onChange={onChange}
+        />
       ) : (
         <input
           id={fieldId}

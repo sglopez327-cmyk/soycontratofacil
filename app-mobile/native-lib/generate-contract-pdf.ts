@@ -73,8 +73,9 @@ function buildContractHtml(
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 8px;
-      margin-top: 24px;
+      gap: 10px;
+      margin-top: 48px;
+      padding-top: 8px;
     }
     .footer-logo {
       width: 28px;
@@ -107,8 +108,10 @@ function buildContractHtml(
     .signature-role { font-size: 9pt; color: #737373; text-transform: uppercase; }
     .signature-name { font-size: 11pt; font-weight: 600; margin-top: 4px; }
     .disclaimer {
-      margin-top: 28px;
-      padding-top: 12px;
+      margin-top: 32px;
+      margin-bottom: 8px;
+      padding-top: 14px;
+      padding-bottom: 8px;
       border-top: 1px solid #e5e5e5;
       font-size: 8pt;
       color: #737373;

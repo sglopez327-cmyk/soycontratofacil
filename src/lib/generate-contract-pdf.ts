@@ -61,6 +61,8 @@ const BODY_SPACING = {
 const BRAND_NAME_FONT_SIZE = 12.65;
 const FOOTER_FONT_SIZE = 8;
 const FOOTER_TOP_GAP_MM = 10;
+/** Espacio entre el aviso legal y el bloque de marca en el pie. */
+const FOOTER_BRAND_TOP_GAP_MM = 16;
 const FOOTER_TEXT_COLOR = { r: 115, g: 115, b: 115 } as const;
 const BODY_TEXT_COLOR = { r: 20, g: 20, b: 20 } as const;
 const BRAND_NAVY = { r: 15, g: 23, b: 42 } as const;
@@ -391,10 +393,9 @@ function writeFooterBrand(ctx: PdfWriterContext, logoMark: PdfLogoAsset): void {
   const iconWidthMm = 10;
   const iconHeightMm = (logoMark.height / logoMark.width) * iconWidthMm;
   const lineHeight = getLineHeightMm(BRAND_NAME_FONT_SIZE);
-  const blockHeight = iconHeightMm + 3 + lineHeight + 4;
+  const blockHeight = iconHeightMm + 3 + lineHeight;
 
   ensureSpace(ctx, blockHeight);
-  advanceY(ctx, 4);
 
   const iconX = centerX - iconWidthMm / 2;
   ctx.doc.addImage(logoMark.dataUrl, "PNG", iconX, ctx.y, iconWidthMm, iconHeightMm);
@@ -430,7 +431,13 @@ async function writeDisclaimer(ctx: PdfWriterContext): Promise<void> {
     ctx.contentWidth
   ) as string[];
   const lineHeight = getLineHeightMm(FOOTER_FONT_SIZE, 1.35);
-  const blockHeight = FOOTER_TOP_GAP_MM + 6 + disclaimerLines.length * lineHeight;
+  const logoBlockHeight = 10 + 3 + getLineHeightMm(BRAND_NAME_FONT_SIZE);
+  const blockHeight =
+    FOOTER_TOP_GAP_MM +
+    6 +
+    disclaimerLines.length * lineHeight +
+    FOOTER_BRAND_TOP_GAP_MM +
+    logoBlockHeight;
 
   if (getRemainingHeight(ctx) < blockHeight && getRemainingHeight(ctx) < MIN_REMAINING_TO_STAY_MM) {
     startNewPage(ctx);
@@ -458,6 +465,8 @@ async function writeDisclaimer(ctx: PdfWriterContext): Promise<void> {
     color: FOOTER_TEXT_COLOR,
     lineHeight,
   });
+
+  advanceY(ctx, FOOTER_BRAND_TOP_GAP_MM);
 
   const logoMark = await loadPdfLogoMark();
   writeFooterBrand(ctx, logoMark);
