@@ -5,6 +5,7 @@ import {
   LegalSection,
 } from "@/components/legal/legal-page-shell";
 import { createPageMetadata } from "@/lib/seo";
+import { CONTACT_EMAIL } from "@/lib/site-config";
 
 export const metadata = createPageMetadata({
   title: "Política de Cookies — SoyContratoFacil.es",
@@ -27,10 +28,10 @@ export default function CookiesPage() {
           Responsable: <strong className="text-slate-200">SoyContratoFacil.es</strong>.
           Contacto:{" "}
           <a
-            href="mailto:privacidad@soycontratofacil.es"
+            href={`mailto:${CONTACT_EMAIL}`}
             className="text-brand-blue hover:underline"
           >
-            privacidad@soycontratofacil.es
+            {CONTACT_EMAIL}
           </a>
           .
         </LegalParagraph>
@@ -118,10 +119,10 @@ export default function CookiesPage() {
           </a>
           . Para cualquier consulta sobre cookies, escríbenos a{" "}
           <a
-            href="mailto:privacidad@soycontratofacil.es"
+            href={`mailto:${CONTACT_EMAIL}`}
             className="text-brand-blue hover:underline"
           >
-            privacidad@soycontratofacil.es
+            {CONTACT_EMAIL}
           </a>
           .
         </LegalParagraph>

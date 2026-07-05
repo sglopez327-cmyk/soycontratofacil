@@ -5,6 +5,7 @@ import {
   LegalSection,
 } from "@/components/legal/legal-page-shell";
 import { createPageMetadata } from "@/lib/seo";
+import { CONTACT_EMAIL } from "@/lib/site-config";
 
 export const metadata = createPageMetadata({
   title: "Política de Privacidad — SoyContratoFacil.es",
@@ -27,10 +28,10 @@ export default function PrivacidadPage() {
           Responsable del tratamiento: <strong className="text-slate-200">SoyContratoFacil.es</strong>
           . Contacto para cuestiones de privacidad:{" "}
           <a
-            href="mailto:privacidad@soycontratofacil.es"
+            href={`mailto:${CONTACT_EMAIL}`}
             className="text-brand-blue hover:underline"
           >
-            privacidad@soycontratofacil.es
+            {CONTACT_EMAIL}
           </a>
           .
         </LegalParagraph>
@@ -113,10 +114,10 @@ export default function PrivacidadPage() {
           supresión, oposición, limitación del tratamiento y portabilidad, así como
           retirar el consentimiento cuando el tratamiento se base en él, escribiendo a{" "}
           <a
-            href="mailto:privacidad@soycontratofacil.es"
+            href={`mailto:${CONTACT_EMAIL}`}
             className="text-brand-blue hover:underline"
           >
-            privacidad@soycontratofacil.es
+            {CONTACT_EMAIL}
           </a>
           , adjuntando copia de un documento identificativo si fuera necesario para
           verificar tu identidad.

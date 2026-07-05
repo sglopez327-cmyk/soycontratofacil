@@ -10,4 +10,4 @@ export const SITE_TAGLINE =
 export const DEFAULT_DESCRIPTION =
   "Genera contratos de alquiler y compraventa verificados, seguros y listos para firmar. Documentos legales inmobiliarios automatizados, gratis y sin registro.";
 
-export const CONTACT_EMAIL = "privacidad@soycontratofacil.es";
+export const CONTACT_EMAIL = "contacto@soycontratofacil.es";
