@@ -1,17 +1,17 @@
-import type { Metadata } from "next";
-
 import {
   LegalList,
   LegalPageShell,
   LegalParagraph,
   LegalSection,
 } from "@/components/legal/legal-page-shell";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Términos de Uso — SoyContratoFacil.es",
   description:
     "Condiciones generales de uso del servicio SoyContratoFacil.es para la generación de documentos contractuales.",
-};
+  path: "/terminos-de-uso",
+});
 
 const LAST_UPDATED = "28 de junio de 2026";
 

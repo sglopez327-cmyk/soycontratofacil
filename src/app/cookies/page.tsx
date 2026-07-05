@@ -1,17 +1,17 @@
-import type { Metadata } from "next";
-
 import {
   LegalList,
   LegalPageShell,
   LegalParagraph,
   LegalSection,
 } from "@/components/legal/legal-page-shell";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Política de Cookies — SoyContratoFacil.es",
   description:
     "Información sobre el uso de cookies y tecnologías similares en SoyContratoFacil.es.",
-};
+  path: "/cookies",
+});
 
 const LAST_UPDATED = "28 de junio de 2026";
 

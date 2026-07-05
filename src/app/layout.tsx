@@ -1,8 +1,10 @@
-import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 
 import { MicrosoftClarity } from "@/components/analytics/microsoft-clarity";
+import { JsonLd } from "@/components/seo/json-ld";
+import { organizationSchema, webSiteSchema } from "@/lib/seo-schema";
+import { createRootMetadata } from "@/lib/seo";
 import "./globals.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -18,20 +20,7 @@ const inter = Inter({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "SoyContratoFacil.es — Contratos inmobiliarios legales en minutos",
-  description:
-    "Genera contratos de alquiler y compraventa verificados, seguros y listos para firmar. Documentos legales inmobiliarios automatizados.",
-  icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/icon.png", type: "image/png", sizes: "48x48" },
-    ],
-    apple: [
-      { url: "/apple-icon.png", type: "image/png", sizes: "180x180" },
-    ],
-  },
-};
+export const metadata = createRootMetadata();
 
 export default function RootLayout({
   children,
@@ -44,6 +33,7 @@ export default function RootLayout({
       className={`${plusJakartaSans.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col font-sans">
+        <JsonLd data={[organizationSchema(), webSiteSchema()]} />
         {children}
         <MicrosoftClarity />
         <Analytics />

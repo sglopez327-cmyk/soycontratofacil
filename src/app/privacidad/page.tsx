@@ -1,17 +1,17 @@
-import type { Metadata } from "next";
-
 import {
   LegalList,
   LegalPageShell,
   LegalParagraph,
   LegalSection,
 } from "@/components/legal/legal-page-shell";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Política de Privacidad — SoyContratoFacil.es",
   description:
     "Información sobre el tratamiento de datos personales en SoyContratoFacil.es conforme al RGPD y la LOPDGDD.",
-};
+  path: "/privacidad",
+});
 
 const LAST_UPDATED = "28 de junio de 2026";
 

@@ -8,6 +8,7 @@ type LegalPageShellProps = {
   title: string;
   description: string;
   lastUpdated: string;
+  eyebrow?: string;
   children: ReactNode;
 };
 
@@ -15,6 +16,7 @@ export function LegalPageShell({
   title,
   description,
   lastUpdated,
+  eyebrow = "Información legal",
   children,
 }: LegalPageShellProps) {
   return (
@@ -30,7 +32,7 @@ export function LegalPageShell({
 
         <header className="mb-10 border-b border-slate-700/80 pb-8">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-blue">
-            Información legal
+            {eyebrow}
           </p>
           <h1 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
             {title}

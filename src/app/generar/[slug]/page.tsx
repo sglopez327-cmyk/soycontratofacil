@@ -5,8 +5,14 @@ import type { Metadata } from "next";
 
 import { ContractWizard } from "@/components/generar/contract-wizard";
 import { Navbar } from "@/components/layout/navbar";
+import { JsonLd } from "@/components/seo/json-ld";
 import { getContractConfig } from "@/lib/contract-config";
 import { getAllContractSlugs, getContractBySlug } from "@/lib/contracts";
+import { createPageMetadata } from "@/lib/seo";
+import {
+  breadcrumbSchema,
+  contractWebPageSchema,
+} from "@/lib/seo-schema";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -23,13 +29,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const contract = getContractBySlug(slug);
 
   if (!contract) {
-    return { title: "Contrato no encontrado — SoyContratoFacil.es" };
+    return createPageMetadata({
+      title: "Contrato no encontrado — SoyContratoFacil.es",
+      path: `/generar/${slug}`,
+      noIndex: true,
+    });
   }
 
-  return {
-    title: `Generar ${contract.title} — SoyContratoFacil.es`,
-    description: contract.description,
-  };
+  const title = `Generar contrato de ${contract.title.toLowerCase()} — SoyContratoFacil.es`;
+
+  return createPageMetadata({
+    title,
+    description: `${contract.description} Genera y descarga tu documento en PDF gratis, sin registro.`,
+    path: contract.href,
+  });
 }
 
 export default async function GenerarContratoPage({ params }: PageProps) {
@@ -42,9 +55,22 @@ export default async function GenerarContratoPage({ params }: PageProps) {
   }
 
   const Icon = contract.icon;
+  const webPageSchema = contractWebPageSchema(slug);
+  const breadcrumbs = breadcrumbSchema([
+    { name: "Inicio", path: "/" },
+    { name: contract.categoryTitle, path: `/#${contract.categoryId}` },
+    { name: contract.title, path: contract.href },
+  ]);
 
   return (
     <div className="flex min-h-full flex-col bg-[#0f172a]">
+      <JsonLd
+        data={
+          webPageSchema
+            ? [breadcrumbs, webPageSchema]
+            : [breadcrumbs]
+        }
+      />
       <Navbar />
       <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
         <Link
