@@ -3,30 +3,29 @@ import Link from "next/link";
 import { FooterDisclaimer } from "@/components/layout/footer-disclaimer";
 import { Navbar } from "@/components/layout/navbar";
 import { JsonLd } from "@/components/seo/json-ld";
-import { getContractHref } from "@/lib/contracts";
 import { createPageMetadata } from "@/lib/seo";
-import { seoGuides } from "@/lib/seo-guides";
-import { breadcrumbSchema, guidesItemListSchema } from "@/lib/seo-schema";
+import { seoArticles } from "@/lib/seo-articles";
+import { articlesItemListSchema, breadcrumbSchema } from "@/lib/seo-schema";
 
 export const metadata = createPageMetadata({
-  title: "Guías de contratos inmobiliarios — SoyContratoFacil.es",
+  title: "Artículos sobre contratos inmobiliarios — SoyContratoFacil.es",
   description:
-    "Guías prácticas sobre contratos de alquiler, compraventa y gestión inmobiliaria en España. Aprende qué debe incluir cada documento y genera tu PDF gratis.",
-  path: "/guias",
+    "Artículos prácticos sobre alquiler, compraventa, arras, fianzas y suministros en España. Información orientativa con enlaces al generador gratuito.",
+  path: "/articulos",
 });
 
 const LAST_UPDATED = "6 de julio de 2026";
 
-export default function GuiasIndexPage() {
+export default function ArticulosIndexPage() {
   return (
     <div className="flex min-h-full flex-col bg-[#0f172a]">
       <JsonLd
         data={[
           breadcrumbSchema([
             { name: "Inicio", path: "/" },
-            { name: "Guías", path: "/guias" },
+            { name: "Artículos", path: "/articulos" },
           ]),
-          guidesItemListSchema(),
+          articlesItemListSchema(),
         ]}
       />
       <Navbar />
@@ -40,19 +39,14 @@ export default function GuiasIndexPage() {
 
         <header className="mb-10 border-b border-slate-700/80 pb-8">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-blue">
-            Guías
+            Artículos
           </p>
           <h1 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            Guías de contratos inmobiliarios
+            Artículos sobre contratos inmobiliarios
           </h1>
           <p className="text-card-body mt-4 text-base text-slate-400">
-            Información orientativa sobre los principales documentos inmobiliarios
-            en España. Cada guía enlaza al generador gratuito para crear tu PDF.
-            También puedes leer nuestros{" "}
-            <Link href="/articulos" className="text-brand-blue hover:underline">
-              artículos
-            </Link>
-            .
+            Contenido orientativo sobre plazos, arras, fianzas, compraventa y
+            suministros. Cada artículo enlaza a guías y generadores gratuitos.
           </p>
           <p className="mt-4 text-xs text-slate-500">
             Última actualización: {LAST_UPDATED}
@@ -60,36 +54,30 @@ export default function GuiasIndexPage() {
         </header>
 
         <div className="space-y-8">
-          {seoGuides.map((guide) => (
+          {seoArticles.map((article) => (
             <section
-              key={guide.slug}
+              key={article.slug}
               className="rounded-2xl border border-slate-700 bg-slate-800/40 p-6"
             >
               <h2 className="text-lg font-semibold text-white">
                 <Link
-                  href={`/guias/${guide.slug}`}
+                  href={`/articulos/${article.slug}`}
                   className="transition-colors hover:text-brand-blue"
                 >
-                  {guide.title}
+                  {article.title}
                 </Link>
               </h2>
               <p className="text-card-body mt-3 text-sm text-slate-400">
-                {guide.metaDescription}
+                {article.metaDescription}
               </p>
-              <div className="mt-4 flex flex-wrap gap-4 text-sm">
+              <p className="mt-4 text-sm">
                 <Link
-                  href={`/guias/${guide.slug}`}
+                  href={`/articulos/${article.slug}`}
                   className="text-brand-blue hover:underline"
                 >
-                  Leer guía
+                  Leer artículo →
                 </Link>
-                <Link
-                  href={getContractHref(guide.contractSlug)}
-                  className="text-slate-400 transition-colors hover:text-brand-blue"
-                >
-                  Generar contrato →
-                </Link>
-              </div>
+              </p>
             </section>
           ))}
         </div>

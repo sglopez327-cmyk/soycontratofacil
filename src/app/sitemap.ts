@@ -1,12 +1,14 @@
 import type { MetadataRoute } from "next";
 
 import { getAllContractSlugs } from "@/lib/contracts";
+import { getAllArticleSlugs } from "@/lib/seo-articles";
 import { getAllGuideSlugs } from "@/lib/seo-guides";
 import { absoluteUrl } from "@/lib/seo";
 
 const STATIC_ROUTES = [
   "/",
   "/guias",
+  "/articulos",
   "/sobre-nosotros",
   "/aviso-legal",
   "/privacidad",
@@ -21,7 +23,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: absoluteUrl(path),
     lastModified: now,
     changeFrequency: path === "/" ? "weekly" : "monthly",
-    priority: path === "/" ? 1 : path === "/guias" ? 0.9 : 0.6,
+    priority:
+      path === "/"
+        ? 1
+        : path === "/guias" || path === "/articulos"
+          ? 0.9
+          : 0.6,
   }));
 
   const contractEntries: MetadataRoute.Sitemap = getAllContractSlugs().map(
@@ -40,5 +47,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticEntries, ...contractEntries, ...guideEntries];
+  const articleEntries: MetadataRoute.Sitemap = getAllArticleSlugs().map(
+    (slug) => ({
+      url: absoluteUrl(`/articulos/${slug}`),
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.75,
+    })
+  );
+
+  return [...staticEntries, ...contractEntries, ...guideEntries, ...articleEntries];
 }

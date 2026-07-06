@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "generate:favicons": "python scripts/generate-web-favicons.py"
+    "generate:favicons": "python scripts/generate-web-favicons.py",
+    "generate:og-image": "python scripts/generate-og-image.py"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",

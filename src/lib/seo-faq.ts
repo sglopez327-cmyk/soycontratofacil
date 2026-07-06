@@ -29,4 +29,14 @@ export const homeFaqs: FaqItem[] = [
     answer:
       "No. Es una herramienta automatizada de generación de documentos. No constituye asesoramiento jurídico personalizado. El usuario es responsable de revisar el documento antes de firmarlo.",
   },
+  {
+    question: "¿Dónde puedo leer guías sobre contratos de alquiler y compraventa?",
+    answer:
+      "En la sección de guías y artículos del sitio encontrarás información orientativa sobre vivienda, arras, fianzas, suministros y otros documentos inmobiliarios, con enlaces al generador gratuito.",
+  },
+  {
+    question: "¿Los datos de mis contratos se guardan en vuestros servidores?",
+    answer:
+      "No. La información que introduces se utiliza en tu navegador para generar el PDF. No almacenamos el contenido de tus contratos ni requerimos registro.",
+  },
 ];

@@ -9,57 +9,59 @@ import {
 } from "@/components/legal/legal-page-shell";
 import { RelatedSeoLinks } from "@/components/seo/related-seo-links";
 import { JsonLd } from "@/components/seo/json-ld";
+import { getContractHref } from "@/lib/contracts";
 import { createPageMetadata } from "@/lib/seo";
-import { getRelatedGuideSlugs } from "@/lib/seo-guide-relations";
 import {
-  getAllGuideSlugs,
-  getGuideBySlug,
-  getGuideCategoryTitle,
-  getGuideContractHref,
-} from "@/lib/seo-guides";
-import { breadcrumbSchema, guideFaqSchema } from "@/lib/seo-schema";
+  getAllArticleSlugs,
+  getArticleBySlug,
+} from "@/lib/seo-articles";
+import {
+  articleSchema,
+  breadcrumbSchema,
+  guideFaqSchema,
+} from "@/lib/seo-schema";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
-const LAST_UPDATED = "6 de julio de 2026";
-
 export function generateStaticParams() {
-  return getAllGuideSlugs().map((slug) => ({ slug }));
+  return getAllArticleSlugs().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const guide = getGuideBySlug(slug);
+  const article = getArticleBySlug(slug);
 
-  if (!guide) {
+  if (!article) {
     return createPageMetadata({
-      title: "Guía no encontrada — SoyContratoFacil.es",
-      path: `/guias/${slug}`,
+      title: "Artículo no encontrado — SoyContratoFacil.es",
+      path: `/articulos/${slug}`,
       noIndex: true,
     });
   }
 
   return createPageMetadata({
-    title: `${guide.title} — SoyContratoFacil.es`,
-    description: guide.metaDescription,
-    path: `/guias/${slug}`,
+    title: `${article.title} — SoyContratoFacil.es`,
+    description: article.metaDescription,
+    path: `/articulos/${slug}`,
   });
 }
 
-export default async function GuiaPage({ params }: PageProps) {
+export default async function ArticuloPage({ params }: PageProps) {
   const { slug } = await params;
-  const guide = getGuideBySlug(slug);
+  const article = getArticleBySlug(slug);
 
-  if (!guide) {
+  if (!article) {
     notFound();
   }
 
-  const generatorHref = getGuideContractHref(slug);
-  const categoryTitle = getGuideCategoryTitle(slug);
-  const faqSchema = guideFaqSchema(guide.faqs);
-  const relatedGuideSlugs = getRelatedGuideSlugs(slug);
+  const faqSchema = guideFaqSchema(article.faqs);
+  const formattedDate = new Date(article.updatedAt).toLocaleDateString("es-ES", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
 
   return (
     <>
@@ -67,19 +69,20 @@ export default async function GuiaPage({ params }: PageProps) {
         data={[
           breadcrumbSchema([
             { name: "Inicio", path: "/" },
-            { name: "Guías", path: "/guias" },
-            { name: guide.title, path: `/guias/${slug}` },
+            { name: "Artículos", path: "/articulos" },
+            { name: article.title, path: `/articulos/${slug}` },
           ]),
+          articleSchema(article),
           ...(faqSchema ? [faqSchema] : []),
         ]}
       />
       <LegalPageShell
-        title={guide.title}
-        description={guide.intro}
-        lastUpdated={LAST_UPDATED}
-        eyebrow={categoryTitle ? `Guía · ${categoryTitle}` : "Guía"}
+        title={article.title}
+        description={article.intro}
+        lastUpdated={formattedDate}
+        eyebrow="Artículo"
       >
-        {guide.sections.map((section) => (
+        {article.sections.map((section) => (
           <LegalSection key={section.title} title={section.title}>
             {section.paragraphs.map((paragraph) => (
               <LegalParagraph key={paragraph}>{paragraph}</LegalParagraph>
@@ -87,9 +90,9 @@ export default async function GuiaPage({ params }: PageProps) {
           </LegalSection>
         ))}
 
-        {guide.faqs.length > 0 ? (
+        {article.faqs.length > 0 ? (
           <LegalSection title="Preguntas frecuentes">
-            {guide.faqs.map((faq) => (
+            {article.faqs.map((faq) => (
               <div key={faq.question} className="space-y-2">
                 <p className="font-medium text-slate-200">{faq.question}</p>
                 <LegalParagraph>{faq.answer}</LegalParagraph>
@@ -99,30 +102,26 @@ export default async function GuiaPage({ params }: PageProps) {
         ) : null}
 
         <RelatedSeoLinks
-          guideSlugs={relatedGuideSlugs}
-          contractSlugs={[guide.contractSlug]}
+          guideSlugs={article.relatedGuideSlugs}
+          articleSlugs={article.relatedArticleSlugs}
+          contractSlugs={article.relatedContractSlugs}
         />
 
         <LegalSection title="Genera tu documento">
           <LegalParagraph>
-            Puedes crear este contrato de forma gratuita con nuestro generador
-            automatizado. Solo tienes que completar el formulario paso a paso y
-            descargar el PDF al instante, sin registro.
+            Si ya tienes claro qué contrato necesitas, puedes generarlo gratis
+            con nuestro formulario guiado y descargar el PDF al instante.
           </LegalParagraph>
-          {generatorHref ? (
+          {article.relatedContractSlugs[0] ? (
             <p>
               <Link
-                href={generatorHref}
+                href={getContractHref(article.relatedContractSlugs[0])}
                 className="font-medium text-brand-blue hover:underline"
               >
-                Ir al generador de contrato →
+                Ir al generador →
               </Link>
             </p>
           ) : null}
-          <p className="text-sm text-slate-500">
-            Este contenido es orientativo y no sustituye el asesoramiento de un
-            profesional del derecho. Revisa siempre el documento antes de firmarlo.
-          </p>
         </LegalSection>
       </LegalPageShell>
     </>

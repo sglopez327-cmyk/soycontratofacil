@@ -3,7 +3,7 @@ import { Analytics } from "@vercel/analytics/react";
 
 import { MicrosoftClarity } from "@/components/analytics/microsoft-clarity";
 import { JsonLd } from "@/components/seo/json-ld";
-import { organizationSchema, webSiteSchema } from "@/lib/seo-schema";
+import { organizationSchema, siteNavigationSchema, webSiteSchema } from "@/lib/seo-schema";
 import { createRootMetadata } from "@/lib/seo";
 import "./globals.css";
 
@@ -33,7 +33,7 @@ export default function RootLayout({
       className={`${plusJakartaSans.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col font-sans">
-        <JsonLd data={[organizationSchema(), webSiteSchema()]} />
+        <JsonLd data={[organizationSchema(), webSiteSchema(), siteNavigationSchema()]} />
         {children}
         <MicrosoftClarity />
         <Analytics />

@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 
 import {
   DEFAULT_DESCRIPTION,
+  GOOGLE_SITE_VERIFICATION,
+  OG_IMAGE_HEIGHT,
+  OG_IMAGE_PATH,
+  OG_IMAGE_WIDTH,
   SITE_NAME,
   SITE_URL,
 } from "@/lib/site-config";
@@ -9,6 +13,17 @@ import {
 export function absoluteUrl(path: string): string {
   const normalized = path.startsWith("/") ? path : `/${path}`;
   return new URL(normalized, SITE_URL).toString();
+}
+
+function openGraphImages(title: string) {
+  return [
+    {
+      url: absoluteUrl(OG_IMAGE_PATH),
+      width: OG_IMAGE_WIDTH,
+      height: OG_IMAGE_HEIGHT,
+      alt: title,
+    },
+  ];
 }
 
 type PageMetadataOptions = {
@@ -39,20 +54,13 @@ export function createPageMetadata({
       siteName: SITE_NAME,
       title,
       description,
-      images: [
-        {
-          url: absoluteUrl("/icon.png"),
-          width: 48,
-          height: 48,
-          alt: SITE_NAME,
-        },
-      ],
+      images: openGraphImages(title),
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title,
       description,
-      images: [absoluteUrl("/icon.png")],
+      images: [absoluteUrl(OG_IMAGE_PATH)],
     },
     robots: noIndex
       ? { index: false, follow: false }
@@ -61,6 +69,8 @@ export function createPageMetadata({
 }
 
 export function createRootMetadata(): Metadata {
+  const defaultTitle = `${SITE_NAME} — Contratos inmobiliarios legales en minutos`;
+
   return {
     metadataBase: new URL(SITE_URL),
     title: {
@@ -72,6 +82,9 @@ export function createRootMetadata(): Metadata {
     authors: [{ name: SITE_NAME, url: SITE_URL }],
     creator: SITE_NAME,
     publisher: SITE_NAME,
+    ...(GOOGLE_SITE_VERIFICATION
+      ? { verification: { google: GOOGLE_SITE_VERIFICATION } }
+      : {}),
     formatDetection: {
       email: false,
       address: false,
@@ -91,22 +104,15 @@ export function createRootMetadata(): Metadata {
       locale: "es_ES",
       url: SITE_URL,
       siteName: SITE_NAME,
-      title: `${SITE_NAME} — Contratos inmobiliarios legales en minutos`,
+      title: defaultTitle,
       description: DEFAULT_DESCRIPTION,
-      images: [
-        {
-          url: absoluteUrl("/icon.png"),
-          width: 48,
-          height: 48,
-          alt: SITE_NAME,
-        },
-      ],
+      images: openGraphImages(defaultTitle),
     },
     twitter: {
-      card: "summary",
-      title: `${SITE_NAME} — Contratos inmobiliarios legales en minutos`,
+      card: "summary_large_image",
+      title: defaultTitle,
       description: DEFAULT_DESCRIPTION,
-      images: [absoluteUrl("/icon.png")],
+      images: [absoluteUrl(OG_IMAGE_PATH)],
     },
     robots: {
       index: true,

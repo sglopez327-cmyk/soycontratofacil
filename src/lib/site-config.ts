@@ -11,3 +11,12 @@ export const DEFAULT_DESCRIPTION =
   "Genera contratos de alquiler y compraventa verificados, seguros y listos para firmar. Documentos legales inmobiliarios automatizados, gratis y sin registro.";
 
 export const CONTACT_EMAIL = "contacto@soycontratofacil.es";
+
+/** Imagen Open Graph para compartir en redes (1200×630). */
+export const OG_IMAGE_PATH = "/og-image.png";
+export const OG_IMAGE_WIDTH = 1200;
+export const OG_IMAGE_HEIGHT = 630;
+
+/** Código de verificación de Google Search Console (opcional). */
+export const GOOGLE_SITE_VERIFICATION =
+  process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
