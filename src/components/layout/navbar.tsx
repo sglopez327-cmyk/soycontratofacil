@@ -52,7 +52,24 @@ export function Navbar() {
           </span>
         </p>
 
-        <div className="flex h-full items-center justify-self-end">
+        <div className="flex h-full items-center gap-5 justify-self-end">
+          <nav
+            className="hidden items-center gap-5 text-sm text-slate-400 lg:flex"
+            aria-label="Recursos"
+          >
+            <Link
+              href="/guias"
+              className="transition-colors duration-300 hover:text-brand-blue"
+            >
+              Guías
+            </Link>
+            <Link
+              href="/articulos"
+              className="transition-colors duration-300 hover:text-brand-blue"
+            >
+              Artículos
+            </Link>
+          </nav>
           <Link
             href={GUIDE_HREF}
             className={cn(

@@ -56,6 +56,18 @@ export function FooterDisclaimer() {
           </p>
           <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-slate-500">
             <Link
+              href="/guias"
+              className="transition-colors duration-300 hover:text-brand-blue"
+            >
+              Guías
+            </Link>
+            <Link
+              href="/articulos"
+              className="transition-colors duration-300 hover:text-brand-blue"
+            >
+              Artículos
+            </Link>
+            <Link
               href="/privacidad"
               className="transition-colors duration-300 hover:text-brand-blue"
             >
