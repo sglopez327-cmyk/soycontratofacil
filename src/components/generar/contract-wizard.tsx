@@ -21,6 +21,7 @@ import {
   buildContractDocumentData,
   generateContractPdf,
 } from "@/lib/generate-contract-pdf";
+import { trackPdfGenerated } from "@/lib/track-conversion";
 import { cn } from "@/lib/utils";
 
 type ContractWizardProps = {
@@ -117,6 +118,11 @@ export function ContractWizard({ config, contractTitle }: ContractWizardProps) {
         config,
         contractTitle,
         values,
+      });
+
+      trackPdfGenerated({
+        contractSlug: config.slug,
+        contractTitle,
       });
     } catch (error) {
       console.error("Error al generar el PDF:", error);
