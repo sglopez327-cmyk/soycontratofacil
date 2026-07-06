@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
 
 import {
+  APPLE_ICON_PATH,
+  BRAND_ICON_SVG_PATH,
   DEFAULT_DESCRIPTION,
+  FAVICON_ICO_PATH,
   GOOGLE_SITE_VERIFICATION,
   BING_SITE_VERIFICATION,
+  ICON_192_PATH,
+  ICON_48_PATH,
+  ICON_512_PATH,
   OG_IMAGE_HEIGHT,
   OG_IMAGE_PATH,
   OG_IMAGE_WIDTH,
@@ -102,12 +108,35 @@ export function createRootMetadata(): Metadata {
     },
     icons: {
       icon: [
-        { url: "/favicon.ico", sizes: "any" },
-        { url: "/icon.png", type: "image/png", sizes: "48x48" },
+        { url: absoluteUrl(FAVICON_ICO_PATH), sizes: "any" },
+        {
+          url: absoluteUrl(BRAND_ICON_SVG_PATH),
+          type: "image/svg+xml",
+        },
+        {
+          url: absoluteUrl(ICON_48_PATH),
+          type: "image/png",
+          sizes: "48x48",
+        },
+        {
+          url: absoluteUrl(ICON_192_PATH),
+          type: "image/png",
+          sizes: "192x192",
+        },
+        {
+          url: absoluteUrl(ICON_512_PATH),
+          type: "image/png",
+          sizes: "512x512",
+        },
       ],
       apple: [
-        { url: "/apple-icon.png", type: "image/png", sizes: "180x180" },
+        {
+          url: absoluteUrl(APPLE_ICON_PATH),
+          type: "image/png",
+          sizes: "180x180",
+        },
       ],
+      shortcut: absoluteUrl(FAVICON_ICO_PATH),
     },
     openGraph: {
       type: "website",

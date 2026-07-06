@@ -6,7 +6,8 @@ from pathlib import Path
 from PIL import Image, ImageDraw
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "src" / "app"
+APP_OUT = ROOT / "src" / "app"
+PUBLIC_OUT = ROOT / "public"
 SVG_SOURCE = ROOT / "public" / "brand" / "logo-mark-clean.svg"
 
 BRAND_BLUE = "#3B82F6"
@@ -74,11 +75,25 @@ def main() -> None:
     if not SVG_SOURCE.exists():
         raise SystemExit(f"No se encontró el isotipo oficial: {SVG_SOURCE}")
 
-    save_png(draw_brand_mark(48), OUT / "icon.png")
-    save_png(draw_brand_mark(180), OUT / "apple-icon.png")
-    save_favicon_ico(OUT / "favicon.ico")
+    png_outputs = {
+        48: ("icon.png",),
+        180: ("apple-icon.png",),
+        192: ("icon-192.png",),
+        512: ("icon-512.png",),
+    }
 
-    print(f"Favicons generados desde {SVG_SOURCE.name} -> {OUT}")
+    for size, names in png_outputs.items():
+        image = draw_brand_mark(size)
+        for name in names:
+            save_png(image, APP_OUT / name)
+            save_png(image, PUBLIC_OUT / name)
+
+    for out_dir in (APP_OUT, PUBLIC_OUT):
+        save_favicon_ico(out_dir / "favicon.ico")
+
+    print(
+        f"Favicons generados desde {SVG_SOURCE.name} -> {APP_OUT} y {PUBLIC_OUT}"
+    )
 
 
 if __name__ == "__main__":

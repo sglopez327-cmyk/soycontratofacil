@@ -12,6 +12,14 @@ export const DEFAULT_DESCRIPTION =
 
 export const CONTACT_EMAIL = "contacto@soycontratofacil.es";
 
+/** Isotipo oficial (cuadrado azul con documento). */
+export const BRAND_ICON_SVG_PATH = "/brand/logo-mark-clean.svg";
+export const FAVICON_ICO_PATH = "/favicon.ico";
+export const ICON_48_PATH = "/icon.png";
+export const ICON_192_PATH = "/icon-192.png";
+export const ICON_512_PATH = "/icon-512.png";
+export const APPLE_ICON_PATH = "/apple-icon.png";
+
 /** Imagen Open Graph para compartir en redes (1200×630). */
 export const OG_IMAGE_PATH = "/og-image.png";
 export const OG_IMAGE_WIDTH = 1200;

@@ -18,7 +18,7 @@ export function organizationSchema() {
     "@type": "Organization",
     name: SITE_NAME,
     url: SITE_URL,
-    logo: absoluteUrl("/icon.png"),
+    logo: absoluteUrl("/icon-192.png"),
     image: absoluteUrl("/og-image.png"),
     email: CONTACT_EMAIL,
     description: DEFAULT_DESCRIPTION,
@@ -168,7 +168,7 @@ export function articleSchema(article: SeoArticle) {
       url: SITE_URL,
       logo: {
         "@type": "ImageObject",
-        url: absoluteUrl("/icon.png"),
+        url: absoluteUrl("/icon-192.png"),
       },
     },
     mainEntityOfPage: absoluteUrl(`/articulos/${article.slug}`),
