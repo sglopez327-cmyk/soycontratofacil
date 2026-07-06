@@ -39,4 +39,19 @@ export const homeFaqs: FaqItem[] = [
     answer:
       "No. La información que introduces se utiliza en tu navegador para generar el PDF. No almacenamos el contenido de tus contratos ni requerimos registro.",
   },
+  {
+    question: "¿Puedo usar los contratos para alquiler entre particulares?",
+    answer:
+      "Sí. Disponemos de modelos de arrendamiento de vivienda, habitación, temporada y local adaptados a la normativa española. Debes revisar que el documento refleja tu caso concreto antes de firmar.",
+  },
+  {
+    question: "¿Cuánto tarda en generarse el PDF?",
+    answer:
+      "Unos segundos. Una vez completado el formulario, el documento se genera al instante en tu dispositivo y puedes descargarlo sin esperas ni colas.",
+  },
+  {
+    question: "¿Puedo modificar el contrato después de generarlo?",
+    answer:
+      "El PDF descargado puede editarse con herramientas externas, pero lo recomendable es volver al generador, ajustar los datos del formulario y obtener una nueva versión coherente con la plantilla legal.",
+  },
 ];

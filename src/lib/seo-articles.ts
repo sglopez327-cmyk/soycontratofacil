@@ -189,6 +189,156 @@ export const seoArticles: SeoArticle[] = [
       },
     ],
   },
+  {
+    slug: "contrato-alquiler-particulares",
+    title: "Contrato de alquiler entre particulares: guía práctica",
+    metaDescription:
+      "Cómo redactar un contrato de alquiler entre particulares en España: datos obligatorios, fianza, duración y modelo gratuito descargable.",
+    intro:
+      "Alquilar una vivienda entre particulares es habitual en España. Aunque no siempre es obligatorio acudir a un profesional, sí es imprescindible dejar por escrito las condiciones del arrendamiento para evitar conflictos futuros.",
+    publishedAt: "2026-07-06",
+    updatedAt: "2026-07-06",
+    relatedGuideSlugs: ["vivienda", "habitacion", "temporada"],
+    relatedArticleSlugs: ["fianza-deposito-alquiler", "plazos-alquiler-vivienda"],
+    relatedContractSlugs: ["vivienda"],
+    sections: [
+      {
+        title: "Documentación previa recomendable",
+        paragraphs: [
+          "Antes de firmar conviene intercambiar copia del DNI o NIE, verificar la titularidad del inmueble y acordar el estado del piso (inventario si está amueblado).",
+          "El contrato debe recoger identificación de las partes, descripción del inmueble, renta, duración, fianza y reparto de gastos.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "¿Es obligatorio un contrato escrito?",
+        answer:
+          "La ley permite el arrendamiento verbal en algunos supuestos, pero es muy recomendable formalizarlo por escrito para acreditar las condiciones pactadas ante terceros o en caso de disputa.",
+      },
+    ],
+  },
+  {
+    slug: "impago-alquiler-que-hacer",
+    title: "Impago del alquiler: qué puede hacer el propietario",
+    metaDescription:
+      "Opciones legales ante el impago de la renta: requerimiento, reclamación y vías de resolución del contrato de arrendamiento en España.",
+    intro:
+      "El impago de la renta es una de las situaciones más delicadas en un arrendamiento. Conviene actuar con orden, documentar los pagos pendientes y conocer las vías legales disponibles.",
+    publishedAt: "2026-07-06",
+    updatedAt: "2026-07-06",
+    relatedGuideSlugs: ["vivienda", "rescision"],
+    relatedArticleSlugs: ["plazos-alquiler-vivienda", "fianza-deposito-alquiler"],
+    relatedContractSlugs: ["vivienda", "rescision"],
+    sections: [
+      {
+        title: "Primeros pasos recomendables",
+        paragraphs: [
+          "Conserva el contrato, los justificantes de pago y cualquier comunicación con el inquilino. Un requerimiento fehaciente de pago puede ser el primer paso antes de acciones judiciales.",
+          "La fianza no sustituye el procedimiento de desahucio, pero puede compensar parte de la deuda al finalizar el contrato en los términos legalmente previstos.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "¿Puedo cambiar la cerradura si no paga?",
+        answer:
+          "No de forma unilateral en la mayoría de supuestos. El arrendador debe seguir las vías legales de reclamación y, en su caso, desahucio. Actuar por cuenta propia puede generar responsabilidad.",
+      },
+    ],
+  },
+  {
+    slug: "itp-compraventa-vivienda",
+    title: "ITP en la compraventa de vivienda entre particulares",
+    metaDescription:
+      "Qué es el Impuesto sobre Transmisiones Patrimoniales (ITP) al comprar una vivienda de segunda mano entre particulares en España.",
+    intro:
+      "En la compraventa de vivienda usada entre particulares, el impuesto principal suele ser el ITP, gestionado por la comunidad autónoma. Conviene calcularlo antes de firmar arras o contrato.",
+    publishedAt: "2026-07-06",
+    updatedAt: "2026-07-06",
+    relatedGuideSlugs: ["compraventa-vivienda", "arras"],
+    relatedArticleSlugs: ["checklist-compraventa-vivienda", "tipos-de-arras"],
+    relatedContractSlugs: ["compraventa-vivienda", "arras"],
+    sections: [
+      {
+        title: "Quién paga y cuándo",
+        paragraphs: [
+          "Salvo pacto en contrario, el comprador es el sujeto pasivo del ITP. Debe liquidarse en el plazo que marque la normativa autónoma tras la escritura pública o, en algunos casos, del contrato privado.",
+          "El tipo impositivo varía según la comunidad autónoma y pueden existir bonificaciones para jóvenes, familias numerosas u otros supuestos.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "¿Se paga IVA en vez de ITP?",
+        answer:
+          "En vivienda de segunda mano entre particulares suele aplicarse ITP. El IVA corresponde generalmente a vivienda nueva vendida por empresario o profesional.",
+      },
+    ],
+  },
+  {
+    slug: "alquiler-temporada-vs-habitual",
+    title: "Alquiler de temporada vs vivienda habitual: diferencias clave",
+    metaDescription:
+      "Cuándo usar un contrato de temporada y cuándo uno de vivienda habitual. Régimen legal, duración y consecuencias prácticas.",
+    intro:
+      "No es lo mismo alquilar una vivienda para residencia permanente que para una estancia temporal. Elegir mal el tipo de contrato puede alterar plazos, prórrogas y protección del inquilino.",
+    publishedAt: "2026-07-06",
+    updatedAt: "2026-07-06",
+    relatedGuideSlugs: ["vivienda", "temporada", "habitacion"],
+    relatedArticleSlugs: ["contrato-alquiler-particulares", "plazos-alquiler-vivienda"],
+    relatedContractSlugs: ["vivienda", "temporada"],
+    sections: [
+      {
+        title: "Vivienda habitual",
+        paragraphs: [
+          "Se aplica cuando el inmueble se destina a residencia permanente del inquilino. La LAU prevé prórrogas obligatorias y un régimen de fianza específico.",
+        ],
+      },
+      {
+        title: "Temporada o uso distinto",
+        paragraphs: [
+          "Procede cuando existe causa temporal acreditada y el uso no es el de vivienda habitual. La duración y las condiciones de prórroga dependen más del pacto entre partes.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "¿Puedo poner temporada para esquivar la LAU?",
+        answer:
+          "No. Si el uso real es de vivienda habitual, los tribunales pueden calificar el contrato como arrendamiento de vivienda aunque se etiquete como temporada.",
+      },
+    ],
+  },
+  {
+    slug: "inventario-mobiliario-alquiler",
+    title: "Inventario de mobiliario en el contrato de alquiler",
+    metaDescription:
+      "Por qué conviene un inventario en pisos amueblados, qué debe incluir y cómo vincularlo al contrato de arrendamiento.",
+    intro:
+      "En alquileres amueblados o con electrodomésticos incluidos, el inventario evita discusiones sobre el estado y la propiedad de cada elemento al inicio y al final del contrato.",
+    publishedAt: "2026-07-06",
+    updatedAt: "2026-07-06",
+    relatedGuideSlugs: ["vivienda", "habitacion", "temporada"],
+    relatedArticleSlugs: ["contrato-alquiler-particulares"],
+    relatedContractSlugs: ["vivienda", "habitacion"],
+    sections: [
+      {
+        title: "Qué debe describir el inventario",
+        paragraphs: [
+          "Lista detallada de muebles y electrodomésticos, estado de conservación, número de llaves entregadas y fotografías fechadas como anexo firmado por ambas partes.",
+          "Conviene indicar quién asume reparaciones menores y el procedimiento para comunicar averías.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "¿Es obligatorio el inventario?",
+        answer:
+          "No siempre es legalmente obligatorio, pero es muy recomendable en pisos amueblados y habitaciones para demostrar el estado del inmueble al inicio del arrendamiento.",
+      },
+    ],
+  },
 ];
 
 export function getArticleBySlug(slug: string): SeoArticle | undefined {

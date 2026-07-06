@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "node scripts/postbuild.mjs",
     "start": "next start",
     "lint": "eslint",
     "generate:favicons": "python scripts/generate-web-favicons.py",
@@ -37,6 +38,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
     "tailwindcss": "^4",
+    "tsx": "^4.20.3",
     "typescript": "~6.0.3"
   }
 }

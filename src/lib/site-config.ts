@@ -20,3 +20,11 @@ export const OG_IMAGE_HEIGHT = 630;
 /** Código de verificación de Google Search Console (opcional). */
 export const GOOGLE_SITE_VERIFICATION =
   process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
+
+/** Código de verificación de Bing Webmaster Tools (opcional). */
+export const BING_SITE_VERIFICATION =
+  process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION;
+
+/** Clave IndexNow para notificar URLs a buscadores (Bing, Yandex, etc.). */
+export const INDEXNOW_KEY =
+  process.env.INDEXNOW_KEY ?? "scflseo2026indexnow";

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import {
   DEFAULT_DESCRIPTION,
   GOOGLE_SITE_VERIFICATION,
+  BING_SITE_VERIFICATION,
   OG_IMAGE_HEIGHT,
   OG_IMAGE_PATH,
   OG_IMAGE_WIDTH,
@@ -82,8 +83,17 @@ export function createRootMetadata(): Metadata {
     authors: [{ name: SITE_NAME, url: SITE_URL }],
     creator: SITE_NAME,
     publisher: SITE_NAME,
-    ...(GOOGLE_SITE_VERIFICATION
-      ? { verification: { google: GOOGLE_SITE_VERIFICATION } }
+    ...(GOOGLE_SITE_VERIFICATION || BING_SITE_VERIFICATION
+      ? {
+          verification: {
+            ...(GOOGLE_SITE_VERIFICATION
+              ? { google: GOOGLE_SITE_VERIFICATION }
+              : {}),
+            ...(BING_SITE_VERIFICATION
+              ? { other: { "msvalidate.01": BING_SITE_VERIFICATION } }
+              : {}),
+          },
+        }
       : {}),
     formatDetection: {
       email: false,

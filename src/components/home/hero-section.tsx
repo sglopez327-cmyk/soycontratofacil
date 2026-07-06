@@ -1,10 +1,14 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
-import { HeroLottie } from "./hero-lottie";
+const HeroLottie = dynamic(
+  () => import("./hero-lottie").then((mod) => mod.HeroLottie),
+  { ssr: false, loading: () => <div className="hidden lg:block lg:w-[min(420px,38vw)]" aria-hidden /> }
+);
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },

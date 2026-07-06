@@ -39,6 +39,12 @@ export const seoGuides: SeoGuide[] = [
           "En vivienda habitual, si la duración pactada es inferior a cinco años (o siete si el arrendador es persona jurídica), el contrato se prorroga obligatoriamente hasta alcanzar ese mínimo legal, salvo que las partes acuerden lo contrario en los términos previstos por la ley.",
         ],
       },
+      {
+        title: "Gastos y suministros",
+        paragraphs: [
+          "Conviene detallar quién paga la comunidad, el IBI, las reparaciones menores y los suministros. Al inicio del alquiler es recomendable acordar el cambio de titularidad de luz, agua y gas para evitar facturas impagadas a nombre del propietario.",
+        ],
+      },
     ],
     faqs: [
       {
