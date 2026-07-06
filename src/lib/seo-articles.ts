@@ -339,6 +339,281 @@ export const seoArticles: SeoArticle[] = [
       },
     ],
   },
+  {
+    slug: "modelo-contrato-alquiler-pdf-gratis",
+    title: "Modelo de contrato de alquiler en PDF gratis (España)",
+    metaDescription:
+      "Descarga un modelo de contrato de alquiler de vivienda en PDF gratis y conforme a la LAU. Generador online sin registro para arrendadores e inquilinos.",
+    intro:
+      "Muchas personas buscan un modelo de contrato de alquiler listo para rellenar. En España el documento debe adaptarse al tipo de inmueble y al uso (vivienda habitual, habitación, temporada o local), no basta con una plantilla genérica descargada sin revisar.",
+    publishedAt: "2026-07-06",
+    updatedAt: "2026-07-06",
+    relatedGuideSlugs: ["vivienda", "habitacion", "temporada"],
+    relatedArticleSlugs: ["contrato-alquiler-particulares", "fianza-deposito-alquiler"],
+    relatedContractSlugs: ["vivienda"],
+    sections: [
+      {
+        title: "Qué debe incluir un modelo serio",
+        paragraphs: [
+          "Identificación de arrendador e inquilino, descripción del inmueble, renta, fianza, duración, gastos, suministros y condiciones de prórroga o desistimiento según la LAU.",
+          "Un buen modelo no sustituye el asesoramiento profesional, pero sí evita olvidar cláusulas básicas que suelen generar conflictos.",
+        ],
+      },
+      {
+        title: "Ventaja de un generador frente a una plantilla fija",
+        paragraphs: [
+          "Un generador guiado solo pregunta los datos relevantes para tu caso y elabora el PDF con la estructura adecuada al tipo de contrato elegido, reduciendo errores y texto innecesario.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "¿Es válido un contrato de alquiler generado online?",
+        answer:
+          "Puede ser válido si refleja correctamente la voluntad de las partes y cumple la normativa aplicable. Ambas partes deben leerlo, acordarlo y firmarlo. Conviene revisar situaciones especiales con un profesional.",
+      },
+    ],
+  },
+  {
+    slug: "actualizacion-renta-alquiler",
+    title: "Actualización de la renta en contratos de alquiler",
+    metaDescription:
+      "Cómo se actualiza la renta del alquiler de vivienda habitual en España: índice, límites, revisión anual y qué debe decir el contrato.",
+    intro:
+      "La revisión del precio del alquiler es una de las cláusulas que más litigios generan. En vivienda habitual la ley limita cómo y cuándo puede incrementarse la renta durante la vigencia del contrato.",
+    publishedAt: "2026-07-06",
+    updatedAt: "2026-07-06",
+    relatedGuideSlugs: ["vivienda", "local"],
+    relatedArticleSlugs: ["plazos-alquiler-vivienda", "contrato-alquiler-particulares"],
+    relatedContractSlugs: ["vivienda"],
+    sections: [
+      {
+        title: "Marco legal básico",
+        paragraphs: [
+          "En arrendamientos de vivienda habitual, la actualización suele vincularse a los índices y límites previstos por la normativa vigente en cada momento. El contrato debe indicar si las partes pactan revisión y con qué periodicidad.",
+          "Conviene evitar cláusulas ambiguas del tipo «según IPC» sin concretar procedimiento, fecha de revisión y límites aplicables.",
+        ],
+      },
+      {
+        title: "Buenas prácticas al redactar",
+        paragraphs: [
+          "Incluye la renta inicial, la fecha de la primera revisión posible, el índice de referencia y cómo se comunicará el nuevo importe al inquilino. Guarda justificante de la notificación.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "¿Puede el propietario subir la renta cada año libremente?",
+        answer:
+          "No en vivienda habitual. La actualización está sujeta a los límites y condiciones de la LAU y normativa complementaria. Lo pactado no puede contradecir la ley.",
+      },
+    ],
+  },
+  {
+    slug: "gastos-compraventa-vivienda",
+    title: "Gastos de una compraventa de vivienda: quién paga qué",
+    metaDescription:
+      "Desglose de gastos al comprar o vender una vivienda entre particulares: notaría, registro, ITP, gestoría y cómo reflejarlos en el contrato.",
+    intro:
+      "Antes de firmar arras o contrato privado conviene saber qué costes genera la operación y quién los asume. Una parte importante de conflictos surge porque no se pactó por escrito la distribución de gastos.",
+    publishedAt: "2026-07-06",
+    updatedAt: "2026-07-06",
+    relatedGuideSlugs: ["compraventa-vivienda", "arras"],
+    relatedArticleSlugs: ["itp-compraventa-vivienda", "checklist-compraventa-vivienda"],
+    relatedContractSlugs: ["compraventa-vivienda", "arras"],
+    sections: [
+      {
+        title: "Gastos habituales del comprador",
+        paragraphs: [
+          "Suele corresponder al comprador el ITP (en vivienda de segunda mano), gastos de notaría y registro de la parte proporcional que le corresponda, y honorarios de gestoría si se utilizan.",
+        ],
+      },
+      {
+        title: "Gastos habituales del vendedor",
+        paragraphs: [
+          "El vendedor suele asumir la plusvalía municipal si aplica, certificados que deba aportar, cancelación de hipoteca previa si existiera, y su parte de notaría y registro según pacto o costumbre local.",
+          "Todo ello puede negociarse, pero debe constar expresamente en el contrato privado o en la escritura.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "¿Pueden repartir los gastos al 50 %?",
+        answer:
+          "Sí, si ambas partes lo pactan libremente. Lo importante es que quede claro por escrito antes de comprometerse económicamente.",
+      },
+    ],
+  },
+  {
+    slug: "nota-simple-antes-de-comprar",
+    title: "Nota simple del Registro de la Propiedad: para qué sirve",
+    metaDescription:
+      "Qué es la nota simple registral, por qué pedirla antes de comprar una vivienda y qué datos comprueba el comprador antes de firmar.",
+    intro:
+      "La nota simple es uno de los documentos más útiles antes de comprar un inmueble. Permite verificar quién es el titular registral, si existen hipotecas, embargos u otras cargas que afecten a la operación.",
+    publishedAt: "2026-07-06",
+    updatedAt: "2026-07-06",
+    relatedGuideSlugs: ["compraventa-vivienda", "arras"],
+    relatedArticleSlugs: ["checklist-compraventa-vivienda", "gastos-compraventa-vivienda"],
+    relatedContractSlugs: ["compraventa-vivienda"],
+    sections: [
+      {
+        title: "Qué información aporta",
+        paragraphs: [
+          "Identifica al propietario registral, describe el inmueble, recoge cargas vigentes (hipotecas, servidumbres, anotaciones) y ayuda a detectar discrepancias entre la realidad registral y lo que declara el vendedor.",
+        ],
+      },
+      {
+        title: "Cuándo solicitarla",
+        paragraphs: [
+          "Lo ideal es pedirla antes de entregar arras o al menos antes de firmar un contrato privado con entrega de cantidades significativas. Conviene que sea reciente.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "¿La nota simple sustituye al contrato de compraventa?",
+        answer:
+          "No. Es un documento informativo previo. El contrato y la escritura son los que formalizan la transmisión entre las partes.",
+      },
+    ],
+  },
+  {
+    slug: "cuando-usar-contrato-rescision",
+    title: "Cuándo usar un documento de rescisión de alquiler",
+    metaDescription:
+      "En qué casos conviene firmar una rescisión anticipada del contrato de arrendamiento y qué ventajas tiene frente a una baja verbal.",
+    intro:
+      "Terminar un alquiler antes de tiempo puede hacerse por mutuo acuerdo, desistimiento legal del inquilino u otras causas. Un documento de rescisión deja constancia escrita de las condiciones de la salida y evita malentendidos sobre fianza y suministros.",
+    publishedAt: "2026-07-06",
+    updatedAt: "2026-07-06",
+    relatedGuideSlugs: ["rescision", "vivienda", "cambio-suministros"],
+    relatedArticleSlugs: ["impago-alquiler-que-hacer", "cambio-suministros-alquiler"],
+    relatedContractSlugs: ["rescision", "cambio-suministros"],
+    sections: [
+      {
+        title: "Supuestos frecuentes",
+        paragraphs: [
+          "Acuerdo amistoso de finalización, salida anticipada del inquilino tras el plazo legal de desistimiento, o cierre negociado tras impago parcial con renuncia a futuras reclamaciones si se pacta válidamente.",
+        ],
+      },
+      {
+        title: "Qué debe resolver el documento",
+        paragraphs: [
+          "Fecha de entrega de llaves, estado del inmueble, devolución de fianza, liquidación de rentas pendientes, traspaso de suministros y entrega de documentación (llaves, mandos, certificados).",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "¿Basta con devolver las llaves?",
+        answer:
+          "No es recomendable. Sin documento firmado pueden quedar dudas sobre la fecha efectiva de salida, la fianza y los consumos pendientes.",
+      },
+    ],
+  },
+  {
+    slug: "comprar-piso-entre-particulares",
+    title: "Comprar un piso entre particulares: pasos esenciales",
+    metaDescription:
+      "Guía paso a paso para comprar una vivienda de segunda mano entre particulares en España: arras, contrato, notaría y registro.",
+    intro:
+      "Comprar a un particular sin promotora ni agencia puede ahorrar comisiones, pero exige más diligencia del comprador. Conviene seguir un orden lógico para no adelantar dinero sin garantías.",
+    publishedAt: "2026-07-06",
+    updatedAt: "2026-07-06",
+    relatedGuideSlugs: ["compraventa-vivienda", "arras"],
+    relatedArticleSlugs: ["nota-simple-antes-de-comprar", "tipos-de-arras", "gastos-compraventa-vivienda"],
+    relatedContractSlugs: ["compraventa-vivienda", "arras"],
+    sections: [
+      {
+        title: "Orden recomendable",
+        paragraphs: [
+          "1) Verificar titularidad y cargas. 2) Visitar y comprobar estado. 3) Negociar precio y calendario. 4) Firmar arras o contrato privado. 5) Preparar financiación e impuestos. 6) Otorgar escritura ante notario. 7) Inscribir en el Registro.",
+        ],
+      },
+      {
+        title: "Documentos útiles en cada fase",
+        paragraphs: [
+          "Nota simple, certificado energético, recibos de comunidad e IBI, contrato de arras si procede, contrato privado de compraventa y finalmente escritura pública.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "¿Es obligatorio pasar por notario?",
+        answer:
+          "Para transmitir plenamente la propiedad de una vivienda, sí: la escritura pública ante notario es el instrumento habitual y necesario para inscribir la titularidad a favor del comprador.",
+      },
+    ],
+  },
+  {
+    slug: "alquiler-habitacion-piso-compartido",
+    title: "Alquiler de habitación en piso compartido: aspectos legales",
+    metaDescription:
+      "Qué debe incluir el contrato de alquiler de habitación, convivencia, gastos compartidos y diferencias con el alquiler de vivienda completa.",
+    intro:
+      "Compartir piso es económicamente atractivo, pero jurídicamente distinto del alquiler de una vivienda entera. El contrato debe definir con precisión qué se arrienda y cómo se comparten gastos y espacios comunes.",
+    publishedAt: "2026-07-06",
+    updatedAt: "2026-07-06",
+    relatedGuideSlugs: ["habitacion", "vivienda"],
+    relatedArticleSlugs: ["inventario-mobiliario-alquiler", "contrato-alquiler-particulares"],
+    relatedContractSlugs: ["habitacion"],
+    sections: [
+      {
+        title: "Diferencias con el alquiler de vivienda completa",
+        paragraphs: [
+          "En habitación suele arrendarse un espacio privativo dentro de una vivienda con zonas comunes. El régimen de fianza, duración y desistimiento puede variar respecto a la vivienda habitual íntegra.",
+        ],
+      },
+      {
+        title: "Cláusulas de convivencia",
+        paragraphs: [
+          "Horarios, visitas, limpieza, uso de cocina y baño, mascotas, prohibición de subarriendo no consentido y reparto de suministros. Cuanto más claro, menos conflictos.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "¿Puede el casero entrar en la habitación cuando quiera?",
+        answer:
+          "No. Aunque el propietario conserve parte de la vivienda, el arrendatario de habitación tiene derecho al uso pacífico de su espacio. El contrato puede regular accesos por mantenimiento con preaviso razonable.",
+      },
+    ],
+  },
+  {
+    slug: "contrato-arras-penitenciales-guia",
+    title: "Contrato de arras penitenciales: guía y ejemplo práctico",
+    metaDescription:
+      "Cómo redactar un contrato de arras penitenciales al comprar una vivienda: importe, plazos, consecuencias de desistir y modelo gratuito.",
+    intro:
+      "Las arras penitenciales son el mecanismo más usado para reservar una vivienda en España. Permiten a comprador y vendedor desistir asumiendo una penalización económica conocida de antemano.",
+    publishedAt: "2026-07-06",
+    updatedAt: "2026-07-06",
+    relatedGuideSlugs: ["arras", "compraventa-vivienda"],
+    relatedArticleSlugs: ["tipos-de-arras", "comprar-piso-entre-particulares"],
+    relatedContractSlugs: ["arras"],
+    sections: [
+      {
+        title: "Elementos imprescindibles",
+        paragraphs: [
+          "Identificación de las partes y del inmueble, precio total de compraventa, cantidad entregada en arras, fecha límite para escritura, distribución de gastos y mención expresa de que las arras son penitenciales.",
+        ],
+      },
+      {
+        title: "Consecuencias de desistir",
+        paragraphs: [
+          "Si desiste el comprador, pierde las arras. Si desiste el vendedor, debe devolver el doble. Esta claridad reduce incertidumbre, pero exige identificar correctamente el tipo de arras en el documento.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "¿Las arras se descuentan del precio final?",
+        answer:
+          "Sí. Las arras penitenciales se imputan al precio total de compraventa si la operación se completa con normalidad.",
+      },
+    ],
+  },
 ];
 
 export function getArticleBySlug(slug: string): SeoArticle | undefined {

@@ -57,6 +57,11 @@ export const seoGuides: SeoGuide[] = [
         answer:
           "No es obligatorio inscribir el contrato en el Registro de la Propiedad, aunque el arrendatario puede solicitar la inscripción si el arrendador se niega a facilitar documentación. Sí es recomendable conservar copia firmada por ambas partes.",
       },
+      {
+        question: "¿Puede incluirse un inventario de mobiliario?",
+        answer:
+          "Sí, y es muy recomendable en pisos amueblados. Puede incorporarse como anexo al contrato con descripción del estado de cada elemento y número de llaves entregadas.",
+      },
     ],
   },
   {
@@ -80,12 +85,24 @@ export const seoGuides: SeoGuide[] = [
           "Motivo de la temporalidad, fecha de inicio y fin, renta, fianza pactada, inventario del mobiliario si es amueblado, y reparto de gastos de suministros y comunidad.",
         ],
       },
+      {
+        title: "Riesgos de usar temporada de forma incorrecta",
+        paragraphs: [
+          "Si el inquilino reside de forma permanente y sin causa temporal real, el contrato puede ser recalificado como arrendamiento de vivienda habitual con las prórrogas y garantías que ello conlleva.",
+          "Conviene documentar el motivo de la temporalidad (trabajo, estudios, traslado temporal) y la duración previsible del arrendamiento.",
+        ],
+      },
     ],
     faqs: [
       {
         question: "¿Se aplica la LAU de vivienda habitual?",
         answer:
           "No en los mismos términos. Si el uso no es de vivienda habitual, rigen otras previsiones de la LAU y el pacto entre partes adquiere mayor relevancia, siempre respetando la normativa imperativa.",
+      },
+      {
+        question: "¿Cuánto puede durar un contrato de temporada?",
+        answer:
+          "Depende del motivo y del pacto. Suele ser inferior a doce meses o vinculado a un evento concreto. Debe existir coherencia entre la duración y la causa temporal alegada.",
       },
     ],
   },
@@ -104,12 +121,23 @@ export const seoGuides: SeoGuide[] = [
           "Descripción de la habitación arrendada, zonas comunes (cocina, baño, salón), normas de convivencia, importe de la renta, gastos incluidos o no, y duración del arrendamiento.",
         ],
       },
+      {
+        title: "Gastos y suministros en piso compartido",
+        paragraphs: [
+          "Especifica si la renta incluye gastos de comunidad, internet o limpieza. Para luz, agua y gas conviene indicar si se reparten por consumo, por habitación o mediante cantidad fija mensual.",
+        ],
+      },
     ],
     faqs: [
       {
         question: "¿Puede el propietario vivir en el mismo piso?",
         answer:
           "Sí. Es un supuesto frecuente en alquiler de habitación. El contrato debe aclarar la convivencia y el régimen de uso de las zonas comunes.",
+      },
+      {
+        question: "¿Se puede subarrendar la habitación?",
+        answer:
+          "Salvo pacto expreso del arrendador, el subarriendo o cesión no suele estar permitido. Conviene prohibirlo expresamente en el contrato.",
       },
     ],
   },
@@ -134,12 +162,24 @@ export const seoGuides: SeoGuide[] = [
           "La duración mínima y las causas de resolución anticipada deben pactarse conforme a la LAU para locales. Conviene detallar preaviso, penalizaciones y estado del local en la devolución.",
         ],
       },
+      {
+        title: "Actualización de renta y gastos",
+        paragraphs: [
+          "En locales comerciales las partes suelen tener mayor libertad contractual que en vivienda habitual. Aun así, la cláusula de revisión debe redactarse con claridad (índice, periodicidad, topes).",
+          "También conviene indicar quién paga IBI, basuras, seguros y derramas extraordinarias de la comunidad si el local forma parte de ella.",
+        ],
+      },
     ],
     faqs: [
       {
         question: "¿Quién paga las obras en un local comercial?",
         answer:
           "Depende de lo pactado. Las obras necesarias para mantener el local en condiciones de uso suelen corresponder al arrendador; las adaptaciones para la actividad del inquilino, a este último, salvo acuerdo distinto.",
+      },
+      {
+        question: "¿Hace falta licencia de actividad?",
+        answer:
+          "Casi siempre sí para ejercer actividad comercial o profesional. El arrendatario debe comprobar que el local admite la actividad prevista según ordenanza municipal y urbanística.",
       },
     ],
   },
@@ -158,12 +198,23 @@ export const seoGuides: SeoGuide[] = [
           "Incluye referencia catastral, polígono, parcela, superficie y linderos. Si existe aprovechamiento concreto (cultivo, pasto, caza, etc.), debe reflejarse expresamente.",
         ],
       },
+      {
+        title: "Renta, canon y obligaciones",
+        paragraphs: [
+          "Puede pactarse renta periódica, canon único u otras fórmulas según el aprovechamiento. Detalla quién asume seguros, tributos rústicos, reparaciones y conservación de infraestructuras (cercados, pozos, construcciones auxiliares).",
+        ],
+      },
     ],
     faqs: [
       {
         question: "¿Se aplica la misma normativa que en vivienda?",
         answer:
           "No. Los arrendamientos rústicos tienen régimen específico. Es importante verificar la normativa autonómica y estatal aplicable al aprovechamiento pactado.",
+      },
+      {
+        question: "¿Puedo destinar la finca a otro uso distinto del pactado?",
+        answer:
+          "No sin autorización del arrendador y sin comprobar que el cambio de uso es legal conforme a la normativa aplicable al inmueble.",
       },
     ],
   },
@@ -182,12 +233,23 @@ export const seoGuides: SeoGuide[] = [
           "Número o identificación de la plaza, dirección del garaje, renta mensual, acceso (mando, llave), gastos de comunidad de garajes si los hubiera, y prohibiciones de uso (por ejemplo, almacenar materiales inflamables en trasteros).",
         ],
       },
+      {
+        title: "Uso del vehículo y del trastero",
+        paragraphs: [
+          "En garajes conviene indicar el tipo de vehículo autorizado y si se permite aparcamiento doble. En trasteros, especifica qué bienes pueden almacenarse y las prohibiciones de materiales peligrosos o actividades no permitidas.",
+        ],
+      },
     ],
     faqs: [
       {
         question: "¿Puede alquilarse un garaje sin alquilar la vivienda?",
         answer:
           "Sí. Las plazas de garaje y trasteros pueden arrendarse de forma independiente si así está previsto en la comunidad y en la titulación del inmueble.",
+      },
+      {
+        question: "¿Quién paga la comunidad del garaje?",
+        answer:
+          "Debe pactarse en el contrato. Si no se dice nada, pueden surgir disputas sobre cuotas ordinarias y derramas.",
       },
     ],
   },
@@ -212,12 +274,23 @@ export const seoGuides: SeoGuide[] = [
           "El vendedor debe garantizar que el inmueble está al corriente de comunidad e IBI, y que no existen cargas ocultas no declaradas. Es habitual exigir nota simple registral actualizada antes de firmar.",
         ],
       },
+      {
+        title: "De la firma privada a la escritura pública",
+        paragraphs: [
+          "El contrato privado compromete a las partes, pero la transmisión plena exige escritura ante notario e inscripción registral. Entre ambas fases suele producirse la entrega de arras, verificación de documentación y liquidación del ITP.",
+        ],
+      },
     ],
     faqs: [
       {
         question: "¿Basta un contrato privado para comprar una vivienda?",
         answer:
           "El contrato privado vincula a las partes, pero la transmisión plena de la propiedad requiere escritura pública e inscripción en el Registro de la Propiedad. El contrato privado suele ser el paso previo a la escritura.",
+      },
+      {
+        question: "¿Qué pasa si el vendedor tiene hipoteca pendiente?",
+        answer:
+          "Debe reflejarse en el contrato. Lo habitual es cancelar la hipoteca con parte del precio en el acto de la escritura o acordar otra fórmula con el banco antes de la firma.",
       },
     ],
   },
@@ -236,12 +309,23 @@ export const seoGuides: SeoGuide[] = [
           "Arras penitenciales: cualquiera puede desistir perdiendo o devolviendo el doble. Arras confirmatorias: refuerzan el compromiso sin facultad unilateral de desistimiento. Arras penales: fijan indemnización por incumplimiento.",
         ],
       },
+      {
+        title: "Plazos y condición suspensiva",
+        paragraphs: [
+          "Incluye fecha prevista de escritura, precio total de compraventa y si la operación queda sujeta a financiación hipotecaria u otras condiciones. Si el comprador no obtiene el préstamo en el plazo pactado, conviene prever cómo se devuelven las arras.",
+        ],
+      },
     ],
     faqs: [
       {
         question: "¿Cuánto se suele entregar de arras?",
         answer:
           "No hay cantidad legal fija. Lo habitual en el mercado inmobiliario español es entre el 5 % y el 10 % del precio de compraventa, aunque las partes pueden pactar otra cifra.",
+      },
+      {
+        question: "¿Deben indicarse expresamente como penitenciales?",
+        answer:
+          "Sí. La calificación jurídica de las arras determina las consecuencias de desistir. Conviene que el documento lo indique de forma clara.",
       },
     ],
   },
@@ -260,12 +344,23 @@ export const seoGuides: SeoGuide[] = [
           "Referencia registral de la plaza, vinculación con la vivienda si existe, estado de pagos de la comunidad de propietarios del garaje, y fecha de otorgamiento de escritura pública.",
         ],
       },
+      {
+        title: "Compraventa conjunta o separada",
+        paragraphs: [
+          "Si el garaje se vende junto con la vivienda, suele reflejarse en la misma operación. Si es independiente, el contrato debe identificar la unidad registral autónoma y su precio separado.",
+        ],
+      },
     ],
     faqs: [
       {
         question: "¿Se paga ITP en la compraventa de un garaje?",
         answer:
           "Sí. La compraventa de garajes entre particulares tributa en el Impuesto sobre Transmisiones Patrimoniales (ITP) de la comunidad autónoma correspondiente.",
+      },
+      {
+        question: "¿Puede venderse un garaje con inquilino?",
+        answer:
+          "Sí, pero el arrendamiento vigente puede afectar a la posesión y al precio. Debe informarse al comprador y reflejarse en el contrato.",
       },
     ],
   },
@@ -284,12 +379,23 @@ export const seoGuides: SeoGuide[] = [
           "Referencia al contrato original, fecha de efectos de la rescisión, renuncia a reclamaciones futuras si procede, devolución de fianza y lecturas finales de suministros.",
         ],
       },
+      {
+        title: "Diferencia entre rescisión acordada y desistimiento unilateral",
+        paragraphs: [
+          "La rescisión por acuerdo fija voluntariamente las condiciones de salida. El desistimiento unilateral del inquilino, cuando la ley lo permite, sigue un régimen distinto de preaviso y no siempre requiere el mismo documento, aunque conviene dejar constancia escrita.",
+        ],
+      },
     ],
     faqs: [
       {
         question: "¿Puede el inquilino rescindir unilateralmente?",
         answer:
           "En vivienda habitual, tras el primer año de vigencia del contrato o de una prórroga, el inquilino puede desistir previo aviso con la antelación pactada (mínimo treinta días). Este documento formaliza el acuerdo entre las partes.",
+      },
+      {
+        question: "¿Cuándo se devuelve la fianza?",
+        answer:
+          "Tras la entrega de llaves y comprobar que no hay rentas o daños imputables conforme a ley y contrato. El documento de rescisión puede fijar el importe y plazo de devolución.",
       },
     ],
   },
@@ -308,12 +414,23 @@ export const seoGuides: SeoGuide[] = [
           "Acredita ante terceros que arrendador e inquilino acuerdan quién asume cada suministro desde una fecha determinada. Facilita los trámites con las comercializadoras sin sustituir los contratos propios de cada compañía.",
         ],
       },
+      {
+        title: "Suministros más habituales",
+        paragraphs: [
+          "Electricidad, agua, gas natural o butano, y en algunos casos internet o telecomunicaciones si se pactan a nombre del inquilino. Cada compañía exige su propio procedimiento y documentación.",
+        ],
+      },
     ],
     faqs: [
       {
         question: "¿Es obligatorio cambiar los suministros al nombre del inquilino?",
         answer:
           "No siempre es obligatorio, pero es muy recomendable para evitar que el propietario siga siendo responsable de facturas impagadas. Cada compañía tiene su propio procedimiento de cambio de titular.",
+      },
+      {
+        question: "¿Sirve este documento ante la comercializadora?",
+        answer:
+          "Puede facilitar el trámite como prueba del acuerdo entre partes, pero la compañía de suministros suele exigir además sus propios formularios y lecturas de contador.",
       },
     ],
   },
