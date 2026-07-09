@@ -63,8 +63,8 @@ const FOOTER_FONT_SIZE = 8;
 const FOOTER_TOP_GAP_MM = 10;
 /** Espacio entre el aviso legal y el bloque de marca en el pie. */
 const FOOTER_BRAND_TOP_GAP_MM = 8;
-/** Separación visual entre el icono y el texto de marca (~6px). */
-const FOOTER_LOGO_TEXT_GAP_MM = 2;
+/** Separación visual entre el icono y el texto de marca. */
+const FOOTER_LOGO_TEXT_GAP_MM = 4.5;
 const FOOTER_TEXT_COLOR = { r: 115, g: 115, b: 115 } as const;
 const BODY_TEXT_COLOR = { r: 20, g: 20, b: 20 } as const;
 const BRAND_NAVY = { r: 15, g: 23, b: 42 } as const;
