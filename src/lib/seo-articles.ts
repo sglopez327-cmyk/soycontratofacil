@@ -63,7 +63,10 @@ export const seoArticles: SeoArticle[] = [
     publishedAt: "2026-07-06",
     updatedAt: "2026-07-06",
     relatedGuideSlugs: ["arras", "compraventa-vivienda"],
-    relatedArticleSlugs: ["checklist-compraventa-vivienda"],
+    relatedArticleSlugs: [
+      "checklist-compraventa-vivienda",
+      "modelo-arras-penitenciales-pdf",
+    ],
     relatedContractSlugs: ["arras", "compraventa-vivienda"],
     sections: [
       {
@@ -131,7 +134,11 @@ export const seoArticles: SeoArticle[] = [
     publishedAt: "2026-07-06",
     updatedAt: "2026-07-06",
     relatedGuideSlugs: ["compraventa-vivienda", "arras", "garaje-trastero"],
-    relatedArticleSlugs: ["tipos-de-arras"],
+    relatedArticleSlugs: [
+      "tipos-de-arras",
+      "contrato-compraventa-vivienda-particulares-pdf",
+      "modelo-arras-penitenciales-pdf",
+    ],
     relatedContractSlugs: ["compraventa-vivienda", "arras"],
     sections: [
       {
@@ -286,7 +293,11 @@ export const seoArticles: SeoArticle[] = [
     publishedAt: "2026-07-06",
     updatedAt: "2026-07-06",
     relatedGuideSlugs: ["vivienda", "temporada", "habitacion"],
-    relatedArticleSlugs: ["contrato-alquiler-particulares", "plazos-alquiler-vivienda"],
+    relatedArticleSlugs: [
+      "contrato-alquiler-particulares",
+      "plazos-alquiler-vivienda",
+      "contrato-alquiler-temporada-pdf",
+    ],
     relatedContractSlugs: ["vivienda", "temporada"],
     sections: [
       {
@@ -349,7 +360,11 @@ export const seoArticles: SeoArticle[] = [
     publishedAt: "2026-07-06",
     updatedAt: "2026-07-06",
     relatedGuideSlugs: ["vivienda", "habitacion", "temporada"],
-    relatedArticleSlugs: ["contrato-alquiler-particulares", "fianza-deposito-alquiler"],
+    relatedArticleSlugs: [
+      "contrato-alquiler-particulares",
+      "fianza-deposito-alquiler",
+      "plantilla-contrato-alquiler-pdf",
+    ],
     relatedContractSlugs: ["vivienda"],
     sections: [
       {
@@ -590,7 +605,11 @@ export const seoArticles: SeoArticle[] = [
     publishedAt: "2026-07-06",
     updatedAt: "2026-07-06",
     relatedGuideSlugs: ["arras", "compraventa-vivienda"],
-    relatedArticleSlugs: ["tipos-de-arras", "comprar-piso-entre-particulares"],
+    relatedArticleSlugs: [
+      "tipos-de-arras",
+      "comprar-piso-entre-particulares",
+      "modelo-arras-penitenciales-pdf",
+    ],
     relatedContractSlugs: ["arras"],
     sections: [
       {
@@ -611,6 +630,251 @@ export const seoArticles: SeoArticle[] = [
         question: "¿Las arras se descuentan del precio final?",
         answer:
           "Sí. Las arras penitenciales se imputan al precio total de compraventa si la operación se completa con normalidad.",
+      },
+    ],
+  },
+  {
+    slug: "plantilla-contrato-alquiler-pdf",
+    title: "Plantilla de contrato de alquiler gratis: PDF listo para firmar (2026)",
+    metaDescription:
+      "Descarga tu plantilla de contrato de alquiler de vivienda en PDF gratis. Modelo legal actualizado, sin registro y listo para firmar en minutos.",
+    intro:
+      "Si buscas una plantilla de contrato de alquiler lista para usar, lo decisivo es que el documento se adapte a un alquiler urbano de vivienda y a la normativa española. Con el generador rellenas los datos esenciales y descargas un PDF listo para imprimir y firmar, sin registro.",
+    publishedAt: "2026-07-17",
+    updatedAt: "2026-07-17",
+    relatedGuideSlugs: ["vivienda"],
+    relatedArticleSlugs: [
+      "modelo-contrato-alquiler-pdf-gratis",
+      "contrato-alquiler-particulares",
+      "fianza-deposito-alquiler",
+    ],
+    relatedContractSlugs: ["vivienda"],
+    sections: [
+      {
+        title: "Qué debe incluir una plantilla de contrato de alquiler",
+        paragraphs: [
+          "Identificación de arrendador e inquilino, descripción de la vivienda, renta, fianza, duración, gastos, suministros y condiciones de prórroga o desistimiento según la LAU.",
+          "Una plantilla genérica o de otro país suele omitir cláusulas clave. Mejor partir de un modelo pensado para vivienda urbana en España y revisarlo antes de firmar.",
+        ],
+      },
+      {
+        title: "Plantilla estática vs generador online",
+        paragraphs: [
+          "Una plantilla Word o PDF fija te obliga a borrar y reescribir a mano. El generador solo pide los datos de tu caso y elabora el contrato con la estructura adecuada, listo para descargar.",
+        ],
+      },
+      {
+        title: "Cómo obtener tu PDF listo para firmar",
+        paragraphs: [
+          "Entra en el generador de contrato de alquiler de vivienda, completa el formulario paso a paso, revisa el resumen y descarga el PDF gratis. Ambas partes deben leerlo y firmarlo.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "¿Puedo descargar la plantilla de contrato de alquiler en PDF gratis?",
+        answer:
+          "Sí. En SoyContratoFacil.es generas el documento y descargas el PDF sin registro ni coste.",
+      },
+      {
+        question: "¿Sirve esta plantilla para vivienda habitual?",
+        answer:
+          "Sí. Está orientada al alquiler urbano de vivienda. Si el uso es temporal o de local, usa el generador específico de temporada o de local comercial.",
+      },
+    ],
+  },
+  {
+    slug: "contrato-compraventa-vivienda-particulares-pdf",
+    title:
+      "Contrato privado de compraventa de vivienda entre particulares (PDF gratis)",
+    metaDescription:
+      "Genera y descarga tu contrato privado de compraventa de vivienda entre particulares en PDF gratis. Listo para revisar, imprimir y firmar.",
+    intro:
+      "Cuando compras o vendes una vivienda entre particulares, un contrato privado deja por escrito precio, inmueble y condiciones. Puedes generar el PDF gratis en minutos y usarlo como base clara antes de la escritura notarial.",
+    publishedAt: "2026-07-17",
+    updatedAt: "2026-07-17",
+    relatedGuideSlugs: ["compraventa-vivienda", "arras"],
+    relatedArticleSlugs: [
+      "checklist-compraventa-vivienda",
+      "modelo-arras-penitenciales-pdf",
+      "comprar-piso-entre-particulares",
+    ],
+    relatedContractSlugs: ["compraventa-vivienda", "arras"],
+    sections: [
+      {
+        title: "Para qué sirve el contrato privado de compraventa",
+        paragraphs: [
+          "Documenta el acuerdo entre comprador y vendedor particulares: identificación de la vivienda, precio, forma de pago y plazos. No sustituye por sí solo la escritura pública habitual para inscribir en el Registro, pero aporta prueba y claridad.",
+        ],
+      },
+      {
+        title: "Qué debe incluir el contrato",
+        paragraphs: [
+          "Datos de las partes, descripción del inmueble (dirección y referencia catastral si procede), precio total, pagos, estado de cargas si se declara y, si lo pactáis, la distribución de gastos.",
+        ],
+      },
+      {
+        title: "Generar y descargar el PDF ahora",
+        paragraphs: [
+          "Usa el generador de compraventa de vivienda: completa el formulario, revisa el resumen y descarga el PDF gratis. Si aún estás en fase de reserva, conviene valorar también un contrato de arras.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "¿El contrato privado sustituye a la notaría?",
+        answer:
+          "No. Suele documentar el acuerdo entre particulares. Para inscribir la transmisión lo habitual es elevar a escritura pública ante notario.",
+      },
+      {
+        question: "¿Puedo descargar el contrato de compraventa en PDF gratis?",
+        answer:
+          "Sí. Lo generas en SoyContratoFacil.es y lo descargas listo para imprimir, sin registro.",
+      },
+    ],
+  },
+  {
+    slug: "modelo-arras-penitenciales-pdf",
+    title: "Modelo de arras penitenciales para comprar vivienda (descarga PDF)",
+    metaDescription:
+      "Descarga un modelo de arras penitenciales en PDF gratis para reservar una vivienda. Documento legal, claro y listo para firmar.",
+    intro:
+      "Las arras penitenciales permiten reservar una vivienda con una cantidad a cuenta y reglas claras si alguna parte desiste. Genera el modelo en PDF gratis y fírmalo con los datos de tu operación.",
+    publishedAt: "2026-07-17",
+    updatedAt: "2026-07-17",
+    relatedGuideSlugs: ["arras", "compraventa-vivienda"],
+    relatedArticleSlugs: [
+      "tipos-de-arras",
+      "contrato-arras-penitenciales-guia",
+      "contrato-compraventa-vivienda-particulares-pdf",
+    ],
+    relatedContractSlugs: ["arras"],
+    sections: [
+      {
+        title: "Qué resuelve un modelo de arras penitenciales",
+        paragraphs: [
+          "Fija el importe entregado, el plazo para escriturar y las consecuencias de desistir: el comprador puede perder las arras y el vendedor, en su caso, devolver el doble. Esa claridad reduce conflictos en la reserva.",
+        ],
+      },
+      {
+        title: "Datos imprescindibles del documento",
+        paragraphs: [
+          "Identificación de las partes y de la vivienda, precio de compraventa, cantidad de arras, mención de que son penitenciales, fecha límite para la escritura y, si procede, distribución de gastos.",
+        ],
+      },
+      {
+        title: "Descargar el PDF con el generador",
+        paragraphs: [
+          "Entra en el generador de arras, completa los datos, revisa el resumen y descarga el PDF gratis, listo para imprimir. Revisa siempre el documento antes de firmar.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "¿Las arras penitenciales se descuentan del precio?",
+        answer:
+          "Sí, si la compraventa se perfecciona con normalidad, las arras se imputan al precio total.",
+      },
+      {
+        question: "¿Puedo descargar el modelo de arras en PDF gratis?",
+        answer:
+          "Sí. En SoyContratoFacil.es generas el contrato de arras y descargas el PDF sin registro.",
+      },
+    ],
+  },
+  {
+    slug: "contrato-alquiler-temporada-pdf",
+    title: "Contrato de alquiler de temporada: cuándo usarlo y descargar PDF",
+    metaDescription:
+      "Contrato de alquiler de temporada o temporal en PDF gratis. Cuándo usarlo, diferencias con vivienda habitual y descarga lista para firmar.",
+    intro:
+      "El contrato de alquiler de temporada (o temporal) se usa cuando la vivienda urbana no es residencia habitual del inquilino, sino una estancia por trabajo, estudios u otro motivo temporal. Genera el PDF gratis y evita confundirlo con el contrato de vivienda habitual.",
+    publishedAt: "2026-07-17",
+    updatedAt: "2026-07-17",
+    relatedGuideSlugs: ["temporada", "vivienda"],
+    relatedArticleSlugs: [
+      "alquiler-temporada-vs-habitual",
+      "plantilla-contrato-alquiler-pdf",
+    ],
+    relatedContractSlugs: ["temporada"],
+    sections: [
+      {
+        title: "Cuándo usar el contrato de temporada",
+        paragraphs: [
+          "Cuando existe una causa temporal clara y el inmueble no se destina a domicilio habitual. Usarlo mal para eludir el régimen de vivienda habitual puede generar problemas legales.",
+        ],
+      },
+      {
+        title: "Qué debe incluir el contrato temporal",
+        paragraphs: [
+          "Partes, descripción de la vivienda, carácter temporal del uso, duración concreta, renta, fianza y reglas sobre suministros y entrega de llaves.",
+        ],
+      },
+      {
+        title: "Descargar el PDF de temporada",
+        paragraphs: [
+          "Completa el generador de alquiler de temporada, revisa los datos y descarga el PDF gratis. Si el uso es residencia habitual, usa el generador de vivienda en su lugar.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "¿Es lo mismo temporada y temporal?",
+        answer:
+          "En la práctica se buscan ambos términos para el mismo tipo de contrato de uso no habitual. Lo importante es que el uso y la duración sean realmente temporales.",
+      },
+      {
+        question: "¿Puedo descargar el contrato de temporada en PDF gratis?",
+        answer:
+          "Sí. Lo generas en SoyContratoFacil.es y lo descargas sin registro.",
+      },
+    ],
+  },
+  {
+    slug: "contrato-alquiler-local-comercial-pdf",
+    title: "Contrato de alquiler de local comercial en PDF (modelo gratis)",
+    metaDescription:
+      "Genera y descarga tu contrato de alquiler de local comercial en PDF gratis. Modelo para negocio, distinto del de vivienda, listo para firmar.",
+    intro:
+      "El contrato de alquiler de local comercial regula el arrendamiento de un local de negocio: destino, renta, duración y obligaciones. No uses una plantilla de piso: genera el PDF específico de local y fírmalo con las cláusulas adecuadas.",
+    publishedAt: "2026-07-17",
+    updatedAt: "2026-07-17",
+    relatedGuideSlugs: ["local"],
+    relatedArticleSlugs: [
+      "plantilla-contrato-alquiler-pdf",
+      "contrato-alquiler-particulares",
+    ],
+    relatedContractSlugs: ["local"],
+    sections: [
+      {
+        title: "Qué debe cubrir el contrato de local comercial",
+        paragraphs: [
+          "Identificación de las partes, descripción del local, destino o actividad, duración, renta, fianza o garantías, gastos e impuestos, y condiciones de entrega y devolución.",
+        ],
+      },
+      {
+        title: "Por qué no sirve la plantilla de vivienda",
+        paragraphs: [
+          "El local de negocio no sigue el mismo régimen que la vivienda habitual. Destino, duración y desistimiento suelen pactarse de forma distinta; por eso conviene un modelo específico de local comercial.",
+        ],
+      },
+      {
+        title: "Generar el PDF del local ahora",
+        paragraphs: [
+          "Usa el generador de contrato de local: rellena el formulario, revisa el resumen y descarga el PDF gratis, listo para imprimir. Revisa siempre el documento antes de la firma.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "¿Este contrato sirve para un local de negocio?",
+        answer:
+          "Sí. Está orientado a arrendamiento de local comercial. Adapta el destino y las condiciones a tu actividad concreta.",
+      },
+      {
+        question: "¿El PDF del contrato de local es gratis?",
+        answer:
+          "Sí. Lo generas y descargas en SoyContratoFacil.es sin registro ni coste.",
       },
     ],
   },
