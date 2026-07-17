@@ -10,22 +10,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: absoluteUrl(path),
     lastModified: now,
     changeFrequency:
-      path === "/"
+      path === "/" || path.startsWith("/generar/")
         ? "weekly"
         : path === "/guias" || path === "/articulos"
           ? "weekly"
-          : "monthly",
+          : path.startsWith("/guias/") || path.startsWith("/articulos/")
+            ? "weekly"
+            : "monthly",
     priority:
       path === "/"
         ? 1
         : path.startsWith("/generar/")
-          ? 0.8
-          : path.startsWith("/articulos/")
-            ? 0.75
-            : path.startsWith("/guias/")
-              ? 0.7
-              : path === "/guias" || path === "/articulos"
-                ? 0.9
-                : 0.6,
+          ? 0.9
+          : path === "/guias" || path === "/articulos"
+            ? 0.85
+            : path.startsWith("/guias/") || path.startsWith("/articulos/")
+              ? 0.8
+              : 0.6,
   }));
 }

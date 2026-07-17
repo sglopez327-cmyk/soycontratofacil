@@ -4,13 +4,15 @@ import { FooterDisclaimer } from "@/components/layout/footer-disclaimer";
 import { Navbar } from "@/components/layout/navbar";
 import { JsonLd } from "@/components/seo/json-ld";
 import { createPageMetadata } from "@/lib/seo";
+import { withCtrDescription, withCtrTitle } from "@/lib/seo-ctr";
 import { seoArticles } from "@/lib/seo-articles";
 import { articlesItemListSchema, breadcrumbSchema } from "@/lib/seo-schema";
 
 export const metadata = createPageMetadata({
-  title: "Artículos sobre contratos inmobiliarios — SoyContratoFacil.es",
-  description:
-    "Artículos prácticos sobre alquiler, compraventa, arras, fianzas y suministros en España. Información orientativa con enlaces al generador gratuito.",
+  title: withCtrTitle("Artículos sobre contratos inmobiliarios"),
+  description: withCtrDescription(
+    "Artículos prácticos sobre alquiler, compraventa, arras, fianzas y suministros en España. Información orientativa."
+  ),
   path: "/articulos",
 });
 

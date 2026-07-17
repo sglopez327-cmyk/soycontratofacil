@@ -2,6 +2,7 @@ import { getAllArticleSlugs, getArticleBySlug } from "@/lib/seo-articles";
 import { getAllGuideSlugs, getGuideBySlug } from "@/lib/seo-guides";
 import { getGuideSlugForContract } from "@/lib/seo-guide-relations";
 import { getAllContractSlugs, getContractBySlug } from "@/lib/contracts";
+import { getContractSeoMetadata } from "@/lib/seo-contract-metadata";
 import {
   CONTACT_EMAIL,
   DEFAULT_DESCRIPTION,
@@ -103,6 +104,11 @@ export function contractWebPageSchema(slug: string) {
   const contract = getContractBySlug(slug);
   if (!contract) return null;
 
+  const seo = getContractSeoMetadata(
+    slug,
+    `Generar ${contract.title}`,
+    contract.description
+  );
   const guideSlug = getGuideSlugForContract(slug);
   const relatedGuideUrl = guideSlug
     ? absoluteUrl(`/guias/${guideSlug}`)
@@ -111,8 +117,8 @@ export function contractWebPageSchema(slug: string) {
   return {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: `Generar ${contract.title}`,
-    description: contract.description,
+    name: seo.title,
+    description: seo.description,
     url: absoluteUrl(contract.href),
     inLanguage: "es-ES",
     isPartOf: {
@@ -122,10 +128,67 @@ export function contractWebPageSchema(slug: string) {
     },
     about: {
       "@type": "Thing",
-      name: contract.title,
-      description: contract.description,
+      name: seo.heading,
+      description: seo.intro,
     },
     ...(relatedGuideUrl ? { relatedLink: relatedGuideUrl } : {}),
+  };
+}
+
+export function contractFaqSchema(slug: string) {
+  const seo = getContractSeoMetadata(slug, "", "");
+  if (!seo.faqs.length) return null;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: seo.faqs.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+}
+
+export function howToGenerateContractSchema(slug: string) {
+  const contract = getContractBySlug(slug);
+  if (!contract) return null;
+
+  const seo = getContractSeoMetadata(
+    slug,
+    contract.title,
+    contract.description
+  );
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: `Cómo generar ${seo.heading.toLowerCase()}`,
+    description: seo.intro,
+    totalTime: "PT5M",
+    step: [
+      {
+        "@type": "HowToStep",
+        position: 1,
+        name: "Completa el formulario",
+        text: "Introduce los datos de las partes y las condiciones del contrato paso a paso.",
+      },
+      {
+        "@type": "HowToStep",
+        position: 2,
+        name: "Revisa el resumen",
+        text: "Comprueba que la información es correcta antes de generar el documento.",
+      },
+      {
+        "@type": "HowToStep",
+        position: 3,
+        name: "Descarga el PDF",
+        text: "Genera y descarga el PDF gratis, listo para imprimir y firmar.",
+      },
+    ],
   };
 }
 
@@ -184,11 +247,17 @@ export function allContractItemListSchema() {
     numberOfItems: getAllContractSlugs().length,
     itemListElement: getAllContractSlugs().map((slug, index) => {
       const contract = getContractBySlug(slug);
+      const seo = getContractSeoMetadata(
+        slug,
+        contract?.title ?? slug,
+        contract?.description ?? ""
+      );
       return {
         "@type": "ListItem",
         position: index + 1,
-        name: contract?.title ?? slug,
+        name: seo.heading,
         url: absoluteUrl(`/generar/${slug}`),
+        description: seo.description,
       };
     }),
   };

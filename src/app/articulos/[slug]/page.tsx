@@ -11,6 +11,7 @@ import { RelatedSeoLinks } from "@/components/seo/related-seo-links";
 import { JsonLd } from "@/components/seo/json-ld";
 import { getContractHref } from "@/lib/contracts";
 import { createPageMetadata } from "@/lib/seo";
+import { withCtrDescription, withCtrTitle } from "@/lib/seo-ctr";
 import {
   getAllArticleSlugs,
   getArticleBySlug,
@@ -42,8 +43,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   return createPageMetadata({
-    title: `${article.title} — SoyContratoFacil.es`,
-    description: article.metaDescription,
+    title: withCtrTitle(article.title),
+    description: withCtrDescription(article.metaDescription),
     path: `/articulos/${slug}`,
   });
 }
@@ -118,7 +119,7 @@ export default async function ArticuloPage({ params }: PageProps) {
                 href={getContractHref(article.relatedContractSlugs[0])}
                 className="font-medium text-brand-blue hover:underline"
               >
-                Ir al generador →
+                Generar contrato gratis → Descargar PDF
               </Link>
             </p>
           ) : null}

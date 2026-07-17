@@ -5,13 +5,15 @@ import { Navbar } from "@/components/layout/navbar";
 import { JsonLd } from "@/components/seo/json-ld";
 import { getContractHref } from "@/lib/contracts";
 import { createPageMetadata } from "@/lib/seo";
+import { withCtrDescription, withCtrTitle } from "@/lib/seo-ctr";
 import { seoGuides } from "@/lib/seo-guides";
 import { breadcrumbSchema, guidesItemListSchema } from "@/lib/seo-schema";
 
 export const metadata = createPageMetadata({
-  title: "Guías de contratos inmobiliarios — SoyContratoFacil.es",
-  description:
-    "Guías prácticas sobre contratos de alquiler, compraventa y gestión inmobiliaria en España. Aprende qué debe incluir cada documento y genera tu PDF gratis.",
+  title: withCtrTitle("Guías de contratos inmobiliarios"),
+  description: withCtrDescription(
+    "Guías prácticas sobre contratos de alquiler, compraventa y gestión inmobiliaria en España. Aprende qué debe incluir cada documento."
+  ),
   path: "/guias",
 });
 

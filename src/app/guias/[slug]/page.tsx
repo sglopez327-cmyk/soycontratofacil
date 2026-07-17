@@ -10,6 +10,7 @@ import {
 import { RelatedSeoLinks } from "@/components/seo/related-seo-links";
 import { JsonLd } from "@/components/seo/json-ld";
 import { createPageMetadata } from "@/lib/seo";
+import { withCtrDescription, withCtrTitle } from "@/lib/seo-ctr";
 import { getRelatedGuideSlugs } from "@/lib/seo-guide-relations";
 import {
   getAllGuideSlugs,
@@ -42,8 +43,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   return createPageMetadata({
-    title: `${guide.title} — SoyContratoFacil.es`,
-    description: guide.metaDescription,
+    title: withCtrTitle(guide.title),
+    description: withCtrDescription(guide.metaDescription),
     path: `/guias/${slug}`,
   });
 }
@@ -115,7 +116,7 @@ export default async function GuiaPage({ params }: PageProps) {
                 href={generatorHref}
                 className="font-medium text-brand-blue hover:underline"
               >
-                Ir al generador de contrato →
+                Ir al generador gratis → PDF listo para imprimir
               </Link>
             </p>
           ) : null}

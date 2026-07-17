@@ -10,6 +10,11 @@ export const homeFaqs: FaqItem[] = [
       "Sí. Puedes generar y descargar tus contratos en PDF de forma gratuita, sin registro ni creación de cuenta.",
   },
   {
+    question: "¿Puedo descargar el contrato en PDF listo para imprimir?",
+    answer:
+      "Sí. Al completar el formulario obtienes un PDF legal y actualizado, listo para imprimir o firmar al instante.",
+  },
+  {
     question: "¿Los contratos generados son válidos legalmente en España?",
     answer:
       "Los documentos se elaboran a partir de plantillas adaptadas a la normativa española vigente en materia inmobiliaria. Debes revisar que el contenido se ajuste a tu caso concreto y, si tienes dudas, consultar con un profesional del derecho.",

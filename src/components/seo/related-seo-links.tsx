@@ -78,7 +78,7 @@ export function RelatedSeoLinks({
                   href={contract.href}
                   className="text-brand-blue hover:underline"
                 >
-                  Generar {contract.title.toLowerCase()}
+                  Generar {contract.title.toLowerCase()} gratis (PDF)
                 </Link>
               </li>
             ))}

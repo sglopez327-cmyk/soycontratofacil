@@ -10,9 +10,12 @@ import { getContractConfig } from "@/lib/contract-config";
 import { getAllContractSlugs, getContractBySlug } from "@/lib/contracts";
 import { createPageMetadata } from "@/lib/seo";
 import { getContractSeoMetadata } from "@/lib/seo-contract-metadata";
+import { getGuideSlugForContract } from "@/lib/seo-guide-relations";
 import {
   breadcrumbSchema,
+  contractFaqSchema,
   contractWebPageSchema,
+  howToGenerateContractSchema,
 } from "@/lib/seo-schema";
 
 type PageProps = {
@@ -59,22 +62,31 @@ export default async function GenerarContratoPage({ params }: PageProps) {
     notFound();
   }
 
+  const seo = getContractSeoMetadata(
+    slug,
+    contract.title,
+    contract.description
+  );
   const Icon = contract.icon;
+  const guideSlug = getGuideSlugForContract(slug);
   const webPageSchema = contractWebPageSchema(slug);
+  const faqSchema = contractFaqSchema(slug);
+  const howToSchema = howToGenerateContractSchema(slug);
   const breadcrumbs = breadcrumbSchema([
     { name: "Inicio", path: "/" },
     { name: contract.categoryTitle, path: `/#${contract.categoryId}` },
-    { name: contract.title, path: contract.href },
+    { name: seo.heading, path: contract.href },
   ]);
 
   return (
     <div className="flex min-h-full flex-col bg-[#0f172a]">
       <JsonLd
-        data={
-          webPageSchema
-            ? [breadcrumbs, webPageSchema]
-            : [breadcrumbs]
-        }
+        data={[
+          breadcrumbs,
+          ...(webPageSchema ? [webPageSchema] : []),
+          ...(faqSchema ? [faqSchema] : []),
+          ...(howToSchema ? [howToSchema] : []),
+        ]}
       />
       <Navbar />
       <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
@@ -97,15 +109,42 @@ export default async function GenerarContratoPage({ params }: PageProps) {
             </span>
             <div>
               <h1 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
-                {contract.title}
+                {seo.heading}
               </h1>
               <p className="mt-2 text-card-body text-sm text-slate-400 sm:text-base">
-                {contract.description}
+                {seo.intro}
               </p>
+              {guideSlug ? (
+                <p className="mt-3 text-sm text-slate-500">
+                  ¿Quieres orientarte antes?{" "}
+                  <Link
+                    href={`/guias/${guideSlug}`}
+                    className="font-medium text-brand-blue hover:underline"
+                  >
+                    Lee la guía práctica
+                  </Link>
+                </p>
+              ) : null}
             </div>
           </div>
 
           <ContractWizard config={config} contractTitle={contract.title} />
+
+          {seo.faqs.length > 0 ? (
+            <div className="mt-10 space-y-5 border-t border-slate-700/80 pt-8">
+              <h2 className="text-lg font-semibold text-white">
+                Preguntas frecuentes
+              </h2>
+              {seo.faqs.map((faq) => (
+                <div key={faq.question} className="space-y-2">
+                  <p className="font-medium text-slate-200">{faq.question}</p>
+                  <p className="text-card-body text-sm text-slate-400">
+                    {faq.answer}
+                  </p>
+                </div>
+              ))}
+            </div>
+          ) : null}
         </div>
       </main>
     </div>
