@@ -76,12 +76,12 @@ export function createPageMetadata({
 }
 
 export function createRootMetadata(): Metadata {
-  const defaultTitle = `${SITE_NAME} — Contratos inmobiliarios legales en minutos`;
+  const defaultTitle = "Contrato Alquiler PDF Gratis 2026 | Descarga Fácil";
 
   return {
     metadataBase: new URL(SITE_URL),
     title: {
-      default: `${SITE_NAME} — ${DEFAULT_DESCRIPTION.split(".")[0]}`,
+      default: defaultTitle,
       template: `%s`,
     },
     description: DEFAULT_DESCRIPTION,

@@ -4,7 +4,6 @@ import { HeroSection } from "@/components/home/hero-section";
 import { FooterDisclaimer } from "@/components/layout/footer-disclaimer";
 import { Navbar } from "@/components/layout/navbar";
 import { JsonLd } from "@/components/seo/json-ld";
-import { SITE_NAME } from "@/lib/site-config";
 import { createPageMetadata } from "@/lib/seo";
 import {
   allContractItemListSchema,
@@ -36,7 +35,9 @@ const FaqSection = dynamic(
 );
 
 export const metadata = createPageMetadata({
-  title: `${SITE_NAME} — Contratos inmobiliarios legales en minutos`,
+  title: "Contrato Alquiler PDF Gratis 2026 | Descarga Fácil",
+  description:
+    "Genera contratos legales actualizados 2026 en minutos. PDF listo para imprimir. Gratis, sin registro. Empieza ahora.",
   path: "/",
 });
 

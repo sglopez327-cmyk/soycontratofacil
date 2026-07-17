@@ -9,6 +9,7 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { getContractConfig } from "@/lib/contract-config";
 import { getAllContractSlugs, getContractBySlug } from "@/lib/contracts";
 import { createPageMetadata } from "@/lib/seo";
+import { getContractSeoMetadata } from "@/lib/seo-contract-metadata";
 import {
   breadcrumbSchema,
   contractWebPageSchema,
@@ -36,11 +37,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     });
   }
 
-  const title = `Generar contrato de ${contract.title.toLowerCase()} — SoyContratoFacil.es`;
+  const seo = getContractSeoMetadata(
+    slug,
+    `Generar contrato de ${contract.title.toLowerCase()} — SoyContratoFacil.es`,
+    `${contract.description} Genera y descarga tu documento en PDF gratis, sin registro.`
+  );
 
   return createPageMetadata({
-    title,
-    description: `${contract.description} Genera y descarga tu documento en PDF gratis, sin registro.`,
+    title: seo.title,
+    description: seo.description,
     path: contract.href,
   });
 }
