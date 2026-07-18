@@ -64,7 +64,7 @@ const FILLERS: Record<string, string> = {
   certificado_energetico: "D",
   alquiler_amueblado: "no",
   renta_mensual: "700",
-  fianza: "700",
+  fianza: "1400",
   duracion_contrato: "12",
   periodicidad_pago: "mensual",
   dia_pago_inicio: "1",

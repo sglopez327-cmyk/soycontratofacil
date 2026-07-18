@@ -390,7 +390,7 @@ export const seoGuides: SeoGuide[] = [
       {
         question: "¿Puede el inquilino rescindir unilateralmente?",
         answer:
-          "En vivienda habitual, tras el primer año de vigencia del contrato o de una prórroga, el inquilino puede desistir previo aviso con la antelación pactada (mínimo treinta días). Este documento formaliza el acuerdo entre las partes.",
+          "En vivienda habitual, el inquilino puede desistir tras al menos seis meses de vigencia, con preaviso mínimo de treinta días (art. 11 LAU). Este documento formaliza el acuerdo entre las partes cuando la extinción es de mutuo acuerdo.",
       },
       {
         question: "¿Cuándo se devuelve la fianza?",

@@ -62,12 +62,12 @@ export function getCamposCondicionesLegalesArrendamiento(
   fields.push(
     field({
       id: "preaviso_rescision",
-      label: "Preaviso de rescisión (días)",
+      label: "Preaviso de desistimiento (días)",
       type: "number",
       required: true,
       placeholder: "30",
       helpText:
-        "Días de antelación mínima para notificar la rescisión del contrato.",
+        "En vivienda habitual, el inquilino necesita al menos 6 meses de contrato y un mínimo legal de 30 días de preaviso (art. 11 LAU). El valor indicado se usará si es igual o superior a 30.",
     }),
     field({
       id: "iban_pago",

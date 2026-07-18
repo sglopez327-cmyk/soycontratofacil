@@ -12,7 +12,7 @@ export const homeFaqs: FaqItem[] = [
   {
     question: "¿Puedo descargar el contrato en PDF listo para imprimir?",
     answer:
-      "Sí. Al completar el formulario obtienes un PDF legal y actualizado, listo para imprimir o firmar al instante.",
+      "Sí. Al completar el formulario obtienes un PDF basado en plantillas adaptadas a la normativa española, listo para imprimir o firmar. Revisa siempre el contenido antes de firmarlo.",
   },
   {
     question: "¿Los contratos generados son válidos legalmente en España?",

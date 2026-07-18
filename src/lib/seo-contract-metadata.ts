@@ -27,10 +27,10 @@ const CONTRACT_SEO: Record<string, ContractSeoMetadata> = {
   vivienda: {
     title: "Contrato Alquiler Vivienda Gratis PDF 2026",
     description:
-      "Crea tu contrato de alquiler legal y actualizado 2026. PDF listo para imprimir. Gratis, sin registro. Descárgalo ya.",
+      "Crea tu contrato de alquiler adaptado a la normativa española 2026. PDF listo para imprimir. Gratis, sin registro. Descárgalo ya.",
     heading: "Contrato de alquiler de vivienda (PDF gratis)",
     intro:
-      "Genera un contrato de arrendamiento de vivienda habitual legal y actualizado. Completa el formulario, descarga el PDF listo para imprimir y fírmalo sin registro ni coste.",
+      "Genera un contrato de arrendamiento de vivienda habitual adaptado a la normativa española. Completa el formulario, descarga el PDF listo para imprimir y fírmalo sin registro ni coste.",
     relatedArticleSlugs: [
       "plantilla-contrato-alquiler-pdf",
       "fianza-deposito-alquiler",
@@ -80,10 +80,10 @@ const CONTRACT_SEO: Record<string, ContractSeoMetadata> = {
   temporada: {
     title: "Contrato Alquiler Temporada Gratis PDF 2026",
     description:
-      "Contrato de temporada legal y actualizado. PDF listo para imprimir. Genera y descarga gratis en minutos. Empieza ya.",
+      "Contrato de temporada adaptado a la normativa española. PDF listo para imprimir. Genera y descarga gratis en minutos. Empieza ya.",
     heading: "Contrato de alquiler de temporada (PDF gratis)",
     intro:
-      "Crea un contrato de arrendamiento de temporada o uso distinto del de vivienda. Documento legal, actualizado y listo para imprimir en minutos, sin registro.",
+      "Crea un contrato de arrendamiento de temporada o uso distinto del de vivienda. Documento adaptado a la normativa española y listo para imprimir en minutos, sin registro.",
     relatedArticleSlugs: [
       "contrato-alquiler-temporada-pdf",
       "alquiler-temporada-vs-habitual",
@@ -131,10 +131,10 @@ const CONTRACT_SEO: Record<string, ContractSeoMetadata> = {
   habitacion: {
     title: "Contrato Alquiler Habitación Gratis PDF 2026",
     description:
-      "Contrato de habitación legal y actualizado 2026. PDF listo para imprimir. Gratis, sin registro. Descárgalo ya.",
+      "Contrato de habitación adaptado a la normativa española 2026. PDF listo para imprimir. Gratis, sin registro. Descárgalo ya.",
     heading: "Contrato de alquiler de habitación (PDF gratis)",
     intro:
-      "Genera un contrato de habitación en vivienda compartida. Legal, actualizado y en PDF listo para imprimir. Gratis y sin registro.",
+      "Genera un contrato de habitación en vivienda compartida. Adaptado a la normativa española y en PDF listo para imprimir. Gratis y sin registro.",
     relatedArticleSlugs: ["alquiler-habitacion-piso-compartido"],
     bodySections: [
       {
@@ -171,10 +171,10 @@ const CONTRACT_SEO: Record<string, ContractSeoMetadata> = {
   local: {
     title: "Contrato Alquiler Local Gratis PDF 2026",
     description:
-      "Contrato de local comercial legal y actualizado. PDF listo para imprimir. Genera y descarga gratis. Empieza ya.",
+      "Contrato de local comercial adaptado a la normativa española. PDF listo para imprimir. Genera y descarga gratis. Empieza ya.",
     heading: "Contrato de alquiler de local comercial (PDF gratis)",
     intro:
-      "Genera un contrato de arrendamiento de local de negocio. Documento legal y actualizado en PDF, listo para imprimir. Gratis, sin registro.",
+      "Genera un contrato de arrendamiento de local de negocio. Documento adaptado a la normativa española en PDF, listo para imprimir. Gratis, sin registro.",
     relatedArticleSlugs: [
       "contrato-alquiler-local-comercial-pdf",
       "plantilla-contrato-alquiler-pdf",
@@ -221,10 +221,10 @@ const CONTRACT_SEO: Record<string, ContractSeoMetadata> = {
   "compraventa-vivienda": {
     title: "Contrato Compraventa Vivienda Gratis PDF 2026",
     description:
-      "Contrato de compraventa legal y actualizado 2026. PDF listo para imprimir. Gratis, sin registro. Descárgalo ya.",
+      "Contrato de compraventa adaptado a la normativa española 2026. PDF listo para imprimir. Gratis, sin registro. Descárgalo ya.",
     heading: "Contrato de compraventa de vivienda (PDF gratis)",
     intro:
-      "Genera un contrato de compraventa de vivienda entre particulares. Legal, actualizado 2026 y en PDF listo para imprimir. Gratis, sin registro.",
+      "Genera un contrato de compraventa de vivienda entre particulares. Adaptado a la normativa española 2026 y en PDF listo para imprimir. Gratis, sin registro.",
     relatedArticleSlugs: [
       "contrato-compraventa-vivienda-particulares-pdf",
       "checklist-compraventa-vivienda",
@@ -272,10 +272,10 @@ const CONTRACT_SEO: Record<string, ContractSeoMetadata> = {
   arras: {
     title: "Contrato de Arras Gratis PDF 2026 | Descargar",
     description:
-      "Contrato de arras legal y actualizado. PDF listo para imprimir. Genera y descarga gratis en minutos. Empieza ya.",
+      "Contrato de arras adaptado a la normativa española. PDF listo para imprimir. Genera y descarga gratis en minutos. Empieza ya.",
     heading: "Contrato de arras (PDF gratis 2026)",
     intro:
-      "Crea un contrato de arras penitenciales o confirmatorias. Documento legal actualizado en PDF, listo para imprimir. Gratis y en minutos.",
+      "Crea un contrato de arras penitenciales o confirmatorias. Documento adaptado a la normativa española en PDF, listo para imprimir. Gratis y en minutos.",
     relatedArticleSlugs: [
       "modelo-arras-penitenciales-pdf",
       "tipos-de-arras",
@@ -322,10 +322,10 @@ const CONTRACT_SEO: Record<string, ContractSeoMetadata> = {
   "finca-rustica": {
     title: "Contrato Alquiler Finca Rústica Gratis PDF",
     description:
-      "Contrato de finca rústica legal y actualizado. PDF listo para imprimir. Genera y descarga gratis. Empieza ahora.",
+      "Contrato de finca rústica adaptado a la normativa española. PDF listo para imprimir. Genera y descarga gratis. Empieza ahora.",
     heading: "Contrato de alquiler de finca rústica (PDF gratis)",
     intro:
-      "Crea un contrato de arrendamiento de finca rústica, terreno o explotación. Legal, actualizado y en PDF listo para imprimir. Gratis.",
+      "Crea un contrato de arrendamiento de finca rústica, terreno o explotación. Adaptado a la normativa española y en PDF listo para imprimir. Gratis.",
     relatedArticleSlugs: ["contrato-arrendamiento-olivar"],
     bodySections: [
       {
@@ -362,7 +362,7 @@ const CONTRACT_SEO: Record<string, ContractSeoMetadata> = {
   "arrendamiento-garaje": {
     title: "Contrato Alquiler Garaje/Trastero Gratis PDF",
     description:
-      "Contrato de garaje o trastero legal y actualizado. PDF listo para imprimir. Gratis, sin registro. Descárgalo ya.",
+      "Contrato de garaje o trastero adaptado a la normativa española. PDF listo para imprimir. Gratis, sin registro. Descárgalo ya.",
     heading: "Contrato de alquiler de garaje o trastero (PDF gratis)",
     intro:
       "Genera un contrato de arrendamiento de plaza de garaje o trastero. Documento legal en PDF, listo para imprimir. Gratis y sin registro.",
@@ -387,10 +387,10 @@ const CONTRACT_SEO: Record<string, ContractSeoMetadata> = {
   "garaje-trastero": {
     title: "Compraventa Garaje/Trastero Gratis PDF 2026",
     description:
-      "Contrato de compraventa de garaje/trastero legal y actualizado. PDF listo para imprimir. Gratis. Descárgalo ya.",
+      "Contrato de compraventa de garaje/trastero adaptado a la normativa española. PDF listo para imprimir. Gratis. Descárgalo ya.",
     heading: "Contrato de compraventa de garaje o trastero (PDF gratis)",
     intro:
-      "Genera un contrato de compraventa de plaza de garaje o trastero. Legal, actualizado y en PDF listo para imprimir. Gratis, sin registro.",
+      "Genera un contrato de compraventa de plaza de garaje o trastero. Adaptado a la normativa española y en PDF listo para imprimir. Gratis, sin registro.",
     faqs: [
       {
         question: "¿Puedo comprar o vender solo el garaje?",
@@ -412,10 +412,10 @@ const CONTRACT_SEO: Record<string, ContractSeoMetadata> = {
   rescision: {
     title: "Rescisión Contrato Alquiler Gratis PDF 2026",
     description:
-      "Documento de rescisión legal y actualizado. PDF listo para imprimir. Genera y descarga gratis. Empieza ahora.",
+      "Documento de rescisión adaptado a la normativa española. PDF listo para imprimir. Genera y descarga gratis. Empieza ahora.",
     heading: "Rescisión de contrato de alquiler (PDF gratis)",
     intro:
-      "Genera un documento de rescisión anticipada del arrendamiento. Legal, claro y en PDF listo para imprimir. Gratis, sin registro.",
+      "Genera un documento de rescisión anticipada del arrendamiento. Claro y listo y en PDF listo para imprimir. Gratis, sin registro.",
     relatedArticleSlugs: [
       "preaviso-fin-contrato-alquiler",
       "cuando-usar-contrato-rescision",
@@ -455,7 +455,7 @@ const CONTRACT_SEO: Record<string, ContractSeoMetadata> = {
   "cambio-suministros": {
     title: "Cambio Suministros Alquiler Gratis PDF 2026",
     description:
-      "Comunicación de cambio de titular legal y actualizada. PDF listo para imprimir. Gratis. Descárgalo ya.",
+      "Comunicación de cambio de titular adaptada a la normativa española. PDF listo para imprimir. Gratis. Descárgalo ya.",
     heading: "Cambio de titularidad de suministros (PDF gratis)",
     intro:
       "Genera la comunicación de cambio de titular de luz, agua o gas. Documento listo para imprimir en PDF. Gratis y sin registro.",

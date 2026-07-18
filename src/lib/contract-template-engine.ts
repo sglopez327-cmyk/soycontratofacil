@@ -10,6 +10,11 @@ import { enrichRescisionTemplateVariables } from "@/lib/rescision-fields";
 import type { ContractLegalTemplate } from "@/lib/contract-templates";
 import { getContractTemplate } from "@/lib/contract-templates";
 import { formatFieldForTemplate } from "@/lib/format-template-value";
+import {
+  buildClausulaDesistimientoVivienda,
+  buildClausulaEfectosArras,
+  buildTextoFormaPago,
+} from "@/lib/legal-clause-builders";
 
 export const EMPTY_PLACEHOLDER = "________________";
 
@@ -70,6 +75,25 @@ export function buildTemplateVariables(
   enrichLeaseTemplateVariables(values, variables);
 
   enrichRescisionTemplateVariables(config, values, variables);
+
+  if (config.slug === "vivienda") {
+    variables.clausula_desistimiento_vivienda = buildClausulaDesistimientoVivienda(
+      values.preaviso_rescision ?? "30"
+    );
+  }
+
+  if (config.slug === "arras") {
+    const tipo =
+      values.tipo_arras?.trim() ||
+      variables.tipo_arras?.trim() ||
+      "confirmatorias";
+    variables.clausula_efectos_arras = buildClausulaEfectosArras(tipo);
+  }
+
+  if (config.slug === "compraventa-vivienda") {
+    const forma = values.forma_pago?.trim() || "";
+    variables.forma_pago_texto = buildTextoFormaPago(forma);
+  }
 
   return variables;
 }

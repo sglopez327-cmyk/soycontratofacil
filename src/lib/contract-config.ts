@@ -18,6 +18,16 @@ import {
   validateIban,
 } from "@/lib/lease-conditions-fields";
 import { MOTIVO_RESCISION_OPTIONS } from "@/lib/rescision-fields";
+import { fianzaMesesRecomendados } from "@/lib/legal-clause-builders";
+
+function parseEuroAmount(value: string): number | null {
+  const normalized = value.trim().replace(/\s/g, "").replace(/\./g, "").replace(",", ".");
+  if (!normalized) {
+    return null;
+  }
+  const amount = Number(normalized);
+  return Number.isFinite(amount) ? amount : null;
+}
 
 export type ContractFieldType =
   | "text"
@@ -240,7 +250,8 @@ const condicionesEconomicasArrendamiento: ContractFieldDefinition[] = [
     type: "currency",
     required: true,
     placeholder: "850",
-    helpText: "Normalmente equivalente a un mes de renta.",
+    helpText:
+      "Vivienda habitual: fianza legal de 1 mes de renta (art. 36 LAU). Uso distinto (local, temporada, garaje…): 2 meses.",
   }),
   field({
     id: "duracion_contrato",
@@ -341,6 +352,7 @@ export const contractConfigs: Record<string, ContractConfig> = {
             type: "currency",
             required: true,
             placeholder: "900",
+            helpText: "En temporada (uso distinto de vivienda): fianza legal de 2 meses de renta (art. 36.1 LAU).",
           }),
           campoPeriodicidadPago,
           ...camposPlazoPago,
@@ -404,10 +416,8 @@ export const contractConfigs: Record<string, ContractConfig> = {
             label: "Fianza (€)",
             type: "currency",
             required: true,
+            helpText: "Habitación: recomienda al menos 1 mes de renta; confirma el encaje jurídico de tu caso.",
           }),
-          campoPeriodicidadPago,
-          ...camposPlazoPago,
-          getCampoSuministrosHabitacion(field),
           ...camposCondicionesLegalesBase,
           field({
             id: "duracion_contrato",
@@ -490,6 +500,7 @@ export const contractConfigs: Record<string, ContractConfig> = {
             label: "Fianza (€)",
             type: "currency",
             required: true,
+            helpText: "Local (uso distinto de vivienda): fianza legal de 2 meses de renta (art. 36.1 LAU).",
           }),
           field({
             id: "duracion_contrato",
@@ -1069,7 +1080,22 @@ export function validateField(
     if (!Number.isInteger(dias) || dias <= 0) {
       return "Introduce un número entero de días mayor que 0";
     }
+    if (config?.slug === "vivienda" && dias < 30) {
+      return "En vivienda habitual el preaviso mínimo legal es de 30 días (art. 11 LAU)";
+    }
     return null;
+  }
+
+  if (fieldDefinition.id === "fianza" && trimmed && config) {
+    const meses = fianzaMesesRecomendados(config.slug);
+    const fianza = parseEuroAmount(trimmed);
+    const renta = parseEuroAmount(allValues.renta_mensual ?? "");
+    if (meses && fianza !== null && renta !== null && renta > 0) {
+      const minimo = renta * meses * 0.98;
+      if (fianza + 0.001 < minimo) {
+        return `Según el art. 36 LAU, la fianza legal orientativa es de ${meses} mes${meses > 1 ? "es" : ""} de renta (mín. aprox. ${Math.round(renta * meses)} €)`;
+      }
+    }
   }
 
   if (
