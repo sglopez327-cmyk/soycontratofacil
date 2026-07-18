@@ -46,6 +46,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: withCtrTitle(article.title),
     description: withCtrDescription(article.metaDescription),
     path: `/articulos/${slug}`,
+    ogType: "article",
   });
 }
 

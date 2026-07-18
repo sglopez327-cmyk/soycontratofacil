@@ -85,6 +85,26 @@ export function homeFaqSchema() {
   };
 }
 
+/** Generador gratuito como aplicación web (señal de producto). */
+export function softwareApplicationSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: SITE_NAME,
+    url: SITE_URL,
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Any",
+    browserRequirements: "Requires JavaScript",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "EUR",
+    },
+    description: DEFAULT_DESCRIPTION,
+    inLanguage: "es-ES",
+  };
+}
+
 export function breadcrumbSchema(
   items: { name: string; path: string }[]
 ) {

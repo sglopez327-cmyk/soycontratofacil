@@ -10,6 +10,7 @@ import {
   articlesItemListSchema,
   guidesItemListSchema,
   homeFaqSchema,
+  softwareApplicationSchema,
 } from "@/lib/seo-schema";
 
 const UsageGuideSection = dynamic(
@@ -47,6 +48,7 @@ export default function Home() {
       <JsonLd
         data={[
           homeFaqSchema(),
+          softwareApplicationSchema(),
           allContractItemListSchema(),
           guidesItemListSchema(),
           articlesItemListSchema(),

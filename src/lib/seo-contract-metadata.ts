@@ -135,6 +135,21 @@ const CONTRACT_SEO: Record<string, ContractSeoMetadata> = {
     heading: "Contrato de alquiler de habitación (PDF gratis)",
     intro:
       "Genera un contrato de habitación en vivienda compartida. Legal, actualizado y en PDF listo para imprimir. Gratis y sin registro.",
+    relatedArticleSlugs: ["alquiler-habitacion-piso-compartido"],
+    bodySections: [
+      {
+        title: "Qué debe incluir el contrato de habitación",
+        paragraphs: [
+          "Partes, identificación de la habitación y de la vivienda, renta, fianza, duración y uso de zonas comunes y suministros.",
+        ],
+      },
+      {
+        title: "Descarga el PDF gratis",
+        paragraphs: [
+          "Completa el formulario y descarga el contrato listo para imprimir. Revisa el contenido antes de firmar.",
+        ],
+      },
+    ],
     faqs: [
       {
         question: "¿Sirve para piso compartido?",
@@ -311,6 +326,21 @@ const CONTRACT_SEO: Record<string, ContractSeoMetadata> = {
     heading: "Contrato de alquiler de finca rústica (PDF gratis)",
     intro:
       "Crea un contrato de arrendamiento de finca rústica, terreno o explotación. Legal, actualizado y en PDF listo para imprimir. Gratis.",
+    relatedArticleSlugs: ["contrato-arrendamiento-olivar"],
+    bodySections: [
+      {
+        title: "Para qué sirve este contrato",
+        paragraphs: [
+          "Documenta el arrendamiento de finca rústica: olivar, terreno u otra explotación. Identifica las partes, la finca, el uso y la renta o canon.",
+        ],
+      },
+      {
+        title: "Cómo generar el PDF",
+        paragraphs: [
+          "Completa el formulario, revisa el resumen y descarga el PDF gratis. Revisa siempre el documento antes de firmar.",
+        ],
+      },
+    ],
     faqs: [
       {
         question: "¿Sirve para terreno o explotación agrícola?",
@@ -386,6 +416,24 @@ const CONTRACT_SEO: Record<string, ContractSeoMetadata> = {
     heading: "Rescisión de contrato de alquiler (PDF gratis)",
     intro:
       "Genera un documento de rescisión anticipada del arrendamiento. Legal, claro y en PDF listo para imprimir. Gratis, sin registro.",
+    relatedArticleSlugs: [
+      "preaviso-fin-contrato-alquiler",
+      "cuando-usar-contrato-rescision",
+    ],
+    bodySections: [
+      {
+        title: "Cuándo usar este documento",
+        paragraphs: [
+          "Cuando arrendador e inquilino acuerdan terminar el alquiler antes de tiempo y quieren dejar constancia de la entrega, la fianza y la fecha de fin.",
+        ],
+      },
+      {
+        title: "Genera el PDF ahora",
+        paragraphs: [
+          "Completa el formulario de rescisión y descarga el PDF gratis. Revisa el texto antes de firmar.",
+        ],
+      },
+    ],
     faqs: [
       {
         question: "¿Para qué sirve este documento?",

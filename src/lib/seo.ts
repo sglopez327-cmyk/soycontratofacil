@@ -38,6 +38,8 @@ type PageMetadataOptions = {
   description?: string;
   path: string;
   noIndex?: boolean;
+  /** Open Graph type (artículos = "article"). */
+  ogType?: "website" | "article";
 };
 
 export function createPageMetadata({
@@ -45,6 +47,7 @@ export function createPageMetadata({
   description = DEFAULT_DESCRIPTION,
   path,
   noIndex = false,
+  ogType = "website",
 }: PageMetadataOptions): Metadata {
   const canonical = absoluteUrl(path);
 
@@ -55,7 +58,7 @@ export function createPageMetadata({
       canonical,
     },
     openGraph: {
-      type: "website",
+      type: ogType,
       locale: "es_ES",
       url: canonical,
       siteName: SITE_NAME,

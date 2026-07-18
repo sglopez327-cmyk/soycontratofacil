@@ -607,7 +607,7 @@ export const seoArticles: SeoArticle[] = [
     relatedArticleSlugs: [
       "contrato-alquiler-particulares",
       "fianza-deposito-alquiler",
-      "plazos-alquiler-vivienda",
+      "contrato-alquiler-word-o-pdf",
     ],
     relatedContractSlugs: ["vivienda"],
     sections: [
@@ -836,6 +836,200 @@ export const seoArticles: SeoArticle[] = [
         question: "¿El PDF del contrato de local es gratis?",
         answer:
           "Sí. Lo generas y descargas en SoyContratoFacil.es sin registro ni coste.",
+      },
+    ],
+  },
+  {
+    slug: "contrato-alquiler-word-o-pdf",
+    title: "Contrato de alquiler en Word o PDF: cómo conseguirlo gratis (2026)",
+    metaDescription:
+      "¿Buscas contrato de alquiler en Word o PDF? Genera tu documento legal gratis, descárgalo en PDF listo para firmar e imprímelo o edítalo.",
+    intro:
+      "Muchas búsquedas piden el contrato de alquiler en Word. En la práctica lo importante es un modelo legal, actualizado y con tus datos. En SoyContratoFacil.es generas el contrato gratis y lo descargas en PDF listo para imprimir o abrir con cualquier lector; luego puedes convertirlo a Word si lo necesitas editable.",
+    publishedAt: "2026-07-18",
+    updatedAt: "2026-07-18",
+    relatedGuideSlugs: ["vivienda"],
+    relatedArticleSlugs: [
+      "plantilla-contrato-alquiler-pdf",
+      "contrato-alquiler-particulares",
+    ],
+    relatedContractSlugs: ["vivienda"],
+    sections: [
+      {
+        title: "Word vs PDF: qué te conviene",
+        paragraphs: [
+          "Word es útil si quieres editar cláusulas a mano. PDF es ideal para firmar e imprimir sin que se descuadre el formato. Nuestro generador entrega PDF gratis al instante, sin registro.",
+          "Si tu prioridad es firmar ya, descarga el PDF. Si luego necesitas editarlo, puedes convertirlo a Word con herramientas habituales o volver al generador y crear una versión nueva.",
+        ],
+      },
+      {
+        title: "Cómo obtener tu contrato gratis ahora",
+        paragraphs: [
+          "Entra en el generador de alquiler de vivienda, completa arrendador, inquilino y condiciones, revisa el resumen y descarga el PDF. Es el camino más rápido a un documento listo para usar.",
+        ],
+      },
+      {
+        title: "Errores al usar plantillas Word genéricas",
+        paragraphs: [
+          "Plantillas antiguas o de otros países omiten fianza, prórrogas o gastos. Un generador guiado reduce esos olvidos porque te pide los datos esenciales del caso español.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "¿Puedo descargar el contrato de alquiler en Word?",
+        answer:
+          "El generador entrega PDF gratis listo para firmar. Si necesitas Word, puedes convertir el PDF o regenerar el contrato tras ajustar los datos en el formulario.",
+      },
+      {
+        question: "¿El PDF es gratis?",
+        answer:
+          "Sí. Generas y descargas sin registro ni pago en SoyContratoFacil.es.",
+      },
+    ],
+  },
+  {
+    slug: "preaviso-fin-contrato-alquiler",
+    title: "Preaviso para finalizar un contrato de alquiler: plazos y documento",
+    metaDescription:
+      "Plazos de preaviso al terminar un alquiler y cómo documentar la fin del contrato. Genera tu documento de rescisión en PDF gratis.",
+    intro:
+      "Dejar un piso o recuperar la vivienda exige respetar plazos de preaviso y, cuando hay acuerdo, dejarlo por escrito. Aquí resumimos qué tener en cuenta y cómo generar un documento de rescisión en PDF gratis.",
+    publishedAt: "2026-07-18",
+    updatedAt: "2026-07-18",
+    relatedGuideSlugs: ["rescision", "vivienda"],
+    relatedArticleSlugs: [
+      "cuando-usar-contrato-rescision",
+      "plazos-alquiler-vivienda",
+    ],
+    relatedContractSlugs: ["rescision", "vivienda"],
+    sections: [
+      {
+        title: "Qué es el preaviso en el alquiler",
+        paragraphs: [
+          "Es el aviso previo con el que inquilino o, en ciertos casos, arrendador comunica que no continuará el contrato. Los plazos dependen de la LAU y de lo pactado; conviene comprobar tu caso concreto.",
+        ],
+      },
+      {
+        title: "Cuándo usar un documento de rescisión",
+        paragraphs: [
+          "Si ambas partes acuerdan terminar anticipadamente, un documento de rescisión deja constancia de la fecha de entrega, estado del inmueble y destino de la fianza.",
+        ],
+      },
+      {
+        title: "Genera el PDF de rescisión",
+        paragraphs: [
+          "Usa el generador de rescisión de contrato: completa los datos, descarga el PDF gratis y fírmalo tras revisarlo. No sustituye el asesoramiento profesional en conflictos.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "¿El preaviso tiene que ser por escrito?",
+        answer:
+          "Es muy recomendable dejar constancia escrita (y con acuse si es posible) para evitar discusiones sobre fechas.",
+      },
+      {
+        question: "¿Puedo descargar un modelo de fin de contrato gratis?",
+        answer:
+          "Sí. En SoyContratoFacil.es puedes generar el documento de rescisión en PDF sin registro.",
+      },
+    ],
+  },
+  {
+    slug: "quien-paga-comunidad-alquiler",
+    title: "¿Quién paga la comunidad en el alquiler? Qué debe decir el contrato",
+    metaDescription:
+      "Quién asume la comunidad de vecinos en un alquiler y cómo reflejarlo en el contrato. Genera tu contrato de vivienda en PDF gratis.",
+    intro:
+      "Una de las dudas más frecuentes entre propietario e inquilino es quién paga la comunidad. La respuesta debe quedar por escrito en el contrato de alquiler para evitar conflictos mes a mes.",
+    publishedAt: "2026-07-18",
+    updatedAt: "2026-07-18",
+    relatedGuideSlugs: ["vivienda"],
+    relatedArticleSlugs: [
+      "plantilla-contrato-alquiler-pdf",
+      "fianza-deposito-alquiler",
+      "contrato-alquiler-word-o-pdf",
+    ],
+    relatedContractSlugs: ["vivienda"],
+    sections: [
+      {
+        title: "Qué suele pactarse",
+        paragraphs: [
+          "En vivienda habitual es frecuente que el inquilino asuma gastos de comunidad ordinarios si así se acuerda, y que el propietario conserve ciertos conceptos. Lo decisivo es lo que diga el contrato y la ley aplicable.",
+        ],
+      },
+      {
+        title: "Cómo dejarlo claro en el PDF",
+        paragraphs: [
+          "Al generar el contrato, concreta en las condiciones quién paga comunidad, derramas y suministros. Un texto ambiguo es la causa habitual de discusiones.",
+        ],
+      },
+      {
+        title: "Genera tu contrato de vivienda ahora",
+        paragraphs: [
+          "Usa el generador de alquiler de vivienda, completa las partes y las condiciones económicas, y descarga el PDF gratis listo para firmar.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "¿La comunidad la paga siempre el inquilino?",
+        answer:
+          "No automáticamente. Depende de lo pactado y del marco legal. Por eso debe figurar con claridad en el contrato.",
+      },
+      {
+        question: "¿Puedo generar el contrato gratis?",
+        answer:
+          "Sí. En SoyContratoFacil.es descargas el PDF de alquiler de vivienda sin registro.",
+      },
+    ],
+  },
+  {
+    slug: "contrato-arrendamiento-olivar",
+    title: "Contrato de arrendamiento de olivar: modelo PDF gratis",
+    metaDescription:
+      "Genera tu contrato de arrendamiento de olivar o finca rústica en PDF gratis. Modelo legal listo para imprimir, sin registro.",
+    intro:
+      "Si buscas un contrato de arrendamiento de olivar, necesitas un documento de finca rústica que identifique la explotación, la renta o canon y la duración. Puedes generar el PDF gratis con el generador de finca rústica.",
+    publishedAt: "2026-07-18",
+    updatedAt: "2026-07-18",
+    relatedGuideSlugs: ["finca-rustica"],
+    relatedArticleSlugs: [
+      "plantilla-contrato-alquiler-pdf",
+      "contrato-alquiler-local-comercial-pdf",
+    ],
+    relatedContractSlugs: ["finca-rustica"],
+    sections: [
+      {
+        title: "Olivar como finca rústica",
+        paragraphs: [
+          "El olivar se documenta habitualmente como arrendamiento de finca rústica: descripción de la finca, destino del aprovechamiento, renta o canon y obligaciones de las partes.",
+        ],
+      },
+      {
+        title: "Qué incluir en el contrato",
+        paragraphs: [
+          "Identificación de las partes, ubicación y superficie, uso previsto (explotación de olivar), duración y condiciones económicas.",
+        ],
+      },
+      {
+        title: "Descargar el PDF ahora",
+        paragraphs: [
+          "Entra en el generador de finca rústica, completa el formulario y descarga el PDF gratis, listo para imprimir y firmar tras revisarlo.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "¿Sirve el contrato de finca rústica para un olivar?",
+        answer:
+          "Sí. Describe la finca y el destino del arrendamiento (explotación de olivar) en el formulario.",
+      },
+      {
+        question: "¿El PDF es gratis?",
+        answer:
+          "Sí. Lo generas en SoyContratoFacil.es sin registro.",
       },
     ],
   },

@@ -56,6 +56,30 @@ export function FooterDisclaimer() {
           </p>
           <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-slate-500">
             <Link
+              href="/generar/vivienda"
+              className="transition-colors duration-300 hover:text-brand-blue"
+            >
+              Alquiler vivienda
+            </Link>
+            <Link
+              href="/generar/compraventa-vivienda"
+              className="transition-colors duration-300 hover:text-brand-blue"
+            >
+              Compraventa
+            </Link>
+            <Link
+              href="/generar/arras"
+              className="transition-colors duration-300 hover:text-brand-blue"
+            >
+              Arras
+            </Link>
+            <Link
+              href="/generar/local"
+              className="transition-colors duration-300 hover:text-brand-blue"
+            >
+              Local
+            </Link>
+            <Link
               href="/guias"
               className="transition-colors duration-300 hover:text-brand-blue"
             >
