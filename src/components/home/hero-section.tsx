@@ -84,7 +84,7 @@ export function HeroSection() {
           >
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
               <Link
-                href="#arrendamientos"
+                href="/generar/vivienda"
                 className="group inline-flex items-center gap-2.5 rounded-full bg-brand-blue px-8 py-3.5 text-sm font-semibold text-white shadow-[0_4px_14px_rgba(59,130,246,0.4)] transition-shadow duration-300 hover:shadow-[0_8px_30px_rgba(59,130,246,0.5)]"
               >
                 Crear mi contrato gratis

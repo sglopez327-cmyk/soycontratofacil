@@ -35,9 +35,9 @@ const FaqSection = dynamic(
 );
 
 export const metadata = createPageMetadata({
-  title: "Contrato Alquiler PDF Gratis 2026 | Descarga Fácil",
+  title: "SoyContratoFacil.es — Contratos legales gratis en PDF",
   description:
-    "Genera contratos legales actualizados 2026 en minutos. PDF listo para imprimir. Gratis, sin registro. Empieza ahora.",
+    "Genera contratos de alquiler, compraventa y locales entre particulares. PDF legal, actualizado y listo para firmar. Gratis y sin registro.",
   path: "/",
 });
 

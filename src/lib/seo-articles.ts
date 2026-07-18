@@ -351,45 +351,6 @@ export const seoArticles: SeoArticle[] = [
     ],
   },
   {
-    slug: "modelo-contrato-alquiler-pdf-gratis",
-    title: "Modelo de contrato de alquiler en PDF gratis (España)",
-    metaDescription:
-      "Descarga un modelo de contrato de alquiler de vivienda en PDF gratis y conforme a la LAU. Generador online sin registro para arrendadores e inquilinos.",
-    intro:
-      "Muchas personas buscan un modelo de contrato de alquiler listo para rellenar. En España el documento debe adaptarse al tipo de inmueble y al uso (vivienda habitual, habitación, temporada o local), no basta con una plantilla genérica descargada sin revisar.",
-    publishedAt: "2026-07-06",
-    updatedAt: "2026-07-06",
-    relatedGuideSlugs: ["vivienda", "habitacion", "temporada"],
-    relatedArticleSlugs: [
-      "contrato-alquiler-particulares",
-      "fianza-deposito-alquiler",
-      "plantilla-contrato-alquiler-pdf",
-    ],
-    relatedContractSlugs: ["vivienda"],
-    sections: [
-      {
-        title: "Qué debe incluir un modelo serio",
-        paragraphs: [
-          "Identificación de arrendador e inquilino, descripción del inmueble, renta, fianza, duración, gastos, suministros y condiciones de prórroga o desistimiento según la LAU.",
-          "Un buen modelo no sustituye el asesoramiento profesional, pero sí evita olvidar cláusulas básicas que suelen generar conflictos.",
-        ],
-      },
-      {
-        title: "Ventaja de un generador frente a una plantilla fija",
-        paragraphs: [
-          "Un generador guiado solo pregunta los datos relevantes para tu caso y elabora el PDF con la estructura adecuada al tipo de contrato elegido, reduciendo errores y texto innecesario.",
-        ],
-      },
-    ],
-    faqs: [
-      {
-        question: "¿Es válido un contrato de alquiler generado online?",
-        answer:
-          "Puede ser válido si refleja correctamente la voluntad de las partes y cumple la normativa aplicable. Ambas partes deben leerlo, acordarlo y firmarlo. Conviene revisar situaciones especiales con un profesional.",
-      },
-    ],
-  },
-  {
     slug: "actualizacion-renta-alquiler",
     title: "Actualización de la renta en contratos de alquiler",
     metaDescription:
@@ -644,9 +605,9 @@ export const seoArticles: SeoArticle[] = [
     updatedAt: "2026-07-17",
     relatedGuideSlugs: ["vivienda"],
     relatedArticleSlugs: [
-      "modelo-contrato-alquiler-pdf-gratis",
       "contrato-alquiler-particulares",
       "fianza-deposito-alquiler",
+      "plazos-alquiler-vivienda",
     ],
     relatedContractSlugs: ["vivienda"],
     sections: [

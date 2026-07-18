@@ -3,7 +3,7 @@ export const guideRelations: Record<string, string[]> = {
   vivienda: ["habitacion", "rescision", "cambio-suministros"],
   temporada: ["vivienda", "habitacion"],
   habitacion: ["vivienda", "temporada"],
-  local: ["vivienda", "arrendamiento-garaje"],
+  local: ["vivienda", "finca-rustica"],
   "finca-rustica": ["vivienda", "local"],
   "arrendamiento-garaje": ["garaje-trastero", "vivienda"],
   "compraventa-vivienda": ["arras", "garaje-trastero"],

@@ -9,6 +9,7 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { getContractConfig } from "@/lib/contract-config";
 import { getAllContractSlugs, getContractBySlug } from "@/lib/contracts";
 import { createPageMetadata } from "@/lib/seo";
+import { getArticleBySlug } from "@/lib/seo-articles";
 import { getContractSeoMetadata } from "@/lib/seo-contract-metadata";
 import { getGuideSlugForContract } from "@/lib/seo-guide-relations";
 import {
@@ -69,6 +70,9 @@ export default async function GenerarContratoPage({ params }: PageProps) {
   );
   const Icon = contract.icon;
   const guideSlug = getGuideSlugForContract(slug);
+  const relatedArticles = (seo.relatedArticleSlugs ?? [])
+    .map((articleSlug) => getArticleBySlug(articleSlug))
+    .filter((article) => article !== undefined);
   const webPageSchema = contractWebPageSchema(slug);
   const faqSchema = contractFaqSchema(slug);
   const howToSchema = howToGenerateContractSchema(slug);
@@ -129,6 +133,46 @@ export default async function GenerarContratoPage({ params }: PageProps) {
           </div>
 
           <ContractWizard config={config} contractTitle={contract.title} />
+
+          {seo.bodySections && seo.bodySections.length > 0 ? (
+            <div className="mt-10 space-y-8 border-t border-slate-700/80 pt-8">
+              {seo.bodySections.map((section) => (
+                <section key={section.title} className="space-y-3">
+                  <h2 className="text-lg font-semibold text-white">
+                    {section.title}
+                  </h2>
+                  {section.paragraphs.map((paragraph) => (
+                    <p
+                      key={paragraph}
+                      className="text-card-body text-sm text-slate-400 sm:text-base"
+                    >
+                      {paragraph}
+                    </p>
+                  ))}
+                </section>
+              ))}
+            </div>
+          ) : null}
+
+          {relatedArticles.length > 0 ? (
+            <div className="mt-10 space-y-3 border-t border-slate-700/80 pt-8">
+              <h2 className="text-lg font-semibold text-white">
+                Artículos relacionados
+              </h2>
+              <ul className="list-disc space-y-2 pl-5 marker:text-brand-blue">
+                {relatedArticles.map((article) => (
+                  <li key={article.slug}>
+                    <Link
+                      href={`/articulos/${article.slug}`}
+                      className="text-sm text-brand-blue hover:underline sm:text-base"
+                    >
+                      {article.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
 
           {seo.faqs.length > 0 ? (
             <div className="mt-10 space-y-5 border-t border-slate-700/80 pt-8">

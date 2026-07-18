@@ -17,7 +17,7 @@ export const contractCatalog: CatalogCategory[] = [
   {
     id: "arrendamientos",
     title: "Arrendamientos",
-    description: "Contratos de alquiler para todo tipo de inmuebles",
+    description: "Contratos de alquiler para vivienda, locales y fincas",
     contracts: [
       {
         id: "arrendamiento-vivienda",

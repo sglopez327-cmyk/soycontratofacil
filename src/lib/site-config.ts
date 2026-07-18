@@ -8,7 +8,7 @@ export const SITE_TAGLINE =
   "Contratos inmobiliarios legales en minutos";
 
 export const DEFAULT_DESCRIPTION =
-  "Genera contratos legales actualizados 2026 en minutos. PDF listo para imprimir. Gratis, sin registro. Empieza ahora.";
+  "Genera contratos de alquiler, compraventa y locales entre particulares. PDF legal, actualizado y listo para firmar. Gratis y sin registro.";
 
 export const CONTACT_EMAIL = "contacto@soycontratofacil.es";
 

@@ -27,7 +27,7 @@ export const homeFaqs: FaqItem[] = [
   {
     question: "¿Qué tipos de contratos puedo generar?",
     answer:
-      "Ofrecemos contratos de arrendamiento (vivienda, temporada, habitación, local, finca rústica, garaje), compraventa (vivienda, arras, garaje o trastero) y gestión (rescisión de contrato y cambio de suministros).",
+      "Ofrecemos contratos de arrendamiento (vivienda, temporada, habitación, local, finca rústica, garaje), compraventa entre particulares (vivienda, arras, garaje) y gestión (rescisión y cambio de suministros).",
   },
   {
     question: "¿SoyContratoFacil.es sustituye el asesoramiento de un abogado?",

@@ -5,6 +5,11 @@ export type FaqItem = {
   answer: string;
 };
 
+export type ContractBodySection = {
+  title: string;
+  paragraphs: string[];
+};
+
 export type ContractSeoMetadata = {
   title: string;
   description: string;
@@ -13,6 +18,9 @@ export type ContractSeoMetadata = {
   /** Intro bajo el H1. */
   intro: string;
   faqs: FaqItem[];
+  /** Contenido SEO bajo el formulario (páginas core). */
+  bodySections?: ContractBodySection[];
+  relatedArticleSlugs?: string[];
 };
 
 const CONTRACT_SEO: Record<string, ContractSeoMetadata> = {
@@ -23,6 +31,34 @@ const CONTRACT_SEO: Record<string, ContractSeoMetadata> = {
     heading: "Contrato de alquiler de vivienda (PDF gratis)",
     intro:
       "Genera un contrato de arrendamiento de vivienda habitual legal y actualizado. Completa el formulario, descarga el PDF listo para imprimir y fírmalo sin registro ni coste.",
+    relatedArticleSlugs: [
+      "plantilla-contrato-alquiler-pdf",
+      "fianza-deposito-alquiler",
+      "plazos-alquiler-vivienda",
+    ],
+    bodySections: [
+      {
+        title: "Qué incluye este contrato de alquiler de vivienda",
+        paragraphs: [
+          "El documento identifica a arrendador e inquilino, describe la vivienda, fija la renta, la fianza, la duración y las reglas básicas sobre gastos, suministros y uso del inmueble.",
+          "Está pensado para vivienda habitual en España. Si el uso es temporal o de local comercial, usa el generador específico de temporada o de local.",
+        ],
+      },
+      {
+        title: "Cómo generar el PDF paso a paso",
+        paragraphs: [
+          "Completa las partes, los datos del inmueble y las condiciones económicas. Revisa el resumen, genera el documento y descarga el PDF gratis al instante.",
+          "Ambas partes deben leer el contrato, comprobar que refleja lo acordado y firmarlo. El PDF queda listo para imprimir o archivar.",
+        ],
+      },
+      {
+        title: "Errores frecuentes al alquilar una vivienda",
+        paragraphs: [
+          "Olvidar la fianza legal, no concretar quién paga comunidad o suministros, o usar un modelo de temporada cuando el piso es vivienda habitual.",
+          "También conviene anexar inventario si el piso va amueblado y guardar copia firmada por ambas partes.",
+        ],
+      },
+    ],
     faqs: [
       {
         question: "¿Este contrato de alquiler de vivienda es gratis?",
@@ -48,6 +84,32 @@ const CONTRACT_SEO: Record<string, ContractSeoMetadata> = {
     heading: "Contrato de alquiler de temporada (PDF gratis)",
     intro:
       "Crea un contrato de arrendamiento de temporada o uso distinto del de vivienda. Documento legal, actualizado y listo para imprimir en minutos, sin registro.",
+    relatedArticleSlugs: [
+      "contrato-alquiler-temporada-pdf",
+      "alquiler-temporada-vs-habitual",
+      "plantilla-contrato-alquiler-pdf",
+    ],
+    bodySections: [
+      {
+        title: "Cuándo usar el contrato de temporada",
+        paragraphs: [
+          "Cuando la estancia es temporal (trabajo, estudios u otro motivo concreto) y el inmueble no constituye la vivienda habitual del inquilino.",
+          "Si el uso es residencia permanente, genera el contrato de alquiler de vivienda habitual en su lugar.",
+        ],
+      },
+      {
+        title: "Qué debe quedar claro en el PDF",
+        paragraphs: [
+          "Partes, descripción del inmueble, carácter temporal del uso, duración, renta, fianza y condiciones de entrega y devolución.",
+        ],
+      },
+      {
+        title: "Descarga el contrato de temporada gratis",
+        paragraphs: [
+          "Rellena el formulario, revisa el resumen y descarga el PDF listo para imprimir. Sin registro y en pocos minutos.",
+        ],
+      },
+    ],
     faqs: [
       {
         question: "¿Cuándo usar un contrato de temporada?",
@@ -98,6 +160,31 @@ const CONTRACT_SEO: Record<string, ContractSeoMetadata> = {
     heading: "Contrato de alquiler de local comercial (PDF gratis)",
     intro:
       "Genera un contrato de arrendamiento de local de negocio. Documento legal y actualizado en PDF, listo para imprimir. Gratis, sin registro.",
+    relatedArticleSlugs: [
+      "contrato-alquiler-local-comercial-pdf",
+      "plantilla-contrato-alquiler-pdf",
+    ],
+    bodySections: [
+      {
+        title: "Por qué un contrato específico de local",
+        paragraphs: [
+          "El local comercial no sigue el mismo régimen que la vivienda habitual. Destino de la actividad, duración y condiciones económicas deben quedar bien definidos.",
+          "Evita usar una plantilla de piso: genera el modelo de local y adapta el destino a tu negocio.",
+        ],
+      },
+      {
+        title: "Qué datos pide el generador",
+        paragraphs: [
+          "Identificación de las partes, descripción del local, renta, plazo y condiciones básicas del arrendamiento para elaborar el PDF.",
+        ],
+      },
+      {
+        title: "Descarga el PDF del local ahora",
+        paragraphs: [
+          "Completa el formulario, revisa el resumen y descarga el contrato en PDF gratis, listo para imprimir y firmar.",
+        ],
+      },
+    ],
     faqs: [
       {
         question: "¿Este contrato vale para un local comercial?",
@@ -113,6 +200,107 @@ const CONTRACT_SEO: Record<string, ContractSeoMetadata> = {
         question: "¿Incluye duración y renta?",
         answer:
           "Sí. El formulario te pide las condiciones esenciales (renta, plazo e identificación del local) para generar el documento.",
+      },
+    ],
+  },
+  "compraventa-vivienda": {
+    title: "Contrato Compraventa Vivienda Gratis PDF 2026",
+    description:
+      "Contrato de compraventa legal y actualizado 2026. PDF listo para imprimir. Gratis, sin registro. Descárgalo ya.",
+    heading: "Contrato de compraventa de vivienda (PDF gratis)",
+    intro:
+      "Genera un contrato de compraventa de vivienda entre particulares. Legal, actualizado 2026 y en PDF listo para imprimir. Gratis, sin registro.",
+    relatedArticleSlugs: [
+      "contrato-compraventa-vivienda-particulares-pdf",
+      "checklist-compraventa-vivienda",
+      "modelo-arras-penitenciales-pdf",
+    ],
+    bodySections: [
+      {
+        title: "Contrato privado entre particulares",
+        paragraphs: [
+          "Documenta el acuerdo de compraventa: partes, vivienda, precio y forma de pago. Es útil como contrato privado antes o además de la escritura notarial.",
+          "Para inscribir la transmisión en el Registro suele requerirse escritura pública; este PDF deja claro lo pactado entre las partes.",
+        ],
+      },
+      {
+        title: "Qué debes revisar antes de firmar",
+        paragraphs: [
+          "Identificación del inmueble, precio total, plazos de pago, cargas declaradas y distribución de gastos si la habéis acordado.",
+        ],
+      },
+      {
+        title: "Si aún estás reservando la vivienda",
+        paragraphs: [
+          "En fase de señal o reserva, suele convenir un contrato de arras. Cuando la compraventa está cerrada en lo esencial, genera este contrato de compraventa en PDF.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "¿Sirve para compraventa entre particulares?",
+        answer:
+          "Sí. El modelo está orientado a transmisión de vivienda entre particulares en España.",
+      },
+      {
+        question: "¿Puedo descargar el PDF gratis?",
+        answer:
+          "Sí. Generas el documento y lo descargas listo para imprimir, sin registro ni pago.",
+      },
+      {
+        question: "¿Sustituye a la escritura notarial?",
+        answer:
+          "No. Es un contrato privado útil para documentar el acuerdo. La escritura pública ante notario sigue siendo el cauce habitual para inscribir la transmisión.",
+      },
+    ],
+  },
+  arras: {
+    title: "Contrato de Arras Gratis PDF 2026 | Descargar",
+    description:
+      "Contrato de arras legal y actualizado. PDF listo para imprimir. Genera y descarga gratis en minutos. Empieza ya.",
+    heading: "Contrato de arras (PDF gratis 2026)",
+    intro:
+      "Crea un contrato de arras penitenciales o confirmatorias. Documento legal actualizado en PDF, listo para imprimir. Gratis y en minutos.",
+    relatedArticleSlugs: [
+      "modelo-arras-penitenciales-pdf",
+      "tipos-de-arras",
+      "contrato-compraventa-vivienda-particulares-pdf",
+    ],
+    bodySections: [
+      {
+        title: "Para qué sirven las arras",
+        paragraphs: [
+          "Reservan la compraventa con una cantidad a cuenta y definen qué ocurre si comprador o vendedor desisten. En arras penitenciales, las consecuencias económicas suelen estar muy claras.",
+        ],
+      },
+      {
+        title: "Datos imprescindibles del documento",
+        paragraphs: [
+          "Partes, inmueble, precio de compraventa, importe de las arras, tipo de arras y plazo para elevar a escritura.",
+        ],
+      },
+      {
+        title: "Genera el PDF de arras gratis",
+        paragraphs: [
+          "Completa el formulario, revisa el resumen y descarga el PDF listo para imprimir. Después puedes pasar al contrato de compraventa cuando corresponda.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "¿Qué tipos de arras puedo documentar?",
+        answer:
+          "El generador contempla arras habituales en compraventas inmobiliarias. Indica en el formulario el tipo y condiciones que hayáis acordado.",
+      },
+      {
+        question: "¿El PDF es gratis y listo para imprimir?",
+        answer:
+          "Sí. Descargas el contrato de arras al instante, sin registro.",
+      },
+      {
+        question: "¿Es un documento legal en España?",
+        answer:
+          "Sí, como modelo privado orientativo. Revisa importes, plazos y efectos antes de firmar; consulta a un profesional si lo necesitas.",
       },
     ],
   },
@@ -163,56 +351,6 @@ const CONTRACT_SEO: Record<string, ContractSeoMetadata> = {
         question: "¿Necesito registrarme?",
         answer:
           "No. El proceso es anónimo: rellenas, generas y descargas.",
-      },
-    ],
-  },
-  "compraventa-vivienda": {
-    title: "Contrato Compraventa Vivienda Gratis PDF 2026",
-    description:
-      "Contrato de compraventa legal y actualizado 2026. PDF listo para imprimir. Gratis, sin registro. Descárgalo ya.",
-    heading: "Contrato de compraventa de vivienda (PDF gratis)",
-    intro:
-      "Genera un contrato de compraventa de vivienda entre particulares. Legal, actualizado 2026 y en PDF listo para imprimir. Gratis, sin registro.",
-    faqs: [
-      {
-        question: "¿Sirve para compraventa entre particulares?",
-        answer:
-          "Sí. El modelo está orientado a transmisión de vivienda entre particulares en España.",
-      },
-      {
-        question: "¿Puedo descargar el PDF gratis?",
-        answer:
-          "Sí. Generas el documento y lo descargas listo para imprimir, sin registro ni pago.",
-      },
-      {
-        question: "¿Sustituye a la escritura notarial?",
-        answer:
-          "No. Es un contrato privado útil para documentar el acuerdo. La escritura pública ante notario sigue siendo el cauce habitual para inscribir la transmisión.",
-      },
-    ],
-  },
-  arras: {
-    title: "Contrato de Arras Gratis PDF 2026 | Descargar",
-    description:
-      "Contrato de arras legal y actualizado. PDF listo para imprimir. Genera y descarga gratis en minutos. Empieza ya.",
-    heading: "Contrato de arras (PDF gratis 2026)",
-    intro:
-      "Crea un contrato de arras penitenciales o confirmatorias. Documento legal actualizado en PDF, listo para imprimir. Gratis y en minutos.",
-    faqs: [
-      {
-        question: "¿Qué tipos de arras puedo documentar?",
-        answer:
-          "El generador contempla arras habituales en compraventas inmobiliarias. Indica en el formulario el tipo y condiciones que hayáis acordado.",
-      },
-      {
-        question: "¿El PDF es gratis y listo para imprimir?",
-        answer:
-          "Sí. Descargas el contrato de arras al instante, sin registro.",
-      },
-      {
-        question: "¿Es un documento legal en España?",
-        answer:
-          "Sí, como modelo privado orientativo. Revisa importes, plazos y efectos antes de firmar; consulta a un profesional si lo necesitas.",
       },
     ],
   },
