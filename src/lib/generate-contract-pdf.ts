@@ -493,9 +493,9 @@ export function buildContractDocumentData(
   };
 }
 
-export async function generateContractPdf(
+export async function buildContractPdfDocument(
   options: GenerateContractPdfOptions
-): Promise<void> {
+): Promise<import("jspdf").jsPDF> {
   const { jsPDF } = await import("jspdf");
   const { config, contractTitle, values } = options;
 
@@ -534,6 +534,13 @@ export async function generateContractPdf(
   writeSignatureBlock(ctx, document.signatures, lugarFirma);
   await writeDisclaimer(ctx);
 
-  const filename = `contrato-${config.slug}-${formatFilenameDate(new Date())}.pdf`;
+  return doc;
+}
+
+export async function generateContractPdf(
+  options: GenerateContractPdfOptions
+): Promise<void> {
+  const doc = await buildContractPdfDocument(options);
+  const filename = `contrato-${options.config.slug}-${formatFilenameDate(new Date())}.pdf`;
   doc.save(filename);
 }

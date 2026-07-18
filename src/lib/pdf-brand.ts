@@ -7,6 +7,17 @@ export type PdfLogoAsset = {
   height: number;
 };
 
+async function loadLogoMarkFromDisk(): Promise<PdfLogoAsset> {
+  const { readFileSync } = await import("node:fs");
+  const { join } = await import("node:path");
+  const png = readFileSync(join(process.cwd(), "public", "icon-192.png"));
+  return {
+    dataUrl: `data:image/png;base64,${png.toString("base64")}`,
+    width: 192,
+    height: 192,
+  };
+}
+
 async function rasterizeSvgToPng(
   svgText: string,
   size: number
@@ -48,6 +59,11 @@ let logoMarkCache: PdfLogoAsset | null = null;
 
 export async function loadPdfLogoMark(): Promise<PdfLogoAsset> {
   if (logoMarkCache) {
+    return logoMarkCache;
+  }
+
+  if (typeof window === "undefined") {
+    logoMarkCache = await loadLogoMarkFromDisk();
     return logoMarkCache;
   }
 
