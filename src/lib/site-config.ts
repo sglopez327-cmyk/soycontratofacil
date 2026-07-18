@@ -1,6 +1,6 @@
-/** URL canónica del sitio (configurable vía entorno en despliegues). */
+/** URL canónica del sitio (debe coincidir con el host final: www). */
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://soycontratofacil.es";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.soycontratofacil.es";
 
 export const SITE_NAME = "SoyContratoFacil.es";
 
