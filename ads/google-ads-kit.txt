@@ -1,0 +1,113 @@
+================================================================================
+KIT GOOGLE ADS — SoyContratoFacil.es
+Sin cambiar el diseño de la web. Usa las URLs del generador con UTM.
+================================================================================
+
+CUENTA / CONVERSIÓN
+-------------------
+1. Crea cuenta en Google Ads.
+2. Conversiones → Nueva → Sitio web → "pdf_generated" (o importar desde etiqueta).
+3. En Vercel, añade variables de entorno (Settings → Environment Variables):
+
+   NEXT_PUBLIC_GOOGLE_ADS_ID=AW-XXXXXXXXX
+   NEXT_PUBLIC_GOOGLE_ADS_SEND_TO=AW-XXXXXXXXX/YYYYYYYY
+
+   (XXXXXXXXX = ID de cuenta Ads; YYYYYYYY = etiqueta de la conversión)
+
+4. Redeploy. Cada descarga de PDF dispara la conversión (si gtag está cargado).
+
+PRESUPUESTO SUGERIDO (prueba)
+-----------------------------
+- 10–15 €/día los primeros 7–14 días
+- Objetivo: Conversiones (pdf_generated) o Clics si aún no hay conversión configurada
+- Redes: Solo búsqueda (Search)
+- Ubicación: España
+- Idioma: Español
+
+URLS DE DESTINO (con UTM — no cambian el diseño)
+------------------------------------------------
+Principal (alquiler):
+https://www.soycontratofacil.es/generar/vivienda?utm_source=google&utm_medium=cpc&utm_campaign=alquiler_vivienda
+
+Compraventa:
+https://www.soycontratofacil.es/generar/compraventa-vivienda?utm_source=google&utm_medium=cpc&utm_campaign=compraventa
+
+Arras:
+https://www.soycontratofacil.es/generar/arras?utm_source=google&utm_medium=cpc&utm_campaign=arras
+
+Temporada:
+https://www.soycontratofacil.es/generar/temporada?utm_source=google&utm_medium=cpc&utm_campaign=temporada
+
+Local:
+https://www.soycontratofacil.es/generar/local?utm_source=google&utm_medium=cpc&utm_campaign=local
+
+PALABRAS CLAVE (exacta + frase)
+-------------------------------
+Campaña Alquiler:
+[contrato alquiler vivienda gratis]
+[contrato de alquiler pdf gratis]
+[modelo contrato alquiler españa]
+"contrato alquiler pdf"
+"contrato arrendamiento vivienda gratis"
+"descargar contrato de alquiler"
+
+Campaña Compraventa:
+[contrato compraventa vivienda gratis]
+[contrato compraventa particulares pdf]
+"contrato de compraventa pdf gratis"
+"modelo contrato compraventa vivienda"
+
+Campaña Arras:
+[contrato de arras pdf gratis]
+[modelo arras penitenciales]
+"contrato arras gratis"
+
+ANUNCIOS DE BÚSQUEDA (RSA) — Campaña Alquiler
+---------------------------------------------
+Títulos (elige hasta 15; Google combina):
+1. Contrato alquiler PDF gratis
+2. Sin registro · En minutos
+3. Genera y descarga ya
+4. Plantilla España 2026
+5. Listo para imprimir y firmar
+6. SoyContratoFacil.es
+7. Alquiler vivienda habitual
+8. Gratis y sin complicaciones
+9. Formulario guiado paso a paso
+10. PDF al instante
+
+Descripciones:
+1. Crea tu contrato de alquiler de vivienda en PDF gratis. Completa el formulario, descarga e imprime. Sin registro.
+2. Plantilla adaptada a la normativa española. Genera el documento en minutos y revísalo antes de firmar.
+
+ANUNCIOS — Campaña Compraventa
+------------------------------
+Títulos:
+1. Contrato compraventa PDF gratis
+2. Entre particulares · España
+3. Descarga en minutos
+4. Sin registro ni cuenta
+5. Listo para imprimir
+6. SoyContratoFacil.es
+
+Descripciones:
+1. Genera tu contrato privado de compraventa de vivienda en PDF gratis. Sin registro. Revisa y firma con tranquilidad.
+2. Precio, inmueble y partes en un documento claro. Descarga al instante desde SoyContratoFacil.es.
+
+QUÉ MIRAR A LOS 7 DÍAS
+----------------------
+- Coste por clic (CPC)
+- Coste por conversión (si hay descargas)
+- Si CPC > 0,80–1,00 € y nadie descarga: pausa y revisa landing (el formulario)
+- En Vercel Analytics / Clarity: eventos wizard_started → wizard_review → pdf_generated
+
+META / FACEBOOK (opcional, mismo destino)
+-----------------------------------------
+Objetivo: Tráfico o Conversiones (píxel si lo configuras después)
+Texto corto:
+"¿Necesitas un contrato de alquiler en PDF? Genéralo gratis en minutos, sin registro."
+CTA: Más información → URL de /generar/vivienda con utm_source=meta
+
+================================================================================
+FIN DEL KIT — Copia/pega en Google Ads. No altera el diseño de la web.
+================================================================================

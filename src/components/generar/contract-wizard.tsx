@@ -21,7 +21,13 @@ import {
   buildContractDocumentData,
   generateContractPdf,
 } from "@/lib/generate-contract-pdf";
-import { trackPdfGenerated } from "@/lib/track-conversion";
+import {
+  trackPdfFailed,
+  trackPdfGenerated,
+  trackWizardReview,
+  trackWizardStarted,
+  trackWizardStep,
+} from "@/lib/track-conversion";
 import { cn } from "@/lib/utils";
 
 type ContractWizardProps = {
@@ -51,6 +57,10 @@ export function ContractWizard({ config, contractTitle }: ContractWizardProps) {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [currentStepIndex, isComplete]);
+
+  useEffect(() => {
+    trackWizardStarted(config.slug);
+  }, [config.slug]);
 
   function updateValue(fieldId: string, value: string) {
     setValues((previous) => ({ ...previous, [fieldId]: value }));
@@ -83,9 +93,12 @@ export function ContractWizard({ config, contractTitle }: ContractWizardProps) {
     setErrors({});
     if (isLastStep) {
       setIsComplete(true);
+      trackWizardReview(config.slug);
       return;
     }
-    setCurrentStepIndex((index) => index + 1);
+    const nextIndex = currentStepIndex + 1;
+    trackWizardStep(config.slug, steps[nextIndex]?.id ?? String(nextIndex), nextIndex);
+    setCurrentStepIndex(nextIndex);
   }
 
   function handleBack() {
@@ -126,6 +139,10 @@ export function ContractWizard({ config, contractTitle }: ContractWizardProps) {
       });
     } catch (error) {
       console.error("Error al generar el PDF:", error);
+      trackPdfFailed(
+        config.slug,
+        error instanceof Error ? error.message : "unknown"
+      );
       window.alert("No se pudo generar el documento. Inténtalo de nuevo.");
     } finally {
       setIsGenerating(false);

@@ -12,6 +12,7 @@ import {
   homeFaqSchema,
   softwareApplicationSchema,
 } from "@/lib/seo-schema";
+import { DEFAULT_DESCRIPTION } from "@/lib/site-config";
 
 const UsageGuideSection = dynamic(
   () =>
@@ -37,8 +38,7 @@ const FaqSection = dynamic(
 
 export const metadata = createPageMetadata({
   title: "SoyContratoFacil.es — Contratos legales gratis en PDF",
-  description:
-    "Genera contratos de alquiler, compraventa y locales entre particulares. PDF legal, actualizado y listo para firmar. Gratis y sin registro.",
+  description: DEFAULT_DESCRIPTION,
   path: "/",
 });
 

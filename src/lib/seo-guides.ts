@@ -20,9 +20,9 @@ export const seoGuides: SeoGuide[] = [
   {
     slug: "vivienda",
     contractSlug: "vivienda",
-    title: "Cómo hacer un contrato de alquiler de vivienda en España",
+    title: "Cómo hacer un contrato de alquiler de vivienda gratis PDF",
     metaDescription:
-      "Guía práctica para redactar un contrato de arrendamiento de vivienda habitual: cláusulas esenciales, plazos, fianza y descarga gratuita del documento.",
+      "Guía práctica y generador: contrato de arrendamiento de vivienda habitual en PDF gratis. Cláusulas, fianza, plazos y descarga sin registro.",
     intro:
       "El contrato de alquiler de vivienda habitual es el documento que regula la relación entre arrendador e inquilino cuando el inmueble se destina a residencia permanente. En España, la Ley de Arrendamientos Urbanos (LAU) establece derechos y obligaciones mínimas que conviene reflejar por escrito.",
     sections: [
@@ -256,9 +256,9 @@ export const seoGuides: SeoGuide[] = [
   {
     slug: "compraventa-vivienda",
     contractSlug: "compraventa-vivienda",
-    title: "Contrato de compraventa de vivienda entre particulares",
+    title: "Contrato de compraventa de vivienda gratis PDF",
     metaDescription:
-      "Guía para redactar un contrato de compraventa de vivienda: precio, arras, cargas, plazos de escritura y generador gratuito de documentos.",
+      "Guía y generador: contrato de compraventa de vivienda entre particulares en PDF gratis. Precio, inmueble y descarga sin registro.",
     intro:
       "La compraventa de vivienda entre particulares requiere un documento que refleje el precio, la forma de pago, la descripción del inmueble, el estado de cargas y el compromiso de otorgar escritura pública ante notario.",
     sections: [
@@ -297,9 +297,9 @@ export const seoGuides: SeoGuide[] = [
   {
     slug: "arras",
     contractSlug: "arras",
-    title: "Contrato de arras penitenciales: qué son y cómo redactarlas",
+    title: "Contrato de arras penitenciales gratis PDF",
     metaDescription:
-      "Explicación del contrato de arras en compraventa de inmuebles: arras penitenciales, confirmatorias y penales. Genera tu documento gratis.",
+      "Qué son las arras penitenciales y cómo generar el contrato en PDF gratis. Tipos de arras, plazos y descarga sin registro.",
     intro:
       "Las arras son un anticipo entregado en señal del compromiso de comprar o vender un inmueble. Las arras penitenciales permiten desistir del contrato perdiendo o devolviendo el doble, según quién desista.",
     sections: [

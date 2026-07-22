@@ -2,7 +2,7 @@
 
 const CTR_TITLE_SUFFIX = " | PDF gratis";
 const CTR_DESC_SUFFIX =
-  " Genera tu PDF gratis, legal y listo para imprimir.";
+  " Genera tu PDF gratis y listo para imprimir.";
 
 export function withCtrTitle(title: string, maxLength = 60): string {
   if (/\b(pdf|gratis|descargar)\b/i.test(title)) {

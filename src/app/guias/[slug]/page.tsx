@@ -24,7 +24,7 @@ type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
-const LAST_UPDATED = "6 de julio de 2026";
+const LAST_UPDATED = "22 de julio de 2026";
 
 export function generateStaticParams() {
   return getAllGuideSlugs().map((slug) => ({ slug }));

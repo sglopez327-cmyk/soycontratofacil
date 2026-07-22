@@ -1,6 +1,8 @@
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 
+import { AttributionCapture } from "@/components/analytics/attribution-capture";
+import { GoogleAdsTag } from "@/components/analytics/google-ads-tag";
 import { MicrosoftClarity } from "@/components/analytics/microsoft-clarity";
 import { JsonLd } from "@/components/seo/json-ld";
 import { organizationSchema, siteNavigationSchema, webSiteSchema } from "@/lib/seo-schema";
@@ -34,8 +36,10 @@ export default function RootLayout({
     >
       <body className="flex min-h-full flex-col font-sans">
         <JsonLd data={[organizationSchema(), webSiteSchema(), siteNavigationSchema()]} />
+        <AttributionCapture />
         {children}
         <MicrosoftClarity />
+        <GoogleAdsTag />
         <Analytics />
       </body>
     </html>
