@@ -12,9 +12,13 @@ export function FooterDisclaimer() {
       <div className="relative mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
         <div className="rounded-2xl border border-slate-700 bg-slate-800/40 p-8 shadow-lg backdrop-blur-md sm:p-10">
           <div className="flex flex-col gap-6 sm:flex-row sm:gap-8">
-            <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-brand-blue/15 text-brand-blue ring-1 ring-brand-blue/25">
+            <Link
+              href="/aviso-legal"
+              className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-brand-blue/15 text-brand-blue ring-1 ring-brand-blue/25 transition-colors hover:bg-brand-blue hover:text-white hover:ring-brand-blue"
+              aria-label="Ir al aviso legal completo"
+            >
               <Scale className="size-5" aria-hidden />
-            </span>
+            </Link>
 
             <div className="space-y-4">
               <div>
@@ -44,6 +48,14 @@ export function FooterDisclaimer() {
                   colegiado antes de firmar. La plataforma no sustituye el
                   criterio profesional de un experto en derecho inmobiliario.
                 </p>
+                <p>
+                  <Link
+                    href="/aviso-legal"
+                    className="font-medium text-brand-blue hover:underline"
+                  >
+                    Leer el aviso legal completo
+                  </Link>
+                </p>
               </div>
             </div>
           </div>
@@ -66,6 +78,12 @@ export function FooterDisclaimer() {
               className="transition-colors duration-300 hover:text-brand-blue"
             >
               Artículos
+            </Link>
+            <Link
+              href="/aviso-legal"
+              className="transition-colors duration-300 hover:text-brand-blue"
+            >
+              Aviso legal
             </Link>
             <Link
               href="/privacidad"

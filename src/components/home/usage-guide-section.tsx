@@ -1,7 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { Download, FileText, MousePointerClick } from "lucide-react";
+import { ArrowRight, Download, FileText, MousePointerClick } from "lucide-react";
 
 const steps = [
   {
@@ -12,6 +13,8 @@ const steps = [
     mobileDescription:
       "Alquiler, compraventa, arras o trámites complementarios.",
     icon: MousePointerClick,
+    href: "/#arrendamientos",
+    cta: "Ver contratos",
   },
   {
     number: "02",
@@ -20,6 +23,8 @@ const steps = [
       "Rellena los datos paso a paso. Solo te pedimos la información legal necesaria para tu contrato.",
     mobileDescription: "Solo los datos legales necesarios, paso a paso.",
     icon: FileText,
+    href: "/generar/vivienda",
+    cta: "Empezar formulario",
   },
   {
     number: "03",
@@ -28,6 +33,8 @@ const steps = [
       "Genera y descarga el documento al instante. Sin registro, sin cuenta y totalmente gratis.",
     mobileDescription: "Al instante, sin registro ni cuenta y",
     icon: Download,
+    href: "/generar/vivienda",
+    cta: "Generar PDF gratis",
   },
 ] as const;
 
@@ -108,7 +115,7 @@ export function UsageGuideSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-            className="relative inline-flex items-center rounded-full border border-brand-blue/30 bg-gradient-to-b from-brand-blue/15 to-brand-blue/5 px-5 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-brand-blue shadow-[inset_0_1px_0_0_rgba(59,130,246,0.2)] sm:text-xs"
+            className="relative inline-flex items-center px-1 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-brand-blue sm:text-xs"
           >
             ¿Cómo funciona?
           </motion.p>
@@ -145,11 +152,12 @@ export function UsageGuideSection() {
           >
             Genera contratos legales en{" "}
             <span className="font-semibold text-slate-200">tres pasos</span>. No
-            necesitas crear una cuenta ni iniciar sesión.
+            necesitas crear una cuenta ni iniciar sesión. Toca cada paso para
+            continuar.
           </motion.p>
         </div>
 
-        {/* Móvil: panel compacto con los 3 pasos en filas */}
+        {/* Móvil: panel compacto con los 3 pasos enlazados */}
         <motion.ol
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -161,27 +169,33 @@ export function UsageGuideSection() {
             const Icon = step.icon;
 
             return (
-              <li key={step.number} className="flex items-start gap-3 p-3.5">
-                <div className="flex shrink-0 flex-col items-center gap-1.5">
-                  <span className="text-[0.6rem] font-semibold tracking-widest text-brand-blue">
-                    {step.number}
-                  </span>
-                  <span className="flex size-9 items-center justify-center rounded-lg bg-brand-blue/15 text-brand-blue ring-1 ring-brand-blue/25">
-                    <Icon className="size-4" aria-hidden />
-                  </span>
-                </div>
-                <div className="min-w-0 flex-1 pt-0.5">
-                  <h3 className="text-sm font-bold leading-snug text-white">
-                    {step.title}
-                  </h3>
-                  <StepDescription step={step} compact />
-                </div>
+              <li key={step.number}>
+                <Link
+                  href={step.href}
+                  className="flex items-start gap-3 p-3.5 transition-colors active:bg-slate-800/80"
+                >
+                  <div className="flex shrink-0 flex-col items-center gap-1.5">
+                    <span className="text-[0.6rem] font-semibold tracking-widest text-brand-blue">
+                      {step.number}
+                    </span>
+                    <span className="flex size-9 items-center justify-center rounded-lg bg-brand-blue/15 text-brand-blue ring-1 ring-brand-blue/25">
+                      <Icon className="size-4" aria-hidden />
+                    </span>
+                  </div>
+                  <div className="min-w-0 flex-1 pt-0.5">
+                    <h3 className="flex items-center gap-1.5 text-sm font-bold leading-snug text-white">
+                      {step.title}
+                      <ArrowRight className="size-3.5 shrink-0 text-brand-blue" aria-hidden />
+                    </h3>
+                    <StepDescription step={step} compact />
+                  </div>
+                </Link>
               </li>
             );
           })}
         </motion.ol>
 
-        {/* Escritorio: tarjetas en 3 columnas */}
+        {/* Escritorio: tarjetas enlazadas */}
         <ol className="mt-12 hidden gap-5 sm:grid sm:grid-cols-3">
           {steps.map((step, index) => {
             const Icon = step.icon;
@@ -194,20 +208,46 @@ export function UsageGuideSection() {
                 whileInView="visible"
                 viewport={{ once: true, margin: "-40px" }}
                 variants={cardVariants}
-                className="relative rounded-2xl border border-slate-700 bg-slate-800/40 p-6 backdrop-blur-md"
               >
-                <span className="text-xs font-semibold tracking-widest text-brand-blue">
-                  PASO {step.number}
-                </span>
-                <span className="mt-4 flex size-11 items-center justify-center rounded-xl bg-brand-blue/15 text-brand-blue ring-1 ring-brand-blue/25">
-                  <Icon className="size-5" aria-hidden />
-                </span>
-                <h3 className="mt-4 text-base font-bold text-white">{step.title}</h3>
-                <StepDescription step={step} />
+                <Link
+                  href={step.href}
+                  className="group relative flex h-full flex-col rounded-2xl border border-slate-700 bg-slate-800/40 p-6 backdrop-blur-md transition-all duration-300 hover:border-brand-blue/50 hover:bg-slate-800/60 hover:shadow-lg hover:shadow-brand-blue/10"
+                >
+                  <span className="text-xs font-semibold tracking-widest text-brand-blue">
+                    PASO {step.number}
+                  </span>
+                  <span className="mt-4 flex size-11 items-center justify-center rounded-xl bg-brand-blue/15 text-brand-blue ring-1 ring-brand-blue/25 transition-colors duration-300 group-hover:bg-brand-blue group-hover:text-white group-hover:ring-brand-blue">
+                    <Icon className="size-5" aria-hidden />
+                  </span>
+                  <h3 className="mt-4 text-base font-bold text-white group-hover:text-brand-blue">
+                    {step.title}
+                  </h3>
+                  <StepDescription step={step} />
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-brand-blue">
+                    {step.cta}
+                    <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+                  </span>
+                </Link>
               </motion.li>
             );
           })}
         </ol>
+
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.45, delay: 0.15 }}
+          className="mt-8 flex justify-center sm:mt-10"
+        >
+          <Link
+            href="/generar/vivienda"
+            className="inline-flex min-h-12 w-full max-w-sm items-center justify-center gap-2 rounded-full bg-brand-blue px-8 py-3.5 text-sm font-semibold text-white shadow-[0_4px_14px_rgba(59,130,246,0.4)] transition-shadow duration-300 hover:shadow-[0_8px_30px_rgba(59,130,246,0.5)] sm:w-auto"
+          >
+            Crear mi contrato gratis
+            <ArrowRight className="size-4" aria-hidden />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

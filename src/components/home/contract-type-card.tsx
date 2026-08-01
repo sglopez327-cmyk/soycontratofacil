@@ -49,9 +49,12 @@ export function ContractTypeCard({
       }}
       className="h-full"
     >
-      <Link href={href} className="group block h-full">
+      <Link
+        href={href}
+        className="group block h-full rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#0f172a]"
+      >
         <motion.div
-          className="relative h-full overflow-hidden rounded-2xl border border-slate-700 bg-slate-800/40 p-5 shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-brand-blue/50 hover:shadow-xl hover:shadow-brand-blue/10"
+          className="relative h-full overflow-hidden rounded-2xl border border-slate-700 bg-slate-800/40 p-5 shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-[1.02] hover:border-brand-blue/50 hover:shadow-xl hover:shadow-brand-blue/10 active:scale-[0.99]"
           variants={cardVariants}
           initial="rest"
           whileHover="hover"
@@ -85,7 +88,8 @@ export function ContractTypeCard({
               </p>
             </div>
 
-            <div className="flex items-center gap-1.5 text-sm font-medium text-brand-blue opacity-0 transition-all duration-300 group-hover:opacity-100">
+            {/* Visible siempre (móvil sin hover); se refuerza al hover en desktop */}
+            <div className="flex items-center gap-1.5 text-sm font-semibold text-brand-blue transition-colors duration-300 group-hover:text-sky-300">
               Generar documento
               <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
             </div>

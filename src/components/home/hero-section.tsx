@@ -76,16 +76,20 @@ export function HeroSection() {
           </motion.p>
 
           <motion.div
-            className="mt-12 flex flex-col items-center gap-4 sm:mt-14 lg:items-start"
+            className="mt-12 flex w-full flex-col items-center gap-4 sm:mt-14 lg:items-start"
             initial="hidden"
             animate="visible"
             custom={0.45}
             variants={fadeUp}
           >
-            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
+            <motion.div
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full max-w-sm sm:w-auto"
+            >
               <Link
                 href="/generar/vivienda"
-                className="group inline-flex items-center gap-2.5 rounded-full bg-brand-blue px-8 py-3.5 text-sm font-semibold text-white shadow-[0_4px_14px_rgba(59,130,246,0.4)] transition-shadow duration-300 hover:shadow-[0_8px_30px_rgba(59,130,246,0.5)]"
+                className="group inline-flex min-h-12 w-full items-center justify-center gap-2.5 rounded-full bg-brand-blue px-8 py-3.5 text-sm font-semibold text-white shadow-[0_4px_14px_rgba(59,130,246,0.4)] transition-shadow duration-300 hover:shadow-[0_8px_30px_rgba(59,130,246,0.5)] sm:w-auto"
               >
                 Crear mi contrato gratis
                 <ArrowRight
@@ -94,6 +98,13 @@ export function HeroSection() {
                 />
               </Link>
             </motion.div>
+
+            <Link
+              href="/#arrendamientos"
+              className="text-sm font-medium text-slate-300 underline-offset-4 transition-colors hover:text-brand-blue hover:underline"
+            >
+              Ver todos los tipos de contrato
+            </Link>
 
             <p className="text-sm text-slate-400">
               Sin registro · Descarga en PDF ·{" "}

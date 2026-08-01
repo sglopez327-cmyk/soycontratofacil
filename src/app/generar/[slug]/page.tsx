@@ -108,8 +108,11 @@ export default async function GenerarContratoPage({ params }: PageProps) {
           </p>
 
           <div className="mt-4 flex items-start gap-4">
-            <span className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-brand-blue/15 text-brand-blue ring-1 ring-brand-blue/25">
-              <Icon className="size-5" aria-hidden />
+            <span
+              className="pointer-events-none flex size-12 shrink-0 items-center justify-center rounded-xl bg-brand-blue/15 text-brand-blue ring-1 ring-brand-blue/25"
+              aria-hidden
+            >
+              <Icon className="size-5" />
             </span>
             <div>
               <h1 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
