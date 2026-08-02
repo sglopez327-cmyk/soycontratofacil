@@ -7,7 +7,7 @@ Dependencias:
 
 Ejecutar (desde esta carpeta):
   cd ads/promo-reel
-  pip install "moviepy>=2.0.0" pillow numpy imageio imageio-ffmpeg
+  pip install -r requirements.txt
   python make_promo_reel.py
 
 Opcional:
@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import argparse
 import math
+from dataclasses import dataclass
 from pathlib import Path
 
 import numpy as np
@@ -37,6 +38,15 @@ SAFE_BOTTOM = 280
 SAFE_SIDE = 72
 CROSSFADE = 0.45
 
+# Fondo corporativo (barras letterbox)
+BG_RGB = (15, 23, 42)
+
+# Redimensionado nítido (sin estirar)
+RESAMPLE = Image.Resampling.BICUBIC
+
+# Ken Burns muy suave: 100% → 105%
+ZOOM_END = 1.05
+
 SCENE_COPY = [
     ("1. Entra gratis", "Sin registro · En minutos"),
     ("2. Elige el contrato", "Alquiler, compraventa, arras…"),
@@ -45,8 +55,14 @@ SCENE_COPY = [
     ("soycontratofacil.es", "Gratis · PDF al instante"),
 ]
 
-# Bias de recorte vertical para capturas desktop (0=arriba, 1=abajo)
-CROP_BIAS_Y = [0.28, 0.42, 0.38, 0.45, 0.55]
+
+@dataclass(frozen=True)
+class LetterboxedShot:
+    """Canvas 1080×1920 con la captura a ancho completo y barras arriba/abajo."""
+
+    canvas: Image.Image
+    shot_y: int
+    shot_h: int
 
 
 def _font(size: int, bold: bool = True) -> ImageFont.ImageFont:
@@ -61,47 +77,72 @@ def _font(size: int, bold: bool = True) -> ImageFont.ImageFont:
     return ImageFont.load_default()
 
 
-def cover_crop(path: Path, bias_y: float = 0.4) -> Image.Image:
-    """Recorta la captura a 9:16 (cover) y escala a 1080×1920."""
+def fit_width_letterbox(path: Path) -> LetterboxedShot:
+    """
+    Escala la captura manteniendo aspect ratio hasta ancho = 1080px.
+    Rellena arriba/abajo con fondo corporativo (sin estirar ni recortar).
+    """
     im = Image.open(path).convert("RGB")
-    target_ratio = W / H
-    src_ratio = im.width / im.height
+    scale = W / im.width
+    new_w = W
+    new_h = max(1, int(round(im.height * scale)))
+    im = im.resize((new_w, new_h), RESAMPLE)
 
-    if src_ratio > target_ratio:
-        new_w = max(1, int(im.height * target_ratio))
-        left = (im.width - new_w) // 2
-        im = im.crop((left, 0, left + new_w, im.height))
+    canvas = Image.new("RGB", (W, H), BG_RGB)
+
+    # Centrado vertical (ligero sesgo hacia arriba para priorizar cabecera/CTA)
+    if new_h >= H:
+        # Caso extremo: captura más alta que el lienzo → recorte mínimo centrado arriba
+        top = 0
+        im = im.crop((0, 0, new_w, H))
+        new_h = H
+        shot_y = 0
     else:
-        new_h = max(1, int(im.width / target_ratio))
-        max_top = max(0, im.height - new_h)
-        top = int(max_top * max(0.0, min(1.0, bias_y)))
-        im = im.crop((0, top, im.width, top + new_h))
+        shot_y = max(0, (H - new_h) // 2 - 60)
+        if shot_y + new_h > H:
+            shot_y = H - new_h
 
-    return im.resize((W, H), Image.Resampling.LANCZOS)
+    canvas.paste(im, (0, shot_y))
+    return LetterboxedShot(canvas=canvas, shot_y=shot_y, shot_h=new_h)
 
 
 def ken_burns_frame(
-    base: Image.Image, t: float, duration: float, zoom_end: float = 1.10
+    shot: LetterboxedShot,
+    t: float,
+    duration: float,
+    zoom_end: float = ZOOM_END,
 ) -> np.ndarray:
+    """
+    Zoom sutil 1.00 → zoom_end, anclado a la zona superior de la captura
+    (texto de la web más legible, sin pan brusco).
+    """
     progress = 0.0 if duration <= 0 else min(1.0, max(0.0, t / duration))
     ease = 0.5 - 0.5 * math.cos(math.pi * progress)
     z = 1.0 + (zoom_end - 1.0) * ease
 
-    bw, bh = base.size
-    crop_w = max(2, int(bw / z))
-    crop_h = max(2, int(bh / z))
-    left = (bw - crop_w) // 2
-    top = max(0, int((bh - crop_h) * (0.42 - 0.06 * ease)))
-    frame = base.crop((left, top, left + crop_w, top + crop_h)).resize(
-        (W, H), Image.Resampling.LANCZOS
+    crop_w = max(2, int(round(W / z)))
+    crop_h = max(2, int(round(H / z)))
+
+    # Punto de interés: centro horizontal + tercio superior de la captura
+    focus_x = W * 0.5
+    focus_y = shot.shot_y + shot.shot_h * 0.32
+
+    left = int(round(focus_x - crop_w * 0.5))
+    top = int(round(focus_y - crop_h * 0.32))
+
+    left = max(0, min(left, W - crop_w))
+    top = max(0, min(top, H - crop_h))
+
+    frame = shot.canvas.crop((left, top, left + crop_w, top + crop_h)).resize(
+        (W, H), RESAMPLE
     )
     return np.asarray(frame)
 
 
 def make_text_overlay(title: str, subtitle: str) -> Image.Image:
+    """Texto del tour centrado horizontalmente, en zona segura inferior."""
     overlay = Image.new("RGBA", (W, H), (0, 0, 0, 0))
 
-    # Viñeta inferior
     vignette = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     vdraw = ImageDraw.Draw(vignette)
     band_top = H - SAFE_BOTTOM - 220
@@ -138,11 +179,14 @@ def make_text_overlay(title: str, subtitle: str) -> Image.Image:
     overlay.paste(card, (card_x, card_y), card)
 
     draw = ImageDraw.Draw(overlay)
-    tx = card_x + pad_x
+    title_w = title_bbox[2] - title_bbox[0]
+    sub_w = sub_bbox[2] - sub_bbox[0]
+    tx_title = card_x + (card_w - title_w) // 2
+    tx_sub = card_x + (card_w - sub_w) // 2
     ty = card_y + pad_y
-    draw.text((tx, ty), title, font=title_font, fill=(255, 255, 255, 255))
+    draw.text((tx_title, ty), title, font=title_font, fill=(255, 255, 255, 255))
     draw.text(
-        (tx, ty + (title_bbox[3] - title_bbox[1]) + 12),
+        (tx_sub, ty + (title_bbox[3] - title_bbox[1]) + 12),
         subtitle,
         font=sub_font,
         fill=(148, 163, 184, 255),
@@ -183,25 +227,21 @@ def build_video(audio_path: Path, out_path: Path) -> None:
     total = float(audio.duration)
     n = len(frame_paths)
 
-    # Con crossfade: n*d - (n-1)*fade = total  →  d = (total + (n-1)*fade) / n
     scene_dur = (total + (n - 1) * CROSSFADE) / n
 
-    bases = [
-        cover_crop(path, bias_y=CROP_BIAS_Y[i % len(CROP_BIAS_Y)])
-        for i, path in enumerate(frame_paths)
-    ]
+    shots = [fit_width_letterbox(path) for path in frame_paths]
     overlays = [
         make_text_overlay(SCENE_COPY[i][0], SCENE_COPY[i][1]) for i in range(n)
     ]
 
     clips = []
     for i in range(n):
-        base = bases[i]
+        shot = shots[i]
         overlay_rgba = overlays[i]
         dur = scene_dur
 
-        def make_frame(t, _base=base, _overlay=overlay_rgba, _dur=dur):
-            rgb = ken_burns_frame(_base, t, _dur, zoom_end=1.10)
+        def make_frame(t, _shot=shot, _overlay=overlay_rgba, _dur=dur):
+            rgb = ken_burns_frame(_shot, t, _dur, zoom_end=ZOOM_END)
             canvas = Image.fromarray(rgb).convert("RGBA")
             alpha_scale = min(1.0, t / 0.45) if t < 0.45 else 1.0
             ov = _overlay.copy()
@@ -212,15 +252,12 @@ def build_video(audio_path: Path, out_path: Path) -> None:
 
         clips.append(VideoClip(make_frame, duration=dur).with_fps(FPS))
 
-    video = concatenate_videoclips(
-        clips, method="compose", padding=-CROSSFADE
-    )
+    video = concatenate_videoclips(clips, method="compose", padding=-CROSSFADE)
 
     if abs(video.duration - total) > 0.05:
         if video.duration > total:
             video = video.subclipped(0, total)
         else:
-            # Rellenar con el último fotograma lógico extendiendo el último clip
             deficit = total - video.duration
             tail = clips[-1].with_duration(deficit)
             video = concatenate_videoclips(
@@ -235,9 +272,10 @@ def build_video(audio_path: Path, out_path: Path) -> None:
         fps=FPS,
         codec="libx264",
         audio_codec="aac",
-        preset="medium",
+        preset="slow",
         threads=4,
-        bitrate="6000k",
+        bitrate="20M",
+        ffmpeg_params=["-crf", "16", "-pix_fmt", "yuv420p"],
     )
 
     audio.close()
