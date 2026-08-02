@@ -2,23 +2,23 @@
 """
 Reel / TikTok vertical 1080×1920 — SoyContratoFacil.es
 
+Visual:
+  - Escala la captura para llenar el alto del móvil (sin bandas negras).
+  - Sobresale a izquierda/derecha; centrado horizontal.
+  - Por escena: 0–2s anclado ARRIBA; desde ~3s paneo suave hacia ABAJO.
+
 Dependencias:
   pip install "moviepy>=2.0.0" pillow numpy imageio imageio-ffmpeg
 
-Ejecutar (desde esta carpeta):
+Ejecutar:
   cd ads/promo-reel
-  pip install -r requirements.txt
   python make_promo_reel.py
-
-Opcional:
-  python make_promo_reel.py --audio "C:\\ruta\\audio.mp3" --out promo.mp4
 """
 
 from __future__ import annotations
 
 import argparse
 import math
-from dataclasses import dataclass
 from pathlib import Path
 
 import numpy as np
@@ -37,15 +37,14 @@ SAFE_TOP = 160
 SAFE_BOTTOM = 280
 SAFE_SIDE = 72
 CROSSFADE = 0.45
-
-# Fondo corporativo (barras letterbox)
-BG_RGB = (15, 23, 42)
-
-# Redimensionado nítido (sin estirar)
 RESAMPLE = Image.Resampling.BICUBIC
 
-# Ken Burns muy suave: 100% → 105%
-ZOOM_END = 1.05
+# Escala base: alto ≈ pantalla. Un poco de overscan (>1) permite scroll vertical
+# real sin bandas negras (si fuera exactamente 1920px de alto, no habría paneo).
+HEIGHT_OVERSCAN = 1.22
+
+HOLD_TOP_UNTIL = 2.0
+PAN_START = 3.0
 
 SCENE_COPY = [
     ("1. Entra gratis", "Sin registro · En minutos"),
@@ -54,15 +53,6 @@ SCENE_COPY = [
     ("4. Descarga tu PDF", "Listo para imprimir y firmar"),
     ("soycontratofacil.es", "Gratis · PDF al instante"),
 ]
-
-
-@dataclass(frozen=True)
-class LetterboxedShot:
-    """Canvas 1080×1920 con la captura a ancho completo y barras arriba/abajo."""
-
-    canvas: Image.Image
-    shot_y: int
-    shot_h: int
 
 
 def _font(size: int, bold: bool = True) -> ImageFont.ImageFont:
@@ -77,77 +67,58 @@ def _font(size: int, bold: bool = True) -> ImageFont.ImageFont:
     return ImageFont.load_default()
 
 
-def fit_width_letterbox(path: Path) -> LetterboxedShot:
+def ease_in_out(t: float) -> float:
+    t = max(0.0, min(1.0, t))
+    return 0.5 - 0.5 * math.cos(math.pi * t)
+
+
+def pan_progress(t: float, duration: float) -> float:
+    """0 = arriba, 1 = abajo. Hold 0–2s; pan principal desde 3s al final."""
+    if t <= HOLD_TOP_UNTIL:
+        return 0.0
+    if t < PAN_START:
+        return ease_in_out((t - HOLD_TOP_UNTIL) / max(0.001, PAN_START - HOLD_TOP_UNTIL)) * 0.06
+
+    return ease_in_out((t - PAN_START) / max(0.001, duration - PAN_START))
+
+
+def fit_height_overflow_sides(path: Path, overscan: float = HEIGHT_OVERSCAN) -> Image.Image:
     """
-    Escala la captura manteniendo aspect ratio hasta ancho = 1080px.
-    Rellena arriba/abajo con fondo corporativo (sin estirar ni recortar).
+    Escala manteniendo aspect ratio para que el alto sea ~overscan×1920.
+    El ancho suele superar 1080 (se corta a izquierda/derecha).
+    Sin bandas negras: cada frame recorta exactamente 1080×1920.
     """
     im = Image.open(path).convert("RGB")
-    scale = W / im.width
-    new_w = W
-    new_h = max(1, int(round(im.height * scale)))
-    im = im.resize((new_w, new_h), RESAMPLE)
-
-    canvas = Image.new("RGB", (W, H), BG_RGB)
-
-    # Centrado vertical (ligero sesgo hacia arriba para priorizar cabecera/CTA)
-    if new_h >= H:
-        # Caso extremo: captura más alta que el lienzo → recorte mínimo centrado arriba
-        top = 0
-        im = im.crop((0, 0, new_w, H))
-        new_h = H
-        shot_y = 0
-    else:
-        shot_y = max(0, (H - new_h) // 2 - 60)
-        if shot_y + new_h > H:
-            shot_y = H - new_h
-
-    canvas.paste(im, (0, shot_y))
-    return LetterboxedShot(canvas=canvas, shot_y=shot_y, shot_h=new_h)
+    target_h = max(H + 1, int(round(H * overscan)))
+    scale = target_h / im.height
+    new_w = max(W + 1, int(round(im.width * scale)))
+    return im.resize((new_w, target_h), RESAMPLE)
 
 
-def ken_burns_frame(
-    shot: LetterboxedShot,
-    t: float,
-    duration: float,
-    zoom_end: float = ZOOM_END,
-) -> np.ndarray:
-    """
-    Zoom sutil 1.00 → zoom_end, anclado a la zona superior de la captura
-    (texto de la web más legible, sin pan brusco).
-    """
-    progress = 0.0 if duration <= 0 else min(1.0, max(0.0, t / duration))
-    ease = 0.5 - 0.5 * math.cos(math.pi * progress)
-    z = 1.0 + (zoom_end - 1.0) * ease
+def frame_with_vertical_pan(scaled: Image.Image, t: float, duration: float) -> np.ndarray:
+    ww, hh = scaled.size
+    progress = pan_progress(t, duration)
 
-    crop_w = max(2, int(round(W / z)))
-    crop_h = max(2, int(round(H / z)))
+    max_left = max(0, ww - W)
+    max_top = max(0, hh - H)
 
-    # Punto de interés: centro horizontal + tercio superior de la captura
-    focus_x = W * 0.5
-    focus_y = shot.shot_y + shot.shot_h * 0.32
+    left = max_left // 2
+    top = int(round(max_top * progress))
 
-    left = int(round(focus_x - crop_w * 0.5))
-    top = int(round(focus_y - crop_h * 0.32))
-
-    left = max(0, min(left, W - crop_w))
-    top = max(0, min(top, H - crop_h))
-
-    frame = shot.canvas.crop((left, top, left + crop_w, top + crop_h)).resize(
-        (W, H), RESAMPLE
-    )
+    frame = scaled.crop((left, top, left + W, top + H))
+    if frame.size != (W, H):
+        frame = frame.resize((W, H), RESAMPLE)
     return np.asarray(frame)
 
 
 def make_text_overlay(title: str, subtitle: str) -> Image.Image:
-    """Texto del tour centrado horizontalmente, en zona segura inferior."""
     overlay = Image.new("RGBA", (W, H), (0, 0, 0, 0))
 
     vignette = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     vdraw = ImageDraw.Draw(vignette)
     band_top = H - SAFE_BOTTOM - 220
     for i in range(260):
-        alpha = int(150 * (i / 260))
+        alpha = int(160 * (i / 260))
         y = band_top + i
         if y < H:
             vdraw.line([(0, y), (W, y)], fill=(15, 23, 42, alpha))
@@ -156,14 +127,14 @@ def make_text_overlay(title: str, subtitle: str) -> Image.Image:
 
     title_font = _font(64, bold=True)
     sub_font = _font(34, bold=False)
-    pad_x, pad_y = 36, 28
+    pad_y = 28
 
     title_bbox = draw.textbbox((0, 0), title, font=title_font)
     sub_bbox = draw.textbbox((0, 0), subtitle, font=sub_font)
     tw = max(title_bbox[2] - title_bbox[0], sub_bbox[2] - sub_bbox[0])
     th = (title_bbox[3] - title_bbox[1]) + 12 + (sub_bbox[3] - sub_bbox[1])
 
-    card_w = min(W - 2 * SAFE_SIDE, tw + 2 * pad_x)
+    card_w = min(W - 2 * SAFE_SIDE, tw + 72)
     card_h = th + 2 * pad_y
     card_x = (W - card_w) // 2
     card_y = H - SAFE_BOTTOM - card_h
@@ -181,12 +152,18 @@ def make_text_overlay(title: str, subtitle: str) -> Image.Image:
     draw = ImageDraw.Draw(overlay)
     title_w = title_bbox[2] - title_bbox[0]
     sub_w = sub_bbox[2] - sub_bbox[0]
-    tx_title = card_x + (card_w - title_w) // 2
-    tx_sub = card_x + (card_w - sub_w) // 2
     ty = card_y + pad_y
-    draw.text((tx_title, ty), title, font=title_font, fill=(255, 255, 255, 255))
     draw.text(
-        (tx_sub, ty + (title_bbox[3] - title_bbox[1]) + 12),
+        (card_x + (card_w - title_w) // 2, ty),
+        title,
+        font=title_font,
+        fill=(255, 255, 255, 255),
+    )
+    draw.text(
+        (
+            card_x + (card_w - sub_w) // 2,
+            ty + (title_bbox[3] - title_bbox[1]) + 12,
+        ),
         subtitle,
         font=sub_font,
         fill=(148, 163, 184, 255),
@@ -226,22 +203,21 @@ def build_video(audio_path: Path, out_path: Path) -> None:
     audio = AudioFileClip(str(audio_path))
     total = float(audio.duration)
     n = len(frame_paths)
-
     scene_dur = (total + (n - 1) * CROSSFADE) / n
 
-    shots = [fit_width_letterbox(path) for path in frame_paths]
+    scaled_shots = [fit_height_overflow_sides(path) for path in frame_paths]
     overlays = [
         make_text_overlay(SCENE_COPY[i][0], SCENE_COPY[i][1]) for i in range(n)
     ]
 
     clips = []
     for i in range(n):
-        shot = shots[i]
+        scaled = scaled_shots[i]
         overlay_rgba = overlays[i]
         dur = scene_dur
 
-        def make_frame(t, _shot=shot, _overlay=overlay_rgba, _dur=dur):
-            rgb = ken_burns_frame(_shot, t, _dur, zoom_end=ZOOM_END)
+        def make_frame(t, _scaled=scaled, _overlay=overlay_rgba, _dur=dur):
+            rgb = frame_with_vertical_pan(_scaled, t, _dur)
             canvas = Image.fromarray(rgb).convert("RGBA")
             alpha_scale = min(1.0, t / 0.45) if t < 0.45 else 1.0
             ov = _overlay.copy()
