@@ -82,13 +82,49 @@ def pan_progress(t: float, duration: float) -> float:
     return ease_in_out((t - PAN_START) / max(0.001, duration - PAN_START))
 
 
+def trim_bright_frame_edges(im: Image.Image, threshold: int = 180) -> Image.Image:
+    """
+    Quita el marco claro de captura (borde ventana / scrollbar) que en CapCut
+    se ve como una línea blanca estática al letterboxear.
+    No es CSS de la web: son píxeles blancos en el PNG.
+    """
+    rgb = im.convert("RGB")
+    w, h = rgb.size
+    px = rgb.load()
+
+    def col_bright(x: int) -> bool:
+        samples = [sum(px[x, y]) / 3 for y in range(0, h, max(1, h // 40))]
+        return (sum(samples) / len(samples)) >= threshold
+
+    def row_bright(y: int) -> bool:
+        samples = [sum(px[x, y]) / 3 for x in range(0, w, max(1, w // 40))]
+        return (sum(samples) / len(samples)) >= threshold
+
+    left = 0
+    while left < w // 4 and col_bright(left):
+        left += 1
+    right = w - 1
+    while right > w * 3 // 4 and col_bright(right):
+        right -= 1
+    top = 0
+    while top < h // 4 and row_bright(top):
+        top += 1
+    bottom = h - 1
+    while bottom > h * 3 // 4 and row_bright(bottom):
+        bottom -= 1
+
+    if left == 0 and right == w - 1 and top == 0 and bottom == h - 1:
+        return rgb
+    return rgb.crop((left, top, right + 1, bottom + 1))
+
+
 def fit_height_overflow_sides(path: Path, overscan: float = HEIGHT_OVERSCAN) -> Image.Image:
     """
     Escala manteniendo aspect ratio para que el alto sea ~overscan×1920.
     El ancho suele superar 1080 (se corta a izquierda/derecha).
     Sin bandas negras: cada frame recorta exactamente 1080×1920.
     """
-    im = Image.open(path).convert("RGB")
+    im = trim_bright_frame_edges(Image.open(path).convert("RGB"))
     target_h = max(H + 1, int(round(H * overscan)))
     scale = target_h / im.height
     new_w = max(W + 1, int(round(im.width * scale)))
