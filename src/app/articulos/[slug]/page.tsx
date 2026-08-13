@@ -16,6 +16,7 @@ import {
   getAllArticleSlugs,
   getArticleBySlug,
 } from "@/lib/seo-articles";
+import { shouldNoIndexArticle } from "@/lib/seo-contract-priority";
 import {
   articleSchema,
   breadcrumbSchema,
@@ -47,6 +48,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description: withCtrDescription(article.metaDescription),
     path: `/articulos/${slug}`,
     ogType: "article",
+    noIndex: shouldNoIndexArticle(slug),
   });
 }
 

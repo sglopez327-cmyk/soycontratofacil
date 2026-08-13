@@ -29,7 +29,7 @@ const FaqSection = dynamic(
 );
 
 export const metadata = createPageMetadata({
-  title: "SoyContratoFacil.es — Contratos legales gratis en PDF",
+  title: "Contrato de alquiler PDF gratis | Compraventa entre particulares",
   description: DEFAULT_DESCRIPTION,
   path: "/",
 });

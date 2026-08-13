@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 
 import { absoluteUrl } from "@/lib/seo";
 import { getArticleBySlug } from "@/lib/seo-articles";
+import { getSitemapPriorityForPath } from "@/lib/seo-contract-priority";
 import { getGuideBySlug } from "@/lib/seo-guides";
 import { getAllPublicPaths } from "@/lib/seo-urls";
 
@@ -35,15 +36,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
           : path.startsWith("/guias/") || path.startsWith("/articulos/")
             ? "weekly"
             : "monthly",
-    priority:
-      path === "/"
-        ? 1
-        : path.startsWith("/generar/")
-          ? 0.9
-          : path === "/guias" || path === "/articulos"
-            ? 0.85
-            : path.startsWith("/guias/") || path.startsWith("/articulos/")
-              ? 0.8
-              : 0.6,
+    priority: getSitemapPriorityForPath(path),
   }));
 }

@@ -72,7 +72,8 @@ export function HeroSection() {
             custom={0.28}
             variants={fadeUp}
           >
-            Documentos verificados, seguros y listos para firmar.
+            Alquiler urbano, local comercial y compraventa entre particulares.
+            PDF listo para firmar.
           </motion.p>
 
           <motion.div

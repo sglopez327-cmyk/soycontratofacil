@@ -11,6 +11,7 @@ import { getContractConfig } from "@/lib/contract-config";
 import { getAllContractSlugs, getContractBySlug } from "@/lib/contracts";
 import { createPageMetadata } from "@/lib/seo";
 import { getContractSeoMetadata } from "@/lib/seo-contract-metadata";
+import { shouldNoIndexContract } from "@/lib/seo-contract-priority";
 import { getGuideSlugForContract } from "@/lib/seo-guide-relations";
 import {
   breadcrumbSchema,
@@ -51,6 +52,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: seo.title,
     description: seo.description,
     path: contract.href,
+    noIndex: shouldNoIndexContract(slug),
   });
 }
 

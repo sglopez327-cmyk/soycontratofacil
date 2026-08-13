@@ -11,6 +11,7 @@ import { RelatedSeoLinks } from "@/components/seo/related-seo-links";
 import { JsonLd } from "@/components/seo/json-ld";
 import { createPageMetadata } from "@/lib/seo";
 import { withCtrDescription, withCtrTitle } from "@/lib/seo-ctr";
+import { shouldNoIndexGuide } from "@/lib/seo-contract-priority";
 import { getRelatedGuideSlugs } from "@/lib/seo-guide-relations";
 import {
   getAllGuideSlugs,
@@ -46,6 +47,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: withCtrTitle(guide.title),
     description: withCtrDescription(guide.metaDescription),
     path: `/guias/${slug}`,
+    noIndex: shouldNoIndexGuide(slug),
   });
 }
 

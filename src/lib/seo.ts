@@ -79,7 +79,8 @@ export function createPageMetadata({
 }
 
 export function createRootMetadata(): Metadata {
-  const defaultTitle = "SoyContratoFacil.es — Contratos legales gratis en PDF";
+  const defaultTitle =
+    "Contrato de alquiler PDF gratis | Compraventa entre particulares";
 
   return {
     metadataBase: new URL(SITE_URL),

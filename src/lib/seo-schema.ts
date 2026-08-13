@@ -4,6 +4,11 @@ import { getGuideSlugForContract } from "@/lib/seo-guide-relations";
 import { getAllContractSlugs, getContractBySlug } from "@/lib/contracts";
 import { getContractSeoMetadata } from "@/lib/seo-contract-metadata";
 import {
+  isCoreContractSlug,
+  shouldNoIndexArticle,
+  shouldNoIndexGuide,
+} from "@/lib/seo-contract-priority";
+import {
   CONTACT_EMAIL,
   DEFAULT_DESCRIPTION,
   SITE_NAME,
@@ -261,12 +266,16 @@ export function articleSchema(article: SeoArticle) {
 }
 
 export function allContractItemListSchema() {
+  const coreSlugs = getAllContractSlugs().filter((slug) =>
+    isCoreContractSlug(slug)
+  );
+
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Contratos inmobiliarios disponibles",
-    numberOfItems: getAllContractSlugs().length,
-    itemListElement: getAllContractSlugs().map((slug, index) => {
+    name: "Contratos de alquiler y compraventa entre particulares",
+    numberOfItems: coreSlugs.length,
+    itemListElement: coreSlugs.map((slug, index) => {
       const contract = getContractBySlug(slug);
       const seo = getContractSeoMetadata(
         slug,
@@ -285,12 +294,16 @@ export function allContractItemListSchema() {
 }
 
 export function guidesItemListSchema() {
+  const guideSlugs = getAllGuideSlugs().filter(
+    (slug) => !shouldNoIndexGuide(slug)
+  );
+
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Guías de contratos inmobiliarios",
-    numberOfItems: getAllGuideSlugs().length,
-    itemListElement: getAllGuideSlugs().map((slug, index) => {
+    name: "Guías de contratos de alquiler y compraventa",
+    numberOfItems: guideSlugs.length,
+    itemListElement: guideSlugs.map((slug, index) => {
       const guide = getGuideBySlug(slug);
       return {
         "@type": "ListItem",
@@ -303,12 +316,16 @@ export function guidesItemListSchema() {
 }
 
 export function articlesItemListSchema() {
+  const articleSlugs = getAllArticleSlugs().filter(
+    (slug) => !shouldNoIndexArticle(slug)
+  );
+
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Artículos sobre contratos inmobiliarios",
-    numberOfItems: getAllArticleSlugs().length,
-    itemListElement: getAllArticleSlugs().map((slug, index) => {
+    name: "Artículos sobre contratos inmobiliarios urbanos",
+    numberOfItems: articleSlugs.length,
+    itemListElement: articleSlugs.map((slug, index) => {
       const article = getArticleBySlug(slug);
       return {
         "@type": "ListItem",

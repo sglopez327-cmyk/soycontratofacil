@@ -1,5 +1,6 @@
 import { getAllContractSlugs } from "@/lib/contracts";
 import { getAllArticleSlugs } from "@/lib/seo-articles";
+import { shouldExcludeFromSitemap } from "@/lib/seo-contract-priority";
 import { getAllGuideSlugs } from "@/lib/seo-guides";
 
 const STATIC_PATHS = [
@@ -14,12 +15,12 @@ const STATIC_PATHS = [
   "/cookies",
 ] as const;
 
-/** Rutas públicas indexables (paths relativos). */
+/** Rutas públicas indexables (paths relativos). Excluye noindex. */
 export function getAllPublicPaths(): string[] {
   return [
     ...STATIC_PATHS,
     ...getAllContractSlugs().map((slug) => `/generar/${slug}`),
     ...getAllGuideSlugs().map((slug) => `/guias/${slug}`),
     ...getAllArticleSlugs().map((slug) => `/articulos/${slug}`),
-  ];
+  ].filter((path) => !shouldExcludeFromSitemap(path));
 }

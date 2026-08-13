@@ -5,10 +5,10 @@ export const SITE_URL =
 export const SITE_NAME = "SoyContratoFacil.es";
 
 export const SITE_TAGLINE =
-  "Contratos inmobiliarios legales en minutos";
+  "Contrato de alquiler y compraventa en PDF, gratis";
 
 export const DEFAULT_DESCRIPTION =
-  "Genera contratos de alquiler, compraventa y locales entre particulares. PDF listo para firmar, con plantillas adaptadas a la normativa española. Gratis y sin registro.";
+  "Genera tu contrato de alquiler de vivienda, habitación, temporada o local, y compraventa o arras entre particulares. PDF listo para firmar, normativa española. Gratis y sin registro.";
 
 export const CONTACT_EMAIL = "contacto@soycontratofacil.es";
 
