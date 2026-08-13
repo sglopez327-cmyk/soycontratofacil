@@ -108,7 +108,7 @@ export function HeroSection() {
             </Link>
 
             <p className="text-sm text-slate-400">
-              Sin registro · Descarga en PDF ·{" "}
+              Sin registro · PDF en tu dispositivo ·{" "}
               <span className="font-medium text-brand-emerald">Normativa española</span>
             </p>
           </motion.div>

@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { Scale } from "lucide-react";
 
+import { CONTACT_EMAIL } from "@/lib/site-config";
+
 export function FooterDisclaimer() {
   return (
     <footer className="relative mt-auto overflow-hidden border-t border-slate-700/80 bg-[#0f172a]">
@@ -23,38 +25,46 @@ export function FooterDisclaimer() {
             <div className="space-y-4">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
-                  Aviso legal
+                  Transparencia
                 </p>
                 <h2 className="mt-1.5 text-base font-bold tracking-tight text-white">
-                  Responsabilidad del usuario
+                  Herramienta automatizada, no despacho de abogados
                 </h2>
               </div>
 
               <div className="space-y-3 text-sm leading-relaxed text-slate-400">
                 <p>
-                  SoyContratoFacil.es es una herramienta automatizada de
-                  generación de documentos contractuales. Los contratos
-                  generados se basan en plantillas actualizadas conforme a la
-                  normativa vigente, pero{" "}
+                  SoyContratoFacil.es genera documentos contractuales a partir
+                  de plantillas orientadas a la normativa española.{" "}
                   <span className="font-medium text-slate-200">
-                    no constituyen asesoramiento legal personalizado
-                  </span>
-                  .
+                    No constituye asesoramiento legal personalizado
+                  </span>{" "}
+                  ni sustituye la revisión de un profesional colegiado.
                 </p>
                 <p>
-                  El usuario es el único responsable de revisar el documento
-                  generado, verificar que se ajusta a su situación particular y,
-                  en caso de duda, consultar con un abogado o asesor jurídico
-                  colegiado antes de firmar. La plataforma no sustituye el
-                  criterio profesional de un experto en derecho inmobiliario.
+                  El usuario es responsable de revisar el PDF, comprobar que
+                  refleja su acuerdo y consultar a un abogado o asesor si tiene
+                  dudas antes de firmar.
                 </p>
-                <p>
+                <p className="flex flex-wrap gap-x-4 gap-y-2">
+                  <Link
+                    href="/sobre-nosotros"
+                    className="font-medium text-brand-blue hover:underline"
+                  >
+                    Sobre nosotros
+                  </Link>
                   <Link
                     href="/aviso-legal"
                     className="font-medium text-brand-blue hover:underline"
                   >
-                    Leer el aviso legal completo
+                    Aviso legal completo
                   </Link>
+                  <a
+                    href={`mailto:${CONTACT_EMAIL}`}
+                    className="font-medium text-brand-blue hover:underline"
+                  >
+                    {CONTACT_EMAIL}
+                  </a>
                 </p>
               </div>
             </div>
@@ -67,6 +77,12 @@ export function FooterDisclaimer() {
             derechos reservados.
           </p>
           <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-slate-500">
+            <Link
+              href="/sobre-nosotros"
+              className="transition-colors duration-300 hover:text-brand-blue"
+            >
+              Sobre nosotros
+            </Link>
             <Link
               href="/guias"
               className="transition-colors duration-300 hover:text-brand-blue"

@@ -28,6 +28,14 @@ const FaqSection = dynamic(
   { loading: () => <div className="min-h-[320px]" aria-hidden /> }
 );
 
+const TrustSignalsSection = dynamic(
+  () =>
+    import("@/components/home/trust-signals-section").then(
+      (mod) => mod.TrustSignalsSection
+    ),
+  { loading: () => <div className="min-h-[280px]" aria-hidden /> }
+);
+
 export const metadata = createPageMetadata({
   title: "Contrato de alquiler PDF gratis | Compraventa entre particulares",
   description: DEFAULT_DESCRIPTION,
@@ -50,6 +58,7 @@ export default function Home() {
       <main className="flex-1">
         <HeroSection />
         <ContractCategories />
+        <TrustSignalsSection />
         <FaqSection />
       </main>
       <FooterDisclaimer />

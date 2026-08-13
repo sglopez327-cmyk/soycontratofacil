@@ -32,6 +32,42 @@ export function organizationSchema() {
       "@type": "Country",
       name: "España",
     },
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer support",
+      email: CONTACT_EMAIL,
+      availableLanguage: ["Spanish"],
+    },
+    knowsAbout: [
+      "Contrato de alquiler de vivienda",
+      "Contrato de compraventa entre particulares",
+      "Contrato de arras",
+      "Arrendamiento de local comercial",
+      "Normativa inmobiliaria en España",
+    ],
+  };
+}
+
+export function aboutPageSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: `Sobre nosotros — ${SITE_NAME}`,
+    url: absoluteUrl("/sobre-nosotros"),
+    description:
+      "Quiénes somos, cómo funciona el generador de contratos en PDF, privacidad de datos y límites del servicio.",
+    isPartOf: {
+      "@type": "WebSite",
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+    about: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+      email: CONTACT_EMAIL,
+    },
+    inLanguage: "es-ES",
   };
 }
 

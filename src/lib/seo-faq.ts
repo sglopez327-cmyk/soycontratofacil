@@ -15,9 +15,9 @@ export const homeFaqs: FaqItem[] = [
       "Sí. Al completar el formulario obtienes un PDF basado en plantillas adaptadas a la normativa española, listo para imprimir o firmar. Revisa siempre el contenido antes de firmarlo.",
   },
   {
-    question: "¿Los contratos generados son válidos legalmente en España?",
+    question: "¿Los contratos generados son válidos en España?",
     answer:
-      "Los documentos se elaboran a partir de plantillas adaptadas a la normativa española vigente en materia inmobiliaria. Debes revisar que el contenido se ajuste a tu caso concreto y, si tienes dudas, consultar con un profesional del derecho.",
+      "Son plantillas orientadas a la normativa española habitual. Pueden servir como base contractual entre particulares, pero debes revisar que se ajusten a tu caso y, si hay dudas, consultar a un profesional. No sustituyen un dictamen jurídico.",
   },
   {
     question: "¿Necesito registrarme para usar la herramienta?",

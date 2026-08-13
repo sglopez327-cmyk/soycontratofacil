@@ -75,6 +75,12 @@ export function Navbar() {
               Artículos
             </Link>
             <Link
+              href="/sobre-nosotros"
+              className="transition-colors duration-300 hover:text-brand-blue"
+            >
+              Sobre nosotros
+            </Link>
+            <Link
               href={GUIDE_HREF}
               className={cn(
                 "inline-flex h-9 shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full border border-slate-700 bg-slate-800/40 px-4 text-sm font-medium leading-none text-slate-200 transition-all duration-300",

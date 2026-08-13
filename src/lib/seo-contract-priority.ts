@@ -79,6 +79,7 @@ export function getSitemapPriorityForPath(path: string): number {
 
   if (path === "/guias" || path === "/articulos") return 0.75;
   if (path === "/guia-de-uso") return 0.55;
+  if (path === "/sobre-nosotros") return 0.7;
 
   if (path.startsWith("/articulos/")) {
     const slug = path.replace("/articulos/", "");
