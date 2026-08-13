@@ -65,23 +65,32 @@ export function HeroSection() {
             </span>
           </motion.h1>
 
-          <motion.p
-            className="mx-auto mt-4 text-sm font-medium tracking-wide text-slate-300 sm:mt-5 lg:mx-0"
+          <motion.div
+            className="mt-7 flex justify-center sm:mt-8 lg:justify-start"
             initial="hidden"
             animate="visible"
             custom={0.18}
             variants={fadeUp}
           >
-            <span className="text-white/90">Contratos legales</span>
-            <span className="mx-2 text-brand-blue/50" aria-hidden>
-              ·
+            <span className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-slate-900/70 px-4 py-1.5 text-xs font-medium tracking-wide text-slate-200 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] backdrop-blur-sm sm:gap-3 sm:px-5 sm:py-2 sm:text-sm">
+              <span
+                className="relative flex size-2 shrink-0"
+                aria-hidden
+              >
+                <span className="absolute inset-0 animate-ping rounded-full bg-brand-emerald/60 opacity-75" />
+                <span className="relative size-2 rounded-full bg-brand-emerald shadow-[0_0_8px_rgba(52,211,153,0.7)]" />
+              </span>
+              <span className="text-white/95">Contratos legales</span>
+              <span className="text-white/20" aria-hidden>
+                ·
+              </span>
+              <span>Sin registro</span>
+              <span className="text-white/20" aria-hidden>
+                ·
+              </span>
+              <span className="font-semibold text-brand-emerald">Gratis</span>
             </span>
-            <span>Sin registro</span>
-            <span className="mx-2 text-brand-blue/50" aria-hidden>
-              ·
-            </span>
-            <span className="font-semibold text-brand-emerald">Gratis</span>
-          </motion.p>
+          </motion.div>
 
           <motion.p
             className="mx-auto mt-6 max-w-xl text-card-body text-lg text-slate-400 sm:mt-8 sm:text-xl lg:mx-0"
