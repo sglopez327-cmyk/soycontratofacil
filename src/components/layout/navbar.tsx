@@ -35,10 +35,7 @@ export function Navbar() {
               />
             </span>
             <span className="truncate text-[0.95rem] font-semibold tracking-tight text-[#E2E8F0] transition-colors duration-300 group-hover:text-brand-blue">
-              SoyContratoFacil
-              <span className="text-slate-400 transition-colors duration-300 group-hover:text-brand-blue/70">
-                .es
-              </span>
+              SoyContratoFacil.es
             </span>
           </Link>
 
