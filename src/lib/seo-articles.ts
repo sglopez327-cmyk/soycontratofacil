@@ -1,3 +1,5 @@
+import { shouldNoIndexArticle } from "@/lib/seo-contract-priority";
+
 export type ArticleSection = {
   title: string;
   paragraphs: string[];
@@ -20,13 +22,13 @@ export type SeoArticle = {
 export const seoArticles: SeoArticle[] = [
   {
     slug: "plazos-alquiler-vivienda",
-    title: "Plazos y prórrogas del contrato de alquiler de vivienda en España",
+    title: "Plazos y prórrogas del alquiler de vivienda (guía 2026)",
     metaDescription:
-      "Cuánto dura un contrato de alquiler de vivienda habitual, prórrogas obligatorias de la LAU y qué puede pactar arrendador e inquilino.",
+      "Plazos y prórrogas del alquiler de vivienda según la LAU. Guía clara 2026 y enlace al contrato PDF gratis sin registro.",
     intro:
       "La duración del arrendamiento de vivienda habitual es uno de los puntos que más dudas genera entre propietarios e inquilinos. La Ley de Arrendamientos Urbanos (LAU) establece mínimos y prórrogas que conviene conocer antes de firmar.",
     publishedAt: "2026-07-06",
-    updatedAt: "2026-07-06",
+    updatedAt: "2026-08-13",
     relatedGuideSlugs: ["vivienda", "rescision", "cambio-suministros"],
     relatedArticleSlugs: ["fianza-deposito-alquiler"],
     relatedContractSlugs: ["vivienda", "rescision"],
@@ -55,13 +57,13 @@ export const seoArticles: SeoArticle[] = [
   },
   {
     slug: "tipos-de-arras",
-    title: "Diferencia entre arras penitenciales, confirmatorias y penales",
+    title: "Arras penitenciales, confirmatorias y penales: diferencias",
     metaDescription:
-      "Qué son las arras en la compraventa de un inmueble, tipos existentes y consecuencias de desistir antes de la escritura pública.",
+      "Diferencia entre arras penitenciales, confirmatorias y penales. Guía 2026 y modelo PDF gratis para descargar.",
     intro:
       "Las arras son un anticipo entregado en señal al reservar o comprometer la compraventa de un inmueble. No todas las arras funcionan igual: el tipo pactado determina si las partes pueden desistir y qué consecuencias económicas tiene.",
     publishedAt: "2026-07-06",
-    updatedAt: "2026-07-06",
+    updatedAt: "2026-08-13",
     relatedGuideSlugs: ["arras", "compraventa-vivienda"],
     relatedArticleSlugs: [
       "checklist-compraventa-vivienda",
@@ -94,11 +96,11 @@ export const seoArticles: SeoArticle[] = [
     slug: "fianza-deposito-alquiler",
     title: "Fianza y depósito en el alquiler de vivienda: diferencias",
     metaDescription:
-      "Cuánto puede exigir el propietario de fianza, qué es el depósito en la comunidad autónoma y cómo recuperarlo al finalizar el alquiler.",
+      "Fianza vs depósito en el alquiler de vivienda: importes, devolución y qué poner en el contrato. PDF gratis.",
     intro:
       "Fianza y depósito son conceptos distintos en el arrendamiento de vivienda habitual. Confundirlos es uno de los errores más frecuentes al redactar o firmar un contrato de alquiler.",
     publishedAt: "2026-07-06",
-    updatedAt: "2026-07-06",
+    updatedAt: "2026-08-13",
     relatedGuideSlugs: ["vivienda", "habitacion", "rescision"],
     relatedArticleSlugs: ["plazos-alquiler-vivienda"],
     relatedContractSlugs: ["vivienda"],
@@ -128,11 +130,11 @@ export const seoArticles: SeoArticle[] = [
     slug: "checklist-compraventa-vivienda",
     title: "Checklist antes de firmar la compraventa de una vivienda",
     metaDescription:
-      "Lista de comprobaciones imprescindibles antes de firmar un contrato de compraventa de vivienda entre particulares en España.",
+      "Checklist 2026 antes de firmar la compraventa de una vivienda. Documentos clave y contrato PDF gratis.",
     intro:
       "Comprar una vivienda entre particulares implica verificar cargas, deudas y documentación antes de entregar arras o firmar un contrato privado. Esta checklist recoge los puntos más habituales.",
     publishedAt: "2026-07-06",
-    updatedAt: "2026-07-06",
+    updatedAt: "2026-08-13",
     relatedGuideSlugs: ["compraventa-vivienda", "arras", "garaje-trastero"],
     relatedArticleSlugs: [
       "tipos-de-arras",
@@ -166,11 +168,11 @@ export const seoArticles: SeoArticle[] = [
     slug: "cambio-suministros-alquiler",
     title: "Cómo gestionar el cambio de suministros al alquilar un piso",
     metaDescription:
-      "Pasos para cambiar luz, agua y gas al inicio o fin de un contrato de alquiler. Documento de conformidad y buenas prácticas.",
+      "Cómo cambiar luz, agua y gas al alquilar. Pasos claros y documento PDF gratis sin registro.",
     intro:
       "Al entregar o recibir un piso en alquiler conviene dejar claro quién asume cada suministro desde una fecha concreta. Un mal traspaso puede generar facturas impagadas a nombre del propietario.",
     publishedAt: "2026-07-06",
-    updatedAt: "2026-07-06",
+    updatedAt: "2026-08-13",
     relatedGuideSlugs: ["cambio-suministros", "vivienda", "rescision"],
     relatedArticleSlugs: ["fianza-deposito-alquiler"],
     relatedContractSlugs: ["cambio-suministros", "vivienda"],
@@ -198,13 +200,13 @@ export const seoArticles: SeoArticle[] = [
   },
   {
     slug: "contrato-alquiler-particulares",
-    title: "Contrato de alquiler entre particulares: guía práctica",
+    title: "Contrato de alquiler entre particulares: guía + PDF",
     metaDescription:
-      "Cómo redactar un contrato de alquiler entre particulares en España: datos obligatorios, fianza, duración y modelo gratuito descargable.",
+      "Contrato de alquiler entre particulares: qué incluir y cómo generar el PDF gratis listo para firmar.",
     intro:
       "Alquilar una vivienda entre particulares es habitual en España. Aunque no siempre es obligatorio acudir a un profesional, sí es imprescindible dejar por escrito las condiciones del arrendamiento para evitar conflictos futuros.",
     publishedAt: "2026-07-06",
-    updatedAt: "2026-07-06",
+    updatedAt: "2026-08-13",
     relatedGuideSlugs: ["vivienda", "habitacion", "temporada"],
     relatedArticleSlugs: ["fianza-deposito-alquiler", "plazos-alquiler-vivienda"],
     relatedContractSlugs: ["vivienda"],
@@ -229,11 +231,11 @@ export const seoArticles: SeoArticle[] = [
     slug: "impago-alquiler-que-hacer",
     title: "Impago del alquiler: qué puede hacer el propietario",
     metaDescription:
-      "Opciones legales ante el impago de la renta: requerimiento, reclamación y vías de resolución del contrato de arrendamiento en España.",
+      "Impago del alquiler: pasos del propietario (reclamación, burofax y opciones). Guía 2026 práctica.",
     intro:
       "El impago de la renta es una de las situaciones más delicadas en un arrendamiento. Conviene actuar con orden, documentar los pagos pendientes y conocer las vías legales disponibles.",
     publishedAt: "2026-07-06",
-    updatedAt: "2026-07-06",
+    updatedAt: "2026-08-13",
     relatedGuideSlugs: ["vivienda", "rescision"],
     relatedArticleSlugs: ["plazos-alquiler-vivienda", "fianza-deposito-alquiler"],
     relatedContractSlugs: ["vivienda", "rescision"],
@@ -258,11 +260,11 @@ export const seoArticles: SeoArticle[] = [
     slug: "itp-compraventa-vivienda",
     title: "ITP en la compraventa de vivienda entre particulares",
     metaDescription:
-      "Qué es el Impuesto sobre Transmisiones Patrimoniales (ITP) al comprar una vivienda de segunda mano entre particulares en España.",
+      "ITP en compraventa de vivienda entre particulares: quién paga y cuándo. Guía 2026 + PDF del contrato.",
     intro:
       "En la compraventa de vivienda usada entre particulares, el impuesto principal suele ser el ITP, gestionado por la comunidad autónoma. Conviene calcularlo antes de firmar arras o contrato.",
     publishedAt: "2026-07-06",
-    updatedAt: "2026-07-06",
+    updatedAt: "2026-08-13",
     relatedGuideSlugs: ["compraventa-vivienda", "arras"],
     relatedArticleSlugs: ["checklist-compraventa-vivienda", "tipos-de-arras"],
     relatedContractSlugs: ["compraventa-vivienda", "arras"],
@@ -285,13 +287,13 @@ export const seoArticles: SeoArticle[] = [
   },
   {
     slug: "alquiler-temporada-vs-habitual",
-    title: "Alquiler de temporada vs vivienda habitual: diferencias clave",
+    title: "Alquiler temporada vs vivienda habitual: diferencias 2026",
     metaDescription:
-      "Cuándo usar un contrato de temporada y cuándo uno de vivienda habitual. Régimen legal, duración y consecuencias prácticas.",
+      "Temporada vs vivienda habitual: diferencias clave y cuándo usar cada contrato. PDF gratis 2026.",
     intro:
       "No es lo mismo alquilar una vivienda para residencia permanente que para una estancia temporal. Elegir mal el tipo de contrato puede alterar plazos, prórrogas y protección del inquilino.",
     publishedAt: "2026-07-06",
-    updatedAt: "2026-07-06",
+    updatedAt: "2026-08-13",
     relatedGuideSlugs: ["vivienda", "temporada", "habitacion"],
     relatedArticleSlugs: [
       "contrato-alquiler-particulares",
@@ -325,11 +327,11 @@ export const seoArticles: SeoArticle[] = [
     slug: "inventario-mobiliario-alquiler",
     title: "Inventario de mobiliario en el contrato de alquiler",
     metaDescription:
-      "Por qué conviene un inventario en pisos amueblados, qué debe incluir y cómo vincularlo al contrato de arrendamiento.",
+      "Inventario de mobiliario en el alquiler: qué incluir y cómo anexarlo al contrato PDF gratis.",
     intro:
       "En alquileres amueblados o con electrodomésticos incluidos, el inventario evita discusiones sobre el estado y la propiedad de cada elemento al inicio y al final del contrato.",
     publishedAt: "2026-07-06",
-    updatedAt: "2026-07-06",
+    updatedAt: "2026-08-13",
     relatedGuideSlugs: ["vivienda", "habitacion", "temporada"],
     relatedArticleSlugs: ["contrato-alquiler-particulares"],
     relatedContractSlugs: ["vivienda", "habitacion"],
@@ -354,11 +356,11 @@ export const seoArticles: SeoArticle[] = [
     slug: "actualizacion-renta-alquiler",
     title: "Actualización de la renta en contratos de alquiler",
     metaDescription:
-      "Cómo se actualiza la renta del alquiler de vivienda habitual en España: índice, límites, revisión anual y qué debe decir el contrato.",
+      "Actualización de renta en alquiler: cómo pactarla en el contrato. Guía 2026 y PDF gratis.",
     intro:
       "La revisión del precio del alquiler es una de las cláusulas que más litigios generan. En vivienda habitual la ley limita cómo y cuándo puede incrementarse la renta durante la vigencia del contrato.",
     publishedAt: "2026-07-06",
-    updatedAt: "2026-07-06",
+    updatedAt: "2026-08-13",
     relatedGuideSlugs: ["vivienda", "local"],
     relatedArticleSlugs: ["plazos-alquiler-vivienda", "contrato-alquiler-particulares"],
     relatedContractSlugs: ["vivienda"],
@@ -389,11 +391,11 @@ export const seoArticles: SeoArticle[] = [
     slug: "gastos-compraventa-vivienda",
     title: "Gastos de una compraventa de vivienda: quién paga qué",
     metaDescription:
-      "Desglose de gastos al comprar o vender una vivienda entre particulares: notaría, registro, ITP, gestoría y cómo reflejarlos en el contrato.",
+      "Gastos de compraventa de vivienda: quién paga qué. Guía 2026 y contrato PDF gratis.",
     intro:
       "Antes de firmar arras o contrato privado conviene saber qué costes genera la operación y quién los asume. Una parte importante de conflictos surge porque no se pactó por escrito la distribución de gastos.",
     publishedAt: "2026-07-06",
-    updatedAt: "2026-07-06",
+    updatedAt: "2026-08-13",
     relatedGuideSlugs: ["compraventa-vivienda", "arras"],
     relatedArticleSlugs: ["itp-compraventa-vivienda", "checklist-compraventa-vivienda"],
     relatedContractSlugs: ["compraventa-vivienda", "arras"],
@@ -424,11 +426,11 @@ export const seoArticles: SeoArticle[] = [
     slug: "nota-simple-antes-de-comprar",
     title: "Nota simple del Registro de la Propiedad: para qué sirve",
     metaDescription:
-      "Qué es la nota simple registral, por qué pedirla antes de comprar una vivienda y qué datos comprueba el comprador antes de firmar.",
+      "Nota simple del Registro: para qué sirve antes de comprar. Guía 2026 práctica.",
     intro:
       "La nota simple es uno de los documentos más útiles antes de comprar un inmueble. Permite verificar quién es el titular registral, si existen hipotecas, embargos u otras cargas que afecten a la operación.",
     publishedAt: "2026-07-06",
-    updatedAt: "2026-07-06",
+    updatedAt: "2026-08-13",
     relatedGuideSlugs: ["compraventa-vivienda", "arras"],
     relatedArticleSlugs: ["checklist-compraventa-vivienda", "gastos-compraventa-vivienda"],
     relatedContractSlugs: ["compraventa-vivienda"],
@@ -458,11 +460,11 @@ export const seoArticles: SeoArticle[] = [
     slug: "cuando-usar-contrato-rescision",
     title: "Cuándo usar un documento de rescisión de alquiler",
     metaDescription:
-      "En qué casos conviene firmar una rescisión anticipada del contrato de arrendamiento y qué ventajas tiene frente a una baja verbal.",
+      "Rescisión de alquiler: cuándo usarla y qué incluir. Modelo PDF gratis listo para firmar.",
     intro:
       "Terminar un alquiler antes de tiempo puede hacerse por mutuo acuerdo, desistimiento legal del inquilino u otras causas. Un documento de rescisión deja constancia escrita de las condiciones de la salida y evita malentendidos sobre fianza y suministros.",
     publishedAt: "2026-07-06",
-    updatedAt: "2026-07-06",
+    updatedAt: "2026-08-13",
     relatedGuideSlugs: ["rescision", "vivienda", "cambio-suministros"],
     relatedArticleSlugs: ["impago-alquiler-que-hacer", "cambio-suministros-alquiler"],
     relatedContractSlugs: ["rescision", "cambio-suministros"],
@@ -492,11 +494,11 @@ export const seoArticles: SeoArticle[] = [
     slug: "comprar-piso-entre-particulares",
     title: "Comprar un piso entre particulares: pasos esenciales",
     metaDescription:
-      "Guía paso a paso para comprar una vivienda de segunda mano entre particulares en España: arras, contrato, notaría y registro.",
+      "Comprar piso entre particulares: pasos esenciales 2026. Arras, contrato PDF y escritura.",
     intro:
       "Comprar a un particular sin promotora ni agencia puede ahorrar comisiones, pero exige más diligencia del comprador. Conviene seguir un orden lógico para no adelantar dinero sin garantías.",
     publishedAt: "2026-07-06",
-    updatedAt: "2026-07-06",
+    updatedAt: "2026-08-13",
     relatedGuideSlugs: ["compraventa-vivienda", "arras"],
     relatedArticleSlugs: ["nota-simple-antes-de-comprar", "tipos-de-arras", "gastos-compraventa-vivienda"],
     relatedContractSlugs: ["compraventa-vivienda", "arras"],
@@ -526,11 +528,11 @@ export const seoArticles: SeoArticle[] = [
     slug: "alquiler-habitacion-piso-compartido",
     title: "Alquiler de habitación en piso compartido: aspectos legales",
     metaDescription:
-      "Qué debe incluir el contrato de alquiler de habitación, convivencia, gastos compartidos y diferencias con el alquiler de vivienda completa.",
+      "Alquiler de habitación en piso compartido: cláusulas clave y contrato PDF gratis 2026.",
     intro:
       "Compartir piso es económicamente atractivo, pero jurídicamente distinto del alquiler de una vivienda entera. El contrato debe definir con precisión qué se arrienda y cómo se comparten gastos y espacios comunes.",
     publishedAt: "2026-07-06",
-    updatedAt: "2026-07-06",
+    updatedAt: "2026-08-13",
     relatedGuideSlugs: ["habitacion", "vivienda"],
     relatedArticleSlugs: ["inventario-mobiliario-alquiler", "contrato-alquiler-particulares"],
     relatedContractSlugs: ["habitacion"],
@@ -558,13 +560,13 @@ export const seoArticles: SeoArticle[] = [
   },
   {
     slug: "contrato-arras-penitenciales-guia",
-    title: "Contrato de arras penitenciales: guía y ejemplo práctico",
+    title: "Contrato de arras penitenciales: guía, ejemplo y PDF",
     metaDescription:
-      "Cómo redactar un contrato de arras penitenciales al comprar una vivienda: importe, plazos, consecuencias de desistir y modelo gratuito.",
+      "Contrato de arras penitenciales: ejemplo práctico, plazos y modelo PDF gratis para descargar.",
     intro:
       "Las arras penitenciales son el mecanismo más usado para reservar una vivienda en España. Permiten a comprador y vendedor desistir asumiendo una penalización económica conocida de antemano.",
     publishedAt: "2026-07-06",
-    updatedAt: "2026-07-06",
+    updatedAt: "2026-08-13",
     relatedGuideSlugs: ["arras", "compraventa-vivienda"],
     relatedArticleSlugs: [
       "tipos-de-arras",
@@ -602,7 +604,7 @@ export const seoArticles: SeoArticle[] = [
     intro:
       "Si buscas una plantilla de contrato de alquiler lista para usar, lo decisivo es que el documento se adapte a un alquiler urbano de vivienda y a la normativa española. Con el generador rellenas los datos esenciales y descargas un PDF listo para imprimir y firmar, sin registro.",
     publishedAt: "2026-07-17",
-    updatedAt: "2026-07-17",
+    updatedAt: "2026-08-13",
     relatedGuideSlugs: ["vivienda"],
     relatedArticleSlugs: [
       "contrato-alquiler-particulares",
@@ -653,7 +655,7 @@ export const seoArticles: SeoArticle[] = [
     intro:
       "Cuando compras o vendes una vivienda entre particulares, un contrato privado deja por escrito precio, inmueble y condiciones. Puedes generar el PDF gratis en minutos y usarlo como base clara antes de la escritura notarial.",
     publishedAt: "2026-07-17",
-    updatedAt: "2026-07-17",
+    updatedAt: "2026-08-13",
     relatedGuideSlugs: ["compraventa-vivienda", "arras"],
     relatedArticleSlugs: [
       "checklist-compraventa-vivienda",
@@ -702,7 +704,7 @@ export const seoArticles: SeoArticle[] = [
     intro:
       "Las arras penitenciales permiten reservar una vivienda con una cantidad a cuenta y reglas claras si alguna parte desiste. Genera el modelo en PDF gratis y fírmalo con los datos de tu operación.",
     publishedAt: "2026-07-17",
-    updatedAt: "2026-07-17",
+    updatedAt: "2026-08-13",
     relatedGuideSlugs: ["arras", "compraventa-vivienda"],
     relatedArticleSlugs: [
       "tipos-de-arras",
@@ -751,7 +753,7 @@ export const seoArticles: SeoArticle[] = [
     intro:
       "El contrato de alquiler de temporada (o temporal) se usa cuando la vivienda urbana no es residencia habitual del inquilino, sino una estancia por trabajo, estudios u otro motivo temporal. Genera el PDF gratis y evita confundirlo con el contrato de vivienda habitual.",
     publishedAt: "2026-07-17",
-    updatedAt: "2026-07-17",
+    updatedAt: "2026-08-13",
     relatedGuideSlugs: ["temporada", "vivienda"],
     relatedArticleSlugs: [
       "alquiler-temporada-vs-habitual",
@@ -799,7 +801,7 @@ export const seoArticles: SeoArticle[] = [
     intro:
       "El contrato de alquiler de local comercial regula el arrendamiento de un local de negocio: destino, renta, duración y obligaciones. No uses una plantilla de piso: genera el PDF específico de local y fírmalo con las cláusulas adecuadas.",
     publishedAt: "2026-07-17",
-    updatedAt: "2026-07-17",
+    updatedAt: "2026-08-13",
     relatedGuideSlugs: ["local"],
     relatedArticleSlugs: [
       "plantilla-contrato-alquiler-pdf",
@@ -1041,4 +1043,19 @@ export function getArticleBySlug(slug: string): SeoArticle | undefined {
 
 export function getAllArticleSlugs(): string[] {
   return seoArticles.map((article) => article.slug);
+}
+
+/** Artículos que enlazan a una guía (para el paso artículo ←→ guía). */
+export function getRelatedArticleSlugsForGuide(
+  guideSlug: string,
+  limit = 3
+): string[] {
+  return seoArticles
+    .filter(
+      (article) =>
+        article.relatedGuideSlugs.includes(guideSlug) &&
+        !shouldNoIndexArticle(article.slug)
+    )
+    .map((article) => article.slug)
+    .slice(0, limit);
 }

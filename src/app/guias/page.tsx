@@ -6,18 +6,23 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { getContractHref } from "@/lib/contracts";
 import { createPageMetadata } from "@/lib/seo";
 import { withCtrDescription, withCtrTitle } from "@/lib/seo-ctr";
+import { shouldNoIndexGuide } from "@/lib/seo-contract-priority";
 import { seoGuides } from "@/lib/seo-guides";
 import { breadcrumbSchema, guidesItemListSchema } from "@/lib/seo-schema";
 
 export const metadata = createPageMetadata({
-  title: withCtrTitle("Guías de contratos inmobiliarios"),
+  title: withCtrTitle("Guías de contratos inmobiliarios PDF gratis 2026"),
   description: withCtrDescription(
-    "Guías prácticas sobre contratos de alquiler, compraventa y gestión inmobiliaria en España. Aprende qué debe incluir cada documento."
+    "Guías actualizadas 2026 sobre alquiler, compraventa y arras en España. Aprende qué incluir y genera tu PDF gratis sin registro."
   ),
   path: "/guias",
 });
 
-const LAST_UPDATED = "6 de julio de 2026";
+const LAST_UPDATED = "13 de agosto de 2026";
+
+const visibleGuides = seoGuides.filter(
+  (guide) => !shouldNoIndexGuide(guide.slug)
+);
 
 export default function GuiasIndexPage() {
   return (
@@ -48,9 +53,9 @@ export default function GuiasIndexPage() {
             Guías de contratos inmobiliarios
           </h1>
           <p className="text-card-body mt-4 text-base text-slate-400">
-            Información orientativa sobre los principales documentos inmobiliarios
-            en España. Cada guía enlaza al generador gratuito para crear tu PDF.
-            También puedes leer nuestros{" "}
+            Información orientativa actualizada sobre los principales documentos
+            inmobiliarios en España. Cada guía enlaza al generador gratuito para
+            crear tu PDF. También puedes leer nuestros{" "}
             <Link href="/articulos" className="text-brand-blue hover:underline">
               artículos
             </Link>
@@ -62,7 +67,7 @@ export default function GuiasIndexPage() {
         </header>
 
         <div className="space-y-8">
-          {seoGuides.map((guide) => (
+          {visibleGuides.map((guide) => (
             <section
               key={guide.slug}
               className="rounded-2xl border border-slate-700 bg-slate-800/40 p-6"
@@ -87,9 +92,9 @@ export default function GuiasIndexPage() {
                 </Link>
                 <Link
                   href={getContractHref(guide.contractSlug)}
-                  className="text-slate-400 transition-colors hover:text-brand-blue"
+                  className="font-medium text-brand-blue hover:underline"
                 >
-                  Generar contrato →
+                  Generar PDF gratis →
                 </Link>
               </div>
             </section>

@@ -6,17 +6,22 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { createPageMetadata } from "@/lib/seo";
 import { withCtrDescription, withCtrTitle } from "@/lib/seo-ctr";
 import { seoArticles } from "@/lib/seo-articles";
+import { shouldNoIndexArticle } from "@/lib/seo-contract-priority";
 import { articlesItemListSchema, breadcrumbSchema } from "@/lib/seo-schema";
 
 export const metadata = createPageMetadata({
-  title: withCtrTitle("Artículos sobre contratos inmobiliarios"),
+  title: withCtrTitle("Artículos de contratos inmobiliarios PDF 2026"),
   description: withCtrDescription(
-    "Artículos prácticos sobre alquiler, compraventa, arras, fianzas y suministros en España. Información orientativa."
+    "Artículos prácticos 2026 sobre alquiler, compraventa, arras y fianzas. Enlazan a guías y generadores PDF gratis."
   ),
   path: "/articulos",
 });
 
-const LAST_UPDATED = "6 de julio de 2026";
+const LAST_UPDATED = "13 de agosto de 2026";
+
+const visibleArticles = seoArticles.filter(
+  (article) => !shouldNoIndexArticle(article.slug)
+);
 
 export default function ArticulosIndexPage() {
   return (
@@ -47,8 +52,9 @@ export default function ArticulosIndexPage() {
             Artículos sobre contratos inmobiliarios
           </h1>
           <p className="text-card-body mt-4 text-base text-slate-400">
-            Contenido orientativo sobre plazos, arras, fianzas, compraventa y
-            suministros. Cada artículo enlaza a guías y generadores gratuitos.
+            Contenido orientativo actualizado sobre plazos, arras, fianzas,
+            compraventa y suministros. Cada artículo enlaza a guías y
+            generadores gratuitos.
           </p>
           <p className="mt-4 text-xs text-slate-500">
             Última actualización: {LAST_UPDATED}
@@ -56,7 +62,7 @@ export default function ArticulosIndexPage() {
         </header>
 
         <div className="space-y-8">
-          {seoArticles.map((article) => (
+          {visibleArticles.map((article) => (
             <section
               key={article.slug}
               className="rounded-2xl border border-slate-700 bg-slate-800/40 p-6"
@@ -72,14 +78,22 @@ export default function ArticulosIndexPage() {
               <p className="text-card-body mt-3 text-sm text-slate-400">
                 {article.metaDescription}
               </p>
-              <p className="mt-4 text-sm">
+              <div className="mt-4 flex flex-wrap gap-4 text-sm">
                 <Link
                   href={`/articulos/${article.slug}`}
                   className="text-brand-blue hover:underline"
                 >
                   Leer artículo →
                 </Link>
-              </p>
+                {article.relatedGuideSlugs[0] ? (
+                  <Link
+                    href={`/guias/${article.relatedGuideSlugs[0]}`}
+                    className="text-slate-400 transition-colors hover:text-brand-blue"
+                  >
+                    Ver guía
+                  </Link>
+                ) : null}
+              </div>
             </section>
           ))}
         </div>

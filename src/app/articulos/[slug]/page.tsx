@@ -17,6 +17,7 @@ import {
   getArticleBySlug,
 } from "@/lib/seo-articles";
 import { shouldNoIndexArticle } from "@/lib/seo-contract-priority";
+import { getGuideBySlug } from "@/lib/seo-guides";
 import {
   articleSchema,
   breadcrumbSchema,
@@ -67,6 +68,16 @@ export default async function ArticuloPage({ params }: PageProps) {
     year: "numeric",
   });
 
+  const primaryGuideSlug = article.relatedGuideSlugs[0];
+  const primaryGuide = primaryGuideSlug
+    ? getGuideBySlug(primaryGuideSlug)
+    : undefined;
+  const primaryContractSlug = article.relatedContractSlugs[0];
+  const generatorHref = primaryContractSlug
+    ? getContractHref(primaryContractSlug)
+    : undefined;
+  const [firstSection, ...restSections] = article.sections;
+
   return (
     <>
       <JsonLd
@@ -86,7 +97,46 @@ export default async function ArticuloPage({ params }: PageProps) {
         lastUpdated={formattedDate}
         eyebrow="Artículo"
       >
-        {article.sections.map((section) => (
+        {firstSection ? (
+          <LegalSection title={firstSection.title}>
+            {firstSection.paragraphs.map((paragraph) => (
+              <LegalParagraph key={paragraph}>{paragraph}</LegalParagraph>
+            ))}
+          </LegalSection>
+        ) : null}
+
+        {primaryGuide || generatorHref ? (
+          <LegalSection title="Siguiente paso recomendado">
+            <LegalParagraph>
+              Para pasar de la lectura a la acción: consulta la guía práctica y
+              genera el PDF gratis cuando tengas los datos listos.
+            </LegalParagraph>
+            <ul className="list-disc space-y-2 pl-5 marker:text-brand-blue">
+              {primaryGuide ? (
+                <li>
+                  <Link
+                    href={`/guias/${primaryGuide.slug}`}
+                    className="text-brand-blue hover:underline"
+                  >
+                    Leer la guía: {primaryGuide.title}
+                  </Link>
+                </li>
+              ) : null}
+              {generatorHref ? (
+                <li>
+                  <Link
+                    href={generatorHref}
+                    className="font-medium text-brand-blue hover:underline"
+                  >
+                    Generar el contrato gratis → Descargar PDF
+                  </Link>
+                </li>
+              ) : null}
+            </ul>
+          </LegalSection>
+        ) : null}
+
+        {restSections.map((section) => (
           <LegalSection key={section.title} title={section.title}>
             {section.paragraphs.map((paragraph) => (
               <LegalParagraph key={paragraph}>{paragraph}</LegalParagraph>
@@ -116,10 +166,10 @@ export default async function ArticuloPage({ params }: PageProps) {
             Si ya tienes claro qué contrato necesitas, puedes generarlo gratis
             con nuestro formulario guiado y descargar el PDF al instante.
           </LegalParagraph>
-          {article.relatedContractSlugs[0] ? (
+          {generatorHref ? (
             <p>
               <Link
-                href={getContractHref(article.relatedContractSlugs[0])}
+                href={generatorHref}
                 className="font-medium text-brand-blue hover:underline"
               >
                 Generar contrato gratis → Descargar PDF

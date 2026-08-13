@@ -20,17 +20,24 @@ export const seoGuides: SeoGuide[] = [
   {
     slug: "vivienda",
     contractSlug: "vivienda",
-    title: "Cómo hacer un contrato de alquiler de vivienda gratis PDF",
+    title: "Contrato alquiler vivienda gratis PDF: guía 2026",
     metaDescription:
-      "Guía práctica y generador: contrato de arrendamiento de vivienda habitual en PDF gratis. Cláusulas, fianza, plazos y descarga sin registro.",
+      "Guía 2026 + generador: crea tu contrato de alquiler de vivienda habitual en PDF gratis. Fianza, plazos LAU y descarga sin registro.",
     intro:
-      "El contrato de alquiler de vivienda habitual es el documento que regula la relación entre arrendador e inquilino cuando el inmueble se destina a residencia permanente. En España, la Ley de Arrendamientos Urbanos (LAU) establece derechos y obligaciones mínimas que conviene reflejar por escrito.",
+      "El contrato de alquiler de vivienda habitual regula la relación entre arrendador e inquilino cuando el inmueble se destina a residencia permanente. En España, la Ley de Arrendamientos Urbanos (LAU) fija derechos y obligaciones mínimas que conviene reflejar por escrito antes de firmar.",
     sections: [
       {
         title: "Datos imprescindibles del contrato",
         paragraphs: [
           "Identificación completa de arrendador e inquilino, descripción del inmueble (dirección, referencia catastral si procede), duración del arrendamiento, renta mensual, periodicidad de pago y forma de pago (habitualmente transferencia bancaria con IBAN).",
           "También deben constar la fianza legal (un mes de renta en vivienda habitual), el depósito en la comunidad autónoma si aplica, y las condiciones de suministros, comunidad y posibles actualizaciones de renta.",
+        ],
+      },
+      {
+        title: "Ejemplo práctico (datos de muestra)",
+        paragraphs: [
+          "Ejemplo orientativo: Ana (arrendadora) alquila a Luis un piso en Madrid por 850 €/mes, fianza de un mes, duración de un año prorrogable según LAU, pago el día 5 por transferencia e inventario de mobiliario como anexo. Luz y gas a nombre del inquilino; comunidad a cargo del propietario.",
+          "Con estos datos ya puedes rellenar el generador y descargar el PDF listo para revisar e imprimir. Adapta siempre cifras, fechas y cláusulas a tu caso real.",
         ],
       },
       {
@@ -67,9 +74,9 @@ export const seoGuides: SeoGuide[] = [
   {
     slug: "temporada",
     contractSlug: "temporada",
-    title: "Contrato de alquiler de temporada: qué debe incluir",
+    title: "Contrato alquiler temporada gratis PDF: guía 2026",
     metaDescription:
-      "Aprende a redactar un contrato de arrendamiento de temporada o uso distinto del de vivienda. Requisitos, duración y modelo descargable.",
+      "Guía + PDF gratis: contrato de alquiler de temporada o uso distinto de vivienda. Motivo temporal, duración y descarga sin registro.",
     intro:
       "El arrendamiento de temporada se aplica cuando el inmueble no se destina a vivienda habitual del inquilino, sino a estancias temporales por motivos laborales, formativos, vacacionales u otros usos distintos del residencial permanente.",
     sections: [
@@ -77,6 +84,13 @@ export const seoGuides: SeoGuide[] = [
         title: "Cuándo usar un contrato de temporada",
         paragraphs: [
           "Conviene este tipo de contrato cuando existe una causa temporal clara y el arrendatario declara que el inmueble no constituirá su domicilio habitual. La duración suele ser inferior a doce meses o vinculada a un evento concreto.",
+        ],
+      },
+      {
+        title: "Ejemplo práctico (datos de muestra)",
+        paragraphs: [
+          "Ejemplo: Marta alquila un estudio amueblado en Valencia a un trabajador desplazado por 6 meses (1 de septiembre a 28 de febrero), renta 700 €/mes, fianza pactada de dos meses y motivo laboral documentado en el contrato. Al terminar la temporada, las llaves se entregan y se liquidan suministros.",
+          "Si la estancia es en realidad vivienda habitual sin causa temporal, el contrato puede recalificarse. Usa el generador de temporada solo cuando el motivo sea real y concreto.",
         ],
       },
       {
@@ -109,9 +123,9 @@ export const seoGuides: SeoGuide[] = [
   {
     slug: "habitacion",
     contractSlug: "habitacion",
-    title: "Contrato de alquiler de habitación: guía completa",
+    title: "Contrato alquiler habitación gratis PDF: guía 2026",
     metaDescription:
-      "Todo lo que debes saber para firmar un contrato de alquiler de habitación en piso compartido: derechos, obligaciones y generador gratuito.",
+      "Guía + PDF gratis para alquilar una habitación en piso compartido. Zonas comunes, gastos y descarga del contrato sin registro.",
     intro:
       "El alquiler de habitación en vivienda compartida es habitual en grandes ciudades. El contrato debe delimitar qué espacios son de uso exclusivo del inquilino y cuáles son compartidos con el arrendador u otros ocupantes.",
     sections: [
@@ -119,6 +133,13 @@ export const seoGuides: SeoGuide[] = [
         title: "Elementos clave del contrato",
         paragraphs: [
           "Descripción de la habitación arrendada, zonas comunes (cocina, baño, salón), normas de convivencia, importe de la renta, gastos incluidos o no, y duración del arrendamiento.",
+        ],
+      },
+      {
+        title: "Ejemplo práctico (datos de muestra)",
+        paragraphs: [
+          "Ejemplo: Carmen alquila la habitación individual del pasillo a Pedro por 380 €/mes (incluye wifi), con uso compartido de cocina y baño, fianza de un mes y duración de 11 meses. Queda prohibido el subarriendo y se fija un reparto de luz y agua a partes iguales entre ocupantes.",
+          "Con el generador puedes volcar estos datos y descargar el PDF para firmarlo con el resto de convivientes si procede.",
         ],
       },
       {
@@ -144,9 +165,9 @@ export const seoGuides: SeoGuide[] = [
   {
     slug: "local",
     contractSlug: "local",
-    title: "Contrato de arrendamiento de local comercial",
+    title: "Contrato alquiler local comercial gratis PDF: guía",
     metaDescription:
-      "Guía para elaborar un contrato de alquiler de local o negocio: destino, renta, actualización, obras y descarga del documento en PDF.",
+      "Guía + PDF gratis: contrato de arrendamiento de local comercial. Destino, renta, obras y descarga sin registro en minutos.",
     intro:
       "El arrendamiento de locales de negocio se rige por la LAU con especificidades propias: es fundamental definir la actividad permitida, la duración, las actualizaciones de renta y las obligaciones de conservación y reforma.",
     sections: [
@@ -154,6 +175,13 @@ export const seoGuides: SeoGuide[] = [
         title: "Destino del local",
         paragraphs: [
           "Debe indicarse con precisión la actividad comercial o profesional autorizada. Cualquier cambio de actividad puede requerir consentimiento del arrendador y licencias municipales.",
+        ],
+      },
+      {
+        title: "Ejemplo práctico (datos de muestra)",
+        paragraphs: [
+          "Ejemplo: un local de 45 m² en planta baja se arrienda para peluquería durante 3 años, renta 1.200 €/mes revisable anualmente según IPC (o el índice pactado), fianza de dos meses e IBI a cargo del arrendador. Las obras de acondicionamiento interior corren a cargo del arrendatario previa autorización escrita.",
+          "Genera el PDF con el formulario de local comercial y revisa licencia de actividad antes de firmar.",
         ],
       },
       {
@@ -221,9 +249,9 @@ export const seoGuides: SeoGuide[] = [
   {
     slug: "arrendamiento-garaje",
     contractSlug: "arrendamiento-garaje",
-    title: "Contrato de alquiler de garaje o trastero",
+    title: "Contrato alquiler garaje o trastero gratis PDF",
     metaDescription:
-      "Modelo y guía para un contrato de arrendamiento de plaza de garaje o trastero. Datos necesarios y descarga gratuita en PDF.",
+      "Guía + PDF gratis: contrato de arrendamiento de plaza de garaje o trastero. Datos clave y descarga sin registro.",
     intro:
       "El alquiler de plazas de garaje o trasteros es frecuente de forma independiente o como anexo a una vivienda. El contrato debe identificar la plaza o unidad, su ubicación y el uso permitido del vehículo o almacenamiento.",
     sections: [
@@ -256,9 +284,9 @@ export const seoGuides: SeoGuide[] = [
   {
     slug: "compraventa-vivienda",
     contractSlug: "compraventa-vivienda",
-    title: "Contrato de compraventa de vivienda gratis PDF",
+    title: "Contrato compraventa vivienda gratis PDF: guía 2026",
     metaDescription:
-      "Guía y generador: contrato de compraventa de vivienda entre particulares en PDF gratis. Precio, inmueble y descarga sin registro.",
+      "Guía 2026 + PDF gratis: contrato de compraventa de vivienda entre particulares. Precio, cargas y descarga sin registro.",
     intro:
       "La compraventa de vivienda entre particulares requiere un documento que refleje el precio, la forma de pago, la descripción del inmueble, el estado de cargas y el compromiso de otorgar escritura pública ante notario.",
     sections: [
@@ -266,6 +294,13 @@ export const seoGuides: SeoGuide[] = [
         title: "Datos esenciales",
         paragraphs: [
           "Identificación de comprador y vendedor, descripción registral y catastral de la vivienda, precio total, calendario de pagos, fecha prevista de firma ante notario, y quién asume gastos e impuestos (ITP, notaría, registro).",
+        ],
+      },
+      {
+        title: "Ejemplo práctico (datos de muestra)",
+        paragraphs: [
+          "Ejemplo: vivienda en Sevilla por 185.000 € entre particulares. Se firman arras del 10 % y, tras nota simple favorable, contrato privado de compraventa con fecha de escritura en 60 días. ITP a cargo del comprador; plusvalía municipal según pacto y normativa local.",
+          "Usa primero el generador de arras si estás en reserva y el de compraventa cuando el precio y plazos ya estén cerrados.",
         ],
       },
       {
@@ -297,9 +332,9 @@ export const seoGuides: SeoGuide[] = [
   {
     slug: "arras",
     contractSlug: "arras",
-    title: "Contrato de arras penitenciales gratis PDF",
+    title: "Contrato arras penitenciales gratis PDF: guía 2026",
     metaDescription:
-      "Qué son las arras penitenciales y cómo generar el contrato en PDF gratis. Tipos de arras, plazos y descarga sin registro.",
+      "Guía + PDF gratis: contrato de arras penitenciales para comprar vivienda. Tipos, plazos y descarga sin registro.",
     intro:
       "Las arras son un anticipo entregado en señal del compromiso de comprar o vender un inmueble. Las arras penitenciales permiten desistir del contrato perdiendo o devolviendo el doble, según quién desista.",
     sections: [
@@ -307,6 +342,13 @@ export const seoGuides: SeoGuide[] = [
         title: "Tipos de arras",
         paragraphs: [
           "Arras penitenciales: cualquiera puede desistir perdiendo o devolviendo el doble. Arras confirmatorias: refuerzan el compromiso sin facultad unilateral de desistimiento. Arras penales: fijan indemnización por incumplimiento.",
+        ],
+      },
+      {
+        title: "Ejemplo práctico (datos de muestra)",
+        paragraphs: [
+          "Ejemplo: precio de compraventa 220.000 €; arras penitenciales de 15.000 € entregadas el 15 de agosto; escritura prevista antes del 15 de noviembre; si el comprador desiste, pierde las arras; si desiste el vendedor, debe devolver el doble (30.000 €).",
+          "Genera el PDF de arras con estos campos y revisa con ambas partes que la calificación “penitenciales” consta de forma expresa.",
         ],
       },
       {
@@ -332,9 +374,9 @@ export const seoGuides: SeoGuide[] = [
   {
     slug: "garaje-trastero",
     contractSlug: "garaje-trastero",
-    title: "Contrato de compraventa de garaje o trastero",
+    title: "Contrato compraventa garaje o trastero gratis PDF",
     metaDescription:
-      "Guía para la compraventa de plaza de garaje o trastero entre particulares. Cláusulas clave y descarga del contrato en PDF.",
+      "Guía + PDF gratis: compraventa de plaza de garaje o trastero entre particulares. Cláusulas clave y descarga sin registro.",
     intro:
       "La compraventa de garajes y trasteros puede realizarse junto con una vivienda o de forma independiente. El contrato debe identificar la unidad registral, el precio y si se transmite con o sin inquilino.",
     sections: [
@@ -367,9 +409,9 @@ export const seoGuides: SeoGuide[] = [
   {
     slug: "rescision",
     contractSlug: "rescision",
-    title: "Rescisión anticipada de contrato de alquiler",
+    title: "Rescisión alquiler anticipada: PDF gratis + guía",
     metaDescription:
-      "Cómo documentar la rescisión o finalización anticipada de un contrato de arrendamiento. Modelo gratuito y cláusulas recomendadas.",
+      "Documento de rescisión anticipada de alquiler en PDF gratis. Fecha de entrega de llaves, fianza y descarga sin registro.",
     intro:
       "La rescisión anticipada permite dejar constancia por escrito de que arrendador e inquilino acuerdan finalizar el contrato antes del vencimiento natural, fijando fecha de entrega de llaves, estado del inmueble y liquidación de fianza.",
     sections: [
@@ -377,6 +419,13 @@ export const seoGuides: SeoGuide[] = [
         title: "Contenido del documento",
         paragraphs: [
           "Referencia al contrato original, fecha de efectos de la rescisión, renuncia a reclamaciones futuras si procede, devolución de fianza y lecturas finales de suministros.",
+        ],
+      },
+      {
+        title: "Ejemplo práctico (datos de muestra)",
+        paragraphs: [
+          "Ejemplo: contrato de vivienda firmado el 1 de enero; las partes acuerdan rescindir el 31 de agosto; entrega de llaves ese mismo día; fianza de 800 € a devolver en 30 días tras comprobar el estado del piso; lecturas finales de luz y agua anexas.",
+          "Genera el PDF de rescisión para dejar el acuerdo por escrito y evita malentendidos sobre la fianza.",
         ],
       },
       {
@@ -402,9 +451,9 @@ export const seoGuides: SeoGuide[] = [
   {
     slug: "cambio-suministros",
     contractSlug: "cambio-suministros",
-    title: "Cambio de titularidad de suministros en alquiler",
+    title: "Cambio titularidad suministros alquiler: PDF gratis",
     metaDescription:
-      "Guía y modelo para comunicar el cambio de titularidad de luz, agua y gas al inquilino o arrendador. Documento gratuito descargable.",
+      "Documento PDF gratis para el cambio de titularidad de luz, agua y gas en un alquiler. Guía breve y descarga sin registro.",
     intro:
       "Al inicio o fin de un arrendamiento conviene comunicar a las compañías de suministros el cambio de titularidad. Este documento recoge la conformidad de las partes y los datos necesarios para la gestión.",
     sections: [
@@ -412,6 +461,13 @@ export const seoGuides: SeoGuide[] = [
         title: "Para qué sirve este documento",
         paragraphs: [
           "Acredita ante terceros que arrendador e inquilino acuerdan quién asume cada suministro desde una fecha determinada. Facilita los trámites con las comercializadoras sin sustituir los contratos propios de cada compañía.",
+        ],
+      },
+      {
+        title: "Ejemplo práctico (datos de muestra)",
+        paragraphs: [
+          "Ejemplo: desde el 1 de septiembre, luz y gas pasan a nombre del inquilino; el agua permanece a nombre del propietario con repercusión en la renta. Se anotan lecturas de contador y se firman ambas partes el mismo día de la entrega de llaves.",
+          "Descarga el PDF del generador de cambio de suministros y adjunta las lecturas que pida cada compañía.",
         ],
       },
       {

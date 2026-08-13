@@ -13,6 +13,7 @@ import { createPageMetadata } from "@/lib/seo";
 import { withCtrDescription, withCtrTitle } from "@/lib/seo-ctr";
 import { shouldNoIndexGuide } from "@/lib/seo-contract-priority";
 import { getRelatedGuideSlugs } from "@/lib/seo-guide-relations";
+import { getRelatedArticleSlugsForGuide } from "@/lib/seo-articles";
 import {
   getAllGuideSlugs,
   getGuideBySlug,
@@ -25,7 +26,7 @@ type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
-const LAST_UPDATED = "22 de julio de 2026";
+const LAST_UPDATED = "13 de agosto de 2026";
 
 export function generateStaticParams() {
   return getAllGuideSlugs().map((slug) => ({ slug }));
@@ -63,6 +64,8 @@ export default async function GuiaPage({ params }: PageProps) {
   const categoryTitle = getGuideCategoryTitle(slug);
   const faqSchema = guideFaqSchema(guide.faqs);
   const relatedGuideSlugs = getRelatedGuideSlugs(slug);
+  const relatedArticleSlugs = getRelatedArticleSlugsForGuide(slug);
+  const [firstSection, ...restSections] = guide.sections;
 
   return (
     <>
@@ -82,7 +85,32 @@ export default async function GuiaPage({ params }: PageProps) {
         lastUpdated={LAST_UPDATED}
         eyebrow={categoryTitle ? `Guía · ${categoryTitle}` : "Guía"}
       >
-        {guide.sections.map((section) => (
+        {firstSection ? (
+          <LegalSection title={firstSection.title}>
+            {firstSection.paragraphs.map((paragraph) => (
+              <LegalParagraph key={paragraph}>{paragraph}</LegalParagraph>
+            ))}
+          </LegalSection>
+        ) : null}
+
+        {generatorHref ? (
+          <LegalSection title="Siguiente paso: genera el PDF">
+            <LegalParagraph>
+              Si ya tienes los datos básicos, crea el documento en el generador
+              gratuito y descarga el PDF listo para imprimir, sin registro.
+            </LegalParagraph>
+            <p>
+              <Link
+                href={generatorHref}
+                className="font-medium text-brand-blue hover:underline"
+              >
+                Generar este contrato gratis → Descargar PDF
+              </Link>
+            </p>
+          </LegalSection>
+        ) : null}
+
+        {restSections.map((section) => (
           <LegalSection key={section.title} title={section.title}>
             {section.paragraphs.map((paragraph) => (
               <LegalParagraph key={paragraph}>{paragraph}</LegalParagraph>
@@ -103,14 +131,16 @@ export default async function GuiaPage({ params }: PageProps) {
 
         <RelatedSeoLinks
           guideSlugs={relatedGuideSlugs}
+          articleSlugs={relatedArticleSlugs}
           contractSlugs={[guide.contractSlug]}
         />
 
         <LegalSection title="Genera tu documento">
           <LegalParagraph>
-            Puedes crear este contrato de forma gratuita con nuestro generador
-            automatizado. Solo tienes que completar el formulario paso a paso y
-            descargar el PDF al instante, sin registro.
+            Completa el formulario paso a paso y descarga el PDF al instante.
+            Revisa siempre el documento antes de firmarlo: este contenido es
+            orientativo y no sustituye el asesoramiento de un profesional del
+            derecho.
           </LegalParagraph>
           {generatorHref ? (
             <p>
@@ -122,10 +152,6 @@ export default async function GuiaPage({ params }: PageProps) {
               </Link>
             </p>
           ) : null}
-          <p className="text-sm text-slate-500">
-            Este contenido es orientativo y no sustituye el asesoramiento de un
-            profesional del derecho. Revisa siempre el documento antes de firmarlo.
-          </p>
         </LegalSection>
       </LegalPageShell>
     </>
