@@ -66,7 +66,25 @@ export function HeroSection() {
           </motion.h1>
 
           <motion.p
-            className="mx-auto mt-8 max-w-xl text-card-body text-lg text-slate-400 sm:mt-10 sm:text-xl lg:mx-0"
+            className="mx-auto mt-4 text-sm font-medium tracking-wide text-slate-300 sm:mt-5 lg:mx-0"
+            initial="hidden"
+            animate="visible"
+            custom={0.18}
+            variants={fadeUp}
+          >
+            <span className="text-white/90">Contratos legales</span>
+            <span className="mx-2 text-brand-blue/50" aria-hidden>
+              ·
+            </span>
+            <span>Sin registro</span>
+            <span className="mx-2 text-brand-blue/50" aria-hidden>
+              ·
+            </span>
+            <span className="font-semibold text-brand-emerald">Gratis</span>
+          </motion.p>
+
+          <motion.p
+            className="mx-auto mt-6 max-w-xl text-card-body text-lg text-slate-400 sm:mt-8 sm:text-xl lg:mx-0"
             initial="hidden"
             animate="visible"
             custom={0.28}
@@ -108,7 +126,7 @@ export function HeroSection() {
             </Link>
 
             <p className="text-sm text-slate-400">
-              Sin registro · PDF en tu dispositivo ·{" "}
+              PDF en tu dispositivo ·{" "}
               <span className="font-medium text-brand-emerald">Normativa española</span>
             </p>
           </motion.div>
