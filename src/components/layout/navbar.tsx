@@ -7,7 +7,7 @@ import { BookOpen } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-const GUIDE_HREF = "/#guia-de-uso";
+const GUIDE_HREF = "/guia-de-uso";
 const CREATE_HREF = "/generar/vivienda";
 
 export function Navbar() {

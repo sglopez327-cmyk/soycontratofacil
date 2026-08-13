@@ -50,6 +50,7 @@ export function webSiteSchema() {
 export function siteNavigationSchema() {
   const mainRoutes = [
     { name: "Inicio", path: "/" },
+    { name: "Guía de uso", path: "/guia-de-uso" },
     { name: "Guías", path: "/guias" },
     { name: "Artículos", path: "/articulos" },
     { name: "Sobre nosotros", path: "/sobre-nosotros" },

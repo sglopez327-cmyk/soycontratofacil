@@ -14,14 +14,6 @@ import {
 } from "@/lib/seo-schema";
 import { DEFAULT_DESCRIPTION } from "@/lib/site-config";
 
-const UsageGuideSection = dynamic(
-  () =>
-    import("@/components/home/usage-guide-section").then(
-      (mod) => mod.UsageGuideSection
-    ),
-  { loading: () => <div className="min-h-[320px]" aria-hidden /> }
-);
-
 const ContractCategories = dynamic(
   () =>
     import("@/components/home/contract-categories").then(
@@ -57,7 +49,6 @@ export default function Home() {
       <Navbar />
       <main className="flex-1">
         <HeroSection />
-        <UsageGuideSection />
         <ContractCategories />
         <FaqSection />
       </main>

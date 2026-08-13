@@ -4,6 +4,7 @@ import { getAllGuideSlugs } from "@/lib/seo-guides";
 
 const STATIC_PATHS = [
   "/",
+  "/guia-de-uso",
   "/guias",
   "/articulos",
   "/sobre-nosotros",
