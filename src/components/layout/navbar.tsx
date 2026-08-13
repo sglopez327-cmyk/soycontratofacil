@@ -56,12 +56,6 @@ export function Navbar() {
             >
               Artículos
             </Link>
-            <Link
-              href="/sobre-nosotros"
-              className="transition-colors duration-300 hover:text-brand-blue"
-            >
-              Sobre nosotros
-            </Link>
           </nav>
         </div>
 
