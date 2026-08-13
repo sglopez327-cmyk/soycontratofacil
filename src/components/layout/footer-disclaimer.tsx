@@ -11,12 +11,6 @@ export function FooterDisclaimer() {
           </p>
           <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-slate-500">
             <Link
-              href="/sobre-nosotros"
-              className="transition-colors duration-300 hover:text-brand-blue"
-            >
-              Sobre nosotros
-            </Link>
-            <Link
               href="/guias"
               className="transition-colors duration-300 hover:text-brand-blue"
             >
@@ -27,6 +21,12 @@ export function FooterDisclaimer() {
               className="transition-colors duration-300 hover:text-brand-blue"
             >
               Artículos
+            </Link>
+            <Link
+              href="/sobre-nosotros"
+              className="transition-colors duration-300 hover:text-brand-blue"
+            >
+              Sobre nosotros
             </Link>
             <Link
               href="/aviso-legal"
