@@ -22,9 +22,9 @@ export function Navbar() {
         <div className="flex min-w-0 items-center gap-8">
           <Link
             href="/"
-            className="group flex min-w-0 items-center gap-2.5 transition-opacity duration-300 hover:opacity-80"
+            className="group flex min-w-0 items-center gap-2.5"
           >
-            <span className="flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-lg">
+            <span className="flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-lg transition-opacity duration-300 group-hover:opacity-90">
               <Image
                 src="/brand/logo-mark-clean.svg"
                 alt=""
@@ -34,14 +34,16 @@ export function Navbar() {
                 priority
               />
             </span>
-            <span className="truncate text-[0.95rem] font-semibold tracking-tight text-white">
+            <span className="truncate text-[0.95rem] font-semibold tracking-tight text-[#E2E8F0] transition-colors duration-300 group-hover:text-brand-blue">
               SoyContratoFacil
-              <span className="text-slate-500">.es</span>
+              <span className="text-slate-400 transition-colors duration-300 group-hover:text-brand-blue/70">
+                .es
+              </span>
             </span>
           </Link>
 
           <nav
-            className="hidden items-center gap-7 text-sm text-slate-400 lg:flex"
+            className="hidden items-center gap-7 text-sm font-medium text-[#E2E8F0] lg:flex"
             aria-label="Recursos"
           >
             <Link
