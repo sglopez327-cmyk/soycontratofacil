@@ -9,6 +9,7 @@ import {
   TIPO_DOCUMENTO_FISICA_OPTIONS,
   TIPO_PERSONA_OPTIONS,
   getPartyTitle,
+  normalizeDocumentNumber,
   type PartyFormVariant,
   type PartyPrefix,
   type TipoPersona,
@@ -145,7 +146,10 @@ function PartySection({
             aria-invalid={Boolean(errors[`${prefix}_numero_documento`])}
             className={contractInputClassName}
             onChange={(event) =>
-              onChange(`${prefix}_numero_documento`, event.target.value)
+              onChange(
+                `${prefix}_numero_documento`,
+                normalizeDocumentNumber(event.target.value)
+              )
             }
           />
         </PartyField>

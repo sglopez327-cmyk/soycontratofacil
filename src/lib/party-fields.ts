@@ -12,7 +12,10 @@ export type TipoPersona = "fisica" | "empresa";
 
 export type TipoDocumento = "dni" | "nie" | "pasaporte" | "cif";
 
-const DNI_LETTERS = "TRWAGMYFPDXBNJZSQVHLCKE";
+/** Quita espacios y pasa letras a mayúsculas (formato DNI/NIE/CIF). */
+export function normalizeDocumentNumber(value: string): string {
+  return value.replace(/\s+/g, "").toUpperCase();
+}
 
 export const PARTY_VARIANTS = {
   arrendamiento: {
@@ -182,59 +185,49 @@ export function getPartyFieldDefinitions(
   return fields;
 }
 
+/** Solo estructura: 8 dígitos + 1 letra (sin validar letra de control). */
 function validateDni(value: string): boolean {
-  const normalized = value.toUpperCase().replace(/\s/g, "");
-  const match = normalized.match(/^(\d{8})([A-Z])$/);
-  if (!match) {
-    return false;
-  }
-  const number = Number.parseInt(match[1], 10);
-  return DNI_LETTERS[number % 23] === match[2];
+  return /^\d{8}[A-Z]$/.test(normalizeDocumentNumber(value));
 }
 
+/** Solo estructura: letra inicial X/Y/Z + 7 dígitos + 1 letra final. */
 function validateNie(value: string): boolean {
-  const normalized = value.toUpperCase().replace(/\s/g, "");
-  const match = normalized.match(/^([XYZ])(\d{7})([A-Z])$/);
-  if (!match) {
-    return false;
-  }
-  const prefix = { X: "0", Y: "1", Z: "2" }[match[1] as "X" | "Y" | "Z"];
-  return validateDni(`${prefix}${match[2]}${match[3]}`);
+  return /^[XYZ]\d{7}[A-Z]$/.test(normalizeDocumentNumber(value));
 }
 
 function validateCif(value: string): boolean {
-  const normalized = value.toUpperCase().replace(/[\s-]/g, "");
+  const normalized = normalizeDocumentNumber(value).replace(/-/g, "");
   return /^[ABCDEFGHJNPQRSUVW]\d{7}[\dA-J]$/.test(normalized);
 }
 
 function validatePasaporte(value: string): boolean {
-  return /^[A-Z0-9]{5,15}$/i.test(value.replace(/\s/g, ""));
+  return /^[A-Z0-9]{5,15}$/.test(normalizeDocumentNumber(value));
 }
 
 function validateDocumentNumber(
   tipo: TipoDocumento,
   value: string
 ): string | null {
-  const trimmed = value.trim();
-  if (!trimmed) {
+  const normalized = normalizeDocumentNumber(value);
+  if (!normalized) {
     return "El número de identificación es obligatorio";
   }
 
   switch (tipo) {
     case "dni":
-      return validateDni(trimmed)
+      return validateDni(normalized)
         ? null
-        : "Introduce un DNI válido (8 números y letra)";
+        : "Introduce un DNI con 8 números y 1 letra";
     case "nie":
-      return validateNie(trimmed)
+      return validateNie(normalized)
         ? null
-        : "Introduce un NIE válido (X/Y/Z, 7 números y letra)";
+        : "Introduce un NIE con letra inicial (X/Y/Z), 7 números y 1 letra";
     case "cif":
-      return validateCif(trimmed)
+      return validateCif(normalized)
         ? null
         : "Introduce un CIF válido";
     case "pasaporte":
-      return validatePasaporte(trimmed)
+      return validatePasaporte(normalized)
         ? null
         : "Introduce un número de pasaporte válido";
     default:
@@ -396,7 +389,9 @@ export function formatPartyComparecencia(
   const nombre = values[`${prefix}_nombre`]?.trim() ?? "";
   const tipoPersona = values[`${prefix}_tipo_persona`] as TipoPersona;
   const tipoDoc = values[`${prefix}_tipo_documento`] as TipoDocumento;
-  const numDoc = values[`${prefix}_numero_documento`]?.trim() ?? "";
+  const numDoc = normalizeDocumentNumber(
+    values[`${prefix}_numero_documento`] ?? ""
+  );
   const direccion = formatPartyAddress(prefix, values);
   const email = values[`${prefix}_email`]?.trim() ?? "";
   const telefono = values[`${prefix}_telefono`]?.trim() ?? "";

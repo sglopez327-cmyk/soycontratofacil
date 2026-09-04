@@ -10,6 +10,7 @@ import {
   TIPO_DOCUMENTO_FISICA_OPTIONS,
   TIPO_PERSONA_OPTIONS,
   getPartyTitle,
+  normalizeDocumentNumber,
   type PartyFormVariant,
   type PartyPrefix,
   type TipoPersona,
@@ -100,7 +101,9 @@ function PartySection({
         }}
         value={values[`${prefix}_numero_documento`] ?? ""}
         error={errors[`${prefix}_numero_documento`]}
-        onChange={(v) => onChange(`${prefix}_numero_documento`, v)}
+        onChange={(v) =>
+          onChange(`${prefix}_numero_documento`, normalizeDocumentNumber(v))
+        }
       />
       <FormField
         field={{
