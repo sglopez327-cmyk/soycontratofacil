@@ -1,6 +1,5 @@
 import type { ContractConfig } from "@/lib/contract-config";
 import { renderContractDocument } from "@/lib/contract-template-engine";
-import { loadPdfLogoMark, type PdfLogoAsset } from "@/lib/pdf-brand";
 
 export type ContractDocumentData = {
   slug: string;
@@ -63,8 +62,10 @@ const FOOTER_FONT_SIZE = 8;
 const FOOTER_TOP_GAP_MM = 10;
 /** Espacio entre el aviso legal y el bloque de marca en el pie. */
 const FOOTER_BRAND_TOP_GAP_MM = 8;
-/** Separación visual entre el icono y el texto de marca. */
-const FOOTER_LOGO_TEXT_GAP_MM = 4.5;
+/** Separación entre el icono vectorial y el texto de marca. */
+const FOOTER_LOGO_TEXT_GAP_MM = 2.8;
+/** Tamaño del isotipo en el pie (mm). Coincide con el layout anterior. */
+const FOOTER_ICON_SIZE_MM = 10;
 const FOOTER_TEXT_COLOR = { r: 115, g: 115, b: 115 } as const;
 const BODY_TEXT_COLOR = { r: 20, g: 20, b: 20 } as const;
 const BRAND_NAVY = { r: 15, g: 23, b: 42 } as const;
@@ -390,18 +391,66 @@ function writeSignatureBlock(
   setTextColor(ctx.doc, BODY_TEXT_COLOR);
 }
 
-function writeFooterBrand(ctx: PdfWriterContext, logoMark: PdfLogoAsset): void {
+/**
+ * Dibuja el isotipo corporativo con primitivas vectoriales del PDF
+ * (mismo diseño que public/brand/logo-mark-clean.svg), nítido a cualquier zoom.
+ */
+function drawBrandMarkIcon(
+  doc: import("jspdf").jsPDF,
+  x: number,
+  y: number,
+  size: number
+): void {
+  const scale = size / 48;
+
+  doc.setFillColor(BRAND_BLUE.r, BRAND_BLUE.g, BRAND_BLUE.b);
+  doc.roundedRect(x, y, size, size, 12 * scale, 12 * scale, "F");
+
+  doc.setFillColor(255, 255, 255);
+  doc.roundedRect(
+    x + 14 * scale,
+    y + 12 * scale,
+    20 * scale,
+    26 * scale,
+    2.5 * scale,
+    2.5 * scale,
+    "F"
+  );
+
+  doc.setFillColor(BRAND_BLUE.r, BRAND_BLUE.g, BRAND_BLUE.b);
+  doc.roundedRect(
+    x + 18 * scale,
+    y + 18 * scale,
+    12 * scale,
+    2 * scale,
+    1 * scale,
+    1 * scale,
+    "F"
+  );
+  doc.roundedRect(
+    x + 18 * scale,
+    y + 23 * scale,
+    12 * scale,
+    2 * scale,
+    1 * scale,
+    1 * scale,
+    "F"
+  );
+  doc.roundedRect(
+    x + 18 * scale,
+    y + 28 * scale,
+    8 * scale,
+    2 * scale,
+    1 * scale,
+    1 * scale,
+    "F"
+  );
+}
+
+function writeFooterBrand(ctx: PdfWriterContext): void {
   const centerX = ctx.pageWidth / 2;
-  const iconWidthMm = 10;
-  const iconHeightMm = (logoMark.height / logoMark.width) * iconWidthMm;
+  const iconSize = FOOTER_ICON_SIZE_MM;
   const lineHeight = getLineHeightMm(BRAND_NAME_FONT_SIZE);
-  const blockHeight = iconHeightMm + FOOTER_LOGO_TEXT_GAP_MM + lineHeight;
-
-  ensureSpace(ctx, blockHeight);
-
-  const iconX = centerX - iconWidthMm / 2;
-  ctx.doc.addImage(logoMark.dataUrl, "PNG", iconX, ctx.y, iconWidthMm, iconHeightMm);
-  ctx.y += iconHeightMm + FOOTER_LOGO_TEXT_GAP_MM;
 
   ctx.doc.setFont("helvetica", "bold");
   ctx.doc.setFontSize(BRAND_NAME_FONT_SIZE);
@@ -409,20 +458,32 @@ function writeFooterBrand(ctx: PdfWriterContext, logoMark: PdfLogoAsset): void {
   const partOne = "SoyContrato";
   const partTwo = "Facil.es";
   const partOneWidth = ctx.doc.getTextWidth(partOne);
-  const startX = centerX - (partOneWidth + ctx.doc.getTextWidth(partTwo)) / 2;
-  const baselineY = ctx.y;
+  const partTwoWidth = ctx.doc.getTextWidth(partTwo);
+  const textWidth = partOneWidth + partTwoWidth;
+  const blockWidth = iconSize + FOOTER_LOGO_TEXT_GAP_MM + textWidth;
+  const blockHeight = Math.max(iconSize, lineHeight);
+
+  ensureSpace(ctx, blockHeight);
+
+  const iconX = centerX - blockWidth / 2;
+  const iconY = ctx.y;
+  drawBrandMarkIcon(ctx.doc, iconX, iconY, iconSize);
+
+  const textX = iconX + iconSize + FOOTER_LOGO_TEXT_GAP_MM;
+  // Alineación óptica vertical con el isotipo (baseline ≈ centro del icono).
+  const baselineY = iconY + iconSize * 0.68;
 
   setTextColor(ctx.doc, BRAND_NAVY);
-  ctx.doc.text(partOne, startX, baselineY);
+  ctx.doc.text(partOne, textX, baselineY);
 
   setTextColor(ctx.doc, BRAND_BLUE);
-  ctx.doc.text(partTwo, startX + partOneWidth, baselineY);
+  ctx.doc.text(partTwo, textX + partOneWidth, baselineY);
 
-  ctx.y = baselineY + lineHeight;
+  ctx.y = iconY + blockHeight;
   setTextColor(ctx.doc, BODY_TEXT_COLOR);
 }
 
-async function writeDisclaimer(ctx: PdfWriterContext): Promise<void> {
+function writeDisclaimer(ctx: PdfWriterContext): void {
   const disclaimerText =
     "AVISO LEGAL: Documento generado automaticamente por SoyContratoFacil.es a partir de los datos facilitados por el usuario. No constituye asesoramiento juridico ni sustituye la revision de un profesional cualificado. Verifique su contenido antes de la firma.";
 
@@ -433,8 +494,7 @@ async function writeDisclaimer(ctx: PdfWriterContext): Promise<void> {
     ctx.contentWidth
   ) as string[];
   const lineHeight = getLineHeightMm(FOOTER_FONT_SIZE, 1.35);
-  const logoBlockHeight =
-    10 + FOOTER_LOGO_TEXT_GAP_MM + getLineHeightMm(BRAND_NAME_FONT_SIZE);
+  const logoBlockHeight = FOOTER_ICON_SIZE_MM;
   const blockHeight =
     FOOTER_TOP_GAP_MM +
     6 +
@@ -470,9 +530,7 @@ async function writeDisclaimer(ctx: PdfWriterContext): Promise<void> {
   });
 
   advanceY(ctx, FOOTER_BRAND_TOP_GAP_MM);
-
-  const logoMark = await loadPdfLogoMark();
-  writeFooterBrand(ctx, logoMark);
+  writeFooterBrand(ctx);
 }
 
 export function buildContractDocumentData(
@@ -532,7 +590,7 @@ export async function buildContractPdfDocument(
     "________________";
 
   writeSignatureBlock(ctx, document.signatures, lugarFirma);
-  await writeDisclaimer(ctx);
+  writeDisclaimer(ctx);
 
   return doc;
 }
